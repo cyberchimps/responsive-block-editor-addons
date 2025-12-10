@@ -50,8 +50,7 @@ export default class Save extends Component {
     if (isCollapsible && icon) {
       icon_html = (
         <span className="responsive-block-editor-addons-toc__collapsible-wrap">
-          <span className="responsive-block-editor-addons-toc__collapsible-icon">
-            {renderSVG(icon)}
+          <span className="responsive-block-editor-addons-toc__collapsible-icon rbea-dynamic-icon" data-icon={icon} aria-hidden="true">
           </span>
         </span>
       );

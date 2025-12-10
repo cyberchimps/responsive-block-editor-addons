@@ -257,6 +257,8 @@ function EditorStyles(props) {
     backSubtitleFontStyle,
     backButtonTextTransform,
     backButtonFontStyle,
+    gradientButton,
+    gradientButtonH,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -348,7 +350,7 @@ function EditorStyles(props) {
   let btnColor = ctaBackColor;
   let btnOpacity = buttonopacity;
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     btnColor = ctaBackColor;
     btnOpacity = buttonopacity;
@@ -358,7 +360,7 @@ function EditorStyles(props) {
   let btnHColor = ctaHoverBackColor;
   let btnHOpacity = buttonHopacity;
   if (buttonHbackgroundType == "gradient") {
-    backgroundHoverImageGradient = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    backgroundHoverImageGradient = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   } else if (buttonHbackgroundType == "color") {
     btnHColor = ctaHoverBackColor;
     btnHOpacity = buttonHopacity;

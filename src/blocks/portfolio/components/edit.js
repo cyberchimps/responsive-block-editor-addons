@@ -8,6 +8,7 @@ import PortfolioImage from "./image";
 import EditorStyles from "./editor-styles";
 import { loadGoogleFont } from "../../../utils/font";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { compose } = wp.compose;
 
@@ -210,6 +211,7 @@ class LatestPostsBlock extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-portfolio-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar

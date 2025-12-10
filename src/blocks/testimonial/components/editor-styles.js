@@ -183,9 +183,11 @@ function EditorStyles(props) {
   newTestimonialCiteAlign,
   testimonialCiteAlignTablet,
   testimonialCiteAlignMobile,
-    contentFontStyle,
-    nameFontStyle,
-    titleFontStyle,
+  contentFontStyle,
+  nameFontStyle,
+  titleFontStyle,
+  gradientOverlay,
+  gradient,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -241,7 +243,7 @@ function EditorStyles(props) {
     backgroundImageEffect = "";
   }else {
     if (gradientOverlayType === "linear") {
-      backgroundImageEffect = backgroundImage ? `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
+      backgroundImageEffect = gradientOverlay ? `${gradientOverlay},url(${backgroundImage})` : backgroundImage ? `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
@@ -250,7 +252,7 @@ function EditorStyles(props) {
       )} ${gradientOverlayLocation2}%),url(${backgroundImage})` : 'none';
     }
     if (gradientOverlayType === "radial") {
-      backgroundImageEffect = backgroundImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+      backgroundImageEffect = gradientOverlay ? `${gradientOverlay},url(${backgroundImage})` : backgroundImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
@@ -339,7 +341,7 @@ function EditorStyles(props) {
       "background-image": backgroundType === "image" && overlayType === "gradient"
         ? backgroundImageEffect
         : backgroundType === "gradient"
-        ? generateBackgroundImageEffect(
+        ? gradient ? gradient : generateBackgroundImageEffect(
             `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
             `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
             gradientDirection,

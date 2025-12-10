@@ -444,7 +444,6 @@ const attributes = {
   },
   formTitleFontWeight: {
     type: "string",
-    default: "600",
   },
   formTitleLineHeight: {
     type: "number",
@@ -471,7 +470,6 @@ const attributes = {
   },
   formDescriptionFontWeight: {
     type: "string",
-    default: "400",
   },
   formDescriptionLineHeight: {
     type: "number",
@@ -720,7 +718,6 @@ const attributes = {
   },
   inputFontWeight: {
     type: "string",
-    default: '400'
   },
   inputLineHeight: {
     type: "number",
@@ -799,7 +796,6 @@ const attributes = {
   },
   radioCheckboxFontWeight: {
     type: "string",
-    default: '400'
   },
   radioCheckboxLineHeight: {
     type: "number",
@@ -957,7 +953,6 @@ const attributes = {
   },
   submitButtonFontWeight: {
     type: "string",
-    default: '400'
   },
   submitButtonLineHeight: {
     type: "number",
@@ -1131,7 +1126,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHbackgroundType: {
     type: "string",
@@ -1154,7 +1148,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   ctaHoverBorderColor: {
     type: "string",
@@ -1198,7 +1191,6 @@ const attributes = {
   },
   messageFontWeight: {
     type: "number",
-    default: '400'
   },
   messageLineHeight: {
     type: "number",
@@ -1228,7 +1220,6 @@ const attributes = {
   },
   afterSubmitFontWeight: {
     type: "string",
-    default: '400'
   },
   afterSubmitLineHeight: {
     type: "number",
@@ -1780,6 +1771,18 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradient: {
+    type: "string",
+  },
+  gradientHover: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
+  }
 };
 
 export default attributes;

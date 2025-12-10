@@ -47,6 +47,7 @@ function EditorStyles(props) {
 		blockRightPadding,
 		blockRightPaddingMobile,
 		blockRightPaddingTablet,
+    gradient,
   } = props.attributes;
   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
@@ -57,7 +58,7 @@ function EditorStyles(props) {
       "background-color": backgroundType == "color" ? backgroundColor : null,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               backgroundColor1,
               backgroundColor2,
               gradientDirection,

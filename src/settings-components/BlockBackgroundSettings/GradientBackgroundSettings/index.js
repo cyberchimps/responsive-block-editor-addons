@@ -6,6 +6,8 @@ import GradientHoverBackgroundControl from './GradientHoverBackgroundSettings';
 import RbeaColorControl from '../../../utils/components/rbea-color-control';
 import RbeaRangeControl from '../../../utils/components/rbea-range-control';
 import RbeaAngleRangeControl from '../../../utils/components/rbea-angle-range-control';
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../utils/index.js";
 
 const { __ } = wp.i18n;
 
@@ -30,80 +32,67 @@ class GradientBackgroundControl extends Component {
               colorLocation2,
               gradientDirection,
               opacity,
+              gradient,
           },
           setAttributes,
       } = this.props;
+    
+    // Gradient options for WordPress GradientPicker (same as container)
+    const gradientOptions = [
+        {
+        name: 'JShine',
+        gradient:
+            'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+        slug: 'jshine',
+        },
+        {
+        name: 'Moonlit Asteroid',
+        gradient:
+            'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+        slug: 'moonlit-asteroid',
+        },
+        {
+        name: 'Rastafarie',
+        gradient:
+            'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+        slug: 'rastafari',
+        },
+    ];
 
+    // Convert old gradient attributes to WordPress gradient format if needed
+    const getGradientValue = () => {
+        // If gradient already exists (WordPress format), use it
+        if (gradient) {
+        return gradient;
+        }
+        
+        // Otherwise, convert from old attributes to WordPress format
+        if (backgroundColor1 || backgroundColor2) {
+        const imgopacity = opacity ? opacity / 100 : 1;
+        const color1 = hexToRgba(backgroundColor1 || "#fff", imgopacity);
+        const color2 = hexToRgba(backgroundColor2 || "#fff", imgopacity);
+        const location1 = colorLocation1 !== undefined ? colorLocation1 : 0;
+        const location2 = colorLocation2 !== undefined ? colorLocation2 : 100;
+        const direction = gradientDirection !== undefined ? gradientDirection : 90;
+        
+        return `linear-gradient(${direction}deg, ${color1} ${location1}%, ${color2} ${location2}%)`;
+        }
+        
+        return undefined;
+    };
+
+    // Handle gradient change - save to new format
+    const onGradientChange = (value) => {
+        setAttributes({ gradient: value });
+    };
+    
     var gradientNormalOptions = (
     <Fragment>
-        {this.props.showColorOne ===false? false: true && (
-        <Fragment>
-          
-            <RbeaColorControl
-                label = {__("Color 1", "responsive-block-editor-addons")}
-                colorValue={backgroundColor1}
-                onChange={(colorValue) =>
-                    setAttributes({ backgroundColor1: colorValue })
-                }
-                resetColor={() => setAttributes({ backgroundColor1: "" })}
-            />
-
-        </Fragment> )}
-            <RbeaColorControl
-                label = {__("Color 2", "responsive-block-editor-addons")}
-                colorValue={backgroundColor2}
-                onChange={(colorValue) =>
-                    setAttributes({ backgroundColor2: colorValue })
-                }
-                resetColor={() => setAttributes({ backgroundColor2: "" })}
-            />
-            <RbeaRangeControl
-            label={__("Color Location 1", "responsive-block-editor-addons")}
-            value={colorLocation1}
-            min={0}
-            max={100}
-            onChange={(value) =>
-            setAttributes({
-                colorLocation1: value !== undefined ? value : 0,
-            })
-        }
-            />
-            <RbeaRangeControl
-            label={__("Color Location 2", "responsive-block-editor-addons")}
-            value={colorLocation2}
-            min={0}
-            max={100}
-            onChange={(value) =>
-            setAttributes({
-                colorLocation2: value !== undefined ? value : 100,
-            })
-        }
-            />
-            <RbeaAngleRangeControl
-            label={__(
-                "Angle",
-                "responsive-block-editor-addons"
-        )}
-            value={gradientDirection}
-            min={0}
-            max={360}
-            onChange={(value) =>
-            setAttributes({
-                gradientDirection: value !== undefined ? value : 90,
-            })
-        }
+        <GradientPicker
+            value={getGradientValue()}
+            onChange={onGradientChange}
+            gradients={gradientOptions}
         />
-        {((backgroundColor1 && backgroundColor1 != '') || (backgroundColor2 && backgroundColor2 != '')) && (
-          <RbeaRangeControl
-          label={__("Opacity", "responsive-block-editor-addons")}
-          value={opacity}
-          onChange={(value) =>
-            setAttributes({ opacity: value !== undefined ? value : 20 })
-          }
-          min={0}
-          max={100}
-        />
-        )}
     </Fragment>
     )
 

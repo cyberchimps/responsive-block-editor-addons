@@ -9,6 +9,7 @@ import renderSVG from "../../../renderIcon";
 import React from "react";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -121,6 +122,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-call-to-action-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the alignment toolbar on focus
       <BlockControls
         key={
@@ -157,6 +159,7 @@ export default class Edit extends Component {
         <div
           className={classnames(
             "responsive-block-editor-addons-block-call-to-action",
+            "responsive-block-editor-addons-block-responsive-block-editor-addons-cta",
             `block-${block_id}`,
             inheritFromTheme ? "wp-block-button" : null
           )}

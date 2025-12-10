@@ -138,7 +138,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "block-id-{$attributes['block_id']} responsive-block-editor-addons-block-portfolio featured{$attributes['postType']}";
+		$class = "responsive-block-editor-addons-block-portfolio block-{$attributes['block_id']} block-id-{$attributes['block_id']} responsive-block-editor-addons-block-portfolio featured{$attributes['postType']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );

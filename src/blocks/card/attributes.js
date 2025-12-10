@@ -245,7 +245,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -401,7 +400,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonbackgroundType: {
     type: "string",
@@ -425,7 +423,6 @@ const attributes = {
   },
   subFontWeight: {
     type: "string",
-    default: 400,
   },
   subFontSize: {
     type: "number",
@@ -437,7 +434,6 @@ const attributes = {
   },
   headingFontWeight: {
     type: "string",
-    default: 900,
   },
   headingFontSize: {
     type: "number",
@@ -453,7 +449,6 @@ const attributes = {
   },
   contentFontWeight: {
     type: "string",
-    default: 400,
   },
   blockbotmargin: {
     type: "number",
@@ -1043,5 +1038,11 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  }
 };
 export default attributes;

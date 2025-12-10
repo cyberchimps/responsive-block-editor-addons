@@ -6,6 +6,7 @@
  import { loadGoogleFont } from "../../../utils/font";
  import EditorStyles from "./editor-styles";
  import times from "lodash/times"
+ import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
  /**
   * WordPress dependencies
@@ -213,6 +214,7 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
 
      return [
         <style id={`responsive-block-editor-addons-tabs-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
        <Inspector key={'tabs_inspector'} {...{ setAttributes, ...this.props }} />,
  
        <div

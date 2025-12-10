@@ -47,11 +47,14 @@ export default class Save extends Component {
                   rel="nofollow noopener noreferrer"
                 >
                   <div className="rbea-social-icon responsive-block-editor-addons-social-icon-svg-container">
-                      { (viewOption==='icon' || viewOption==='icontext') && <span className={classnames(
+                      { (viewOption==='icon' || viewOption==='icontext') &&                       <span className={classnames(
                           "rbea-social-icon responsive-block-editor-addons-social-icon-svg",
                           iconColorType === 'official' ?`responsive-block-editor-addons-icon-${icon.icon}` : '',
-                        )}>
-                        {renderSVG(icon.icon)}
+                          "rbea-dynamic-icon"
+                        )}
+                        data-icon={icon.icon}
+                        aria-hidden="true"
+                      >
                       </span>
                       }
                   </div>

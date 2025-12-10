@@ -40,6 +40,7 @@ export default class Buttons extends Component {
           this.props.className,
           `responsive-block-editor-addons-${this.props.clientId}`,
           "responsive-block-editor-addons-buttons-child",
+          "responsive-block-editor-addons-block-buttons-child",
           `block-${block_id}`,
           "responsive-block-editor-addons-block-button",
           "responsive-block-editor-addons-buttons__outer-wrap"

@@ -10,6 +10,7 @@ import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../../renderIcon";
 import { loadGoogleFont } from "../../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -121,6 +122,7 @@ export default class Edit extends Component {
     return (
       <Fragment>
       <style id={`responsive-block-editor-addons-buttons-child-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         {buttonFontFamily && loadGoogleFont(buttonFontFamily)}
         <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />
 

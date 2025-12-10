@@ -164,7 +164,6 @@ const attributes = {
     },
     inputFontWeight: {
       type: "string",
-      default: '100'
     },
     inputLineHeight: {
       type: "number",
@@ -215,7 +214,6 @@ const attributes = {
     },
     buttonFontWeight: {
       type: "string",
-      default: "100"
     },
     buttonLineHeight: {
       type: "number",

@@ -122,7 +122,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHTextColor: {
     type: "string",
@@ -159,7 +158,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonBorderRadius: {
     type: "number",
@@ -554,7 +552,6 @@ const attributes = {
   },
   frontTitleFontWeight: {
     type: "string",
-    default: "100"
   },
   frontTitleFontSize: {
     type: "number",
@@ -577,7 +574,6 @@ const attributes = {
   },
   frontSubtitleFontWeight: {
     type: "string",
-    default: "100"
   },
   frontSubtitleFontSize: {
     type: "number",
@@ -600,7 +596,6 @@ const attributes = {
   },
   backTitleFontWeight: {
     type: "string",
-    default: "100"
   },
   backTitleFontSize: {
     type: "number",
@@ -623,7 +618,6 @@ const attributes = {
   },
   backSubtitleFontWeight: {
     type: "string",
-    default: "100"
   },
   backSubtitleFontSize: {
     type: "number",
@@ -646,7 +640,6 @@ const attributes = {
   },
   backButtonFontWeight: {
     type: "string",
-    default: "100"
   },
   backButtonFontSize: {
     type: "number",
@@ -1084,6 +1077,12 @@ const attributes = {
   isPreview: {
     type: "boolean",
     default: false, 
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
   },
 };
 

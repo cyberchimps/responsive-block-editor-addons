@@ -24,6 +24,7 @@ import { withNotices, ResizableBox } from "@wordpress/components";
 import { RichText } from "@wordpress/block-editor";
 import Style from "style-it";
 import { hexToRgba } from "../../../utils/index.js";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 class GalleryCarouselEdit extends Component {
   constructor() {
@@ -321,6 +322,7 @@ class GalleryCarouselEdit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-image-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <ResizableBox

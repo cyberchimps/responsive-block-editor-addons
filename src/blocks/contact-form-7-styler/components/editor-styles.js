@@ -356,6 +356,10 @@
       messageFontStyle,
       afterSubmitTextTransform,
       afterSubmitFontStyle,
+      gradient,
+      gradientHover,
+      gradientButton,
+      gradientButtonH,
    } = props.attributes;
 
 
@@ -452,7 +456,7 @@
   let backgroundImageGradient = "";
   let btnColor = ctaBackColor;
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     btnColor = ctaBackColor;
   }
@@ -460,7 +464,7 @@
   let backgroundHoverImageGradient = "";
   let btnHColor = ctaHoverBackColor;
   if (buttonHbackgroundType == "gradient") {
-    backgroundHoverImageGradient = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    backgroundHoverImageGradient = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   } else if (buttonHbackgroundType == "color") {
     btnHColor = ctaHoverBackColor;
   }
@@ -566,7 +570,7 @@
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
               `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
               gradientDirection,
@@ -609,7 +613,7 @@
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradientHover ? gradientHover : generateBackgroundImageEffect(
             `${hexToRgba(
               hoverbackgroundColor1 || "#ffffff",
               imgopacity || 0

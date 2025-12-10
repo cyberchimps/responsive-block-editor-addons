@@ -63,6 +63,7 @@ export default class Save extends Component {
         <div
           className={classnames(
             "responsive-block-editor-addons-block-call-to-action",
+            "responsive-block-editor-addons-block-responsive-block-editor-addons-cta",
             `block-${block_id}`
           )}
         >
@@ -134,10 +135,12 @@ export default class Save extends Component {
                 <span
                   className={classnames(
                     `responsive-block-editor-addons-cta-button__icon`,
-                    `responsive-block-editor-addons-cta-button__icon-position-${iconPosition}`
+                    `responsive-block-editor-addons-cta-button__icon-position-${iconPosition}`,
+                    "rbea-dynamic-icon"
                   )}
+                  data-icon={icon}
+                  aria-hidden="true"
                 >
-                  {renderSVG(icon)}
                 </span>
               )}
               <a
@@ -156,10 +159,12 @@ export default class Save extends Component {
                 <span
                   className={classnames(
                     `responsive-block-editor-addons-cta-button__icon`,
-                    `responsive-block-editor-addons-cta-button__icon-position-${iconPosition}`
+                    `responsive-block-editor-addons-cta-button__icon-position-${iconPosition}`,
+                    "rbea-dynamic-icon"
                   )}
+                  data-icon={icon}
+                  aria-hidden="true"
                 >
-                  {renderSVG(icon)}
                 </span>
               )}
             </div>

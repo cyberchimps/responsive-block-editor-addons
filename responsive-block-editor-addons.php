@@ -24,6 +24,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-ad
 // Responsive Block Editor Addons plugin's helper file.
 require plugin_dir_path( __FILE__ ) . 'helper/class-responsive-block-editor-addons-helper.php';
 
+// Responsive Block Editor Addons SVG renderer class.
+require plugin_dir_path( __FILE__ ) . 'classes/class-responsive-block-editor-addons-svg-renderer.php';
+
 /**
  * The code that runs during plugin activation.
  */

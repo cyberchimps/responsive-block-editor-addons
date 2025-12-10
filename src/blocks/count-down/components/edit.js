@@ -12,6 +12,7 @@ import Inspector from "./inspector";
 import uuid from "../../../utils/uuid";
 import { Fragment } from "react";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 class Edit extends Component {
 	componentWillUnmount() {
@@ -122,6 +123,7 @@ class Edit extends Component {
 
 		return [
 			<style id={`responsive-block-editor-addons-count-down-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+			<AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
 			isSelected && (
 				<Inspector key="inspector" clientId={block_id} attributes={attributes} setAttributes={setAttributes} />
 			),

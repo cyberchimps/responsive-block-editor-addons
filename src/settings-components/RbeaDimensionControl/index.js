@@ -33,7 +33,7 @@ export default function ResponsiveDimensionControl(props) {
             [`${controlName}${props.tabName}Bottom`]: props.attributes[getAttrName(`Bottom${controlNameCapitalCase}${props.tabName}`)],
             [`${controlName}${props.tabName}Left`]: props.attributes[getAttrName(`Left${controlNameCapitalCase}${props.tabName}`)],
         });
-    }, [props.tabName, props.attributes]); // think on this later
+    }, [props.tabName, props.attributes, props.attrNameTemplate]); // think on this later
 
     function spaceControlConnectedHandler() {
         setSpaceControlConnected(!isSpaceControlConnected);

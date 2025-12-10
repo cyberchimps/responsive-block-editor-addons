@@ -50,7 +50,7 @@ export default class DeprecatedTableOfContentsSave extends Component {
     if (isCollapsible && icon) {
       icon_html = (
         <span className="responsive-block-editor-addons-toc__collapsible-wrap">
-          {renderSVG("angle-down")}
+          <span className="rbea-dynamic-icon" data-icon="angle-down" aria-hidden="true"></span>
         </span>
       );
     }

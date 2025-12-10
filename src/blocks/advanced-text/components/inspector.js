@@ -41,6 +41,7 @@ export default class Inspector extends Component {
     super(...arguments);
   }
 
+
   render() {
     const {
       attributes: {

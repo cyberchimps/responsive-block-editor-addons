@@ -9,6 +9,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import renderSVG from "../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -115,6 +116,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-social-icons-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
       <Fragment key={`fragment-socail-share-${block_id}`} >
         <div key={`socail-share-${block_id}`}

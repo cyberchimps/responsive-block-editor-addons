@@ -31,6 +31,7 @@ const EditorSettings = () => {
 
   const [autoRecovery, setAutoRecovery] = useState(convertTruthyFalsyValue(rbealocalize?.auto_block_recovery));
   const [buttonInherit, setButtonInherit] = useState(convertTruthyFalsyValue(rbealocalize?.global_inherit_from_theme));
+  const [customCss, setCustomCss] = useState(convertTruthyFalsyValue(rbealocalize?.custom_css_on));
   const [contentWidth, setContentWidth] = useState(Number(rbealocalize?.default_content_width));
   const [containerPadding, setContainerPadding] = useState(Number(rbealocalize?.default_container_padding));
   const [containerGap, setContainerGap] = useState(Number(rbealocalize?.default_container_gap));
@@ -55,6 +56,17 @@ const EditorSettings = () => {
           onChange={(newValue) => {
             setButtonInherit(newValue);
             saveSetting(newValue, 'rbea_toggle_global_inherit_from_theme');
+          }}
+        />
+      </SettingsCard>
+
+      <SettingsCard className="mt-5" title={__( 'Custom CSS', 'responsive-block-editor-addons' )} description={__( "Enable the Custom CSS panel in the Advanced tab for all blocks. This allows you to add custom CSS styles directly to individual blocks for fine-grained control over their appearance.", 'responsive-block-editor-addons' )}>
+        <ToggleControl
+          __nextHasNoMarginBottom
+          checked={customCss}
+          onChange={(newValue) => {
+            setCustomCss(newValue);
+            saveSetting(newValue, 'rbea_toggle_custom_css');
           }}
         />
       </SettingsCard>
@@ -145,6 +157,7 @@ const saveSetting = async (settingValue, actionType) => {
   const toggleActions = [
     'rbea_toggle_auto_block_recovery',
     'rbea_toggle_global_inherit_from_theme',
+    'rbea_toggle_custom_css',
   ];
 
   const shouldNormalizeBoolean = toggleActions.includes(actionType);

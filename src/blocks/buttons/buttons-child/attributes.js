@@ -148,15 +148,20 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  gradient: {
+    type: "string",
+  },
   gradientDirection: {
     type: "number",
     default: 90,
   },
   backgroundColor1: {
     type: "string",
+    default: "#007cba",
   },
   backgroundColor2: {
     type: "string",
+    default: "#007cba",
   },
   opacity: {
     type: "number",
@@ -247,7 +252,6 @@ const attributes = {
   },
   buttonFontWeight: {
     type: "string",
-    default: "400",
   },
   inheritFromTheme: {
     type: "boolean",

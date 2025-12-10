@@ -21,7 +21,6 @@ const attributes = {
   },
   quoteFontWeight: {
     type: "string",
-    default: "400",
   },
   quoteLineHeight: {
     type: "number",
@@ -232,6 +231,9 @@ const attributes = {
   colorLocation2: {
     type: "number",
     default: 100,
+  },
+  gradient: {
+    type: "string",
   },
   gradientDirection: {
     type: "number",
@@ -583,7 +585,6 @@ const attributes = {
   },
   twFontWeight: {
     type: "string",
-    default: "",
   },
   twLineHeight: {
     type: "number",
