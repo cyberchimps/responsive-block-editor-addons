@@ -97,4 +97,13 @@
 	.components-input-control__container {
 		max-width: 105px;
 	}
+	.components-select-control__input {
+		min-width: 85px;
+	}
+}
+
+.responsive-block-editor-addons-typography-settings .components-base-control .components-base-control__field .components-input-base {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
