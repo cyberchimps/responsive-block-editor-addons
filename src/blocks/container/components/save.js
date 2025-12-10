@@ -84,6 +84,7 @@ export default function save( props ) {
 				className={ classnames(
 					blockProps.className,
 					`responsive-block-editor-addons-block-${ block_id }`,
+					`block-${ block_id }`,
 					isBlockRootParent ? `${ contentWidth } responsive-block-editor-addons-is-root-container` : ''
 				) }
 			>

@@ -7,7 +7,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import apiFetch from '@wordpress/api-fetch';
 import { Placeholder, Spinner } from '@wordpress/components';
-
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 
 const {
@@ -136,6 +136,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-contact-form-7-styler-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={formAlignment}

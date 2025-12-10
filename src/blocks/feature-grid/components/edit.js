@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import times from "lodash/times";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -117,6 +118,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`esponsive-block-editor-addons-feature-grid-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar

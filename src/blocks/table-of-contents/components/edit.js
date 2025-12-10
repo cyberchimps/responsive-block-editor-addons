@@ -7,6 +7,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import TableOfContents from "./TableOfContents";
 import renderSVG from "../../../renderIcon";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -90,6 +91,7 @@ class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-table-of-contents-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <Inspector key={"toc-inspector"} {...{ setAttributes, ...this.props }} />,
 
       <CustomTag

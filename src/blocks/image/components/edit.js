@@ -15,6 +15,7 @@ import EditorStyles from "./editor-styles";
 import Inspector from "./inspector";
 import classnames from "classnames";
 import { loadGoogleFont } from "../../../utils/font";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 const {__} = wp.i18n;
 
 export default class Edit extends Component {
@@ -118,6 +119,7 @@ export default class Edit extends Component {
     return (
       <Fragment>
       <style id={`responsive-block-editor-addons-image-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         { imageUrl !== "" && <BlockControls style={{ borderRight: "1px solid" }}>
   {/* Add your custom dropdown button to the toolbar */}
   <Dropdown

@@ -9,6 +9,8 @@ import { loadGoogleFont } from "../../../utils/font";
 import renderSVG from "../../../renderIcon";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTOM } from "./variations";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+
 /**
  * WordPress dependencies
  */
@@ -122,6 +124,7 @@ class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-popup-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
       </BlockControls>,
       // Show the block controls on focus

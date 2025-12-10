@@ -103,7 +103,8 @@ export default function save(props) {
       <div
         className={classnames(
           className,
-          "responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+          "responsive-block-editor-addons-block-testimonial-slider responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+          `block-${block_id}`,
           `responsive-block-editor-addons-block-${block_id}`
         )}
       >

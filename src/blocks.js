@@ -169,6 +169,7 @@ import "./utils/responsiveTabSync.js"
 
 // Auto Block Recovery System and Inherit from Theme.
 import {initAutoBlockRecovery, initGlobalInheritFromThemeSystem} from './utils/settings.js'
+import { initCustomCSSRegistry } from './utils/custom-css-registry.js';
 import domReady from '@wordpress/dom-ready';
 
 // Initialize auto block recovery only if enabled
@@ -176,3 +177,6 @@ domReady( initAutoBlockRecovery );
 
 // Initialize global inherit from theme system
 domReady( initGlobalInheritFromThemeSystem );
+
+// Initialize custom CSS registry for editor
+domReady( initCustomCSSRegistry );

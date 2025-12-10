@@ -36,6 +36,7 @@ import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { __ } = wp.i18n;
 
@@ -2150,6 +2151,7 @@ class edit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-testimonial-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <Style>
           {`
              .responsive-block-editor-addons-slick-carousel.responsive-block-editor-addons-block-${this.props.clientId.substr(
@@ -2204,7 +2206,8 @@ class edit extends Component {
         <div
           className={classnames(
             className,
-            "responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+            "responsive-block-editor-addons-block-testimonial-slider responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+            `block-${this.props.clientId}`,
             `responsive-block-editor-addons-block-${this.props.clientId.substr(
               0,
               8
