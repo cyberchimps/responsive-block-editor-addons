@@ -1498,7 +1498,7 @@ class Responsive_Block_Editor_Addons {
 		
 		// Check if user has at least 5 posts/pages with RBA blocks
 		$posts_with_blocks = $this->count_posts_with_rba_blocks();
-		$has_five_posts_with_blocks = $posts_with_blocks >= 5;
+		$has_five_posts_with_blocks = $posts_with_blocks >= 3;
 		
 		// Check if user has used template library
 		$template_library_used = (bool) get_option( 'responsive_block_editor_addons_template_library_used' );
