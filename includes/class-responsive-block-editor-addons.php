@@ -1496,7 +1496,7 @@ class Responsive_Block_Editor_Addons {
 		// Check if 7-day delay has passed (original 7-day timer)
 		$seven_day_delay_passed = false === get_option( 'responsive_block_editor_addons_intial_timeout' ) ? false : true;
 		
-		// Check if user has at least 5 posts/pages with RBA blocks
+		// Check if user has at least 3 posts/pages with RBA blocks
 		$posts_with_blocks = $this->count_posts_with_rba_blocks();
 		$has_five_posts_with_blocks = $posts_with_blocks >= 3;
 		
@@ -1505,7 +1505,7 @@ class Responsive_Block_Editor_Addons {
 		
 		// Show notice if:
 		// 1. 7-day delay has passed, OR
-		// 2. User has 5+ posts/pages with RBA blocks, OR
+		// 2. User has 3+ posts/pages with RBA blocks, OR
 		// 3. User has used template library
 		if ( $seven_day_delay_passed || $has_five_posts_with_blocks || $template_library_used ) {
 			$image_url = plugins_url( 'admin/images/responsive-blocks.svg', __DIR__ );
