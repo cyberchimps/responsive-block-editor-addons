@@ -125,24 +125,6 @@ Responsive Blocks plugin is compatible with most of the popular themes available
 - **🔁 Translation Ready**: Responsive comes with built-in multilingual support, and you would not require any third-party plugin for translating. Currently, the theme is translated into 45 other languages.
 - **🎉 Integration with Popular Plugins**: Responsive theme is 100% compatible with popular plugins like WooCommerce, Mailchimp, WP Legal Pages Pro, and more!
 
-==Responsive Blocks Plugin Reviews and Testimonials==
-
-Testimonials from real customers:
-
-<strong>Great plugin (alternative to uagb/spectra) !</strong>
-
-With an update to the uagb v2 who crash the website, I was searching for a replacment and I found it!
-
-Great plugin! And completely free! Bravo!
-
-I’m just sad I haven't found it before 😉
-
-<strong>Great plugin – 5 stars</strong>
-	
-Great plugin. Not as well known as other plugins with gutenberg blocks. But I found in it what I need and more. This is Post-Timeline, Content Timeline, Flip Box, Video Popup, Image Hotspot, and other (and cool lightbox)….. The blocks look neat and there is a separate tab for design. Plus this plugin loads its files on pages where there are his blocks. I wish good luck to the developers and thank you for a good and free plugin.
-
-- Give your valuable review on [WordPress](https://wordpress.org/plugins/responsive-block-editor-addons/#reviews). 
-
 == Support & Documentation==
 - Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
 - Learn more about using Responsive Blocks plugin with our detailed [documentation](https://cyberchimps.com/docs/responsive-blocks/).
