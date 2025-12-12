@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -230,6 +230,15 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.7 - 15th December 2025 =
+* New – Added Custom CSS support for all blocks, allowing block-level custom styling.
+* Improvement – Added “Default” option for Font Weight and Text Decoration across blocks to fetch theme settings.
+* Improvement – Updated Gradient Color Picker UI to match the WordPress default gradient color picker for a more consistent editing experience.
+* Fix – Resolved compatibility issue with GravityForms.
+* Fix – Ensured full compatibility with WordPress 6.9 and resolved block crashes introduced in the update.
+* Fix – Container Block: Fixed Z-Index settings not working.
+* Fix – Flipbox Block: Fixed padding control not showing up for mobile and tablet views.
 
 = 2.1.6 - 6th December 2025 =
 * Fix – Fixed a minor bug in Container block.
