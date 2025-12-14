@@ -2900,6 +2900,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'gradient'				 			  => '',
 				'contentGradient'		 			  => '',
 				'contentBackgroundType'  			  => 'none',
+				'backgroundType'					  => 'none',
 			);
 		}
 
