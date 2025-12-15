@@ -59,9 +59,9 @@ Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordp
 
 [Check Ready Websites and Starter Templates](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg)
 
-==50+ FREE & ADVANCED BLOCKS AND COUNTING==
+==50+ WORDPRESS BLOCKS, EXTENSIONS AND GLOBAL SETTINGS==
 
-Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
+==Blocks==
 
 <ol>
 	<li><a href = " https://cyberchimps.com/responsive-blocks/container/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: Create easy to use stunning layouts using the Container block, powered by flexbox technology.
@@ -110,7 +110,15 @@ Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
 	<li><a href = "https://cyberchimps.com/responsive-blocks/post-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post-Timeline</a>: The Post Timeline block helps you design beautiful and responsive timelines that display your posts or events in an ordered list according to the dates they were published. You can also customize the content for each blog post with a new option to select an icon for the connector.</li>
 </ol>
 
-<strong>More Gutenberg blocks are coming soon!<strong>
+==Extensions and Global Settings==
+
+<ol>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/display-conditions-extension/">Display Conditions</a>: The Display Conditions feature gives you the ability to specify when a specific block, section, or element is shown and to whom on your website.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/animations-extension/">Animations</a>: Add life and interactivity with Responsive blocks fade, slide, zoom, flip, and more. Free users get a set of easy-to-apply animations for any block.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/responsive-conditions-extension/">Responsive Conditions</a>: Control which block is visible on all devices. Hide blocks on mobile and tablet if not necessary.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Advanced block presets</a>: Not sure how to design blocks? Our expert designers created high-converting, visually appealing presets ready to use.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Custom CSS</a>: Apply custom CSS with Responsive Blocks by selecting the block and adding your code.</li>
+</ol>
 
 ==Compatible with Responsive and other Gutenberg Themes==
 
@@ -202,14 +210,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Screenshots ==
 
-1. Feature Grid
-2. Advanced Heading
-3. Info Box
-4. Image Slider
-5. Post Carousel
-6. Progress Bar
-7. Shape Divider
-8. Gutenberg Starter Templates
+1. Plugin Dashboard
+2. Blocks Configuration
+3. Gutenberg Starter Templates
 
 == Changelog ==
 
