@@ -444,6 +444,7 @@ const attributes = {
   },
   formTitleFontWeight: {
     type: "string",
+    default: "600",
   },
   formTitleLineHeight: {
     type: "number",
@@ -470,6 +471,7 @@ const attributes = {
   },
   formDescriptionFontWeight: {
     type: "string",
+    default: "400",
   },
   formDescriptionLineHeight: {
     type: "number",
@@ -718,6 +720,7 @@ const attributes = {
   },
   inputFontWeight: {
     type: "string",
+    default: '400'
   },
   inputLineHeight: {
     type: "number",
@@ -796,6 +799,7 @@ const attributes = {
   },
   radioCheckboxFontWeight: {
     type: "string",
+    default: '400'
   },
   radioCheckboxLineHeight: {
     type: "number",
@@ -953,6 +957,7 @@ const attributes = {
   },
   submitButtonFontWeight: {
     type: "string",
+    default: '400'
   },
   submitButtonLineHeight: {
     type: "number",
@@ -1191,6 +1196,7 @@ const attributes = {
   },
   messageFontWeight: {
     type: "number",
+    default: '400'
   },
   messageLineHeight: {
     type: "number",
@@ -1220,6 +1226,7 @@ const attributes = {
   },
   afterSubmitFontWeight: {
     type: "string",
+    default: '400'
   },
   afterSubmitLineHeight: {
     type: "number",

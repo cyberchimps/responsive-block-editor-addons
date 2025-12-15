@@ -90,6 +90,7 @@ const attributes = {
   },
   resheadFontWeight: {
     type: "string",
+    default: "700",
   },
   resheadLineHeight: {
     type: "number",
@@ -105,6 +106,7 @@ const attributes = {
   },
   ressubHeadFontWeight: {
     type: "string",
+    default: "100",
   },
   ressubHeadLineHeight: {
     type: "number",
@@ -667,6 +669,7 @@ const attributes = {
   },
   ctaTextFontWeight: {
     type: "string",
+    default: "100",
   },
   ctaTextLineHeight: {
     type: "number",

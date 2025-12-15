@@ -190,7 +190,8 @@
       "type": "number"
     },
     "filterTabTypographyFontWeight": {
-      "type": "string"
+      "type": "string",
+      "default": "400"
     },
     "filterTabTypographyLineHeight": {
       "type": "number",

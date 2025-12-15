@@ -59,18 +59,6 @@ const EditorSettings = () => {
           }}
         />
       </SettingsCard>
-
-      <SettingsCard className="mt-5" title={__( 'Custom CSS', 'responsive-block-editor-addons' )} description={__( "Enable the Custom CSS panel in the Advanced tab for all blocks. This allows you to add custom CSS styles directly to individual blocks for fine-grained control over their appearance.", 'responsive-block-editor-addons' )}>
-        <ToggleControl
-          __nextHasNoMarginBottom
-          checked={customCss}
-          onChange={(newValue) => {
-            setCustomCss(newValue);
-            saveSetting(newValue, 'rbea_toggle_custom_css');
-          }}
-        />
-      </SettingsCard>
-
       <SettingsCard className="mt-5" title={__( 'Default Content Width', 'responsive-block-editor-addons' )} description={__( "Set the default width for the RB Container block. This value will apply automatically unless you override it in individual containers.", 'responsive-block-editor-addons' )}>
         <SettingsInput inputValue={contentWidth} setInput={setContentWidth} unit="PX" maxValue="1600" minValue={0} actionType="rbea_save_content_width" />
       </SettingsCard>
@@ -81,6 +69,17 @@ const EditorSettings = () => {
 
       <SettingsCard className="mt-5" title={__( 'Container Elements Gap', 'responsive-block-editor-addons' )} description={__( 'Control the default spacing between rows and columns inside the RB Container block.', 'responsive-block-editor-addons' )}>
         <SettingsInput inputValue={containerGap} setInput={setContainerGap} unit="PX" maxValue="200" minValue={0} actionType="rbea_save_container_gap" />
+      </SettingsCard>
+
+      <SettingsCard className="mt-5" title={__( 'Custom CSS', 'responsive-block-editor-addons' )} description={__( "Enable the Custom CSS panel in the Advanced tab for all blocks. This allows you to add custom CSS styles directly to individual blocks for fine-grained control over their appearance.", 'responsive-block-editor-addons' )}>
+        <ToggleControl
+          __nextHasNoMarginBottom
+          checked={customCss}
+          onChange={(newValue) => {
+            setCustomCss(newValue);
+            saveSetting(newValue, 'rbea_toggle_custom_css');
+          }}
+        />
       </SettingsCard>
     </>
 

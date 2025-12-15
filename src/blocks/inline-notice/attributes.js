@@ -133,6 +133,7 @@ const attributes = {
     },
     contentFontWeight: {
         type: "string",
+        default: "600"
     },
     contentLineHeight: {
         type: "number",
@@ -235,6 +236,7 @@ const attributes = {
     },
     titleFontWeight: {
         type: "string",
+        default: "600"
     },
     titleLineHeight: {
         type: "number",

@@ -21,6 +21,7 @@ const attributes = {
   },
   quoteFontWeight: {
     type: "string",
+    default: "400",
   },
   quoteLineHeight: {
     type: "number",

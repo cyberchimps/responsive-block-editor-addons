@@ -67,6 +67,7 @@ const attributes = {
   },
   captionFontWeight: {
     type: "string",
+    default: "600",
   },
   captionLineHeight: {
     type: "number",
@@ -459,6 +460,7 @@ const attributes = {
   },
   layoverHeadingFontWeight: {
     type: "string",
+    default: "600",
   },
   layoverHeadingLineHeight: {
     type: "number",
