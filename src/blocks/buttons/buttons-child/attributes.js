@@ -252,6 +252,7 @@ const attributes = {
   },
   buttonFontWeight: {
     type: "string",
+    default: "400",
   },
   inheritFromTheme: {
     type: "boolean",

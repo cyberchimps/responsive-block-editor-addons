@@ -292,6 +292,7 @@ const attributes = {
     },
     popupButtonTypographyFontWeight: {
         type: "string",
+        default: "600",
     },
     popupButtonTypographyLineHeight: {
         type: "number",
@@ -450,6 +451,7 @@ const attributes = {
     },
     popupTextTypographyFontWeight: {
         type: "string",
+        default: "600",
     },
     popupTextTypographyLineHeight: {
         type: "number",

@@ -85,6 +85,7 @@
   },
   titleFontWeight: {
     type: "number",
+    default: 400,
   },
   titleLineHeight: {
     type: "number",
@@ -96,6 +97,7 @@
   },
   textFontWeight: {
     type: "number",
+    default: 400,
   },
   textLineHeight: {
     type: "number",
@@ -107,6 +109,7 @@
   },
   linkFontWeight: {
     type: "number",
+    default: 400,
   },
   linkLineHeight: {
     type: "number",

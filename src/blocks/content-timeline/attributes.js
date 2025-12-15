@@ -188,6 +188,7 @@ const attributes = {
   },
   dateFontWeight: {
     type: "string",
+    default: "400",
   },
   dateFontSize: {
     type: "number",
@@ -199,6 +200,7 @@ const attributes = {
   },
   headingFontWeight: {
     type: "string",
+    default: "400",
   },
   headingFontSize: {
     type: "number",
@@ -231,6 +233,7 @@ const attributes = {
   },
   contentFontWeight: {
     type: "string",
+    default: "400",
   },
   opacity: {
     type: "number",

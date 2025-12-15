@@ -149,6 +149,7 @@ const attributes = {
   },
   contentFontWeight: {
     type: "string",
+    default: "500",
   },
   contentFontSize: {
     type: "number",
@@ -169,6 +170,7 @@ const attributes = {
   },
   headingFontWeight: {
     type: "string",
+    default: "500",
   },
   headingFontSize: {
     type: "number",

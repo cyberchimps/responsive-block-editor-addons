@@ -746,6 +746,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'dateFontWeight'                     => array(
 					'type'    => 'string',
+					'default' => 400,
 				),
 				'dateLineHeight'                     => array(
 					'type'    => 'number',
@@ -765,6 +766,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'headingFontWeight'                  => array(
 					'type'    => 'string',
+					'default' => 700,
 				),
 				'headingLineHeight'                  => array(
 					'type'    => 'number',
@@ -784,6 +786,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'authorFontWeight'                   => array(
 					'type'    => 'string',
+					'default' => 400,
 				),
 				'authorLineHeight'                   => array(
 					'type'    => 'number',
@@ -803,6 +806,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'contentFontWeight'                  => array(
 					'type'    => 'string',
+					'default' => 400,
 				),
 				'contentLineHeight'                  => array(
 					'type'    => 'number',
@@ -822,6 +826,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'continueFontWeight'                 => array(
 					'type'    => 'string',
+					'default' => 700,
 				),
 				'continueLineHeight'                 => array(
 					'type'    => 'number',

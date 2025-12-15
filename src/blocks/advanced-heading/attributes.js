@@ -100,6 +100,7 @@ const attributes = {
   },
   headingTitleFontWeight: {
     type: "string",
+    default: "600",
   },
   headingTitleLineHeight: {
     type: "number",
@@ -126,6 +127,7 @@ const attributes = {
   },
   subHeadingTitleFontWeight: {
     type: "string",
+    default: "400",
   },
   subHeadingTitleLineHeight: {
     type: "number",

@@ -552,6 +552,7 @@ const attributes = {
   },
   frontTitleFontWeight: {
     type: "string",
+    default: "100"
   },
   frontTitleFontSize: {
     type: "number",
@@ -574,6 +575,7 @@ const attributes = {
   },
   frontSubtitleFontWeight: {
     type: "string",
+    default: "100"
   },
   frontSubtitleFontSize: {
     type: "number",
@@ -596,6 +598,7 @@ const attributes = {
   },
   backTitleFontWeight: {
     type: "string",
+    default: "100"
   },
   backTitleFontSize: {
     type: "number",
@@ -618,6 +621,7 @@ const attributes = {
   },
   backSubtitleFontWeight: {
     type: "string",
+    default: "100"
   },
   backSubtitleFontSize: {
     type: "number",
@@ -640,6 +644,7 @@ const attributes = {
   },
   backButtonFontWeight: {
     type: "string",
+    default: "100"
   },
   backButtonFontSize: {
     type: "number",
