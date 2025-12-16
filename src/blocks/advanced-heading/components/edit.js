@@ -5,6 +5,7 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 /**
  * WordPress dependencies
  */
@@ -65,6 +66,7 @@ export default class Edit extends Component {
       onReplace,
     } = this.props;
     return [
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <style id={`responsive-block-editor-addons-advanced-heading-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar

@@ -1,3 +1,4 @@
+import { type } from "jquery";
 import { convertTruthyFalsyValue } from "../../utils/helper";
 
 const ITEM_COUNT = 1;
@@ -179,7 +180,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -347,7 +347,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHbackgroundType: {
     type: "string",
@@ -370,7 +369,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   titleFontFamily: {
     type: "string",
@@ -978,6 +976,15 @@ const attributes = {
   isPreview: {
     type: "boolean",
     default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
   },
 };
 export default attributes;

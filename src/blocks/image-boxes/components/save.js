@@ -97,6 +97,7 @@ export default class Save extends Component {
                   "wp-block-responsive-block-editor-addons-image-boxes-block-item",
                   `responsive-block-editor-addons-block-image-boxes-${index}`,
                   "responsive-block-editor-addons-block-image-boxes",
+                  "responsive-block-editor-addons-block-image-boxes-block",
                   `block-${block_id}`
                 )}
               >

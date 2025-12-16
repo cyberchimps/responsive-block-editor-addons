@@ -232,9 +232,12 @@ function EditorStyles(props) {
       ctaBlockBottomRadiusMobile,
       ctaBlockLeftRadiusMobile,
       ctaTextTransform,
-        ctaFontStyle,
-        titleFontStyle,
-        descFontStyle,
+      ctaFontStyle,
+      titleFontStyle,
+      descFontStyle,
+      gradient,
+      gradientButton,
+      gradientButtonH,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -257,7 +260,7 @@ function EditorStyles(props) {
   if (buttonHbackgroundType === "color") {
     updatedButtonBgHColor = ctaHoverBackColor;
   } else if (buttonHbackgroundType == "gradient") {
-    updatedButtonBgHImage = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    updatedButtonBgHImage = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   }
 
   let updatedButtonBackgroundColor = "";
@@ -265,7 +268,7 @@ function EditorStyles(props) {
   if (buttonbackgroundType == "color") {
     updatedButtonBackgroundColor = ctaBackColor;
   } else if (buttonbackgroundType == "gradient") {
-    updatedButtonBackgroundImage = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    updatedButtonBackgroundImage = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   }
 
   let imgopacity = opacity / 100;
@@ -383,7 +386,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType === "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               `${hexToRgba(
                 backgroundColor1 || "#fff",
                 gradientOpacity || 0

@@ -119,6 +119,8 @@ function EditorStyles(props) {
     alignTabs,
     alignTabsT,
     alignTabsM,
+    gradient,
+    gradientHover,
   } = props.attributes;
 
 
@@ -126,7 +128,7 @@ function EditorStyles(props) {
 
   var blockBackground = "";
   if (backgroundType == "gradient") {
-    blockBackground = generateBackgroundImageEffect(
+    blockBackground = gradient ? gradient : generateBackgroundImageEffect(
       `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
       `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
       gradientDirection,
@@ -208,7 +210,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradientHover ? gradientHover : generateBackgroundImageEffect(
             `${hexToRgba(
               hoverbackgroundColor1 || "#ffffff",
               imgopacity || 0

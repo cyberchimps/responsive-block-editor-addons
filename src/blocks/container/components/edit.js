@@ -7,6 +7,7 @@ import EditorStyles from "./editor-styles";
 import { VariationPicker } from "../variationPicker";
 import { useSelect } from '@wordpress/data';
 import Render from './render';
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -116,6 +117,7 @@ export default function Edit(props) {
   return [
     <>
       <style id={`responsive-block-editor-addons-container-style-${clientId}-inner`}>{EditorStyles(props, deviceType)}</style>
+      <AutoRegisterCSSBlock key="auto-register-css" {...props} />
       <Inspector
         key={`inspector-${block_id}`}
         {...{ setAttributes, ...props }}

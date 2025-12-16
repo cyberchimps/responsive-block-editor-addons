@@ -26,11 +26,9 @@ export default function save(props) {
   const accordionRenderIcon = () => {
     return (
       <Fragment>
-        <span className="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap">
-          {renderSVG(icon)}
+        <span className="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap rbea-dynamic-icon" data-icon={icon} aria-hidden="true">
         </span>
-        <span className="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap">
-          {renderSVG(iconActive)}
+        <span className="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap rbea-dynamic-icon" data-icon={iconActive} aria-hidden="true">
         </span>
       </Fragment>
     );

@@ -6,6 +6,7 @@
  import { loadGoogleFont } from "../../../utils/font";
  import EditorStyles from "./editor-styles";
  import renderSVG from "../../../renderIcon";
+ import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
  /**
   * WordPress dependencies
@@ -70,6 +71,7 @@
      } = this.props;
      return [
       <style id={`responsive-block-editor-addons-wp-search-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
        <BlockControls key="controls">
        </BlockControls>,
        // Show the block controls on focus

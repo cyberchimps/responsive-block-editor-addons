@@ -127,7 +127,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
     		// Combine post CSS and widget CSS and output it.
     		$combined_css = $post_css . $widget_css;
     		if ( ! empty( $combined_css ) ) {
-				echo "<style id='rbea-frontend-styles'>$combined_css</style>"; //phpcs:ignore
+				echo '<style id="rbea-frontend-styles">' . $combined_css . '</style>'; 
     		}
 			do_action( 'rbea-frontend-site-builder-styles' );
 		}
@@ -158,6 +158,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 			$mobile          = '';
 			$tab_styling_css = '';
 			$mob_styling_css = '';
+			$custom_css      = ''; // Collect custom CSS from all blocks
 			$css             = array();
 			foreach ( $blocks as $i => $block ) {
 
@@ -185,6 +186,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 							$tablet  .= $css['tablet'];
 							$mobile  .= $css['mobile'];
 						}
+
+						// Collect custom CSS from block attributes
+						$custom_css .= $this->get_custom_css_from_block( $block );
+						
+						// Recursively process innerBlocks for custom CSS
+						if ( ! empty( $block['innerBlocks'] ) ) {
+							$custom_css .= $this->get_custom_css_from_blocks( $block['innerBlocks'] );
+						}
 					}
 				}
 			}
@@ -201,8 +210,84 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				$mob_styling_css .= '}';
 			}
 
+			// Combine all CSS including custom CSS
 			$css = $desktop . $tab_styling_css . $mob_styling_css;
+			if ( ! empty( $custom_css ) ) {
+				$css .= "\n" . $custom_css;
+			}
 			return $css;
+		}
+
+		/**
+		 * Extract and convert custom CSS from a single block.
+		 *
+		 * @param array $block Block array.
+		 * @return string Converted custom CSS string.
+		 */
+		private function get_custom_css_from_block( $block ) {
+			
+			// Respect global toggle for custom CSS
+			$custom_css_global = get_option( 'rbea_custom_css_on', '1' );
+			if ( '0' === (string) $custom_css_global || 0 === $custom_css_global ) {
+				return '';
+			}
+
+			if ( ! isset( $block['attrs']['customCss'] ) || ! is_string( $block['attrs']['customCss'] ) || empty( trim( $block['attrs']['customCss'] ) ) ) {
+				return '';
+			}
+
+			$custom_css = trim( $block['attrs']['customCss'] );
+			$custom_css = wp_strip_all_tags( $custom_css );
+			$block_name = isset( $block['blockName'] ) ? $block['blockName'] : '';
+			$block_id   = isset( $block['attrs']['block_id'] ) ? $block['attrs']['block_id'] : '';
+
+			// Skip if we don't have block name or ID
+			if ( empty( $block_name ) || empty( $block_id ) ) {
+				return '';
+			}
+
+			// Extract block name from full block name (e.g., "responsive-block-editor-addons/advanced-text" -> "advanced-text")
+			$block_name_parts = explode( '/', $block_name );
+			$block_slug = ! empty( $block_name_parts[1] ) ? $block_name_parts[1] : $block_name_parts[0];
+
+			// Build actual block selector
+			$block_selector = ".responsive-block-editor-addons-block-{$block_slug}.block-{$block_id}";
+			$placeholder = '.rbea-custom-selector';
+
+			// Replace placeholder with actual selector (global replace for all occurrences)
+			$converted_css = str_replace( $placeholder, $block_selector, $custom_css );
+
+			return $converted_css . "\n";
+		}
+
+		/**
+		 * Recursively extract custom CSS from blocks (including innerBlocks).
+		 *
+		 * @param array $blocks Array of block arrays.
+		 * @return string Combined custom CSS string.
+		 */
+		private function get_custom_css_from_blocks( $blocks ) {
+			$custom_css = '';
+			
+			if ( ! is_array( $blocks ) ) {
+				return $custom_css;
+			}
+			
+			foreach ( $blocks as $block ) {
+				if ( ! is_array( $block ) ) {
+					continue;
+				}
+				
+				// Get custom CSS from this block
+				$custom_css .= $this->get_custom_css_from_block( $block );
+				
+				// Recursively process innerBlocks
+				if ( ! empty( $block['innerBlocks'] ) ) {
+					$custom_css .= $this->get_custom_css_from_blocks( $block['innerBlocks'] );
+				}
+			}
+			
+			return $custom_css;
 		}
 
 		/**

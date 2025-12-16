@@ -6,7 +6,7 @@ import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import renderSVG from "../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
-
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -229,6 +229,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-flipbox-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the block controls on focus
 
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,

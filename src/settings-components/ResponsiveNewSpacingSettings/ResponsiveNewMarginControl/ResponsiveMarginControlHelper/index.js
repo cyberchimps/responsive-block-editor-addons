@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import {camelCase} from "lodash";
 
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 
 export default function ResponsiveNewMarginControlHelper (props) {
 

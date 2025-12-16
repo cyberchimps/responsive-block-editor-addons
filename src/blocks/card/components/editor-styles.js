@@ -245,6 +245,8 @@ function EditorStyles(props) {
     contentTextTransform,
     contentFontStyle,
     inheritFromTheme,
+    gradient,
+    gradientButton,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -276,7 +278,7 @@ function EditorStyles(props) {
   }
 
   if ( 'gradient' === buttonbackgroundType) {
-    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+    updatedButtonBackgroundImage = gradientButton ? gradientButton : generateBackgroundImageEffect(
       buttonbackgroundColor1,
       buttonbackgroundColor2,
       buttongradientDirection,
@@ -317,7 +319,7 @@ function EditorStyles(props) {
         buthopacity || 0
       ),
       "border-color": ctaHoverBorderColor,
-      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
+      "background-image": inheritFromTheme ? '' : buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
     },
 
     "": {
@@ -349,7 +351,7 @@ function EditorStyles(props) {
         "background-image":
           backgroundType == "gradient"
             ? 
-            generateBackgroundImageEffect(
+            gradient ? gradient : generateBackgroundImageEffect(
                 hexToRgba( backgroundColor1 === undefined ? "ffffff" : backgroundColor1, imgopacity),
                 hexToRgba( backgroundColor2 === undefined ? "ffffff" : backgroundColor2, imgopacity),
                 gradientDirection,
@@ -500,7 +502,7 @@ function EditorStyles(props) {
       "border-width": butborderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(butborderWidth, "px") : ctaBorderWidth //For compatibility with v1.3.2.
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
-      "background-image": updatedButtonBackgroundImage,
+      "background-image": inheritFromTheme ? '' : updatedButtonBackgroundImage,
     },
   };
 

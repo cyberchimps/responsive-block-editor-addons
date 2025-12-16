@@ -810,5 +810,11 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+  gradient: {
+    type: 'string',
+  },
+  gradientButton: {
+    type: 'string',
+  },
 };
 export default attributes;

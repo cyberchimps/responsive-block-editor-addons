@@ -189,6 +189,10 @@ function EditorStyles(props) {
     titleFontStyle,
     contentTextTransform,
     contentFontStyle,
+    backgroundType,
+    contentBackgroundType,
+    gradient,
+    contentGradient,
   } = props.attributes;
 
   var selectors = {};
@@ -204,7 +208,8 @@ function EditorStyles(props) {
     icon_active_color = titleTextActiveColor;
   }
 
-  let contentOpacity = titleBackgroundColorOpacity / 100;
+  let titleOpacity = titleBackgroundColorOpacity / 100;
+  let contentOpacity = contentBackgroundColorOpacity / 100;
   let contentBackgroundColorsOpacity = contentBackgroundColorOpacity / 100;
 
   var temptitleSecondaryBackgroundColor = titleBgGradient
@@ -212,37 +217,38 @@ function EditorStyles(props) {
     : titleBackgroundColor;
 
   var titleGradient;
-  if (titleBgGradient) {
+  if (backgroundType == "gradient") {
     titleGradient =
-      "linear-gradient(" +
-      titleGradientDegree +
-      "deg," +
-      hexToRgba(titleBackgroundColor || "#ffffff", contentOpacity || 0) +
-      "," +
-      hexToRgba(
-        temptitleSecondaryBackgroundColor || "#ffffff",
-        contentOpacity || 0
-      ) +
-      ")";
+      (gradient || // Use WordPress gradient format if available
+      (titleBackgroundColor || titleSecondaryBackgroundColor
+        ? `linear-gradient(${titleGradientDegree}deg, ${hexToRgba(
+            titleBackgroundColor || "#fff",
+            titleBackgroundColorOpacity || 0
+          )} 0%, ${hexToRgba(
+            titleSecondaryBackgroundColor || "#fff",
+            titleBackgroundColorOpacity || 0
+          )} 100%)`
+        : undefined)) ;
   }
   var tempActiveSecondaryBackgroundColor = contentBgGradient
     ? contentSecondaryBackgroundColor
     : contentBackgroundColor;
 
-  var contentGradient =
-    "linear-gradient(" +
-    contentGradientDegree +
-    "deg," +
-    hexToRgba(
-      contentBackgroundColor || "#ffffff",
-      contentBackgroundColorsOpacity || 0
-    ) +
-    "," +
-    hexToRgba(
-      tempActiveSecondaryBackgroundColor || "#ffffff",
-      contentBackgroundColorsOpacity || 0
-    ) +
-    ")";
+  var contentGradientCalc;
+  if(contentBackgroundType == "gradient") {
+    contentGradientCalc = 
+      (contentGradient || // Use WordPress gradient format if available
+      (contentBackgroundColor || contentSecondaryBackgroundColor
+        ? `linear-gradient(${contentGradientDegree}deg, ${hexToRgba(
+            contentBackgroundColor || "#fff",
+            contentBackgroundColorOpacity || 0
+          )} 0%, ${hexToRgba(
+            contentSecondaryBackgroundColor || "#fff",
+            contentBackgroundColorOpacity || 0
+          )} 100%)`
+        : undefined)) ;
+  }
+
   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   selectors = {
@@ -332,7 +338,7 @@ function EditorStyles(props) {
       "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRadius, "px"),
       "flex-direction": iconAlign,
       "color": titleTypographyColor,
-      "background-color": `${hexToRgba(titleBackgroundColor || "#fff", contentOpacity || 0)}`,
+      "background-color": `${hexToRgba(titleBackgroundColor || "#fff", titleOpacity || 0)}`,
       "padding-top": generateCSSUnit(blockTitleTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockTitleBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockTitleLeftPadding, "px"),
@@ -355,7 +361,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
       "color": contentTypographyColor,
-      "background-image": contentGradient,
+      "background-color": `${hexToRgba(contentBackgroundColor || "#fff", contentOpacity || 0)}`,
+      "background-image": contentGradientCalc,
       "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
       "line-height": contentLineHeight,

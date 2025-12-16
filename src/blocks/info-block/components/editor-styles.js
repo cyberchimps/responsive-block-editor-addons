@@ -283,6 +283,7 @@ function EditorStyles(props) {
     ctaButtonBottomPaddingMobile,
     ctaButtonLeftPaddingMobile,
     ctaButtonRightPaddingMobile,
+    gradientButton,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -334,7 +335,7 @@ function EditorStyles(props) {
   let backgroundImageGradient = "";
   let buttonColor = "";
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     backgroundImageGradient = "";
     buttonColor = resctaBgColor !== "empty" && ctaBackColor === "transparent" ? resctaBgColor : ctaBackColor;  //For compatibility with v1.3.2

@@ -48,7 +48,7 @@
           className = "responsive-block-editor-addons-block-inline-notice-title"
           />
           {noticeDismiss && 
-            <span className="rbea-notice-dismiss responsive-block-editor-addons-block-inline-notice-svg">{renderSVG(icon)}</span>
+            <span className="rbea-notice-dismiss responsive-block-editor-addons-block-inline-notice-svg rbea-dynamic-icon" data-icon={icon} aria-hidden="true"></span>
           }
         </div>
         <div className="responsive-block-editor-addons-block-inline-notice-content-area">

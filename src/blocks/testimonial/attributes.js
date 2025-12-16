@@ -788,6 +788,12 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradientOverlay: {
+    type: "string",
+  },
+  gradient: {
+    type: "string",
+  }
 };
 
 export default attributes;

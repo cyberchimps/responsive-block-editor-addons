@@ -9,6 +9,7 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import { loadGoogleFont } from "../../../utils/font";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -135,7 +136,7 @@ class RBEATaxonomyList extends Component {
         return (
             <Fragment>
                 <style id={`responsive-block-editor-addons-taxonomy-list-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
-
+                <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
                 <Inspector key="taxonomy-list-inspector" {...{ setAttributes, ...this.props }} />
                 <div key={`rbea-taxonomy-${block_id}`}
                     className={classnames(

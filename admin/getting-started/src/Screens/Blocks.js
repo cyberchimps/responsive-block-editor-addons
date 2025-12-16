@@ -32,7 +32,7 @@ const Blocks = () => {
       </div>
 
       <div className="flex items-center gap-2 mt-11">
-        <p className="text-base leading-6 font-normal text-desc">{__( 'Toogle All Blocks', 'responsive-block-editor-addons' )}</p>
+        <p className="text-base leading-6 font-normal text-desc">{__( 'Toggle All Blocks', 'responsive-block-editor-addons' )}</p>
         <ToggleControl
           className="rbea-block-toggle"
           __nextHasNoMarginBottom

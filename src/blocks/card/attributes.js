@@ -245,7 +245,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -401,7 +400,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonbackgroundType: {
     type: "string",
@@ -1043,5 +1041,11 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  }
 };
 export default attributes;

@@ -475,6 +475,12 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradient: {
+    type: "string",
+  },
+  gradientHover: {
+    type: "string",
+  }
 };
 
 export default attributes;

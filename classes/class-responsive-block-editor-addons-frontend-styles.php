@@ -493,7 +493,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$pc_background_image_gradient = '';
 			$pc_color                     = '';
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$pc_background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$pc_background_image_gradient = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$pc_background_image_gradient = '';
 				$pc_color                     = $attr['ctaBackColor'];
@@ -1567,7 +1567,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						: null,
 					'background-image'           =>
 						'gradient' === $attr['backgroundType']
-						? 'linear-gradient(' .
+						? $attr['gradient'] ? $attr['gradient'] : 'linear-gradient(' .
 							$attr['gradientDirection'] .
 							'deg,' .
 							self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#ffffff', $imgopacity ) .
@@ -2206,8 +2206,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttoncolorLocation1'     => 0,
 				'buttoncolorLocation2'     => 100,
 				'buttongradientDirection'  => 90,
-				'buttonbackgroundColor1'   => '',
-				'buttonbackgroundColor2'   => '#fff',
+				'buttonbackgroundColor1'   => '#333333',
+				'buttonbackgroundColor2'   => '#333333',
 				'buttonbackgroundType'     => 'color',
 				'ctaHpaddingTablet'        => 20,
 				'ctaHpaddingMobile'        => 20,
@@ -2255,6 +2255,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'excerptFontStyle'         => '',
 				'ctaTextTransform'         => '',
 				'ctaFontStyle'             => '',
+				'gradientButton'		   => '',
 			);
 		}
 
@@ -2355,24 +2356,35 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$temptitle_secondary_background_color = $attr['titleBgGradient'] ? $attr['titleSecondaryBackgroundColor'] : $attr['titleBackgroundColor'];
 			$title_gradient                       = '';
-			if ( $attr['titleBgGradient'] ) {
-				$title_gradient = 'linear-gradient(' .
-					$attr['titleGradientDegree'] .
-					'deg,' .
-					self::hex_to_rgb( $attr['titleBackgroundColor'] ? $attr['titleBackgroundColor'] : '#ffffff', $content_opacity ) .
-					',' .
-					self::hex_to_rgb( $temptitle_secondary_background_color ? $temptitle_secondary_background_color : '#ffffff', $content_opacity ) .
-					')';
+			if ( 'gradient' === $attr['backgroundType'] ) {
+				$title_gradient = ( ! empty( $attr['gradient'] ) 
+								? $attr['gradient'] 
+								: ( ! empty( $attr['titleBackgroundColor'] ) || ! empty( $attr['titleSecondaryBackgroundColor'] )
+									? 'linear-gradient(' .
+										$attr['titleGradientDegree'] .
+										'deg, ' .
+										self::hex_to_rgb( $attr['titleBackgroundColor'] ? $attr['titleBackgroundColor'] : '#fff', $content_opacity ) .
+										' ' . '0%, ' .
+										self::hex_to_rgb( $attr['titleSecondaryBackgroundColor'] ? $attr['titleSecondaryBackgroundColor'] : '#fff', $content_opacity ) .
+										' ' . '100%)'
+									: null ));
 			}
 
 			$temp_active_secondary_background_color = $attr['contentBgGradient'] ? $attr['contentSecondaryBackgroundColor'] : $attr['contentBackgroundColor'];
-			$content_gradient                       = 'linear-gradient(' .
-				$attr['contentGradientDegree'] .
-				'deg,' .
-				self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#ffffff', $content_background_colors_opacity ) .
-				',' .
-				self::hex_to_rgb( $temp_active_secondary_background_color ? $temp_active_secondary_background_color : '#ffffff', $content_background_colors_opacity ) .
-				')';
+			$content_gradient                       = '';
+			if ( 'gradient' === $attr['contentBackgroundType'] ) {
+				$content_gradient = ( ! empty( $attr['contentGradient'] ) 
+								? $attr['contentGradient'] 
+								: ( ! empty( $attr['contentBackgroundColor'] ) || ! empty( $attr['contentSecondaryBackgroundColor'] )
+									? 'linear-gradient(' .
+										$attr['contentGradientDegree'] .
+										'deg, ' .
+										self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#fff', $content_background_colors_opacity ) .
+										' ' . '0%, ' .
+										self::hex_to_rgb( $attr['contentSecondaryBackgroundColor'] ? $attr['contentSecondaryBackgroundColor'] : '#fff', $content_background_colors_opacity ) .
+										' ' . '100%)'
+									: null ));
+			}
 
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -2442,6 +2454,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content' => array(
 					'background-image' => $content_gradient,
+					'background-color' => self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#fff', $content_background_colors_opacity ),
 					'font-family'      => $attr['contentFontFamily'],
 					'font-size'        => self::get_css_value( $attr['contentFontSize'], 'px' ),
 					'font-weight'      => $attr['contentFontWeight'],
@@ -2884,6 +2897,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleFontStyle'                      => '',
 				'contentTextTransform'                => '',
 				'contentFontStyle'                    => '',
+				'gradient'				 			  => '',
+				'contentGradient'		 			  => '',
+				'contentBackgroundType'  			  => 'none',
+				'backgroundType'					  => 'none',
 			);
 		}
 
@@ -3815,7 +3832,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_image = self::generate_background_image_effect(
+				$updated_background_image = $attr['gradient'] ? $attr['gradient']
+				: self::generate_background_image_effect(
 					$attr['backgroundColor1'],
 					$attr['backgroundColor2'],
 					$attr['gradientDirection'],
@@ -3882,7 +3900,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'              => $flag ? '' : self::get_css_value( $attr['blockRightPadding'], 'px' ),
 					'padding-top'                => $flag ? '' : self::get_css_value( $attr['blockTopPadding'], 'px' ),
 					'padding-bottom'             => $flag ? '' : self::get_css_value( $attr['blockBottomPadding'], 'px' ),
-					'background-image'           => $updated_background_image,
+					'background-image'           => $flag ? '' : $updated_background_image,
 					'background-color'           => $flag ? '' : $attr['background'],
 					'font-size'                  => $flag ? '' : self::get_css_value( $attr['buttonFontSize'], 'px' ),
 					'font-family'                => $flag ? 'Default' : $attr['buttonFontFamily'],
@@ -4101,6 +4119,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'hideWidgetTablet'		   => false,
     			'hideWidgetMobile'		   => false,
 				'inheritFromThemesaved'	   => false,
+				'gradient'				   => '',
 			);
 		}
 
@@ -4222,11 +4241,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_type = self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
+				$updated_background_type = $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
 			}
 
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_type = self::generate_background_image_effect( $attr['buttonbackgroundColor1'], $attr['buttonbackgroundColor2'], $attr['buttongradientDirection'], $attr['buttoncolorLocation1'], $attr['buttoncolorLocation2'] );
+				$updated_button_background_type = $attr['gradientButton'] ? $attr['gradientButton'] : self::generate_background_image_effect( $attr['buttonbackgroundColor1'], $attr['buttonbackgroundColor2'], $attr['buttongradientDirection'], $attr['buttoncolorLocation1'], $attr['buttoncolorLocation2'] );
 
 			}
 
@@ -4870,11 +4889,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_type = self::generate_background_image_effect( self::hex_to_rgba($attr['backgroundColor1'],$imgopacity), self::hex_to_rgba($attr['backgroundColor2'],$imgopacity), $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2']);
+				$updated_background_type = $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect( self::hex_to_rgba($attr['backgroundColor1'],$imgopacity), self::hex_to_rgba($attr['backgroundColor2'],$imgopacity), $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2']);
 			}
 
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_color = self::generate_background_image_effect( $attr['buttonbackgroundColor1'], $attr['buttonbackgroundColor2'], $attr['buttongradientDirection'], $attr['buttoncolorLocation1'], $attr['buttoncolorLocation2'] );
+				$updated_button_background_color = $attr['gradientButton'] ? $attr['gradientButton'] : self::generate_background_image_effect( $attr['buttonbackgroundColor1'], $attr['buttonbackgroundColor2'], $attr['buttongradientDirection'], $attr['buttoncolorLocation1'], $attr['buttoncolorLocation2'] );
 			}
 
 			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
@@ -4926,7 +4945,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-card-button-inner:hover' => array(
 					'background-color' => $updated_buttonh_color,
 					'border-color'     => $attr['ctaHoverBorderColor'],
-					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_background_color,
+					'background-image' => $flag ? '' : ('color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_background_color),
 				),
 
 				''                    => array(
@@ -5070,7 +5089,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-style'     => 'empty' !== $attr['butborderStyle'] && 'none' !== $attr['ctaBorderStyle'] ? $attr['butborderStyle'] : $attr['ctaBorderStyle'], // For compatibility with v1.3.2.
 					'border-radius'    => 999 !== $attr['butborderRadius'] && 2 === $attr['ctaBorderRadius'] ? self::get_css_value( $attr['butborderRadius'], 'px' ) : self::get_css_value( $attr['ctaBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 					'border-width'     => 999 !== $attr['butborderWidth'] && 1 === $attr['ctaBorderWidth'] ? self::get_css_value( $attr['butborderWidth'], 'px' ) : self::get_css_value( $attr['ctaBorderWidth'], 'px' ), // For compatibility with v1.3.2.
-					'background-image' => $updated_button_background_color,
+					'background-image' => $flag ? '' : $updated_button_background_color,
 					'border-color'     => $attr['ctaBorderColor'],
 				),
 
@@ -5453,8 +5472,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'subFontStyle'                 => '',
     			'contentTextTransform'         => '',
     			'contentFontStyle'             => '',
-				'inheritFromThemesaved'	   => false,
-				'inheritFromTheme'		   => false,
+				'inheritFromThemesaved'	   	   => false,
+				'inheritFromTheme'		   	   => false,
+				'gradient'					   => '',
+    			'gradientButton'			   => '',
 			);
 		}
 
@@ -6365,7 +6386,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$btn_color                 = $attr['ctaBackColor'];
 			$btn_opacity               = $attr['buttonopacity'];
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$background_image_gradient = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$btn_color   = $attr['ctaBackColor'];
 				$btn_opacity = $attr['buttonopacity'];
@@ -6375,7 +6396,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$btn_h_color                     = $attr['ctaHoverBackColor'];
 			$btn_h_opacity                   = $attr['buttonHopacity'];
 			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
-				$background_hover_image_gradient = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+				$background_hover_image_gradient = $attr['gradientButtonH'] ? $attr['gradientButtonH'] : 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonHbackgroundType'] ) {
 				$btn_h_color   = $attr['ctaHoverBackColor'];
 				$btn_h_opacity = $attr['buttonHopacity'];
@@ -6998,6 +7019,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				"backSubtitleFontStyle"        => '',
 				"backButtonTextTransform"      => '',
 				'backButtonFontStyle'          => '',
+				'gradientButton'			   => '', 
+				'gradientButtonH'			   => '', 
 			);
 		}
 
@@ -8026,7 +8049,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			: $attr['itemHoverBackgroundColor'];
 
 			$hover_gradient =
-			'linear-gradient(' .
+			!empty( $attr['gradient'] ) ? $attr['gradient'] : 'linear-gradient(' .
 			$attr['hoverGradientDegree'] .
 			'deg,' .
 			self::hex_to_rgb( $attr['itemHoverBackgroundColor'], $hover_imgopacity ) .
@@ -8052,7 +8075,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_image_third  = '';
 			$background_image_fourth = '';
 
-			$background_image_first = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_first = !empty( $attr['gradient'] ) 
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageOne'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8066,7 +8091,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_second = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_second = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageTwo'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8080,7 +8107,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_third = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_third = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageThree'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8094,7 +8123,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_fourth = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_fourth = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageFour'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8510,6 +8541,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleFontStyle'                 => '',
 				'descriptionTextTransform'       => '',
 				'descriptionFontStyle'           => '',
+				'gradient'						 => '',
+				'hoverGradient'					 => '',
 			);
 		}
 
@@ -8913,7 +8946,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_image_gradient = '';
 			$button_color              = '';
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$background_image_gradient = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$background_image_gradient = '';
 				$button_color              = 'empty' !== $attr['resctaBgColor'] && 'transparent' === $attr['ctaBackColor'] ? $attr['resctaBgColor'] : $attr['ctaBackColor']; // For compatibility with v1.3.2.
@@ -10733,7 +10766,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$updated_button_bg_h_image = '';
 			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
-				$updated_button_bg_h_image = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '% , ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+				$updated_button_bg_h_image = $attr['gradientButtonH'] ? $attr['gradientButtonH'] : 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '% , ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			}
 
 			$updated_button_background_color = '';
@@ -10741,7 +10774,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
 				$updated_button_background_color = $attr['ctaBackColor'];
 			} elseif ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_image = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$updated_button_background_image = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -10860,7 +10893,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						: '#eee',
 					'background-image'           =>
 						'gradient' === $attr['backgroundType']
-						? self::generate_background_image_effect(
+						? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 							self::hex_to_rgb(
 								$attr['backgroundColor1'],
 								$columnbackcoloropacity
@@ -11377,6 +11410,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         		'ctaFontStyle'                 => '',
 				'inheritFromThemesaved'	   => false,
 				'inheritFromTheme'		   => false,
+				'gradient'				   => '',
+				'gradientButton'		   => '',
+				'gradientButtonH'		   => '',
 			);
 		}
 
@@ -11532,7 +11568,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$updated_background_image = null;
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_image = self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
+				$updated_background_image = $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -11681,6 +11717,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockRightMargin'         => '',
 				'blockRightMarginMobile'   => '',
 				'blockRightMarginTablet'   => '',
+				'gradient'				   => '',
 			);
 		}
 
@@ -11900,7 +11937,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$background_image_effect = '';
 			} else {
 				if ( 'linear' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'linear-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'linear-gradient(' .
 					$attr['gradientOverlayAngle'] .
 					'deg,' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'] ?? '#fff', $imgopacity ) .
@@ -11914,7 +11953,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				}
 				if ( 'radial' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'radial-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'radial-gradient(' .
 					'at ' . $attr['gradientOverlayPosition'] . ', ' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'], $imgopacity ) .
 					$attr['gradientOverlayLocation1'] .
@@ -12094,7 +12135,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						? $background_image_effect
 						: (
 							'gradient' === $attr['backgroundType']
-							? self::generate_background_image_effect(
+							? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								$attr['gradientDirection'],
@@ -12475,6 +12516,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'designationFontStyle'           => '',
 				'descriptionTextTransform'       => '',
 				'descriptionFontStyle'           => '',
+				'gradient'						 => '',
+				'gradientOverlay'				 => '',
 			);
 		}
 
@@ -12653,7 +12696,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$background_image_effect = '';
 			} else {
 				if ( 'linear' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'linear-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'linear-gradient(' .
 					$attr['gradientOverlayAngle'] .
 					'deg,' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'] ?? '#fff', $imgopacity ) .
@@ -12666,7 +12711,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					')';
 				}
 				if ( 'radial' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'radial-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'radial-gradient(' .
 					'at ' . $attr['gradientOverlayPosition'] . ', ' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'], $imgopacity ) .
 					$attr['gradientOverlayLocation1'] .
@@ -12797,7 +12844,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						? $background_image_effect
 						: (
 							'gradient' === $attr['backgroundType']
-							? self::generate_background_image_effect(
+							? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								$attr['gradientDirection'],
@@ -13134,6 +13181,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentFontStyle'           => '',
 				'nameFontStyle'              => '',
 				'titleFontStyle'             => '',
+				'gradient'					 => '',
+				'gradientOverlay'			 => '',
 			);
 		}
 
@@ -14788,6 +14837,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'twIconTextSpacing'        => 8,
 				'twTypographyColor'        => '',
 				'twFontStyle'              => '',
+				'gradient'				   => '',
 			);
 		}
 
@@ -18136,7 +18186,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'               => self::get_css_value( $attr['tabsRightMargin'], 'px' ) . '!important',
 					'z-index'                    => $attr['z_index'],
 					'background-color'           => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $img_opacity ) : '',
-					'background-image'           => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image'           => 'gradient' === $attr['backgroundType'] ? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['backgroundColor1'], $img_opacity ),
 						self::hex_to_rgb( $attr['backgroundColor2'], $img_opacity ),
 						$attr['gradientDirection'],
@@ -18159,7 +18209,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				':hover' => array(
 					'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundHoverColor'] ? $attr['backgroundHoverColor'] : '#fff', $img_opacity ) : '',
-					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image' => 'gradient' === $attr['backgroundType'] ? $attr['gradientHover'] ? $attr['gradientHover'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $img_opacity ),
 						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $img_opacity ),
 						$attr['hovergradientDirection'],
@@ -18413,6 +18463,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'tabTitleFontStyle'             => '',
     			'tabContentTextTransform'       => '',
     			'tabContentFontStyle'           => '',
+				'gradient'						=> '',
+				'gradientHover'					=> '', 
 			);
 		}
 
@@ -20022,7 +20074,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'color' === $attr['buttonHbackgroundType'] ) {
 				$updated_button_bg_h_color = $attr['ctaHoverBackColor'];
 			} elseif ( 'gradient' === $attr['buttonHbackgroundType'] ) {
-				$updated_button_bg_h_image = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+				$updated_button_bg_h_image = $attr['gradientButtonH'] ? $attr['gradientButtonH'] : 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			}
 
 			$updated_button_background_color = '';
@@ -20030,7 +20082,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
 				$updated_button_background_color = $attr['ctaBackColor'];
 			} elseif ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_image = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$updated_button_background_image = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			}
 
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
@@ -20069,7 +20121,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 							: '',
 					'background-image'           =>
 						'gradient' === $attr['backgroundType']
-							? self::generate_background_image_effect(
+							? $attr['gradient'] ? $attr['gradient'] 
+							: self::generate_background_image_effect(
 								self::hex_to_rgb(
 									$attr['backgroundColor1'] ?? '#fff',
 									$imgopacity
@@ -20991,7 +21044,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_image_gradient = '';
 			$btn_color                 = $attr['ctaBackColor'];
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$background_image_gradient = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$btn_color = $attr['ctaBackColor'];
 			}
@@ -20999,7 +21052,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_hover_image_gradient = '';
 			$btn_h_color                     = $attr['ctaHoverBackColor'];
 			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
-				$background_hover_image_gradient = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+				$background_hover_image_gradient = $attr['gradientButtonH'] ? $attr['gradientButtonH'] : 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonHbackgroundType'] ) {
 				$btn_h_color = $attr['ctaHoverBackColor'];
 			}
@@ -21088,7 +21141,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-right-radius' => self::get_css_value( $attr['formBottomRadius'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['formLeftRadius'], 'px' ),
 					'background-color'           => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity ) : '',
-					'background-image'           => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image'           => 'gradient' === $attr['backgroundType'] ? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['backgroundColor1'], $imgopacity ),
 						self::hex_to_rgb( $attr['backgroundColor2'], $imgopacity ),
 						$attr['gradientDirection'],
@@ -21101,7 +21154,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .form:hover'                             => array(
 
 					'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
-					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image' => 'gradient' === $attr['backgroundType'] ? $attr['gradientHover'] ? $attr['gradientHover'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $imgopacity ),
 						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $imgopacity ),
 						$attr['hovergradientDirection'],
@@ -22137,8 +22190,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         		'messageFontStyle'                    => '',
         		'afterSubmitTextTransform'            => '',
         		'afterSubmitFontStyle'                => '',
+				'gradient'							  => '',
+      			'gradientHover'						  => '',
+      			'gradientButton'					  => '',
+      			'gradientButtonH'					  => '',
 			);
 		}
+		/**
+		 * Get Image Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
 		public static function get_responsive_block_image_css( $attr, $id ) {
 			// get the protocol
 			$protocol = isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ? 'https' : 'http';
@@ -22513,6 +22577,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
 			return $css;
 		}
+
+		/**
+		 * Get Defaults for Image block
+		 *
+		 * @return array
+		 */
 		public static function get_responsive_block_image_block_default_attributes() {
 			return array(
 				'imageUrl'                         => '',
@@ -24039,6 +24109,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px' ),
 					'overflow'       => $attr['overflow'],
 					'order'          => $order_desktop,
+					'z-index'		 => $attr['z_index'],
 				),
 				$border,
 				$container_bg_css_desktop,
@@ -24107,6 +24178,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $left_margin_tablet, 'px' ),
 					'margin-right'   => self::get_css_value( $right_margin_tablet, 'px' ),
 					'order'          => $order_tablet,
+					'z-index'		 => $attr['z_indexTablet']
 				),
 				$border_tablet,
 				$container_bg_css_tablet,
@@ -24150,6 +24222,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'row-gap'        => self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 					'column-gap'     => self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 					'order'          => $order_mobile,
+					'z-index'		 => $attr['z_indexMobile']
 				),
 				$border_mobile,
 				$container_bg_css_mobile,

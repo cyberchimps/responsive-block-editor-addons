@@ -22,6 +22,7 @@ const { Button, Dashicon, Icon } = wp.components;
 import memoize from "memize";
 import map from "lodash/map";
 import { loadGoogleFont } from "../../../utils/font";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const getCount = memoize((count) => {
   return times(count, (index) => [
@@ -145,6 +146,7 @@ export default class Edit extends Component {
       >
         {EditorStyles(this.props)}
       </style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar

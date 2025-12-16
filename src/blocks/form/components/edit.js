@@ -6,6 +6,8 @@ import Inspector from "./inspector";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons"
 import EditorStyles from "./editor-styles";
 import variations from './variations';
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+
 /**
  * WordPress dependencies
  */
@@ -82,6 +84,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-form-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
       </BlockControls>,
       // Show the block controls on focus

@@ -3,9 +3,9 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,9 +59,9 @@ Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordp
 
 [Check Ready Websites and Starter Templates](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg)
 
-==50+ FREE & ADVANCED BLOCKS AND COUNTING==
+==50+ WORDPRESS BLOCKS, EXTENSIONS AND GLOBAL SETTINGS==
 
-Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
+==Blocks==
 
 <ol>
 	<li><a href = " https://cyberchimps.com/responsive-blocks/container/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: Create easy to use stunning layouts using the Container block, powered by flexbox technology.
@@ -110,7 +110,15 @@ Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
 	<li><a href = "https://cyberchimps.com/responsive-blocks/post-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post-Timeline</a>: The Post Timeline block helps you design beautiful and responsive timelines that display your posts or events in an ordered list according to the dates they were published. You can also customize the content for each blog post with a new option to select an icon for the connector.</li>
 </ol>
 
-<strong>More Gutenberg blocks are coming soon!<strong>
+==Extensions and Global Settings==
+
+<ol>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/display-conditions-extension/">Display Conditions</a>: The Display Conditions feature gives you the ability to specify when a specific block, section, or element is shown and to whom on your website.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/animations-extension/">Animations</a>: Add life and interactivity with Responsive blocks fade, slide, zoom, flip, and more. Free users get a set of easy-to-apply animations for any block.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/responsive-conditions-extension/">Responsive Conditions</a>: Control which block is visible on all devices. Hide blocks on mobile and tablet if not necessary.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Advanced block presets</a>: Not sure how to design blocks? Our expert designers created high-converting, visually appealing presets ready to use.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Custom CSS</a>: Apply custom CSS with Responsive Blocks by selecting the block and adding your code.</li>
+</ol>
 
 ==Compatible with Responsive and other Gutenberg Themes==
 
@@ -124,24 +132,6 @@ Responsive Blocks plugin is compatible with most of the popular themes available
 - **💯 Fully Customizable Theme**: The responsive theme offers all the necessary customization settings to customize your layouts, typographies, and colors.
 - **🔁 Translation Ready**: Responsive comes with built-in multilingual support, and you would not require any third-party plugin for translating. Currently, the theme is translated into 45 other languages.
 - **🎉 Integration with Popular Plugins**: Responsive theme is 100% compatible with popular plugins like WooCommerce, Mailchimp, WP Legal Pages Pro, and more!
-
-==Responsive Blocks Plugin Reviews and Testimonials==
-
-Testimonials from real customers:
-
-<strong>Great plugin (alternative to uagb/spectra) !</strong>
-
-With an update to the uagb v2 who crash the website, I was searching for a replacment and I found it!
-
-Great plugin! And completely free! Bravo!
-
-I’m just sad I haven't found it before 😉
-
-<strong>Great plugin – 5 stars</strong>
-	
-Great plugin. Not as well known as other plugins with gutenberg blocks. But I found in it what I need and more. This is Post-Timeline, Content Timeline, Flip Box, Video Popup, Image Hotspot, and other (and cool lightbox)….. The blocks look neat and there is a separate tab for design. Plus this plugin loads its files on pages where there are his blocks. I wish good luck to the developers and thank you for a good and free plugin.
-
-- Give your valuable review on [WordPress](https://wordpress.org/plugins/responsive-block-editor-addons/#reviews). 
 
 == Support & Documentation==
 - Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
@@ -220,16 +210,20 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Screenshots ==
 
-1. Feature Grid
-2. Advanced Heading
-3. Info Box
-4. Image Slider
-5. Post Carousel
-6. Progress Bar
-7. Shape Divider
-8. Gutenberg Starter Templates
+1. Plugin Dashboard
+2. Blocks Configuration
+3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.7 - 15th December 2025 =
+* New – Added Custom CSS support for all blocks, allowing block-level custom styling.
+* Improvement – Added “Default” option for Font Weight and Text Decoration across blocks to fetch theme settings.
+* Improvement – Updated Gradient Color Picker UI to match the WordPress default gradient color picker for a more consistent editing experience.
+* Fix – Resolved compatibility issue with GravityForms.
+* Fix – Ensured full compatibility with WordPress 6.9 and resolved block crashes introduced in the update.
+* Fix – Container Block: Fixed Z-Index settings not working.
+* Fix – Flipbox Block: Fixed padding control not showing up for mobile and tablet views.
 
 = 2.1.6 - 6th December 2025 =
 * Fix – Fixed a minor bug in Container block.

@@ -59,10 +59,12 @@ export default class Save extends Component {
             <span
               className={classnames(
                 `responsive-block-editor-addons-call-mail-button-icon`,
-                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`
+                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`,
+                "rbea-dynamic-icon"
               )}
+              data-icon={icon}
+              aria-hidden="true"
             >
-              {renderSVG(icon)}
             </span>
           )}
           {"call" === buttonToShow && (
@@ -83,10 +85,12 @@ export default class Save extends Component {
             <span
               className={classnames(
                 `responsive-block-editor-addons-call-mail-button-icon`,
-                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`
+                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`,
+                "rbea-dynamic-icon"
               )}
+              data-icon={icon}
+              aria-hidden="true"
             >
-              {renderSVG(icon)}
             </span>
           )}
         </a>

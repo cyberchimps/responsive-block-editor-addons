@@ -954,7 +954,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonbackgroundType: {
     type: "string",
@@ -1256,6 +1255,9 @@ const attributes = {
   isPreview: {
     type: "boolean",
     default: false, 
+  },
+  gradientButton: {
+    type: "string",
   },
 };
 export default attributes;

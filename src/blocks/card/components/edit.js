@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import renderSVG from "../../../renderIcon";
 import React from "react";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -89,6 +90,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-card-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar key="align-tool-bar"

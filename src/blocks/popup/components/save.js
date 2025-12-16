@@ -67,7 +67,7 @@ export default class Save extends Component {
 
               {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'icon' &&
                 <div className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-icon-trigger" data-trigger-id={`trigger-${block_id}`}>
-                  {renderSVG(popupIconTrigger)}
+                  <span className="rbea-dynamic-icon" data-icon={popupIconTrigger} aria-hidden="true"></span>
                 </div>
               }
 

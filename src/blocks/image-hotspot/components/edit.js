@@ -4,6 +4,7 @@ import EditorStyles from "./editor-styles";
 import { loadGoogleFont } from "../../../utils/font";
 import renderSVG from "../../../renderIcon";
 import ReactDOMServer from "react-dom/server";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { __ } = wp.i18n;
 import { merge, isEqual, get, unescape, cloneDeep } from "lodash";
@@ -789,6 +790,7 @@ class Edit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-image-hotspot-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <div {...containerClasses}>
           {controls}
           { (

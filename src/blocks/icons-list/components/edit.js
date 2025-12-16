@@ -8,6 +8,7 @@ import memoize from "memize";
 import times from "lodash/times";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -78,6 +79,7 @@ export default class Edit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-icon-list-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <BlockControls key="controls">
           <AlignmentToolbar
             value={align}

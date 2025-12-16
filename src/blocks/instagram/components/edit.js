@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 
 import { Spinner } from "@wordpress/components";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -201,6 +202,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-instagram-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <Inspector key={"inspector"} {...{ setAttributes, ...this.props }} />,
       <div
         key={"instawrap"}

@@ -185,6 +185,9 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Global Inherit From Theme Toggle.
 		add_action( 'wp_ajax_rbea_toggle_global_inherit_from_theme', array( $this, 'rbea_toggle_global_inherit_from_theme' ) );
 
+		// RBEA Custom CSS Toggle.
+		add_action( 'wp_ajax_rbea_toggle_custom_css', array( $this, 'rbea_toggle_custom_css' ) );
+
 		// RBEA Content Width Setting.
 		add_action( 'wp_ajax_rbea_save_content_width', array( $this, 'rbea_save_content_width' ) );
 
@@ -730,6 +733,7 @@ class Responsive_Block_Editor_Addons {
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
 				'global_inherit_from_theme'          => get_option( 'rbea_global_inherit_from_theme', '0' ),
 				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
+				'is_custom_css_on'                   => (int) get_option( 'rbea_custom_css_on', '1' ),
 				'default_content_width'              => get_option( 'rbea_default_content_width', 1340 ),
 				'default_container_padding'          => get_option( 'rbea_default_container_padding', 10 ),
 				'default_container_gap'              => get_option( 'rbea_default_container_gap', 20 ),
@@ -1353,6 +1357,7 @@ class Responsive_Block_Editor_Addons {
 					'rbea_blocks'           => $blocks,
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
 					'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
+					'custom_css_on'         => get_option( 'rbea_custom_css_on', '1' ),
 					'default_content_width'  => get_option( 'rbea_default_content_width', 1340 ),
 					'default_container_padding' => get_option( 'rbea_default_container_padding', 10 ),
 					'default_container_gap'  => get_option( 'rbea_default_container_gap', 20 ),
@@ -1491,16 +1496,16 @@ class Responsive_Block_Editor_Addons {
 		// Check if 7-day delay has passed (original 7-day timer)
 		$seven_day_delay_passed = false === get_option( 'responsive_block_editor_addons_intial_timeout' ) ? false : true;
 		
-		// Check if user has at least 5 posts/pages with RBA blocks
+		// Check if user has at least 3 posts/pages with RBA blocks
 		$posts_with_blocks = $this->count_posts_with_rba_blocks();
-		$has_five_posts_with_blocks = $posts_with_blocks >= 5;
+		$has_five_posts_with_blocks = $posts_with_blocks >= 3;
 		
 		// Check if user has used template library
 		$template_library_used = (bool) get_option( 'responsive_block_editor_addons_template_library_used' );
 		
 		// Show notice if:
 		// 1. 7-day delay has passed, OR
-		// 2. User has 5+ posts/pages with RBA blocks, OR
+		// 2. User has 3+ posts/pages with RBA blocks, OR
 		// 3. User has used template library
 		if ( $seven_day_delay_passed || $has_five_posts_with_blocks || $template_library_used ) {
 			$image_url = plugins_url( 'admin/images/responsive-blocks.svg', __DIR__ );
@@ -1769,6 +1774,27 @@ class Responsive_Block_Editor_Addons {
 		// Record the time when the toggle was changed
 		$timestamp = current_datetime()->format( 'c' );
 		update_option( 'rbea_global_inherit_from_theme_last_changed', $timestamp, 'no' );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the custom CSS setting in database when the toggle is changed.
+	 *
+	 * @since 2.1.7
+	 */
+	public function rbea_toggle_custom_css() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the boolean value.
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $value ) ? '1' : '0';
+
+		update_option( 'rbea_custom_css_on', $value );
 
 		wp_send_json_success();
 	}
@@ -2368,6 +2394,9 @@ class Responsive_Block_Editor_Addons {
 		// Inject inherit from theme data attributes for old blocks that don't have them
 		$block_content = $this->inject_inherit_from_theme_attributes( $block_content, $block );
 
+		// Replace SVG placeholders with actual SVG markup
+		$block_content = $this->render_svg_icons_dynamically( $block_content );
+
 		return $block_content;
 	}
 
@@ -2610,5 +2639,59 @@ class Responsive_Block_Editor_Addons {
 		// Check in restricted day.
 		return ! in_array( $current_day, $block_attributes['RBEADay'] ) ? $block_content : '';
 
+	}
+
+	/**
+	 * Render SVG icons dynamically from placeholders.
+	 *
+	 * Replaces placeholder spans with actual SVG markup on the frontend.
+	 *
+	 * @param string $block_content The block content.
+	 * @return string Modified block content with SVGs rendered.
+	 */
+	public function render_svg_icons_dynamically( $block_content ) {
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		// Pattern to match placeholder spans with rbea-dynamic-icon class (including closing tag)
+		$pattern = '/<span\s+([^>]*\s+)?class=["\']([^"\']*\s+)?rbea-dynamic-icon([^"\']*)?["\']([^>]*)?>\s*<\/span>/i';
+
+		$replaced_content = preg_replace_callback(
+			$pattern,
+			function( $matches ) {
+				// Extract the full span tag (opening tag only for attribute extraction)
+				$full_match = $matches[0];
+				$opening_tag = $matches[0];
+				if ( preg_match( '/<span[^>]*>/', $full_match, $tag_match ) ) {
+					$opening_tag = $tag_match[0];
+				}
+
+				// Extract data-icon attribute
+				if ( preg_match( '/data-icon=["\']([^"\']+)["\']/', $opening_tag, $icon_matches ) ) {
+					$icon_name = $icon_matches[1];
+
+					// Render SVG using the renderer class
+					$svg = Responsive_Block_Editor_Addons_SVG_Renderer::render( $icon_name );
+
+					if ( ! empty( $svg ) ) {
+						// Wrap SVG in span with original classes preserved
+						$wrapper_classes = 'rbea-svg-icon-wrap';
+						if ( preg_match( '/class=["\']([^"\']+)["\']/', $opening_tag, $class_matches ) ) {
+							$original_classes = $class_matches[1];
+							$wrapper_classes = $original_classes . ' rbea-svg-icon-wrap';
+						}
+
+						return '<span class="' . esc_attr( $wrapper_classes ) . '">' . $svg . '</span>';
+					}
+				}
+
+				// Return original if no icon found
+				return $full_match;
+			},
+			$block_content
+		);
+
+		return is_null( $replaced_content ) ? $block_content : $replaced_content;
 	}
 }

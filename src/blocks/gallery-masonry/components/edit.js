@@ -15,6 +15,7 @@ import Inspector from "./inspector";
 import GalleryImage from "../../../utils/components/block-gallery/gallery-image";
 import GalleryPlaceholder from "../../../utils/components/block-gallery/gallery-placeholder";
 import { GalleryClasses } from "../../../utils/components/block-gallery/shared";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -392,7 +393,7 @@ class GalleryMasonryEdit extends Component {
       return masonryGalleryPlaceholder;
     }
 
-    const appendClass = `block-${block_id}`;
+    const appendClass = `responsive-block-editor-addons-block-gallery-masonry block-${block_id}`;
     const outerClasses = classnames(className, appendClass);
 
     const sortedImages = [...images].sort((a, b) => a.order - b.order);
@@ -434,6 +435,7 @@ class GalleryMasonryEdit extends Component {
         >
           {EditorStyles(this.props)}
         </style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         {filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" && loadGoogleFont(filterTabTypographyFontFamily)}
         {isSelected && <Inspector {...this.props} onResetCategory={this.resetSelectedCategory.bind(this)} />}
         {noticeUI}
