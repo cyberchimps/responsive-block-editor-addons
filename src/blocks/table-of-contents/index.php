@@ -1,12 +1,5 @@
 <?php
 /**
- * Server-side rendering for the Table of Contents block
- *
- * @since   1.0.0
- * @package Responsive Blocks
- */
-
-/**
  * Extracts headings from post content using WordPress parse_blocks()
  *
  * @param string $content The post content to extract headings from.
@@ -57,9 +50,6 @@ function responsive_block_editor_addons_extract_headings_from_content( $content 
 /**
  * Renders the TOC list HTML from headings array
  *
- * @param array $headings Array of headings.
- * @param array $attributes Block attributes.
- * @return string Rendered list HTML.
  */
 function responsive_block_editor_addons_render_toc_list( $headings, $attributes ) {
 	if ( empty( $headings ) ) {
@@ -116,10 +106,6 @@ function responsive_block_editor_addons_render_toc_list( $headings, $attributes 
 /**
  * Renders the Table of Contents block
  *
- * @param array   $attributes Block attributes.
- * @param string  $content    Block default content.
- * @param WP_Block $block      Block instance.
- * @return string Rendered block HTML.
  */
 function responsive_block_editor_addons_render_table_of_contents( $attributes, $content, $block ) {
 	global $post;
