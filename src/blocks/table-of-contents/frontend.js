@@ -14,22 +14,98 @@ jQuery(function ($) {
       .replace(/^-|-$/g, "");
   }
 
-  // PHP extracts headings and passes as data-headings attribute
-  // Frontend.js just links them to headings in DOM (save.js already renders the list)
   $(".responsive-block-editor-addons-toc__wrap").each(function () {
     var $wrap = $(this);
+
+    // Ensure list-wrap exists
     var $listWrap = $wrap.find(".responsive-block-editor-addons-toc__list-wrap");
-    
-    if (!$listWrap.length) return;
+    if (!$listWrap.length) {
+      $listWrap = $('<div class="responsive-block-editor-addons-toc__list-wrap"></div>');
+      var $titleWrap = $wrap.find(".responsive-block-editor-addons-toc__title-wrap");
+      if ($titleWrap.length) $listWrap.insertAfter($titleWrap);
+      else $wrap.append($listWrap);
+    }
 
-    // Get all TOC links (from save.js render)
+    // Clear existing list if present
+    var hasLinks = $listWrap.find("a[href^='#']").length > 0;
+    if (hasLinks) {
+      $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
+      $listWrap.empty();
+    }
+
+    // Get headings data from PHP (extracted from post content)
+    var headingsData = $wrap.data("headings");
+    try {
+      headingsData = typeof headingsData === "string" ? JSON.parse(headingsData) : headingsData;
+    } catch (e) {
+      headingsData = null;
+    }
+
+    // If no PHP data, fallback to DOM extraction (backward compatibility)
+    if (!headingsData || !Array.isArray(headingsData) || headingsData.length === 0) {
+      return; // Let save.js rendered list stay, or return early
+    }
+
+    // Read settings from data attributes
+    var tableType = String($wrap.data("table-type") || "").toLowerCase();
+    var orderListType = String($wrap.data("order-list-type") || "").toLowerCase();
+    var ListTagName = (tableType === "ordered") ? "ol" : "ul";
+    var listTypeClass = orderListType ? (" rbea-" + orderListType) : "";
+
+    // Build nested list from PHP headings data
+    var $rootList = $('<' + ListTagName + ' class="responsive-block-editor-addons-toc__list' + listTypeClass + '"></' + ListTagName + '>');
+    var listStack = [$rootList];
+    var currentLevel = 0;
+
+    headingsData.forEach(function (heading, i) {
+      var level = heading.level || 2;
+      var content = heading.content || "";
+      var anchor = heading.anchor || slugify(content);
+
+      if (!content) return;
+
+      // Ensure anchor starts with number prefix
+      if (!anchor.match(/^\d+-/)) {
+        anchor = (i + 1) + "-" + anchor;
+      }
+
+      if (currentLevel === 0) currentLevel = level;
+
+      // Deeper → open nested list
+      while (level > currentLevel) {
+        var $newList = $('<' + ListTagName + ' class="child-list' + listTypeClass + '"></' + ListTagName + '>');
+        var $lastLi = listStack[listStack.length - 1].children("li").last();
+        ($lastLi.length ? $lastLi : listStack[listStack.length - 1]).append($newList);
+        listStack.push($newList);
+        currentLevel++;
+      }
+      // Shallower → pop back up
+      while (level < currentLevel && listStack.length > 1) {
+        listStack.pop();
+        currentLevel--;
+      }
+
+      // Create list item
+      var $li = $('<li></li>');
+      var $a = $('<a></a>').attr("href", "#" + anchor).text(content);
+      $li.append($a);
+      listStack[listStack.length - 1].append($li);
+    });
+
+    // Clean placeholders and inject
+    $wrap.find(
+      ".responsive-block-editor-addons_table-of-contents-placeholder," +
+      " .responsive-block-editor-addons-toc__no-header," +
+      " .responsive-block-editor-addons-toc__empty," +
+      " .responsive-block-editor-addons-toc__placeholder"
+    ).remove();
+
+    $listWrap.empty().append($rootList);
+
+    // Now match TOC links to headings in DOM and add IDs
     var $tocLinks = $listWrap.find("a[href^='#']");
-    if (!$tocLinks.length) return;
-
-    // Get all headings in the document (PHP already extracted from post content, so no filtering needed)
     var $allHeadings = $("h1, h2, h3, h4, h5, h6");
 
-    // Match TOC links to headings and add IDs
     $tocLinks.each(function () {
       var $link = $(this);
       var href = $link.attr("href");
@@ -41,8 +117,7 @@ jQuery(function ($) {
       // Check if heading with this ID already exists
       var $existingHeading = $("#" + anchorId);
       if ($existingHeading.length && $existingHeading.is("h1, h2, h3, h4, h5, h6")) {
-        // ID already exists, link is correct
-        return;
+        return; // ID already exists
       }
 
       // Find heading by text content
@@ -50,7 +125,7 @@ jQuery(function ($) {
         return slugify($(this).text()) === slugify(linkText);
       }).first();
 
-      // Also try to match by comparing text directly (case-insensitive)
+      // Also try direct text match (case-insensitive)
       if (!$heading.length) {
         $heading = $allHeadings.filter(function () {
           return $.trim($(this).text().toLowerCase()) === linkText.toLowerCase();
@@ -62,15 +137,12 @@ jQuery(function ($) {
         var $advancedHeadingBlock = $heading.closest('.wp-block-responsive-block-editor-addons-advanced-heading');
         
         if ($advancedHeadingBlock.length > 0) {
-          // For advanced headings, check for existing IDs
           var existingHeadingId = $heading.attr("id");
           var existingWrapperId = $advancedHeadingBlock.attr("id");
           
           if (existingHeadingId) {
-            // Update link href to match existing ID
             $link.attr("href", "#" + existingHeadingId);
           } else if (existingWrapperId) {
-            // Update link href to match wrapper ID
             $link.attr("href", "#" + existingWrapperId);
           } else {
             // Add ID to heading
@@ -83,7 +155,7 @@ jQuery(function ($) {
             $link.attr("href", "#" + finalId);
           }
         } else {
-          // For regular headings, add ID if it doesn't exist
+          // Regular heading - add ID if it doesn't exist
           if (!$heading.attr("id")) {
             var finalId = anchorId;
             var n = 2;
