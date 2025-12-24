@@ -188,6 +188,9 @@ function EditorStyles(props) {
   titleFontStyle,
   gradientOverlay,
   gradient,
+  contentTextDecoration,
+  nameTextDecoration,
+  titleTextDecoration
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -285,6 +288,7 @@ function EditorStyles(props) {
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "margin-bottom": generateCSSUnit(contentBottomSpacing, "px"),
       color: contentTypographyColor,
       "font-style": contentFontStyle,
@@ -311,6 +315,7 @@ function EditorStyles(props) {
       "line-height": nameLineHeight,
       "font-weight": nameFontWeight,
       "text-transform": nameTextTransform,
+      "text-decoration": nameTextDecoration,
       "margin-bottom": generateCSSUnit(nameBottomSpacing, "px"),
       "font-style": nameFontStyle,
     },
@@ -321,6 +326,7 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {

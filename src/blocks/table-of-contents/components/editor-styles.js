@@ -225,6 +225,8 @@ function EditorStyles(props) {
     headingFontStyle,
     contentTextTransform,
     contentFontStyle,
+    headingTextDecoration,
+    contentTextDecoration,
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -302,6 +304,7 @@ function EditorStyles(props) {
 
       // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
 			"font-style": headingFontStyle,
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
@@ -335,6 +338,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(bodyBorderLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRadius, "px"),
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
 			"font-style": contentFontStyle,
     },
     ' .responsive-block-editor-addons_table-of-contents-placeholder': {
@@ -360,6 +364,7 @@ function EditorStyles(props) {
       "border-radius": generateCSSUnit(bodyBorderRadius, "px"),
       color: bodyColor,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
 			"font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a": {

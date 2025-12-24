@@ -445,6 +445,14 @@ const attributes = {
       type: "boolean",
       default: false, 
     },
+    inputTextDecoration: {
+      type: "string",
+      default: "",
+    },
+    buttonTextDecoration: {
+      type: "string",
+      default: "",
+    },
   };
   
   export default attributes;

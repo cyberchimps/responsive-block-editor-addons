@@ -1258,6 +1258,26 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'dateTextDecoration' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'headingTextDecoration' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'authorTextDecoration' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'contentTextDecoration' => array(
+					'type' => 'string',
+					'default' => '',
+				),
+				'contentTextDecoration' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',
 		)

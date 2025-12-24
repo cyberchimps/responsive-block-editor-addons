@@ -247,6 +247,13 @@ function EditorStyles(props) {
     gradient,
     gradientButton,
     gradientButtonH,
+    titleTextDecoration,
+    prefixTextDecoration,
+    amountTextDecoration,
+    suffixTextDecoration,
+    subpriceTextDecoration,
+    featuresTextDecoration,
+    ctaTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -327,6 +334,7 @@ function EditorStyles(props) {
         " " +
         buttonBoxShadowPositionCSS,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       "font-style": ctaFontStyle,
     },
 
@@ -463,6 +471,7 @@ function EditorStyles(props) {
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
 
@@ -478,6 +487,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(prefixFontSize, "px"),
       "font-family": prefixFontFamily,
       "text-transform": prefixTextTransform,
+      "text-decoration": prefixTextDecoration,
       "font-style": prefixFontStyle,
     },
 
@@ -488,6 +498,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(amountFontSize, "px"),
       "font-family": amountFontFamily,
       "text-transform": amountTextTransform,
+      "text-decoration": amountTextDecoration,
       "font-style": amountFontStyle,
     },
 
@@ -498,6 +509,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(suffixFontSize, "px"),
       "font-family": suffixFontFamily,
       "text-transform": suffixTextTransform,
+      "text-decoration": suffixTextDecoration,
       "font-style": suffixFontStyle,
     },
 
@@ -510,6 +522,7 @@ function EditorStyles(props) {
       "font-family": subpriceFontFamily,
       "margin-bottom": generateCSSUnit(subpriceBottomSpacing, "px"),
       "text-transform": subpriceTextTransform,
+      "text-decoration": subpriceTextDecoration,
       "font-style": subpriceFontStyle,
     },
 
@@ -521,6 +534,7 @@ function EditorStyles(props) {
       "font-family": featuresFontFamily,
       "margin-bottom": generateCSSUnit(featuresBottomSpacing, "px"),
       "text-transform": featuresTextTransform,
+      "text-decoration": featuresTextDecoration,
       "font-style": featuresFontStyle,
     },
   };

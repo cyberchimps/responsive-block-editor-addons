@@ -1092,10 +1092,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.authorBottomSpacingTablet,
           transform: attributes.authorTextTransform,
           fontstyle: attributes.authorFontStyle,
+          textDecoration: attributes.authorTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1115,10 +1117,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.contentBottomSpacingTablet,
           transform: attributes.contentTextTransform,
           fontstyle: attributes.contentFontStyle,
+          textDecoration: attributes.contentTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1137,9 +1141,11 @@ export default class Inspector extends Component {
 					emptyColorControl: emptyColorControl,
           transform: attributes.continueTextTransform,
           fontstyle: attributes.continueFontStyle,
+          textDecoration: attributes.continueTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorWithHoverControlTab={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>

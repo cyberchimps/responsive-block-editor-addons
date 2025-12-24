@@ -480,7 +480,15 @@ const attributes = {
   },
   gradientHover: {
     type: "string",
-  }
+  },
+  tabTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  tabContentTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

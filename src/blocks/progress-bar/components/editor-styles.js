@@ -167,6 +167,15 @@ function EditorStyles(props) {
 		semiCircularTopTitleValueFontStyle,
 		semiCircularInnerValueFontStyle,
 		semiCircularBottomTitleValueFontStyle,
+		topTitleValueTextDecoration,
+		innerTitleValueTextDecoration,
+		bottomTitleValueTextDecoration,
+		circularTopTitleValueTextDecoration,
+		circularInnerValueTextDecoration,
+		circularBottomTitleValueTextDecoration,
+		semiCircularTopTitleValueTextDecoration,
+		semiCircularInnerValueTextDecoration,
+		semiCircularBottomTitleValueTextDecoration,
 	} = props.attributes;
 
 	let circleRadiusVal = 0;
@@ -292,6 +301,7 @@ function EditorStyles(props) {
 			"line-height": topTitleValueLineHeight,
 			"letter-spacing": generateCSSUnit(topTitleValueLetterSpacing, "px"),
 			"text-transform": topTitleValueTextTransform,
+			"text-decoration": topTitleValueTextDecoration,
 			"font-style": topTitleValueFontStyle,
 		},
 		" .responsive-horizontal-progress-bar-top-value": {
@@ -302,6 +312,7 @@ function EditorStyles(props) {
 			"line-height": topTitleValueLineHeight,
 			"letter-spacing": generateCSSUnit(topTitleValueLetterSpacing, "px"),
 			"text-transform": topTitleValueTextTransform,
+			"text-decoration": topTitleValueTextDecoration,
 			"font-style": topTitleValueFontStyle,
 		},
 		" .responsive-horizontal-progress-bar-inner-title": {
@@ -312,6 +323,7 @@ function EditorStyles(props) {
 			"font-weight": innerTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(innerTitleValueLetterSpacing, "px"),
 			"text-transform": innerTitleValueTextTransform,
+			"text-decoration": innerTitleValueTextDecoration,
 			"font-style": innerTitleValueFontStyle,
 		},
 		" .responsive-horizontal-progress-bar-inner-value": {
@@ -322,6 +334,7 @@ function EditorStyles(props) {
 			"font-weight": innerTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(innerTitleValueLetterSpacing, "px"),
 			"text-transform": innerTitleValueTextTransform,
+			"text-decoration": innerTitleValueTextDecoration,
 			"font-style": innerTitleValueFontStyle,
 		},
 		" .responsive-horizontal-progress-bar-bottom-title": {
@@ -332,6 +345,7 @@ function EditorStyles(props) {
 			"font-weight": bottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(bottomTitleValueLetterSpacing, "px"),
 			"text-transform": bottomTitleValueTextTransform,
+			"text-decoration": bottomTitleValueTextDecoration,
 			"font-style": bottomTitleValueFontStyle,
 		},
 		" .responsive-horizontal-progress-bar-bottom-value": {
@@ -342,6 +356,7 @@ function EditorStyles(props) {
 			"font-weight": bottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(bottomTitleValueLetterSpacing, "px"),
 			"text-transform": bottomTitleValueTextTransform,
+			"text-decoration": bottomTitleValueTextDecoration,
 			"font-style": bottomTitleValueFontStyle,
 		},
 		" .responsive-circular-progress-bar-top-title": {
@@ -352,6 +367,7 @@ function EditorStyles(props) {
 			"font-weight": circularTopTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(circularTopTitleValueLetterSpacing, "px"),
 			"text-transform": circularTopTitleValueTextTransform,
+			"text-decoration": circularTopTitleValueTextDecoration,
 			"font-style": circularTopTitleValueFontStyle,
 		},
 		" .responsive-circular-progress-bar-top-value": {
@@ -362,6 +378,7 @@ function EditorStyles(props) {
 			"font-weight": circularTopTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(circularTopTitleValueLetterSpacing, "px"),
 			"text-transform": circularTopTitleValueTextTransform,
+			"text-decoration": circularTopTitleValueTextDecoration,
 			"font-style": circularTopTitleValueFontStyle,
 		},
 		" .responsive-circular-progress-bar-progress": {
@@ -379,6 +396,7 @@ function EditorStyles(props) {
 			"height": generateCSSUnit(circularProgressBarSize-40, "px"),
 			"width": generateCSSUnit(circularProgressBarSize-40, "px"),
 			"font-style": circularInnerValueFontStyle,
+			"text-decoration": circularInnerValueTextDecoration,
 		},
 		" .responsive-circular-progress-bar-bottom-title": {
 			"color": circularBottomTitleValueTypographyColor,
@@ -388,6 +406,7 @@ function EditorStyles(props) {
 			"font-weight": circularBottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(circularBottomTitleValueLetterSpacing, "px"),
 			"text-transform": circularBottomTitleValueTextTransform,
+			"text-decoration": circularBottomTitleValueTextDecoration,
 			"font-style": circularBottomTitleValueFontStyle
 		},
 		" .responsive-circular-progress-bar-bottom-value": {
@@ -398,6 +417,7 @@ function EditorStyles(props) {
 			"font-weight": circularBottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(circularBottomTitleValueLetterSpacing, "px"),
 			"text-transform": circularBottomTitleValueTextTransform,
+			"text-decoration": circularBottomTitleValueTextDecoration,
 			"font-style": circularBottomTitleValueFontStyle
 		},
 		" .responsive-semi-circular-progress-bar-top-title": {
@@ -408,6 +428,7 @@ function EditorStyles(props) {
 			"font-weight": semiCircularTopTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(semiCircularTopTitleValueLetterSpacing, "px"),
 			"text-transform": semiCircularTopTitleValueTextTransform,
+			"text-decoration": semiCircularTopTitleValueTextDecoration,
 			"font-style": semiCircularTopTitleValueFontStyle,
 		},
 		" .responsive-semi-circular-progress-bar-top-value": {
@@ -418,6 +439,7 @@ function EditorStyles(props) {
 			"font-weight": semiCircularTopTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(semiCircularTopTitleValueLetterSpacing, "px"),
 			"text-transform": semiCircularTopTitleValueTextTransform,
+			"text-decoration": semiCircularTopTitleValueTextDecoration,
 			"font-style": semiCircularTopTitleValueFontStyle,
 		},
 		" .responsive-semi-circular-progress-bar-value": {
@@ -428,6 +450,7 @@ function EditorStyles(props) {
 			"font-weight": semiCircularInnerValueFontWeight,
 			"letter-spacing": generateCSSUnit(semiCircularInnerValueLetterSpacing, "px"),
 			"font-style": semiCircularInnerValueFontStyle,
+			"text-decoration": semiCircularInnerValueTextDecoration,
 		},
 		" .responsive-semi-circular-progress-bar-bottom-title": {
 			"color": semiCircularBottomTitleValueTypographyColor,
@@ -437,6 +460,7 @@ function EditorStyles(props) {
 			"font-weight": semiCircularBottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(semiCircularBottomTitleValueLetterSpacing, "px"),
 			"text-transform": semiCircularBottomTitleValueTextTransform,
+			"text-decoration": semiCircularBottomTitleValueTextDecoration,
 			"font-style": semiCircularBottomTitleValueFontStyle,
 		},
 		" .responsive-semi-circular-progress-bar-bottom-value": {
@@ -447,6 +471,7 @@ function EditorStyles(props) {
 			"font-weight": semiCircularBottomTitleValueFontWeight,
 			"letter-spacing": generateCSSUnit(semiCircularBottomTitleValueLetterSpacing, "px"),
 			"text-transform": semiCircularBottomTitleValueTextTransform,
+			"text-decoration": semiCircularBottomTitleValueTextDecoration,
 			"font-style": semiCircularBottomTitleValueFontStyle,
 		},
 		" .stripe-movement-effect::after": {
