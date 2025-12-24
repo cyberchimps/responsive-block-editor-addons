@@ -1346,7 +1346,23 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 				),
 				'gradientButton'	=> array(
 					'type'	=> 'string',
-				)
+				),
+				'titleTextDecoration' => array(
+					'type'  => 'string',
+					'default' => '',
+				),
+				'metaTextDecoration' => array(
+					'type'  => 'string',
+					'default' => '',
+				),
+				'excerptTextDecoration' => array(
+					'type'  => 'string',
+					'default' => '',
+				),
+				'ctaTextDecoration' => array(
+					'type'  => 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',
 		)

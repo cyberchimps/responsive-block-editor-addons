@@ -329,6 +329,8 @@ export default class Inspector extends Component {
         gradient,
         hoverGradient,
         hoverBackgroundType,
+        titleTextDecoration,
+        descriptionTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1431,11 +1433,13 @@ export default class Inspector extends Component {
           bottomSpacingMobile: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
           transform: titleTextTransform,
-          fontstyle: titleFontStyle
+          fontstyle: titleFontStyle,
+          textDecoration: titleTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -1454,11 +1458,13 @@ export default class Inspector extends Component {
           bottomSpacingMobile: descriptionBottomSpacingMobile,
           bottomSpacingTablet: descriptionBottomSpacingTablet,
           transform: descriptionTextTransform,
-          fontstyle: descriptionFontStyle
+          fontstyle: descriptionFontStyle,
+          textDecoration: descriptionTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>

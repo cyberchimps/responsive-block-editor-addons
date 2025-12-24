@@ -219,7 +219,9 @@ export default class Inspector extends Component {
       captionIsMarginControlConnected,
       imagePositionTab,
       layoverHeadingFontStyle,
-      captionFontStyle
+      captionFontStyle,
+      layoverHeadingTextDecoration,
+      captionTextDecoration,
     } = attributes;
 
     // To populate new control values with existing padding margin control values for backward compatibility.
@@ -1674,9 +1676,11 @@ if (!imageIsRadiusValueUpdated) {
                 transform: layoverHeadingTextTransform,
                 color: layoverHeadingTypographyColor,
                 fontstyle: layoverHeadingFontStyle,
+                textDecoration: layoverHeadingTextDecoration,
               }}
               showLetterSpacing={true}
               showColorControl={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />
@@ -1705,9 +1709,11 @@ if (!imageIsRadiusValueUpdated) {
                 transform: captionTextTransform,
                 color: captionTypographyColor,
                 fontstyle: captionFontStyle,
+                textDecoration: captionTextDecoration,
               }}
               showLetterSpacing={true}
               showColorControl={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />

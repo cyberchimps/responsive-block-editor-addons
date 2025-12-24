@@ -79,6 +79,8 @@ function EditorStyles(props) {
     titleFontStyle,
     contentTextTransform,
     contentFontStyle,
+    titleTextDecoration,
+    contentTextDecoration,  
   } = props.attributes;
 
   let noticeTypeColor;
@@ -125,6 +127,7 @@ function EditorStyles(props) {
       "margin": 0,
       "padding": `${generateCSSUnit(titlePaddingVertical, "px")} ${generateCSSUnit(titlePaddingHorizontal, "px")}`,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-block-inline-notice-svg > svg": {
@@ -147,6 +150,7 @@ function EditorStyles(props) {
       "letter-spacing": generateCSSUnit(contentLetterSpacing, "px"),
       "padding": `${generateCSSUnit(contentPaddingVertical, "px")} ${generateCSSUnit(contentPaddingHorizontal, "px")}`,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
     }
   };

@@ -531,5 +531,17 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  headingTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  dateFontDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

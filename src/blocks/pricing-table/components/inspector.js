@@ -384,6 +384,13 @@ export default class Inspector extends Component {
         inheritFromTheme,
         inheritFromThemesaved,
         inheritFromThemeLocalTimestamp,
+        titleTextDecoration,
+        prefixTextDecoration,
+        amountTextDecoration,
+        suffixTextDecoration,
+        subpriceTextDecoration,
+        featuresTextDecoration,
+        ctaTextDecoration
       },
       setAttributes,
     } = this.props;
@@ -916,10 +923,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: titleBottomSpacingTablet,
                   transform: titleTextTransform,
                   fontstyle: titleFontStyle,
+                  textDecoration: titleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -939,9 +948,11 @@ export default class Inspector extends Component {
                   color: prefixTypographyColor,
                   transform: prefixTextTransform,
                   fontstyle: prefixFontStyle,
+                  textDecoration: prefixTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -961,10 +972,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: amountBottomSpacingTablet,
                   transform: amountTextTransform,
                   fontstyle: amountFontStyle,
+                  textDecoration: amountTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -984,9 +997,11 @@ export default class Inspector extends Component {
                   color: suffixTypographyColor,
                   transform: suffixTextTransform,
                   fontstyle: suffixFontStyle,
+                  textDecoration: suffixTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1009,10 +1024,12 @@ export default class Inspector extends Component {
                   bottomSpacingMobile: subpriceBottomSpacingMobile,
                   bottomSpacingTablet: subpriceBottomSpacingTablet,
                   fontstyle: subpriceFontStyle,
+                  textDecoration: subpriceTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1035,10 +1052,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: featuresBottomSpacingTablet,
                   transform: featuresTextTransform,
                   fontstyle: featuresFontStyle,
+                  textDecoration: featuresTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1054,9 +1073,11 @@ export default class Inspector extends Component {
                   height: ctaLineHeight,
                   transform: ctaTextTransform,
                   fontstyle: ctaFontStyle,
+                  textDecoration: ctaTextDecoration,
                 }}
                 showLetterSpacing={false}
                 setAttributes={setAttributes}
+                showTextDecoration={true}
                 {...this.props}
               />
             <PanelBody

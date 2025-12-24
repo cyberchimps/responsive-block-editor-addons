@@ -341,6 +341,9 @@ export default class Inspector extends Component {
         descriptionFontStyle,
         hasImagePositionMigrated,
         gradientOverlay,
+        titleTextDecoration,
+        designationTextDecoration,
+        descriptionTextDecoration
       },
       setAttributes,
     } = this.props;
@@ -1323,10 +1326,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: titleBottomSpacingTablet,
                   transform: titleTextTransform,
                   fontstyle: titleFontStyle,
+                  textDecoration: titleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1349,10 +1354,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: designationBottomSpacingTablet,
                   transform: designationTextTransform,
                   fontstyle: designationFontStyle,
+                  textDecoration: designationTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1375,10 +1382,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: descriptionBottomSpacingTablet,
                   transform: descriptionTextTransform,
                   fontstyle: descriptionFontStyle,
+                  textDecoration: descriptionTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />

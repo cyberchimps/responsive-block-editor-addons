@@ -408,6 +408,11 @@ export default class Inspector extends Component {
         backButtonTextTransform,
         backButtonFontStyle,
         hasImagePositionMigrated,
+        backButtonTextDecoration,
+        backSubtitleTextDecoration,
+        backTitleTextDecoration,
+        frontSubtitleTextDecoration,
+        frontTitleTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1557,9 +1562,10 @@ export default class Inspector extends Component {
                       <TypographyHelperControl
                         title={__("Front Title Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="frontTitle%s"
-                        values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight, color: frontTitleTypographyColor, transform: frontTitleTextTransform, fontstyle: frontTitleFontStyle,}}
+                        values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight, color: frontTitleTypographyColor, transform: frontTitleTextTransform, fontstyle: frontTitleFontStyle, textDecoration: frontTitleTextDecoration}}
                         showLetterSpacing = { false }
                         showColorControl={true}
+                        showTextDecoration={true}
                         setAttributes={ setAttributes }
                         {...this.props}
                       />
@@ -1570,8 +1576,9 @@ export default class Inspector extends Component {
                       <TypographyHelperControl
                         title={__("Front Subtitle Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="frontSubtitle%s"
-                        values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight, transform: frontSubtitleTextTransform, fontstyle: frontSubtitleFontStyle}}
+                        values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight, transform: frontSubtitleTextTransform, fontstyle: frontSubtitleFontStyle, textDecoration: frontSubtitleTextDecoration}}
                         showLetterSpacing = { false }
+                        showTextDecoration={true}
                         setAttributes={ setAttributes }
                         {...this.props}
                       />
@@ -1618,9 +1625,10 @@ export default class Inspector extends Component {
                       <TypographyHelperControl
                         title={__("Back Title Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backTitle%s"
-                        values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight, color: backTitleTypographyColor, transform: backTitleTextTransform, fontstyle: backTitleFontStyle}}
+                        values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight, color: backTitleTypographyColor, transform: backTitleTextTransform, fontstyle: backTitleFontStyle, textDecoration: backTitleTextDecoration}}
                         showLetterSpacing = { false }
                         showColorControl={true}
+                        showTextDecoration={true}
                         setAttributes={ setAttributes }
                         {...this.props}
                       />
@@ -1631,8 +1639,9 @@ export default class Inspector extends Component {
                       <TypographyHelperControl
                         title={__("Back Subtitle Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backSubtitle%s"
-                        values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight, transform: backSubtitleTextTransform, fontstyle: backSubtitleFontStyle}}
+                        values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight, transform: backSubtitleTextTransform, fontstyle: backSubtitleFontStyle, textDecoration: backSubtitleTextDecoration}}
                         showLetterSpacing = { false }
+                        showTextDecoration={true}
                         setAttributes={ setAttributes }
                         {...this.props}
                       />
@@ -1643,9 +1652,10 @@ export default class Inspector extends Component {
                       <TypographyHelperControl
                         title={__("Back Button Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backButton%s"
-                        values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight, transform: backButtonTextTransform, fontstyle: backButtonFontStyle}}
+                        values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight, transform: backButtonTextTransform, fontstyle: backButtonFontStyle, textDecoration: backButtonTextDecoration}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
+                        showTextDecoration={true}
                         setAttributes={ setAttributes }
                         {...this.props}
                       />

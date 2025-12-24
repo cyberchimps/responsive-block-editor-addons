@@ -330,5 +330,17 @@
     type: "boolean",
     default: false, 
   },
+  linkTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  textTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

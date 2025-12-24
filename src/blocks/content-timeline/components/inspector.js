@@ -196,6 +196,9 @@ export default class Inspector extends Component {
         headingFontStyle,
         contentTextTransform,
         contentFontStyle,
+        dateTextDecoration,
+        headingTextDecoration,
+        contentTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -788,9 +791,11 @@ export default class Inspector extends Component {
           color: dateTypographyColor,
           transform: dateTextTransform,
           fontstyle: dateFontStyle,
+          textDecoration: dateTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -807,9 +812,11 @@ export default class Inspector extends Component {
           color: headingTypographyColor,
           transform: headingTextTransform,
           fontstyle: headingFontStyle,
+          textDecoration: headingTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -826,9 +833,11 @@ export default class Inspector extends Component {
           color: contentTypographyColor,
           transform: contentTextTransform,
           fontstyle: contentFontStyle,
+          textDecoration: contentTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>

@@ -248,6 +248,9 @@ export default class Inspector extends Component {
       inheritFromTheme,
       inheritFromThemesaved,
       inheritFromThemeLocalTimestamp,
+      ctaTitleTextDecoration,
+      ctaTextTextDecoration,
+      buttonTextTextDecoration,
     } = this.props.attributes;
     const { setAttributes } = this.props;
 
@@ -642,10 +645,12 @@ export default class Inspector extends Component {
             bottomSpacingTablet: ctaTitleBottomSpacingTablet,
             transform: ctaTitleTextTransform,
             fontstyle: ctaTitleFontStyle,
+            textDecoration: ctaTitleTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -664,9 +669,11 @@ export default class Inspector extends Component {
             bottomSpacingTablet: ctaTextBottomSpacingTablet,
             transform: ctaTextTextTransform,
             fontstyle: ctaTextFontStyle,
+            textDecoration: ctaTextTextDecoration,
 					}}
 					showLetterSpacing={false}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -683,9 +690,11 @@ export default class Inspector extends Component {
 						height: buttonTextLineHeight,
             transform: buttonTextTextTransform,
             fontstyle: buttonTextFontStyle,
+            textDecoration: buttonTextTextDecoration,
 					}}
 					showLetterSpacing={false}
           showTextBottomSpacing={false}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -703,9 +712,11 @@ export default class Inspector extends Component {
 				  		height: buttonTextLineHeight,
               transform: buttonTextTextTransform,
               fontstyle: buttonTextFontStyle,
+              textDecoration: buttonTextTextDecoration,
 				  	}}
 				  	showLetterSpacing={false}
             showTextBottomSpacing={false}
+            showTextDecoration={true}
 				  	setAttributes={setAttributes}
 				  	{...this.props}
 				  />

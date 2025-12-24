@@ -1044,8 +1044,10 @@ export default class Inspector extends Component {
 					height: attributes.dateLineHeight,
           transform: attributes.dateTextTransform,
           fontstyle: attributes.dateFontStyle,
+          textDecoration: attributes.dateTextDecoration,
 					}}
 					showLetterSpacing = { false }
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1065,10 +1067,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.headingBottomSpacingTablet,
           transform: attributes.headingTextTransform,
           fontstyle: attributes.headingFontStyle,
+          textDecoration: attributes.headingTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>

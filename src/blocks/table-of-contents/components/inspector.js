@@ -363,6 +363,8 @@ export default class Inspector extends Component {
         contentTextTransform,
         contentFontStyle,
         hasImagePositionMigrated,
+        headingTextDecoration,
+        contentTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1279,9 +1281,11 @@ export default class Inspector extends Component {
 									emptyColorControl: emptyColorControl,
                   transform: headingTextTransform,
                   fontstyle: headingFontStyle,
+                  textDecoration: headingTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorWithHoverControlTab={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1865,9 +1869,11 @@ export default class Inspector extends Component {
 									emptyColorControl: emptyColorControl,
                   transform: contentTextTransform,
                   fontstyle: contentFontStyle,
+                  textDecoration: contentTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorWithHoverControlTab={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />

@@ -619,6 +619,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+  quoteTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

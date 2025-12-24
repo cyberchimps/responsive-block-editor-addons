@@ -162,6 +162,7 @@ export default class Inspector extends Component {
         isCtaButtonPaddingMarginValueUpdated,
         labelTextTransform,
         labelFontStyle,
+        labelTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -731,9 +732,11 @@ export default class Inspector extends Component {
                 color: labelTypographyColor,
                 transform: labelTextTransform,
                 fontstyle: labelFontStyle,
+                textDecoration: labelTextDecoration,
               }}
               showLetterSpacing={false}
               showColorControl={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />

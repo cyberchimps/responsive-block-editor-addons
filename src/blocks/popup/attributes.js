@@ -810,6 +810,14 @@ const attributes = {
       type: "boolean",
       default: false, 
     },
+    popupButtonTypographyTextDecoration: {
+      type: "string",
+      default: "",
+    },
+    popupTextTypographyTextDecoration: {
+      type: "string",
+      default: "",
+    },
 };
 
 export default attributes;
