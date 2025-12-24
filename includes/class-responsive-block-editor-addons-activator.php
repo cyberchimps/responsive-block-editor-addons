@@ -58,5 +58,10 @@ class Responsive_Block_Editor_Addons_Activator {
 		if ( false === get_option( 'rbea_default_container_gap' ) ) {
 			update_option( 'rbea_default_container_gap', 20 );
 		}
+
+		// Set default value for template library button visibility if it doesn't exist.
+		if ( false === get_option( 'rbea_template_library_button_on' ) ) {
+			update_option( 'rbea_template_library_button_on', '1' );
+		}
 	}
 }
