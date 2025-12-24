@@ -279,6 +279,8 @@ export default class Inspector extends Component {
         inheritFromTheme,
         inheritFromThemesaved,
         inheritFromThemeLocalTimestamp,
+        popupButtonTypographyTextDecoration,
+        popupTextTypographyTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1408,9 +1410,11 @@ export default class Inspector extends Component {
                         emptyColorControl: emptyColorControl,
                         transform: popupButtonTypographyTextTransform,
                         fontstyle: popupButtonTypographyFontStyle,
+                        textDecoration: popupButtonTypographyTextDecoration
                       }}
                       showLetterSpacing={true}
                       showColorWithHoverControlTab={true}
+                      showTextDecoration={true}
                       setAttributes={setAttributes}
                       {...this.props}
                     />
@@ -1434,9 +1438,11 @@ export default class Inspector extends Component {
                       color: popupTextTypographyTypographyColor,
                       transform: popupTextTypographyTextTransform,
                       fontstyle: popupTextTypographyFontStyle,
+                      textDecoration: popupTextTypographyTextDecoration,
                     }}
                     showLetterSpacing={true}
                     showColorControl={true}
+                    showTextDecoration={true}
                     setAttributes={setAttributes}
                     {...this.props}
                   />

@@ -175,6 +175,10 @@ function EditorStyles(props) {
     metaFontStyle,
     titleFontStyle,
     continueFontStyle,
+    excerptTextDecoration,
+    metaTextDecoration,
+    titleTextDecoration,
+    continueTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -339,6 +343,7 @@ function EditorStyles(props) {
       "font-family": titleFontFamily,
       "font-weight": titleFontWeight,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-block-post-grid-title a:hover": {
@@ -353,6 +358,7 @@ function EditorStyles(props) {
       "font-weight": metaFontWeight,
       "line-height": metaLineHeight,
       "text-transform": metaTextTransform,
+      "text-Decoration": metaTextDecoration,
       "font-style": metaFontStyle,
       "font-size": generateCSSUnit(metaFontSize, "px"),
       "margin-bottom": generateCSSUnit(metaBottomSpacing, "px"),
@@ -363,6 +369,7 @@ function EditorStyles(props) {
       "font-weight": excerptFontWeight,
       "line-height": excerptLineHeight,
       "text-transform": excerptTextTransform,
+      "text-decoration": excerptTextDecoration,
       "font-style": excerptFontStyle,
       "font-size": generateCSSUnit(excerptFontSize, "px"),
     },
@@ -374,6 +381,7 @@ function EditorStyles(props) {
       "font-weight": continueFontWeight,
       "line-height": continueLineHeight,
       "text-transform": continueTextTransform,
+      "text-decoration": continueTextDecoration,
       "font-style": continueFontStyle,
       "font-size": generateCSSUnit(continueFontSize, "px"),
 	  "font-family": continueFontFamily,

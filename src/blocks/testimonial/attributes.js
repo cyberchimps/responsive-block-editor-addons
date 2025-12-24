@@ -793,7 +793,19 @@ const attributes = {
   },
   gradient: {
     type: "string",
-  }
+  },
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  nameTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

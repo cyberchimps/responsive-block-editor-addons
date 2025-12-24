@@ -780,5 +780,17 @@ const attributes = {
   gradientOverlay: {
     type: "string",
   },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  designationTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextDecoration: {
+    type: "string",
+    default: "",
+  },    
 };
 export default attributes;

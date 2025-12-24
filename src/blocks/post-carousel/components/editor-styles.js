@@ -145,6 +145,10 @@ function EditorStyles(props) {
     ctaTextTransform,
     ctaFontStyle,
     gradientButton,
+    titleTextDecoration,
+    metaTextDecoration,
+    excerptTextDecoration,
+    ctaTextDecoration,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -207,6 +211,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-title a": {
       "color": titleTypographyColor,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       'font-style': titleFontStyle,
       "line-height": titleLineHeight,
       "font-family": titleFontFamily,
@@ -215,6 +220,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-byline": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
       "font-family": metaFontFamily,
       "font-weight": metaFontWeight,
@@ -225,21 +231,25 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-date": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-author a": {
       'color': metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-taxonomy a": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-excerpt": {
       "color": excerptTypographyColor,
       "text-transform": excerptTextTransform,
+      "text-decoration": excerptTextDecoration,
       'font-style': excerptFontStyle,
       "text-align": blockAlign,
       "font-family": excerptFontFamily,
@@ -256,6 +266,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       "color": ctaColor,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       'font-style': ctaFontStyle,
       "background-color": pcColor,
       "background-image": backgroundImageGradient,

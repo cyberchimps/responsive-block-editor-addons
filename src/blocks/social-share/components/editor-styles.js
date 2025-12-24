@@ -104,6 +104,7 @@ function EditorStyles(props) {
     iconContainerRightPaddingMobile,
     labelTextTransform,
     labelFontStyle,
+    labelTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -221,6 +222,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-family": labelFontFamily,
       "text-transform": labelTextTransform,
+      "text-decoration": labelTextDecoration,
       "font-style": labelFontStyle,
       "font-weight": labelFontWeight,
       "line-height": labelLineHeight,

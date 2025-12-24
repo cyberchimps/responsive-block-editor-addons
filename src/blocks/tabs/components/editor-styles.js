@@ -121,6 +121,8 @@ function EditorStyles(props) {
     alignTabsM,
     gradient,
     gradientHover,
+    tabTitleTextDecoration,
+    tabContentTextDecoration,
   } = props.attributes;
 
 
@@ -254,6 +256,7 @@ function EditorStyles(props) {
 			"color": tabTitleTypographyColor,
       "font-family": tabTitleFontFamily,
       "text-transform": tabTitleTextTransform,
+      "text-decoration": tabTitleTextDecoration,
       "font-style": tabTitleFontStyle,
 			"font-weight": tabTitleFontWeight,
 			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
@@ -266,6 +269,7 @@ function EditorStyles(props) {
 			"color": tabContentTypographyColor,
       "font-family": tabContentFontFamily,
       "text-transform": tabContentTextTransform,
+      "text-decoration": tabContentTextDecoration,
       "font-style": tabContentFontStyle,
 			"font-weight": tabContentFontWeight,
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),

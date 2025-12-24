@@ -728,6 +728,12 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  layoverHeadingTextDecoration: {
+    type: "string",
+  },
+  captionTextDecoration: {
+    type: "string",
+  },
 };
 
 export default attributes;

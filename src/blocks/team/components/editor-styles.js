@@ -194,6 +194,9 @@ function EditorStyles(props) {
     descriptionFontStyle,
     gradient,
     gradientOverlay,
+    titleTextDecoration,
+    designationTextDecoration,
+    descriptionTextDecoration,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -299,6 +302,7 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
 
@@ -310,6 +314,7 @@ function EditorStyles(props) {
       "line-height": designationLineHeight,
       "margin-bottom": generateCSSUnit(designationBottomSpacing, "px"),
       "text-transform": designationTextTransform,
+      "text-decoration": designationTextDecoration,
       "font-style": designationFontStyle,
     },
 
@@ -321,6 +326,7 @@ function EditorStyles(props) {
       "line-height": descriptionLineHeight,
       "margin-bottom": generateCSSUnit(descriptionBottomSpacing, "px"),
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
     },
 

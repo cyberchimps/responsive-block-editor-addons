@@ -259,6 +259,11 @@ function EditorStyles(props) {
     backButtonFontStyle,
     gradientButton,
     gradientButtonH,
+    backButtonTextDecoration,
+    backSubtitleTextDecoration,
+    backTitleTextDecoration,
+    frontSubtitleTextDecoration,
+    frontTitleTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -394,6 +399,7 @@ function EditorStyles(props) {
       )}`,
       "color": frontTitleTypographyColor,
       "text-transform": frontTitleTextTransform,
+      "text-decoration": frontTitleTextDecoration,
       "font-style": frontTitleFontStyle,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
@@ -437,6 +443,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "color": frontTitleTypographyColor,
       "text-transform": frontTitleTextTransform,
+      "text-decoration": frontTitleTextDecoration,
       "font-style": frontTitleFontStyle,
       "font-family": frontTitleFontFamily,
       "font-size": generateCSSUnit(frontTitleFontSize, "px"),
@@ -446,6 +453,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
       "color": frontTitleTypographyColor,
       "text-transform": frontSubtitleTextTransform,
+      "text-decoration": frontSubtitleTextDecoration,
       "font-style": frontSubtitleFontStyle,
       "font-family": frontSubtitleFontFamily,
       "font-size": generateCSSUnit(frontSubtitleFontSize, "px"),
@@ -464,6 +472,7 @@ function EditorStyles(props) {
       )}`,
       "color": backTitleTypographyColor,
       "text-transform": backTitleTextTransform,
+      "text-decoration": backTitleTextDecoration,
       "font-style": backTitleFontStyle,
       transform: flipStyleBack,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
@@ -498,11 +507,13 @@ function EditorStyles(props) {
       "font-weight": backTitleFontWeight,
       "line-height": backTitleLineHeight,
       "text-transform": backTitleTextTransform,
+      "text-decoration": backTitleTextDecoration,
       "font-style": backTitleFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
       color: backTitleTypographyColor,
       "text-transform": backSubtitleTextTransform,
+      "text-decoration": backSubtitleTextDecoration,
       "font-style": backSubtitleFontStyle,
       "font-family": backSubtitleFontFamily,
       "font-size": generateCSSUnit(backSubtitleFontSize, "px"),
@@ -552,6 +563,7 @@ function EditorStyles(props) {
       "font-weight": backButtonFontWeight,
       "line-height": backButtonLineHeight,
       "text-transform": backButtonTextTransform,
+      "text-decoration": backButtonTextDecoration,
       "font-style": backButtonFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {

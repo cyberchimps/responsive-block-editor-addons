@@ -416,6 +416,18 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  priceTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

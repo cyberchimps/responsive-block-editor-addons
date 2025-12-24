@@ -160,6 +160,8 @@ function EditorStyles(props) {
     captionRightMarginMobile,
     layoverHeadingFontStyle,
     captionFontStyle,
+    layoverHeadingTextDecoration,
+    captionTextDecoration,
   } = props.attributes;
   var base_url = window.location.origin;
   var filtervalue =
@@ -308,6 +310,7 @@ function EditorStyles(props) {
       "line-height":layoverHeadingLineHeight,
       "letter-spacing":generateCSSUnit(layoverHeadingLetterSpacing,"px"),
       "text-transform": layoverHeadingTextTransform,
+      "text-decoration": layoverHeadingTextDecoration,
       "color":layoverHeadingTypographyColor,
       "margin-top":generateCSSUnit(layoverHeadingtopmargin,"px"),
       "margin-bottom":generateCSSUnit(layoverHeadingbottommargin,"px"),
@@ -324,6 +327,7 @@ function EditorStyles(props) {
       "line-height": captionLineHeight,
       "letter-spacing": generateCSSUnit(captionLetterSpacing, "px"),
       "text-transform": captionTextTransform,
+      "text-decoration": captionTextDecoration,
       "color": captionTypographyColor,
       "margin-top": generateCSSUnit(captionTopMargin, "px"),
       "margin-bottom": generateCSSUnit(captionBottomMargin, "px"),

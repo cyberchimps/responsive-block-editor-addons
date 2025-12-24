@@ -116,6 +116,10 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  overlayTextTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

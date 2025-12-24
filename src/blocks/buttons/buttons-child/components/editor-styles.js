@@ -106,6 +106,7 @@ function EditorStyles(props) {
     hideWidgetTablet,
     hideWidgetMobile,
     gradient,
+    buttonTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -257,6 +258,7 @@ function EditorStyles(props) {
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
       "text-transform": buttonTextTransform,
+      "text-decoration": buttonTextDecoration,
       "font-style": buttonFontStyle,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div": {

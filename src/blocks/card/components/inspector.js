@@ -516,6 +516,9 @@ export default class Inspector extends Component {
         inheritFromTheme,
         inheritFromThemesaved,
         inheritFromThemeLocalTimestamp,
+        contentTextDecoration,
+        subTextDecoration,
+        headingTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1461,9 +1464,11 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: headingBottomSpacingTablet,
                   transform: headingTextTransform,
                   fontstyle: headingFontStyle,
+                  textDecoration: headingTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -1486,9 +1491,11 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: subBottomSpacingTablet,
                   transform: subTextTransform,
                   fontstyle: subFontStyle,
+                  textDecoration: subTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1510,9 +1517,11 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: contentBottomSpacingTablet,
                   transform: contentTextTransform,
                   fontstyle: contentFontStyle,
+                  textDecoration: contentTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />

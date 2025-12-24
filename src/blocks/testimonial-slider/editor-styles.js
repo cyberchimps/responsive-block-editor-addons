@@ -178,6 +178,9 @@ function EditorStyles(props) {
   nameFontStyle,
   companyTextTransform,
   companyFontStyle,
+  descTextDecoration,
+  nameTextDecoration,
+  companyTextDecoration,
   } = props.attributes;
 
   var img_align = "center";
@@ -318,6 +321,7 @@ function EditorStyles(props) {
       color: nameTypographyColor,
       "margin-bottom": generateCSSUnit(nameBottomSpacing, "px"),
       "text-transform": nameTextTransform,
+      "text-decoration": nameTextDecoration,
       "font-style": nameFontStyle,
     },
     // Title Style
@@ -328,6 +332,7 @@ function EditorStyles(props) {
       "line-height": generateCSSUnit(companyLineHeight, "px"),
       color: companyTypographyColor,
       "text-transform": companyTextTransform,
+      "text-decoration": companyTextDecoration,
       "font-style": companyFontStyle,
     },
     // Description Style
@@ -339,6 +344,7 @@ function EditorStyles(props) {
       color: descTypographyColor,
       "margin-bottom": generateCSSUnit(descBottomSpacing, "px"),
       "text-transform": descTextTransform,
+      "text-decoration": descTextDecoration,
       "font-style": descFontStyle,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {

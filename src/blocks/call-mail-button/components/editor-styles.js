@@ -64,6 +64,7 @@
      textTextTransform,
      textFontStyle,
      inheritFromTheme,
+     textTextDecoration
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -113,6 +114,7 @@
       "font-weight": inheritFromTheme ? '' : textFontWeight,
       "line-height": inheritFromTheme ? '' : textLineHeight,
       "text-transform": textTextTransform,
+      "text-decoration": textTextDecoration,
       "font-style": textFontStyle,
     },
     " .responsive-block-editor-addons-call-mail-button-icon": {

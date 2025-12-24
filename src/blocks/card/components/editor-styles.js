@@ -247,6 +247,9 @@ function EditorStyles(props) {
     inheritFromTheme,
     gradient,
     gradientButton,
+    contentTextDecoration,
+    subTextDecoration,
+    headingTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -458,6 +461,7 @@ function EditorStyles(props) {
       "font-weight": headingFontWeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
       "font-style": headingFontStyle,
     },
 
@@ -470,6 +474,7 @@ function EditorStyles(props) {
       "font-family": subFontFamily,
       "font-size": generateCSSUnit(subFontSize, "px"),
       "text-transform": subTextTransform,
+      "text-decoration": subTextDecoration,
       "font-style": subFontStyle,
     },
 
@@ -482,6 +487,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
     },
 

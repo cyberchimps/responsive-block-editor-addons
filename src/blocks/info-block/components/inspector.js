@@ -452,6 +452,9 @@ export default class Inspector extends Component {
         ressubHeadTextTransform,
         ressubHeadFontStyle,
         hasImagePositionMigrated,
+        ctaTextTextDecoration,
+        resheadTextDecoration,
+        ressubHeadTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -1836,10 +1839,12 @@ export default class Inspector extends Component {
               bottomSpacingTablet: ctaTextBottomSpacingTablet,
               transform: ctaTextTextTransform,
               fontstyle: ctaTextFontStyle,
+              textDecoration: ctaTextTextDecoration,
 							}}
 							showLetterSpacing={false}
               showColorControl={true}
               showTextBottomSpacing={true}
+              showTextDecoration={true}
 							setAttributes={setAttributes}
 							{...this.props}
 					  	/>
@@ -1861,10 +1866,12 @@ export default class Inspector extends Component {
                 bottomSpacingTablet: resheadBottomSpacingTablet,
                 transform: resheadTextTransform,
                 fontstyle: resheadFontStyle,
+                textDecoration: resheadTextDecoration,
 							}}
 							showLetterSpacing = { false }
               showColorControl={true}
               showTextBottomSpacing={true}
+              showTextDecoration={true}
 							setAttributes={ setAttributes }
 							{...this.props}
 						/>
@@ -1886,10 +1893,12 @@ export default class Inspector extends Component {
                 bottomSpacingTablet: ressubHeadBottomSpacingTablet,
                 transform: ressubHeadTextTransform,
                 fontstyle: ressubHeadFontStyle,
+                textDecoration: ressubHeadTextDecoration,
 							}}
 							showLetterSpacing = { false }
               showColorControl={true}
               showTextBottomSpacing={true}
+              showTextDecoration={true}
 							setAttributes={ setAttributes }
 							{...this.props}
 						/>

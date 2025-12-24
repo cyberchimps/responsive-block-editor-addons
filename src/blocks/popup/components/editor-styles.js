@@ -172,6 +172,8 @@ function EditorStyles(props) {
     popupTextTypographyTextTransform,
     popupTextTypographyFontStyle,
     inheritFromTheme,
+    popupButtonTypographyTextDecoration,
+    popupTextTypographyTextDecoration,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -341,6 +343,7 @@ function EditorStyles(props) {
       "border-bottom-right-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonBottomRadius, "px"),
       "border-bottom-left-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonLeftRadius, "px"),
       "text-transform": inheritFromTheme ? '' : popupButtonTypographyTextTransform,
+      "text-decoration": inheritFromTheme ? '' : popupButtonTypographyTextDecoration,
       "font-style": inheritFromTheme ? '' : popupButtonTypographyFontStyle,
     },
     " .responsive-block-editor-addons-popup-button-trigger:hover": {

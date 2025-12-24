@@ -265,6 +265,10 @@ export default class Inspector extends Component {
       excerptFontStyle,
       ctaTextTransform,
       ctaFontStyle,
+      titleTextDecoration,
+      metaTextDecoration,
+      excerptTextDecoration,
+      ctaTextDecoration,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -932,9 +936,11 @@ export default class Inspector extends Component {
                   color: titleTypographyColor,
                   transform: titleTextTransform,
                   fontstyle: titleFontStyle,
+                  textDecoration: titleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -951,9 +957,11 @@ export default class Inspector extends Component {
                   color: metaTypographyColor,
                   transform: metaTextTransform,
                   fontstyle: metaFontStyle,
+                  textDecoration: metaTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -973,9 +981,11 @@ export default class Inspector extends Component {
                   color: excerptTypographyColor,
                   transform: excerptTextTransform,
                   fontstyle: excerptFontStyle,
+                  textDecoration: excerptTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -991,8 +1001,10 @@ export default class Inspector extends Component {
                   height: ctaLineHeight,
                   transform: ctaTextTransform,
                   fontstyle: ctaFontStyle,
+                  textDecoration: ctaTextDecoration,
                 }}
                 showLetterSpacing={false}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />

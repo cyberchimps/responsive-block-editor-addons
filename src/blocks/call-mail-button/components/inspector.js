@@ -269,6 +269,7 @@ export default class Inspector extends Component {
         inheritFromTheme,
         inheritFromThemesaved,
         inheritFromThemeLocalTimestamp,
+        textTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -844,9 +845,11 @@ export default class Inspector extends Component {
 								emptyColorControl: emptyColorControl,
                 transform: textTextTransform,
                 fontstyle: textFontStyle,
+                textDecoration: textTextDecoration,
               }}
               showLetterSpacing={false}
               showColorWithHoverControlTab={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />

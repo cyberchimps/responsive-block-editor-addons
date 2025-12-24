@@ -804,5 +804,17 @@ const attributes = {
   gradientButtonH: {
     type: "string",
   },
+  ctaTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

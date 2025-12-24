@@ -238,6 +238,9 @@ function EditorStyles(props) {
       gradient,
       gradientButton,
       gradientButtonH,
+      ctaTextDecoration,
+      descTextDecoration,
+      titleTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -314,6 +317,7 @@ function EditorStyles(props) {
         " " +
         buttonBoxShadowPositionCSS,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       "font-style": ctaFontStyle,
     },
 
@@ -448,6 +452,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
@@ -458,6 +463,7 @@ function EditorStyles(props) {
       color: descTypographyColor,
       "line-height": descLineHeight,
       "text-transform": descTextTransform,
+      "text-decoration": descTextDecoration,
       "font-style": descFontStyle,
       "font-weight": descFontWeight,
       "font-size": generateCSSUnit(descFontSize, "px"),

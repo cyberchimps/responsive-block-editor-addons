@@ -331,6 +331,14 @@ const attributes = {
         type: "boolean",
         default: false, 
     },
+    titleTextDecoration: {
+        type: "string",
+        default: "",
+    },
+    contentTextDecoration: {
+        type: "string",
+        default: "",
+    },
 }
 
 export default attributes;

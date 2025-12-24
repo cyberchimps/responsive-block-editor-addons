@@ -103,6 +103,9 @@ function EditorStyles(props) {
   descriptionFontStyle,
   priceTextTransform,
   priceFontStyle,
+  titleTextDecoration,
+  descriptionTextDecoration,
+  priceTextDecoration,
   } = props.attributes;
 
   var align = contentAlign;
@@ -145,6 +148,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-title": {
       "color": titleTypographyColor,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
@@ -155,6 +159,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-description": {
       "color": descriptionTypographyColor,
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
       "line-height": descriptionLineHeight,
       "font-weight": descriptionFontWeight,
@@ -164,6 +169,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-price-wrap": {
       "color": priceTypographyColor,
       "text-transform": priceTextTransform,
+      "text-decoration": priceTextDecoration,
       "font-style": priceFontStyle,
       "line-height": priceLineHeight,
       "font-weight": priceFontWeight,

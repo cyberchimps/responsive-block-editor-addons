@@ -194,6 +194,9 @@ function EditorStyles(props) {
   inheritFromTheme,
   gradientButton,
   gradient,
+  ctaTitleTextDecoration,
+  ctaTextTextDecoration,
+  buttonTextTextDecoration,
   } = props.attributes;
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
@@ -253,6 +256,7 @@ function EditorStyles(props) {
       "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
+      "text-decoration": buttonTextTextDecoration,
       "font-style": buttonTextFontStyle,
     },
 
@@ -347,6 +351,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(ctaTitleBottomSpacing, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
       "text-transform": ctaTitleTextTransform,
+      "text-decoration": ctaTitleTextDecoration,
       "font-style": ctaTitleFontStyle,
     },
 
@@ -358,6 +363,7 @@ function EditorStyles(props) {
       "font-weight": contentFontWeight !== 'empty' && ctaTextFontWeight === "400" ? contentFontWeight : ctaTextFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(ctaTextBottomSpacing, "px"),
       "text-transform": ctaTextTextTransform,
+      "text-decoration": ctaTextTextDecoration,
       "font-style": ctaTextFontStyle,
     },
 
@@ -390,6 +396,7 @@ function EditorStyles(props) {
       "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": inheritFromTheme ? '' : buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
+      "text-decoration": buttonTextTextDecoration,
       "font-style": buttonTextFontStyle,
     }
   };

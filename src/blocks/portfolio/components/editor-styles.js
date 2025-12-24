@@ -73,6 +73,7 @@ function EditorStyles(props) {
     blockLeftRadiusMobile,
     overlayTextTypographyColor,
     overlayTextFontStyle,
+    overlayTextTextDecoration
   } = props.attributes;
 
 
@@ -157,6 +158,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(overlayTextFontSize, "px"),
       "font-weight": overlayTextFontWeight,
       "text-transform": overlayTextTextTransform,
+      "text-decoration": overlayTextTextDecoration,
       "font-style": overlayTextFontStyle,
       "margin-left": generateCSSUnit(horizontalSpacing, "px"),
       "margin-right": generateCSSUnit(horizontalSpacing, "px"),

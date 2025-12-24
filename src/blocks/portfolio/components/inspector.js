@@ -474,9 +474,11 @@ export default class Inspector extends Component {
                 transform: attributes.overlayTextTextTransform,
                 fontstyle: attributes.overlayTextFontStyle,
                 color: attributes.overlayTextTypographyColor,
+                textDecoration: attributes.overlayTextTextDecoration,
                 }}
                 showLetterSpacing = { false }
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={ setAttributes }
                 {...this.props}
               />  
