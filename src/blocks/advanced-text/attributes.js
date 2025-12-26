@@ -439,7 +439,7 @@ const attributes = {
     type: "string",
     default: "none",
   },
-  textDecoration: {
+  textTextDecoration: {
     type: "string",
     default: "none",
   },

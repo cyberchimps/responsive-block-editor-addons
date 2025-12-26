@@ -99,7 +99,7 @@ function EditorStyles(props) {
     textFontStyle,
     titleTextDecoration,
     subtitleTextDecoration,
-    textDecoration,
+    textTextDecoration,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
@@ -165,7 +165,7 @@ function EditorStyles(props) {
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
       "text-transform": textTextTransform,
-      "text-decoration": textDecoration,
+      "text-decoration": textTextDecoration,
       "font-style": textFontStyle,
     },
   };

@@ -2,12 +2,6 @@
  * Editor styles for the admin
  */
 
-.responsive-block-editor-addons-block-post-timeline {
-  .responsive-block-editor-addons-block-post-timeline-title a {
-    text-decoration: none;
-  }
-}
-
 .responsive-block-editor-addons-hide-query
   .components-base-control:nth-of-type(3) {
   display: none;
@@ -93,7 +87,6 @@
   .edit-post-visual-editor
   .responsive-block-editor-addons-timeline__widget
   a {
-  text-decoration: none;
   color: inherit;
 }
 #wpwrap

@@ -397,10 +397,6 @@ function EditorStyles(props) {
         frontBackgroundColor || "#ffffff",
         coloropacity
       )}`,
-      "color": frontTitleTypographyColor,
-      "text-transform": frontTitleTextTransform,
-      "text-decoration": frontTitleTextDecoration,
-      "font-style": frontTitleFontStyle,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
@@ -470,10 +466,6 @@ function EditorStyles(props) {
         backBackgroundColor || "#ffffff",
         backcoloropacity
       )}`,
-      "color": backTitleTypographyColor,
-      "text-transform": backTitleTextTransform,
-      "text-decoration": backTitleTextDecoration,
-      "font-style": backTitleFontStyle,
       transform: flipStyleBack,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.

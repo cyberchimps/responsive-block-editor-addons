@@ -326,6 +326,7 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(contentBottomPadding, "px"),
       "padding-left": generateCSSUnit(contentLeftPadding, "px"),
       "padding-right": generateCSSUnit(contentRightPadding, "px"),
+      "text-decoration": contentTextDecoration,
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "border-style": parentBlockBorderStyle,

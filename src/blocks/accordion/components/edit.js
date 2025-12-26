@@ -928,7 +928,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               color: contentTypographyColor,
               transform: contentTextTransform,
               fontstyle: contentFontStyle,
-              TextDecoration: contentTextDecoration,
+              textDecoration: contentTextDecoration,
             }}
 			    	showLetterSpacing = { false }
             showColorControl = { true }

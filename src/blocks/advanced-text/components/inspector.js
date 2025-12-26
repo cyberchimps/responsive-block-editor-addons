@@ -160,7 +160,7 @@ export default class Inspector extends Component {
         textFontStyle,
         titleTextDecoration,
         subtitleTextDecoration,
-        textDecoration,
+        textTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -697,7 +697,7 @@ export default class Inspector extends Component {
                   color: textTypographyColor,
                   transform: textTextTransform,
                   fontstyle: textFontStyle,
-                  textDecoration: textDecoration,
+                  textDecoration: textTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}

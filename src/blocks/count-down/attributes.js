@@ -737,7 +737,7 @@ const attributes = {
     type: "string",
     default: "",
   },
-  digitFontDecoration: {
+  digitTextDecoration: {
     type: "string",
     default: "",
   },

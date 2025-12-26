@@ -539,7 +539,7 @@ const attributes = {
     type: "string",
     default: "",
   },
-  dateFontDecoration: {
+  dateTextDecoration: {
     type: "string",
     default: "",
   },

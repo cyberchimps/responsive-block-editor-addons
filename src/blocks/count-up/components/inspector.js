@@ -193,7 +193,7 @@ export default class Inspector extends Component {
     contentFontStyle,
     contentTextDecoration,
     headingTextDecoration,
-    dateFontDecoration,
+    dateTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -847,7 +847,7 @@ export default class Inspector extends Component {
 					height: dateLineHeight,
           color: dateTypographyColor,
           fontstyle: dateFontStyle,
-          textDecoration: dateFontDecoration,
+          textDecoration: dateTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}

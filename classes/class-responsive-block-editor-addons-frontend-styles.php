@@ -1333,7 +1333,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['numSpace'], 'px' ),
 					'text-transform'=> $attr['dateTextTransform'],
 					'font-style'=> $attr['dateFontStyle'],
-					'text-decoration'=> $attr['dateFontDecoration'],
+					'text-decoration'=> $attr['dateTextDecoration'],
 				),
 				' .responsive-count-item__features' => array(
 					'color'         => $attr['contentTypographyColor'],
@@ -1343,7 +1343,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'   => $attr['contentFontFamily'],
 					'margin-bottom' => self::get_css_value( $attr['contentSpace'], 'px' ),
 					'text-transform'=> $attr['contentTextTransform'],
-					'text-transform'=> $attr['contentTextDecoration'],
+					'text-decoration'=> $attr['contentTextDecoration'],
 					'font-style'=> $attr['contentFontStyle'],
 				),
 			);
@@ -2461,6 +2461,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['contentBottomPadding'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['contentRightPadding'], 'px' ),
+					'text-decoration' => $attr['contentTextDecoration'],
 				),
 				' .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles' => array(
 					'flex-direction' => $attr['iconAlign'],
@@ -4343,7 +4344,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'   => 'empty' !== $attr['headingFontWeight'] && '400' === $attr['ctaTitleFontWeight'] ? $attr['headingFontWeight'] : $attr['ctaTitleFontWeight'], // For compatibility with v1.3.2.
 					'margin-bottom' => self::get_css_value( $attr['ctaTitleBottomSpacing'], 'px' ),
 					'text-transform'=> $attr['ctaTitleTextTransform'],
-					'text-transform'=> $attr['ctaTitleTextDecoration'],
+					'text-decoration'=> $attr['ctaTitleTextDecoration'],
 					'font-style'    => $attr['ctaTitleFontStyle'],
 				),
 
@@ -4413,7 +4414,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'   => 'empty' !== $attr['contentFontWeight'] && '400' === $attr['ctaTextFontWeight'] ? $attr['contentFontWeight'] : $attr['ctaTextFontWeight'], // For compatibility with v1.3.2.
 					'margin-bottom' => self::get_css_value( $attr['ctaTextBottomSpacing'], 'px' ),
 					'text-transform'=> $attr['ctaTextTextTransform'],
-					'text-transform'=> $attr['ctaTextTextDecoration'],
+					'text-decoration'=> $attr['ctaTextTextDecoration'],
 					'font-style'    => $attr['ctaTextFontStyle'],
 				),
 
@@ -5083,7 +5084,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'   => $attr['headingFontWeight'],
 					'font-size'     => self::get_css_value( $attr['headingFontSize'], 'px' ),
 					'text-transform'=> $attr['headingTextTransform'],
-					'text-transform'=> $attr['headingTextDecoration'],
+					'text-decoration'=> $attr['headingTextDecoration'],
 					'font-style'    => $attr['headingFontStyle'],
 				),
 
@@ -5096,7 +5097,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'   => $attr['subFontFamily'],
 					'font-size'     => self::get_css_value( $attr['subFontSize'], 'px' ),
 					'text-transform'=> $attr['subTextTransform'],
-					'text-transform'=> $attr['subTextDecoration'],
+					'text-decoration'=> $attr['subTextDecoration'],
 					'font-style'    => $attr['subFontStyle'],
 
 				),
@@ -5110,7 +5111,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['contentFontSize'], 'px' ),
 					'font-family'   => $attr['contentFontFamily'],
 					'text-transform'=> $attr['contentTextTransform'],
-					'text-transform'=> $attr['contentTextDecoration'],
+					'text-decoration'=> $attr['contentTextDecoration'],
 					'font-style'    => $attr['contentFontStyle'],
 				),
 
@@ -6498,10 +6499,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'          => $attr['backgroundRepeat'],
 					'background-size'            => $attr['backgroundSize'],
 					'background-color'           => self::hex_to_rgb( $attr['frontBackgroundColor'], $coloropacity ),
-					'color'                      => $attr['frontTitleTypographyColor'],
-					'text-transform'             => $attr['frontTitleTextTransform'],
-					'text-decoration'             => $attr['frontTitleTextDecoration'],
-					'font-style'                 => $attr['frontTitleFontStyle'],
 					'border-color'               => 'empty' !== $attr['borderColor'] && ! $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
 					'border-style'               => 'empty' !== $attr['borderStyle'] && 'none' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
 					'border-width'               => 999 !== $attr['borderWidth'] && 2 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
@@ -6568,10 +6565,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'          => $attr['backBackgroundRepeat'],
 					'background-size'            => $attr['backBackgroundSize'],
 					'background-color'           => self::hex_to_rgb( $attr['backBackgroundColor'], $backcoloropacity ),
-					'color'                      => $attr['backTitleTypographyColor'],
-					'text-transform'             => $attr['backTitleTextTransform'],
-					'text-decoration'             => $attr['backTitleTextDecoration'],
-					'font-style'                 => $attr['backTitleFontStyle'],
 					'transform'                  => $flip_style_back,
 					'border-color'               => 'empty' !== $attr['borderColor'] && ! $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
 					'border-style'               => 'empty' !== $attr['borderStyle'] && 'none' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
@@ -14810,7 +14803,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentFontStyle'              => '',
 				'contentTextDecoration'			=> '',
 				'headingTextDecoration'			=> '',
-				'dateFontDecoration'			=> '',
+				'dateTextDecoration'			=> '',
 			);
 		}
 
@@ -15127,7 +15120,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'justify-content' => $attr['displayInline'] ? 'flex-end' : null,
 					"text-transform"  => $attr['digitTextTransform'],
       				"font-style"      => $attr['digitFontStyle'],
-					"text-decoration" => $attr['digitFontDecoration'],
+					"text-decoration" => $attr['digitTextDecoration'],
 				),
 				' .responsive-block-editor-addons-countdown-label' => array(
 					'font-family'     => $attr['labelFontFamily'],
@@ -15517,7 +15510,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'labelTextTransform'           => '',
 				'labelFontStyle'               => '',
 				'labelTextDecoration'		   => '',
-        		'digitFontDecoration'		   => '',
+        		'digitTextDecoration'		   => '',
 			);
 		}
 
@@ -16971,7 +16964,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight' => $flag ? '' : $attr['textFontWeight'],
 					'line-height' => $flag ? '' : $attr['textLineHeight'],
 					'text-transform' => $flag ? '' : $attr['textTextTransform'],
-					'text-transform' => $flag ? '' : $attr['textTextDecoration'],
+					'text-decoration'=> $flag ? '' : $attr['textTextDecoration'],
 					'font-style' => $flag ? '' : $attr['textFontStyle'],
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon' => array(
@@ -19951,7 +19944,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'   => $attr['textFontWeight'],
 					'line-height'   => $attr['textLineHeight'],
 					'text-transform' => $attr['textTextTransform'],
-					'text-decoration' => $attr['textDecoration'],
+					'text-decoration' => $attr['textTextDecoration'],
 					'font-style'    => $attr['textFontStyle'],
 				),
 			);
@@ -20160,7 +20153,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textFontStyle'                => '',
 				'titleTextDecoration'		   => '',
         		'subtitleTextDecoration'	   => '',
-        		'textDecoration'			   => '',
+        		'textTextDecoration'		   => '',
 			);
 		}
 
@@ -20392,7 +20385,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'    => $attr['titleFontWeight'],
 					'font-size'      => self::get_css_value( $attr['titleFontSize'], 'px' ),
 					'text-transform' => $attr['titleTextTransform'],
-					'text-transform' => $attr['titleTextDecoration'],
+					'text-decoration'=> $attr['titleTextDecoration'],
 					'font-style'     => $attr['titleFontStyle'],
 					'font-family'    => $attr['titleFontFamily'],
 					'margin-bottom'  => self::get_css_value( $attr['titleSpace'], 'px' ),
@@ -20401,7 +20394,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'          => $attr['descTypographyColor'],
 					'line-height'    => $attr['descLineHeight'],
 					'text-transform' => $attr['descTextTransform'],
-					'text-transform' => $attr['descTextDecoration'],
+					'text-decoration' => $attr['descTextDecoration'],
 					'font-style'     => $attr['descFontStyle'],
 					'font-weight'    => $attr['descFontWeight'],
 					'font-size'      => self::get_css_value( $attr['descFontSize'], 'px' ),
@@ -20444,7 +20437,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$button_box_shadow_position_css,
 					'text-transform'             => $attr['ctaTextTransform'],
-					'text-transform'             => $attr['ctaTextDecoration'],
+					'text-decoration'            => $attr['ctaTextDecoration'],
 					'font-style'                 => $attr['ctaFontStyle'],
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item__button:hover' => array(
