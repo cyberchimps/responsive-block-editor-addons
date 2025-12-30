@@ -351,6 +351,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-grid-author a": {
       color: metaTypographyColor,
+      "text-decoration": metaTextDecoration,
+    },
+    " .responsive-block-editor-addons-block-post-grid-byline time": {
+      "text-decoration": metaTextDecoration,
     },
     " .responsive-block-editor-addons-block-post-grid-byline": {
       color: metaTypographyColor,
@@ -358,7 +362,7 @@ function EditorStyles(props) {
       "font-weight": metaFontWeight,
       "line-height": metaLineHeight,
       "text-transform": metaTextTransform,
-      "text-Decoration": metaTextDecoration,
+      "text-decoration": metaTextDecoration,
       "font-style": metaFontStyle,
       "font-size": generateCSSUnit(metaFontSize, "px"),
       "margin-bottom": generateCSSUnit(metaBottomSpacing, "px"),

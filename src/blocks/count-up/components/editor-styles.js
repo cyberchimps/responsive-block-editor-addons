@@ -126,7 +126,7 @@ function EditorStyles(props) {
     contentFontStyle,
     contentTextDecoration,
     headingTextDecoration,
-    dateFontDecoration,
+    dateTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -201,7 +201,7 @@ function EditorStyles(props) {
       "color": dateTypographyColor,
       "text-transform": dateTextTransform,
       "font-style": dateFontStyle,
-      "text-decoration": dateFontDecoration,
+      "text-decoration": dateTextDecoration,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),

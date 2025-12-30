@@ -1274,7 +1274,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type' => 'string',
 					'default' => '',
 				),
-				'contentTextDecoration' => array(
+				'continueTextDecoration' => array(
 					'type' => 'string',
 					'default' => '',
 				),

@@ -459,7 +459,7 @@ const attributes = {
   },
   buttonTextDecoration: {
   type: "string",
-  default: "",
+  default: "none",
   },
 };
 
