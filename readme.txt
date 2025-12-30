@@ -116,8 +116,8 @@ Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordp
 	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/display-conditions-extension/">Display Conditions</a>: The Display Conditions feature gives you the ability to specify when a specific block, section, or element is shown and to whom on your website.</li>
 	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/animations-extension/">Animations</a>: Add life and interactivity with Responsive blocks fade, slide, zoom, flip, and more. Free users get a set of easy-to-apply animations for any block.</li>
 	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/responsive-conditions-extension/">Responsive Conditions</a>: Control which block is visible on all devices. Hide blocks on mobile and tablet if not necessary.</li>
-	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Advanced block presets</a>: Not sure how to design blocks? Our expert designers created high-converting, visually appealing presets ready to use.</li>
-	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/">Custom CSS</a>: Apply custom CSS with Responsive Blocks by selecting the block and adding your code.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/responsive-blocks-presets/">Advanced block presets</a>: Not sure how to design blocks? Our expert designers created high-converting, visually appealing presets ready to use.</li>
+	<li><a href = "https://cyberchimps.com/docs/responsive-blocks/general/add-custom-css-with-responsive-blocks/">Custom CSS</a>: Apply custom CSS with Responsive Blocks by selecting the block and adding your code.</li>
 </ol>
 
 ==Compatible with Responsive and other Gutenberg Themes==
