@@ -32,12 +32,34 @@ function responsive_block_editor_addons_extract_headings_from_content( $content 
 			// RBEA Advanced Heading block
 			if ( 'responsive-block-editor-addons/advanced-heading' === $block['blockName'] ) {
 				$level   = isset( $block['attrs']['headingLevel'] ) ? $block['attrs']['headingLevel'] : 2;
-				$content = isset( $block['attrs']['headingTitle'] ) ? wp_strip_all_tags( $block['attrs']['headingTitle'] ) : wp_strip_all_tags( $block['innerHTML'] );
+				
+				// Get heading title - prefer attribute, otherwise extract from innerHTML
+				$content = '';
+				if ( isset( $block['attrs']['headingTitle'] ) && ! empty( trim( $block['attrs']['headingTitle'] ) ) ) {
+					$content = wp_strip_all_tags( $block['attrs']['headingTitle'] );
+				} elseif ( ! empty( $block['innerHTML'] ) ) {
+					// Extract only the heading tag content (h1-h6), not the description
+					preg_match( '/<h[1-6][^>]*class="responsive-heading-title-text"[^>]*>(.*?)<\/h[1-6]>/is', $block['innerHTML'], $matches );
+					if ( ! empty( $matches[1] ) ) {
+						$content = wp_strip_all_tags( $matches[1] );
+					}
+				}
+				
 				if ( ! empty( trim( $content ) ) ) {
+					// Use headingId (on the heading element) first, then anchor (on wrapper), then generate
+					$anchor = '';
+					if ( ! empty( $block['attrs']['headingId'] ) ) {
+						$anchor = $block['attrs']['headingId'];
+					} elseif ( ! empty( $block['attrs']['anchor'] ) ) {
+						$anchor = $block['attrs']['anchor'];
+					} else {
+						$anchor = sanitize_title( $content ) ?: 'toc-' . uniqid();
+					}
+					
 					$headings[] = array(
 						'level'   => $level,
 						'content' => $content,
-						'anchor'  => sanitize_title( $content ) ?: 'toc-' . uniqid(),
+						'anchor'  => $anchor,
 					);
 				}
 			}
