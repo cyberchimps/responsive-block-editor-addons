@@ -1,13 +1,17 @@
 import { __ } from '@wordpress/i18n';
-import { ColorPicker } from '@wordpress/components';
+import { ColorPicker, ColorPalette } from '@wordpress/components';
 import { IconButton } from '@wordpress/components';
 import { useState, useEffect, useRef } from '@wordpress/element';
+import { useSetting } from '@wordpress/block-editor';
 
 const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popupRef = useRef(null);
   const popupSizeRef = useRef(null);
   const [popupHeight, setPopupHeight] = useState(0);
+  
+  // Get theme colors from WordPress settings
+  const colors = useSetting('color.palette') || [];
 
     
   useEffect(() => {
@@ -76,12 +80,26 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
         {isOpen && (
             <div className="rbea-color-control__popup">
               <div ref={popupSizeRef}>
+                {/* Color Picker */}
                 <ColorPicker
                   color={colorValue}
                   onChangeComplete={(newColor) => {
                     onChange(newColor.hex);
                   }}
                 />
+                
+                {colors.length > 0 && (
+                  <div className="rbea-color-palette-wrapper" style={{ marginTop: '16px' }}>
+                    <ColorPalette
+                      colors={colors}
+                      value={colorValue}
+                      onChange={(newColor) => {
+                        onChange(newColor);
+                      }}
+                      disableCustomColors={true}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           )}

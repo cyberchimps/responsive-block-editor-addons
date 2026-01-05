@@ -47,4 +47,11 @@
             height: 30px;
             cursor: pointer;
         }
+
+        .rbea-color-palette-wrapper {
+            // Hide the preview/clear button area at the top of ColorPalette
+            .components-color-palette__custom-clear-wrapper {
+                display: none;
+            }
+        }
     }
