@@ -80,7 +80,6 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
         {isOpen && (
             <div className="rbea-color-control__popup">
               <div ref={popupSizeRef}>
-                {/* Color Picker */}
                 <ColorPicker
                   color={colorValue}
                   onChangeComplete={(newColor) => {
@@ -89,7 +88,7 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
                 />
                 
                 {colors.length > 0 && (
-                  <div className="rbea-color-palette-wrapper" style={{ marginTop: '16px' }}>
+                  <div className="rbea-color-palette-wrapper">
                     <ColorPalette
                       colors={colors}
                       value={colorValue}
