@@ -1620,10 +1620,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
 					'height'  => self::get_css_value( $attr['quoteSize'], 'px' ),
 					'width'   => self::get_css_value( $attr['quoteSize'], 'px' ),
-					'fill'    => $attr['quoteColor'],
 					'left'    => self::get_css_value( $attr['quoteHposition'], 'px' ),
 					'top'     => self::get_css_value( $attr['quoteVposition'], 'px' ),
 					'opacity' => $quoteopacity,
+				),
+				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote svg' => array(
+					'fill'    => $attr['quoteColor'],
 				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'text-align'  => $attr['quoteAlign'],
