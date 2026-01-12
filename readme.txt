@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.9 - 12th January 2025 =
+* Improvement – Enhanced the RBA Color Picker to display colors from the theme color palette.
 
 = 2.1.8 - 30th December 2025 =
 * New – Introduced Text Decoration styling options across all blocks for enhanced typography control.

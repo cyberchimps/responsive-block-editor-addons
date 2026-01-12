@@ -1625,7 +1625,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'opacity' => $quoteopacity,
 				),
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote svg' => array(
-					'fill'    => $attr['quoteColor'],
+					'fill'    => ! empty( $attr['quoteColor'] ) ? $attr['quoteColor'] : 'rgba(129, 141, 165, 0.32)',
 				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'text-align'  => $attr['quoteAlign'],
@@ -25108,6 +25108,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 * @param string $alpha  opacity.
 		 */
 		public static function hex_to_rgb( $hex, $alpha = false ) {
+			// If it's a CSS variable, use color-mix if alpha is provided
+			if ( is_string( $hex ) && strpos( $hex, 'var(' ) !== false ) {
+				if ( $alpha !== false && $alpha !== '0.0' ) {
+					$opacity_percent = round( floatval( $alpha ) * 100 );
+					return "color-mix(in srgb, {$hex} {$opacity_percent}%, transparent)";
+				}
+				return $hex;
+			}
+
+			// Normal hex processing (existing logic - unchanged)
 			$hex      = str_replace( '#', '', $hex );
 			$length   = strlen( $hex );
 			$rgb['r'] = hexdec( 6 === $length ? substr( $hex, 0, 2 ) : ( 3 === $length ? str_repeat( substr( $hex, 0, 1 ), 2 ) : 0 ) );
@@ -25155,6 +25165,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		// Helper function to convert hex to rgba
 		public static function hex_to_rgba( $hex, $opacity = 1 ) {
+			// If it's a CSS variable, use color-mix
+			if ( is_string( $hex ) && strpos( $hex, 'var(' ) !== false ) {
+				$opacity_percent = round( floatval( $opacity ) * 100 );
+				return "color-mix(in srgb, {$hex} {$opacity_percent}%, transparent)";
+			}
+
+			// Normal hex processing (existing logic - unchanged)
 			$hex = str_replace( '#', '', $hex );
 			if ( strlen( $hex ) === 3 ) {
 				$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
