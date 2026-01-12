@@ -168,7 +168,7 @@ const PluginCard = ({ title, description, image, children }) => {
   return (
     <div className="p-6 bg-white rounded-md transition-shadow hover:[box-shadow:0px_10px_15px_-3px_rgba(0,0,0,0.1)]">
       <div className="flex justify-between items-start">
-        <img src={rbealocalize.responsiveurl + 'admin/images/' + image + '.svg'} alt="Responsive Logo" />
+        <img className="w-[50px] h-[50px]" src={rbealocalize.responsiveurl + 'admin/images/' + image + '.svg'} alt="Responsive Logo" />
         <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded cap">{__('Free', 'responsive-block-editor-addons')}</span>
       </div>
       <p className="mt-1.125 mb-2 text-base leading-6 font-medium">{title}</p>

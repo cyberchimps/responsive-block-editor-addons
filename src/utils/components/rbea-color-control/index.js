@@ -13,6 +13,22 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
   // Get theme colors from WordPress settings
   const colors = useSetting('color.palette') || [];
 
+  // Resolve CSS variable to hex ONLY for ColorPicker display 
+  const getDisplayColor = (color) => {
+    if (!color || !color.includes('var(')) {
+      return color; // Already hex or empty
+    }
+    
+    // Extract variable name and resolve it for display only
+    const varName = color.replace(/var\(|\)/g, '').trim();
+    const resolvedColor = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue(varName)
+      .trim();
+    
+    return resolvedColor || color; // Return resolved hex for display
+  };
+
     
   useEffect(() => {
     if (!isOpen || !popupSizeRef.current) return;
@@ -81,7 +97,7 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
             <div className="rbea-color-control__popup">
               <div ref={popupSizeRef}>
                 <ColorPicker
-                  color={colorValue}
+                  color={getDisplayColor(colorValue)}
                   onChangeComplete={(newColor) => {
                     onChange(newColor.hex);
                   }}
