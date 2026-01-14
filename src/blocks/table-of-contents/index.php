@@ -102,9 +102,10 @@ function responsive_block_editor_addons_add_toc_headings_data( $block_content, $
 	// Add data-headings attribute to the wrapper
 	if ( ! empty( $filtered ) ) {
 		$headings_json = wp_json_encode( $filtered );
+		$headings_encoded = base64_encode( $headings_json );
 		$block_content = preg_replace(
 			'/(<div[^>]*class="responsive-block-editor-addons-toc__wrap"[^>]*)/',
-			'$1 data-headings="' . esc_attr( $headings_json ) . '"',
+			'$1 data-headings="' . esc_attr( $headings_encoded ) . '"',
 			$block_content,
 			1
 		);
