@@ -161,6 +161,8 @@ function EditorStyles(props) {
     gradient,
     hoverGradient,
     hoverBackgroundType,
+    titleTextDecoration,
+    descriptionTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -338,6 +340,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-family": titleFontFamily,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -348,6 +351,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
       "font-family": descriptionFontFamily,
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-weight": descriptionFontWeight,

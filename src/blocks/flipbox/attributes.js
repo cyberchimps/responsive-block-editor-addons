@@ -1089,6 +1089,26 @@ const attributes = {
   gradientButtonH: {
     type: "string",
   },
+  backButtonTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  backSubtitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  backTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  frontSubtitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  frontTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

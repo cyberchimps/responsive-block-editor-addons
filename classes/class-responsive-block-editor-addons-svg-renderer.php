@@ -73,6 +73,24 @@ class Responsive_Block_Editor_Addons_SVG_Renderer {
 		}
 
 		self::$icon_data = is_array( $decoded ) ? $decoded : array();
+		
+		// Merge blockquote-specific icons (only add icons that don't already exist to preserve main icons)
+		$blockquote_json = RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/blockquote/ResponsiveBlocksQuoteIcon.json';
+		if ( file_exists( $blockquote_json ) ) {
+			$blockquote_content = file_get_contents( $blockquote_json );
+			if ( false !== $blockquote_content ) {
+				$blockquote_decoded = json_decode( $blockquote_content, true );
+				if ( json_last_error() === JSON_ERROR_NONE && is_array( $blockquote_decoded ) ) {
+					// Only add blockquote icons that don't conflict with existing icons
+					foreach ( $blockquote_decoded as $icon_key => $icon_data ) {
+						if ( ! isset( self::$icon_data[ $icon_key ] ) ) {
+							self::$icon_data[ $icon_key ] = $icon_data;
+						}
+					}
+				}
+			}
+		}
+		
 		return self::$icon_data;
 	}
 

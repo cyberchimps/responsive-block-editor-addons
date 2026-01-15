@@ -284,6 +284,9 @@ function EditorStyles(props) {
     ctaButtonLeftPaddingMobile,
     ctaButtonRightPaddingMobile,
     gradientButton,
+    ctaTextTextDecoration,
+    resheadTextDecoration,
+    ressubHeadTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -520,6 +523,7 @@ function EditorStyles(props) {
       "line-height": resheadLineHeight,
       "margin-bottom": generateCSSUnit(resheadBottomSpacing, "px"),
       "text-transform": resheadTextTransform,
+      "text-decoration": resheadTextDecoration,
       "font-style": resheadFontStyle,
     },
 
@@ -530,6 +534,7 @@ function EditorStyles(props) {
       "line-height": ressubHeadLineHeight,
       "margin-bottom": generateCSSUnit(ressubHeadBottomSpacing, "px"),
       "text-transform": ressubHeadTextTransform,
+      "text-decoration": ressubHeadTextDecoration,
       "font-style": ressubHeadFontStyle,
     },
 
@@ -544,6 +549,7 @@ function EditorStyles(props) {
       "font-family": ctaTextFontFamily,
       "line-height": ctaTextLineHeight,
       "text-transform": ctaTextTextTransform,
+      "text-decoration": ctaTextTextDecoration,
       "font-style": ctaTextFontStyle,
     },
 

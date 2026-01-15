@@ -227,6 +227,8 @@ export default class Inspector extends Component {
         digitFontStyle,
         labelTextTransform,
         labelFontStyle,
+        labelTextDecoration,
+        digitTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -604,10 +606,12 @@ export default class Inspector extends Component {
                 spacing: digitLetterSpacing,
                 color: digitTypographyColor,
                 fontstyle: digitFontStyle,
+                textDecoration: digitTextDecoration,
                 }}
                 showLetterSpacing = { true }
                 showColorControl={true}
                 showTextTransform={false}
+                showTextDecoration={true}
                 setAttributes={ setAttributes }
                 {...this.props}
               />
@@ -625,9 +629,11 @@ export default class Inspector extends Component {
                 color: labelTypographyColor,
                 transform: labelTextTransform,
                 fontstyle: labelFontStyle,
+                textDecoration: labelTextDecoration,
                 }}
                 showLetterSpacing = { true }
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={ setAttributes }
                 {...this.props}
               />

@@ -441,6 +441,8 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     contentBackgroundType,
     gradient,
     contentGradient,
+    contentTextDecoration,
+    titleTextDecoration,
     },
       setAttributes,
     } = this.props;
@@ -905,9 +907,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               color: titleTypographyColor,
               transform: titleTextTransform,
               fontstyle: titleFontStyle,
+              textDecoration: titleTextDecoration,
             }}
 			    	showLetterSpacing = { false }
             showColorControl={ true }
+            showTextDecoration={true}
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
           />
@@ -924,9 +928,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               color: contentTypographyColor,
               transform: contentTextTransform,
               fontstyle: contentFontStyle,
+              textDecoration: contentTextDecoration,
             }}
 			    	showLetterSpacing = { false }
             showColorControl = { true }
+            showTextDecoration = {true}
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
           />

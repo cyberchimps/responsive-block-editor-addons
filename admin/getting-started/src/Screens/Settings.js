@@ -32,6 +32,7 @@ const EditorSettings = () => {
   const [autoRecovery, setAutoRecovery] = useState(convertTruthyFalsyValue(rbealocalize?.auto_block_recovery));
   const [buttonInherit, setButtonInherit] = useState(convertTruthyFalsyValue(rbealocalize?.global_inherit_from_theme));
   const [customCss, setCustomCss] = useState(convertTruthyFalsyValue(rbealocalize?.custom_css_on));
+  const [templateButton, setTemplateButton] = useState(convertTruthyFalsyValue(rbealocalize?.template_library_button_on));
   const [contentWidth, setContentWidth] = useState(Number(rbealocalize?.default_content_width));
   const [containerPadding, setContainerPadding] = useState(Number(rbealocalize?.default_container_padding));
   const [containerGap, setContainerGap] = useState(Number(rbealocalize?.default_container_gap));
@@ -78,6 +79,17 @@ const EditorSettings = () => {
           onChange={(newValue) => {
             setCustomCss(newValue);
             saveSetting(newValue, 'rbea_toggle_custom_css');
+          }}
+        />
+      </SettingsCard>
+
+      <SettingsCard className="mt-5" title={__( 'Enable Templates Button', 'responsive-block-editor-addons' )} description={__( "Show the Template Library button in the editor toolbar so editors can quickly insert ready-made layouts.", 'responsive-block-editor-addons' )}>
+        <ToggleControl
+          __nextHasNoMarginBottom
+          checked={templateButton}
+          onChange={(newValue) => {
+            setTemplateButton(newValue);
+            saveSetting(newValue, 'rbea_toggle_template_library_button');
           }}
         />
       </SettingsCard>
@@ -157,6 +169,7 @@ const saveSetting = async (settingValue, actionType) => {
     'rbea_toggle_auto_block_recovery',
     'rbea_toggle_global_inherit_from_theme',
     'rbea_toggle_custom_css',
+    'rbea_toggle_template_library_button',
   ];
 
   const shouldNormalizeBoolean = toggleActions.includes(actionType);

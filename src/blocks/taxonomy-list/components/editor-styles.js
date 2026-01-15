@@ -129,6 +129,9 @@ function EditorStyles(props) {
         countFontStyle,
         listTextTransform,
         listFontStyle,
+        titleTextDecoration,
+        countTextDecoration,
+        listTextDecoration,
     } = props.attributes;
 
 
@@ -191,6 +194,7 @@ function EditorStyles(props) {
             "font-weight": titleFontWeight,
             "line-height": titleLineHeight,
             "text-transform": titleTextTransform,
+            "text-decoration": titleTextDecoration,
             "font-style": titleFontStyle,
         },
         " .responsive-block-editor-addons-block-count": {
@@ -200,6 +204,7 @@ function EditorStyles(props) {
             "font-weight": countFontWeight,
             "line-height": countLineHeight,
             "text-transform": countTextTransform,
+            "text-decoration": countTextDecoration,
             "font-style": countFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item": {
@@ -210,6 +215,7 @@ function EditorStyles(props) {
             "font-weight": listFontWeight,
             "line-height": generateCSSUnit(listLineHeight, "px"),
             "text-transform": listTextTransform,
+            "text-decoration": listTextDecoration,
             "font-style": listFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item:hover": {

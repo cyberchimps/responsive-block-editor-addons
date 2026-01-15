@@ -188,6 +188,9 @@ export default class Inspector extends Component {
                 hideWidget,
                 hideWidgetTablet,
                 hideWidgetMobile,
+                mainHeadingTextDecoration,
+                subHeadingTextDecoration,
+                descriptionTextDecoration,
             },
             setAttributes,
         } = this.props;
@@ -554,10 +557,12 @@ export default class Inspector extends Component {
                                     sizeTablet: mainHeadingFontSizeTablet,
                                     weight: mainHeadingFontWeight,
                                     height: mainHeadingLineHeight,
-                                    spacing: mainHeadingLetterSpacing
+                                    spacing: mainHeadingLetterSpacing,
+                                    textDecoration: mainHeadingTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />
@@ -571,10 +576,12 @@ export default class Inspector extends Component {
                                     sizeTablet: subHeadingFontSizeTablet,
                                     weight: subHeadingFontWeight,
                                     height: subHeadingLineHeight,
-                                    spacing: subHeadingLetterSpacing
+                                    spacing: subHeadingLetterSpacing,
+                                    textDecoration: subHeadingTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />
@@ -588,10 +595,12 @@ export default class Inspector extends Component {
                                     sizeTablet: descriptionFontSizeTablet,
                                     weight: descriptionFontWeight,
                                     height: descriptionLineHeight,
-                                    spacing: descriptionLetterSpacing
+                                    spacing: descriptionLetterSpacing,
+                                    textDecoration: descriptionTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />

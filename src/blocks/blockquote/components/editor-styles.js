@@ -138,6 +138,7 @@ function EditorStyles(props) {
     quoteFontStyle,
     twFontStyle,
     gradient,
+    quoteTextDecoration,
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -244,6 +245,7 @@ function EditorStyles(props) {
       "font-weight": quoteFontWeight,
       "line-height": quoteLineHeight,
       "text-transform": quoteTextTransform,
+      "text-decoration": quoteTextDecoration,
       "font-style": quoteFontStyle,
     },
     " .responsive-block-editor-addons-block-blockquote-item": {

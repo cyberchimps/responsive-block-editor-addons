@@ -188,6 +188,9 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Custom CSS Toggle.
 		add_action( 'wp_ajax_rbea_toggle_custom_css', array( $this, 'rbea_toggle_custom_css' ) );
 
+		// RBEA Template Library Button Toggle.
+		add_action( 'wp_ajax_rbea_toggle_template_library_button', array( $this, 'rbea_toggle_template_library_button' ) );
+
 		// RBEA Content Width Setting.
 		add_action( 'wp_ajax_rbea_save_content_width', array( $this, 'rbea_save_content_width' ) );
 
@@ -572,6 +575,7 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/inline-notice/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/taxonomy-list/index.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/table-of-contents/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/instagram/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/image-hotspot/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/portfolio/index.php';
@@ -734,6 +738,7 @@ class Responsive_Block_Editor_Addons {
 				'global_inherit_from_theme'          => get_option( 'rbea_global_inherit_from_theme', '0' ),
 				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
 				'is_custom_css_on'                   => (int) get_option( 'rbea_custom_css_on', '1' ),
+				'template_library_button_on'         => get_option( 'rbea_template_library_button_on', '1' ),
 				'default_content_width'              => get_option( 'rbea_default_content_width', 1340 ),
 				'default_container_padding'          => get_option( 'rbea_default_container_padding', 10 ),
 				'default_container_gap'              => get_option( 'rbea_default_container_gap', 20 ),
@@ -1358,6 +1363,7 @@ class Responsive_Block_Editor_Addons {
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
 					'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
 					'custom_css_on'         => get_option( 'rbea_custom_css_on', '1' ),
+					'template_library_button_on' => get_option( 'rbea_template_library_button_on', '1' ),
 					'default_content_width'  => get_option( 'rbea_default_content_width', 1340 ),
 					'default_container_padding' => get_option( 'rbea_default_container_padding', 10 ),
 					'default_container_gap'  => get_option( 'rbea_default_container_gap', 20 ),
@@ -1795,6 +1801,27 @@ class Responsive_Block_Editor_Addons {
 		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_custom_css_on', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the template library button setting in database when the toggle is changed.
+	 *
+	 * @since 2.1.8
+	 */
+	public function rbea_toggle_template_library_button() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the boolean value.
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $value ) ? '1' : '0';
+
+		update_option( 'rbea_template_library_button_on', $value );
 
 		wp_send_json_success();
 	}

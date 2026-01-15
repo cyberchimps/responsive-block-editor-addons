@@ -107,6 +107,8 @@
      inputFontStyle,
      buttonTextTransform, 
      buttonFontStyle,
+     inputTextDecoration,
+     buttonTextDecoration,
    } = props.attributes;
 
    let width;
@@ -222,6 +224,7 @@
      "margin": 0,
      "font-family": inputFontFamily,
      "text-transform": inputTextTransform,
+     "text-decoration": inputTextDecoration,
      "font-style": inputFontStyle,
      "font-size": generateCSSUnit(inputFontSize, "px"),
      "font-weight": inputFontWeight,
@@ -273,6 +276,7 @@
       "color": buttonTextColor,
       "font-family": buttonFontFamily,
       "text-transform": buttonTextTransform,
+      "text-decoration": buttonTextDecoration,
       "font-style": buttonFontStyle,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-weight": buttonFontWeight,

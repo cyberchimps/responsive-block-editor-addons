@@ -124,6 +124,9 @@ function EditorStyles(props) {
     headingFontStyle,
     contentTextTransform,
     contentFontStyle,
+    contentTextDecoration,
+    headingTextDecoration,
+    dateTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -186,6 +189,7 @@ function EditorStyles(props) {
     " .responsive-count-item__title": {
       "color": headingTypographyColor,
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
       "font-style": headingFontStyle,
       "line-height": headingLineHeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
@@ -197,6 +201,7 @@ function EditorStyles(props) {
       "color": dateTypographyColor,
       "text-transform": dateTextTransform,
       "font-style": dateFontStyle,
+      "text-decoration": dateTextDecoration,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),
@@ -206,6 +211,7 @@ function EditorStyles(props) {
     " .responsive-count-item__features": {
       "color": contentTypographyColor,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,

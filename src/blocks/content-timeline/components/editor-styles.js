@@ -107,6 +107,9 @@ function EditorStyles(props) {
     headingFontStyle,
     contentTextTransform,
     contentFontStyle,
+    dateTextDecoration,
+    headingTextDecoration,
+    contentTextDecoration,
   } = props.attributes;
 
   var border_with_color = "13px solid" + backgroundColor;
@@ -207,6 +210,7 @@ function EditorStyles(props) {
     " .responsive-timeline__inner-date-new": {
       "color": dateTypographyColor,
       "text-transform": dateTextTransform,
+      "text-decoration": dateTextDecoration,
       "font-style": dateFontStyle,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
@@ -217,6 +221,7 @@ function EditorStyles(props) {
     " .responsive-timeline__heading": {
       "color": headingTypographyColor,
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
       "font-style": headingFontStyle,
       "line-height": headingLineHeight,
       "font-weight": headingFontWeight,
@@ -228,6 +233,7 @@ function EditorStyles(props) {
     " .responsive-timeline-desc-content": {
       "color": contentTypographyColor,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
@@ -238,6 +244,7 @@ function EditorStyles(props) {
     " .responsive-timeline__date-new": {
       "color": dateTypographyColor,
       "text-transform": dateTextTransform,
+      "text-decoration": dateTextDecoration,
       "font-style": dateFontStyle,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,

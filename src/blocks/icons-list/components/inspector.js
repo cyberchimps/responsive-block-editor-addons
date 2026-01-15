@@ -160,6 +160,7 @@ export default class Inspector extends Component {
         iconListUpdateColorFromParent,
         labelTextTransform,
         labelFontStyle,
+        labelTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -448,11 +449,12 @@ export default class Inspector extends Component {
               weight: labelFontWeight,
               height: labelLineHeight,
               transform: labelTextTransform,
-              fontstyle: labelFontStyle
+              fontstyle: labelFontStyle,
+              textDecoration: labelTextDecoration,
             }}
             showLetterSpacing={false}
             showTextBottomSpacing={false}
-            showTextDecoration={false}
+            showTextDecoration={true}
             showColorControl={false}
             setAttributes={setAttributes}
             {...this.props}

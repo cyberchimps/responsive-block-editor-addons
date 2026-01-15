@@ -816,6 +816,14 @@ separatorWidthType: {
     type: "string",
     default: "none",
   },
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

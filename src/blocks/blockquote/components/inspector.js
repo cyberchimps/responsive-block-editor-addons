@@ -314,6 +314,7 @@ export default class Inspector extends Component {
         quoteTextTransform,
         quoteFontStyle,
         twFontStyle,
+        quoteTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -914,9 +915,11 @@ export default class Inspector extends Component {
                 color: quoteTypographyColor,
                 transform: quoteTextTransform,
                 fontstyle: quoteFontStyle,
+                textDecoration: quoteTextDecoration,
 				    	}}
 				    	showLetterSpacing = { false }
               showColorControl={true}
+              showTextDecoration={true}
 				    	setAttributes={ setAttributes }
 				    	{...this.props}
 				    />

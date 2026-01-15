@@ -64,6 +64,29 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
  * Add a Pattern Importer button to the toolbar.
  */
 let patternButtonExist = false;
+
+const isTemplateButtonEnabled = () => {
+  const toggle = responsive_globals?.template_library_button_on;
+
+  if (typeof toggle === "undefined") {
+    return true;
+  }
+
+  if (typeof toggle === "string") {
+    return toggle === "1" || toggle.toLowerCase() === "true";
+  }
+
+  return !!toggle;
+};
+
+const removePatternButton = () => {
+  const existingWrapper = document.querySelector(".rbea-pattern-wrapper");
+  if (existingWrapper) {
+    existingWrapper.remove();
+  }
+  patternButtonExist = false;
+};
+
 wp.data.subscribe(() => {
   appendImportButton();
 });
@@ -72,6 +95,11 @@ wp.data.subscribe(() => {
  * Build the pattern importer button.
  */
 function appendImportButton() {
+  if (!isTemplateButtonEnabled()) {
+    removePatternButton();
+    return;
+  }
+
   if (patternButtonExist) {
     return;
   }

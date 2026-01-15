@@ -681,6 +681,14 @@ const attributes = {
     type: "string",
     default: "none",
   },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

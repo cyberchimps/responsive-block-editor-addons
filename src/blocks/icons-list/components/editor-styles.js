@@ -80,6 +80,7 @@ function EditorStyles(props) {
   iconListUpdateColorFromParent,
   labelTextTransform,
   labelFontStyle,
+  labelTextDecoration
   } = props.attributes;
 
   var editor_gap = undefined !== typeof gap && "" !== gap ? gap + 0 : 0;

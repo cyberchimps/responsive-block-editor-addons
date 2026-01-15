@@ -457,6 +457,10 @@ const attributes = {
   type: "boolean",
   default: false,
   },
+  buttonTextDecoration: {
+  type: "string",
+  default: "none",
+  },
 };
 
 export default attributes;

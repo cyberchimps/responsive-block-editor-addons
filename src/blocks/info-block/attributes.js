@@ -1259,5 +1259,17 @@ const attributes = {
   gradientButton: {
     type: "string",
   },
+  ctaTextTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  resheadTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  ressubHeadTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

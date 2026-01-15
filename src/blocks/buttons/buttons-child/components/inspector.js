@@ -182,6 +182,7 @@ export default class Inspector extends Component {
 				buttonPreset,
 				noFollow,
 				inheritFromThemeLocalTimestamp,
+				buttonTextDecoration,
 			},
 			setAttributes,
 		} = this.props;
@@ -653,10 +654,12 @@ export default class Inspector extends Component {
 										typographyOpacityControl: typographyOpacityControl,
 										transform: buttonTextTransform,
 										fontstyle: buttonFontStyle,
+										textDecoration: buttonTextDecoration,
 									}}
 									showLetterSpacing={false}
 									showColorWithHoverControlTab={true}
 									showOpacity={true}
+									showTextDecoration={true}
 									setAttributes={setAttributes}
 									{...this.props}
 								/>
