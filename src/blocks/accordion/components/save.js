@@ -24,6 +24,8 @@ export default function save(props) {
         `responsive-block-editor-addons-accordion-layout-${props.attributes.layout}`,
         `responsive-block-editor-addons-accordion-expand-first-${props.attributes.expandFirstItem}`,
         `responsive-block-editor-addons-accordion-inactive-other-${props.attributes.inactiveOtherItems}`,
+        `responsive-block-editor-addons-block-accordion`,
+        `block-${props.attributes.block_id}`,
         equalHeightClass
       )}
     data-accordiontoggle = { true }

@@ -13,6 +13,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 /**
  * WordPress dependencies
  */
@@ -277,53 +278,9 @@ class Inspector extends Component {
                 )}
                 {"gradient" == backgroundType && (
                   <Fragment>
-                    <RbeaColorControl
-                      label = {__("Color 1", "responsive-block-editor-addons")}
-                      colorValue={backgroundColor1}
-                      onChange={(colorValue) => setAttributes({ backgroundColor1: colorValue })}
-                      resetColor={() => setAttributes({ backgroundColor1: "" })}
-                    />
-                    <RbeaColorControl
-                      label = {__("Color 2", "responsive-block-editor-addons")}
-                      colorValue={backgroundColor2}
-                      onChange={(colorValue) => setAttributes({ backgroundColor2: colorValue })}
-                      resetColor={() => setAttributes({ backgroundColor2: "" })}
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Color Location 1",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation1}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ colorLocation1: value })
-                      }
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Color Location 2",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation2}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ colorLocation2: value })
-                      }
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Angle",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={gradientDirection}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ gradientDirection: value })
-                      }
+                    <GradientBackgroundControl
+                      {...this.props}
+                      showHoverGradient = {false}
                     />
                   </Fragment>
                 )}
@@ -349,44 +306,7 @@ class Inspector extends Component {
 
               <RbeaExtensions {...this.props} />
 
-              <PanelBody
-                title={__("Responsive Conditions", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ToggleControl
-                  label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidget}
-                  onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidgetTablet}
-                  onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidgetMobile}
-                  onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                  }
-                  __nextHasNoMarginBottom
-                />
-              </PanelBody>
+              
             
             <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

@@ -36,8 +36,7 @@
         {layout === "minimal" && (
           <form className="responsive-block-editor-addons-search-form" onSubmit={this.formPreventDefault} role="search" action={responsive_globals.home_url} method="get">
             <div className="responsive-block-editor-addons-search-form-container">
-              <span className="responsive-block-editor-addons-search-icon-wrap">
-                {renderSVG('fa fa-search')}
+              <span className="responsive-block-editor-addons-search-icon-wrap rbea-dynamic-icon" data-icon="fa fa-search" aria-hidden="true">
               </span>
               <input
                 className="responsive-block-editor-addons-search-form__input" type="search" name="s" title="Search"
@@ -58,8 +57,7 @@
                 type="submit"
               >
                 {"button" === buttonType && (
-                  <span className="responsive-block-editor-addons-search-icon-wrap">
-                    {renderSVG('fa fa-search')}
+                  <span className="responsive-block-editor-addons-search-icon-wrap rbea-dynamic-icon" data-icon="fa fa-search" aria-hidden="true">
                   </span>
                 )}
                 {"text" === buttonType && (

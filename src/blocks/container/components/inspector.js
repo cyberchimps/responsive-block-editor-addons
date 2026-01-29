@@ -1863,36 +1863,7 @@ export default function Inspector(props) {
           <RbeaExtensions {...props} />
 
           {/* Hide on Desktop/Tablet/Mobile */}
-          <PanelBody
-            title={__(
-              "Responsive Conditions",
-              "responsive-block-editor-addons"
-            )}
-            initialOpen={false}
-          >
-            <ToggleControl
-              __nextHasNoMarginBottom
-              label={__("Hide on Desktop", "responsive-block-editor-addons")}
-              checked={hideWidget}
-              onChange={() => setAttributes({ hideWidget: !hideWidget })}
-            />
-            <ToggleControl
-              __nextHasNoMarginBottom
-              label={__("Hide on Tablet", "responsive-block-editor-addons")}
-              checked={hideWidgetTablet}
-              onChange={() =>
-                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-              }
-            />
-            <ToggleControl
-              __nextHasNoMarginBottom
-              label={__("Hide on Mobile", "responsive-block-editor-addons")}
-              checked={hideWidgetMobile}
-              onChange={() =>
-                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-              }
-            />
-          </PanelBody>
+          
 
           {/* z-index controls... */}
           <PanelBody

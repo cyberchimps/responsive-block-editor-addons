@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { camelCase } from "lodash";
 
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 
 export default function ResponsiveDimensionControl(props) {
 
@@ -33,7 +33,7 @@ export default function ResponsiveDimensionControl(props) {
             [`${controlName}${props.tabName}Bottom`]: props.attributes[getAttrName(`Bottom${controlNameCapitalCase}${props.tabName}`)],
             [`${controlName}${props.tabName}Left`]: props.attributes[getAttrName(`Left${controlNameCapitalCase}${props.tabName}`)],
         });
-    }, [props.tabName, props.attributes]); // think on this later
+    }, [props.tabName, props.attributes, props.attrNameTemplate]); // think on this later
 
     function spaceControlConnectedHandler() {
         setSpaceControlConnected(!isSpaceControlConnected);

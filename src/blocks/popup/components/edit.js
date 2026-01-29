@@ -7,7 +7,10 @@ import EditorStyles from "./editor-styles";
 import icons from "./icons";
 import { loadGoogleFont } from "../../../utils/font";
 import renderSVG from "../../../renderIcon";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTOM } from "./variations";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+
 /**
  * WordPress dependencies
  */
@@ -89,6 +92,7 @@ class Edit extends Component {
         popupButtonTypographyFontFamily,
         popupTextTypographyFontFamily,
         block_id,
+        inheritFromTheme,
       },
       setAttributes,
       deviceType,
@@ -98,7 +102,7 @@ class Edit extends Component {
       return (
         <div className="rba-popup-selector">
           <div className="rba-popup-selector-head">
-            {icons.logo}
+            {ResponsiveBlockEditorAddonsIcons.popup}
             <p className="rba-popup-block-name">{__("Popup", "responsive-block-editor-addons")}</p>
           </div>
           <p className="rba-popup-block-text">{__("Select a Preset or create your own.", "responsive-block-editor-addons")}</p>
@@ -120,6 +124,7 @@ class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-popup-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
       </BlockControls>,
       // Show the block controls on focus
@@ -141,11 +146,11 @@ class Edit extends Component {
 
         {isPopupVariantSelected &&
           <>
-            <div className="responsive-block-editor-addons-popup-trigger-wrap">
+            <div className={classnames("responsive-block-editor-addons-popup-trigger-wrap", inheritFromTheme ? 'wp-block-button' : null)}>
 
               {popupButtonTypographyFontFamily && loadGoogleFont(popupButtonTypographyFontFamily)}
               {popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" data-trigger-id={`trigger-${block_id}`} onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span className="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
+                <button type="button" className={classnames("responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" , inheritFromTheme ? "wp-block-button wp-block-button__link" : null)} data-trigger-id={`trigger-${block_id}`} onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span className="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
                 </button>
               }
 

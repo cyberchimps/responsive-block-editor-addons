@@ -67,7 +67,7 @@ export default class Save extends Component {
                   )}
                 >
                   <div className="responsive-block-editor-addons-count-up__source-icon">
-                    {renderSVG(countUp[index]["icon"])}
+                    <span className="rbea-dynamic-icon" data-icon={countUp[index]["icon"]} aria-hidden="true"></span>
                   </div>
                 </div>
               )}

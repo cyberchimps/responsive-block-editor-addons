@@ -343,7 +343,7 @@ const attributes = {
   },
   headingFontWeight: {
 	type: "string",
-	default: "900",
+  default: "900",
   },
   titleFontWeight: {   //For compatibility with v1.3.2
     type: "string",
@@ -524,6 +524,22 @@ const attributes = {
     default: "",
   },
   dateFontStyle: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  headingTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  dateTextDecoration: {
     type: "string",
     default: "",
   },

@@ -327,6 +327,18 @@ const attributes = {
         type: "string",
         default: ""
     },
+    isPreview: {
+        type: "boolean",
+        default: false, 
+    },
+    titleTextDecoration: {
+        type: "string",
+        default: "",
+    },
+    contentTextDecoration: {
+        type: "string",
+        default: "",
+    },
 }
 
 export default attributes;

@@ -587,6 +587,22 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'string',
 					'default' => '',
 				),
+				'isPreview' => array(
+					'type'    => 'boolean',
+					'default' => false, 
+				),
+				'titleTextDecoration' => array(
+					'type'	 => 'string',
+					'default' => '',
+				),
+				'countTextDecoration' => array(
+					'type'	 => 'string',
+					'default' => '',
+				),
+				'listTextDecoration' => array(
+					'type'	 => 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',
 		)

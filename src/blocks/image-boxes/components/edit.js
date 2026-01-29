@@ -7,6 +7,7 @@ import times from "lodash/times";
 import React from "react";
 import { hexToRgba } from "../../../utils/index.js";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -161,6 +162,7 @@ export default class Edit extends Component {
     return [
       // Show the block controls on focus
       <style id={`responsive-block-editor-addons-image-boxes-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
       <div key={`image-${block_id}`} className={classes}>
@@ -173,6 +175,7 @@ export default class Edit extends Component {
                   "editor",
                   `responsive-block-editor-addons-block-image-boxes-${index}`,
                   "responsive-block-editor-addons-block-image-boxes",
+                  "responsive-block-editor-addons-block-image-boxes-block",
                   `block-${block_id}`
                 )}
               >

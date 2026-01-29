@@ -427,14 +427,16 @@ class ResponsiveTabSync {
       
       if (!isAlreadyActive) {
         try {
-          // Try to find the TabPanel using multiple selectors
-          let tabPanel = container.closest('.components-tab-panel');
+          // Try to find the TabPanel using multiple selectors (anchor on the tab itself)
+          let tabPanel = targetTab.closest('.components-tab-panel');
+
           if (!tabPanel) {
             // Try alternative selectors
-            tabPanel = container.closest('[class*="tab-panel"]');
+            tabPanel = targetTab.closest('[class*="tab-panel"]');
             if (!tabPanel) {
               // Try finding by looking for parent with tablist
-              tabPanel = container.closest('[role="tablist"]')?.parentElement;
+              const tablistParent = targetTab.closest('[role="tablist"]');
+              tabPanel = tablistParent ? tablistParent.parentElement : null;
             }
           }
           
@@ -475,11 +477,13 @@ class ResponsiveTabSync {
           }
           // Fallback: Direct DOM manipulation of ARIA attributes and data attributes
           // Use the same improved TabPanel finding logic
-          let tabPanelElement = container.closest('.components-tab-panel');
+          let tabPanelElement = targetTab.closest('.components-tab-panel');
+
           if (!tabPanelElement) {
-            tabPanelElement = container.closest('[class*="tab-panel"]');
+            tabPanelElement = targetTab.closest('[class*="tab-panel"]');
             if (!tabPanelElement) {
-              tabPanelElement = container.closest('[role="tablist"]')?.parentElement;
+              const tablistParent = targetTab.closest('[role="tablist"]');
+              tabPanelElement = tablistParent ? tablistParent.parentElement : null;
             }
           }
           

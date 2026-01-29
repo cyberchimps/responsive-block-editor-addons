@@ -124,13 +124,17 @@ function EditorStyles(props) {
     headingFontStyle,
     contentTextTransform,
     contentFontStyle,
+    contentTextDecoration,
+    headingTextDecoration,
+    dateTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-right": generateCSSUnit(blockRightPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -185,6 +189,7 @@ function EditorStyles(props) {
     " .responsive-count-item__title": {
       "color": headingTypographyColor,
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
       "font-style": headingFontStyle,
       "line-height": headingLineHeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
@@ -196,6 +201,7 @@ function EditorStyles(props) {
       "color": dateTypographyColor,
       "text-transform": dateTextTransform,
       "font-style": dateFontStyle,
+      "text-decoration": dateTextDecoration,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),
@@ -205,6 +211,7 @@ function EditorStyles(props) {
     " .responsive-count-item__features": {
       "color": contentTypographyColor,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
@@ -216,7 +223,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -260,7 +267,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),

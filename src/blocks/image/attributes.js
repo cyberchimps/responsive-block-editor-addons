@@ -724,6 +724,16 @@ const attributes = {
     type: "string",
     default: "",
   },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  layoverHeadingTextDecoration: {
+    type: "string",
+  },
+  captionTextDecoration: {
+    type: "string",
+  },
 };
 
 export default attributes;

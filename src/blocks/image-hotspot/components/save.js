@@ -105,7 +105,7 @@ export default class Save extends Component {
                   style={innerDotStyle}
                   className={`responsive_block_addons__dot-content`}
                 >
-                  {renderSVG(icon)}
+                  <span className="rbea-dynamic-icon" data-icon={icon} aria-hidden="true"></span>
                 </div>
               </div>
               <div className={`responsive_block_addons__dot-description`}>

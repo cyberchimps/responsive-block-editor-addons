@@ -21,131 +21,8 @@ import GradientBackgroundControl from "../../../../settings-components/BlockBack
 import RbeaSupportControl from "../../../../utils/components/rbea-support-control";
 import borderStyleIcons from "../icons/border-style-icons";
 import RbeaExtensions from "../../../../extensions/RbeaExtensions";
-import presets from "./button-presets";
-
-// Preset configurations
-const presetConfigs = {
-  preset1: {
-	background: '#007cba',
-    color: 'white',
-	hColor: 'white',
-    borderRadius: 0,
-    borderStyle: 'none',
-    borderWidth: 0,
-    // borderColor: 'transparent'
-  },
-  preset2: {
-    background: '#007cba',
-    color: 'white',
-	hColor: 'white',
-    borderRadius: 3,
-    borderStyle: 'none',
-    borderWidth: 0,
-    // borderColor: 'transparent'
-  },
-  preset3: {
-    background: '#007cba',
-    color: 'white',
-	hColor: 'white',
-    borderRadius: 20,
-    borderStyle: 'none',
-    borderWidth: 0,
-    // borderColor: 'transparent'
-  },
-  preset4: {
-    background: '#007cba',
-    color: 'white',
-	hColor: 'white',	
-    borderRadius: 3,
-    borderStyle: 'none',
-    borderWidth: 0,
-    // borderColor: 'transparent'
-  },
-  preset5: {
-    background: 'white',
-    color: '#007cba',
-	hColor: '#007cba',
-    borderRadius: 0,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#007cba',
-	borderHColor: '#007cba',
-  },
-  preset6: {
-    background: 'white',
-    color: '#007cba',
-	hColor: '#007cba',
-    borderRadius: 3,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#007cba',
-	borderHColor: '#007cba',
-  },
-  preset7: {
-    background: 'white',
-    color: '#007cba',
-	hColor: '#007cba',
-    borderRadius: 20,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#007cba',
-	borderHColor: '#007cba',
-  },
-  preset8: {
-    background: 'white',
-    color: '#007cba',
-	hColor: '#007cba',
-    borderRadius: 3,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#007cba',
-	borderHColor: '#007cba',
-  }
-};
-
-// Helper function to apply preset attributes
-const applyPresetAttributes = (presetName, setAttributes) => {
-  const config = presetConfigs[presetName];
-  if (!config) return;
-  
-  const attributes = {
-    buttonPreset: presetName,
-	backgroundType: 'color', 
-    background: config.background,
-    color: config.color,
-	hColor: config.hColor,	
-    borderStyle: config.borderStyle,
-    borderWidth: config.borderWidth,
-    borderColor: config.borderColor,
-	borderHColor: config.borderHColor,
-  };
-  
-  // Set icon attributes only for presets 4 and 8
-  if (presetName === 'preset4' || presetName === 'preset8') {
-    attributes.icon = 'arrow-right';
-    attributes.iconPosition = 'after';
-    attributes.icon_color = config.color; // Set icon color to match preset text color
-  } else {
-    // Clear icon attributes for other presets
-    attributes.icon = '';
-    attributes.iconPosition = 'after';
-    attributes.icon_color = '';
-  }
-  
-  // Set border radius for all devices and sides
-  if (config.borderRadius !== undefined) {
-    const radiusAttrs = [
-      'blockTopRadius', 'blockRightRadius', 'blockBottomRadius', 'blockLeftRadius',
-      'blockTopRadiusTablet', 'blockRightRadiusTablet', 'blockBottomRadiusTablet', 'blockLeftRadiusTablet',
-      'blockTopRadiusMobile', 'blockRightRadiusMobile', 'blockBottomRadiusMobile', 'blockLeftRadiusMobile'
-    ];
-    radiusAttrs.forEach(attr => {
-      attributes[attr] = config.borderRadius;
-    });
-  }
-  
-  setAttributes(attributes);
-};
+import PresetControl from "../../../../settings-components/PresetSettings";
+import {presets, resetPreset} from "./button-presets";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -254,6 +131,7 @@ export default class Inspector extends Component {
 				hbackground,
 				iconSpace,
 				inheritFromTheme,
+				inheritFromThemesaved,
 				z_index,
 				z_indexMobile,
 				z_indexTablet,
@@ -303,6 +181,8 @@ export default class Inspector extends Component {
 				buttonFontStyle,
 				buttonPreset,
 				noFollow,
+				inheritFromThemeLocalTimestamp,
+				buttonTextDecoration,
 			},
 			setAttributes,
 		} = this.props;
@@ -583,9 +463,13 @@ export default class Inspector extends Component {
 							<ToggleControl
 								label={__("Inherit from Theme", "responsive-block-editor-addons")}
 								checked={inheritFromTheme}
-								onChange={(value) =>
-									setAttributes({ inheritFromTheme: !inheritFromTheme })
-								}
+								onChange={(next) => {
+									setAttributes({
+										inheritFromTheme: next,
+										inheritFromThemesaved: next,
+										inheritFromThemeLocalTimestamp: new Date().toISOString(),
+									});
+								}}
 								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
@@ -651,88 +535,19 @@ export default class Inspector extends Component {
 							/>
 							<hr className="responsive-block-editor-addons-editor__separator" />
 						</PanelBody>
+						{!inheritFromTheme && (
 						<PanelBody title={__("Presets", "responsive-block-editor-addons")} initialOpen={true}>
-							<div className="responsive-block-editor-addons-button-preset-wrap">
-									<div className="responsive-block-editor-addons-button-preset-header">
-										<Button 
-											style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
-											onClick={() => {
-												setAttributes({ buttonPreset: 'preset1' }); 
-  												applyPresetAttributes('preset1', setAttributes);  
-											}} 
-											size="small"
-										>
-											<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
-										</Button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset-grid">
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset1', setAttributes)}
-										>
-											{presets.preset1}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset2', setAttributes)}
-										>
-											{presets.preset2}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset3', setAttributes)}
-										>
-											{presets.preset3}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset4', setAttributes)}
-										>
-											{presets.preset4}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset5', setAttributes)}
-										>
-											{presets.preset5}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset6', setAttributes)}
-										>
-											{presets.preset6}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset7' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset7', setAttributes)}
-										>
-											{presets.preset7}
-										</button>
-									</div>
-									<div className="responsive-block-editor-addons-button-preset">
-										<button 
-											className={buttonPreset === 'preset8' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => applyPresetAttributes('preset8', setAttributes)}
-										>
-											{presets.preset8}
-										</button>
-									</div>
-								</div>
-							</div>
+							<PresetControl
+								label={__('Select Preset', 'responsive-block-editor-addons')}
+								presets={presets}
+								onApply={(newAttrs) => setAttributes(newAttrs)}
+								activeId={null}
+								isResetAllowed={true}
+								resetAttr={resetPreset}
+								onResetApply={(newAttrs) => setAttributes(newAttrs)}
+							/>
 						</PanelBody>
+						)}
 						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>
@@ -839,10 +654,12 @@ export default class Inspector extends Component {
 										typographyOpacityControl: typographyOpacityControl,
 										transform: buttonTextTransform,
 										fontstyle: buttonFontStyle,
+										textDecoration: buttonTextDecoration,
 									}}
 									showLetterSpacing={false}
 									showColorWithHoverControlTab={true}
 									showOpacity={true}
+									showTextDecoration={true}
 									setAttributes={setAttributes}
 									{...this.props}
 								/>

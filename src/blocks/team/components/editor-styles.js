@@ -192,6 +192,11 @@ function EditorStyles(props) {
     designationFontStyle,
     descriptionTextTransform,
     descriptionFontStyle,
+    gradient,
+    gradientOverlay,
+    titleTextDecoration,
+    designationTextDecoration,
+    descriptionTextDecoration,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -245,7 +250,7 @@ function EditorStyles(props) {
     backgroundImageEffect = "";
   }else {
     if (gradientOverlayType === "linear") {
-      backgroundImageEffect = backgroundImage ? `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
+      backgroundImageEffect = gradientOverlay ? `${gradientOverlay},url(${backgroundImage})` : backgroundImage ? `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
@@ -254,7 +259,7 @@ function EditorStyles(props) {
       )} ${gradientOverlayLocation2}%),url(${backgroundImage})` : 'none';
     }
     if (gradientOverlayType === "radial") {
-      backgroundImageEffect = backgroundImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+      backgroundImageEffect = gradientOverlay ? `${gradientOverlay},url(${backgroundImage})` : backgroundImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
@@ -263,10 +268,11 @@ function EditorStyles(props) {
       )} ${gradientOverlayLocation2}%),url(${backgroundImage})` : 'none';
     }
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ":{
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
 			'padding-right': generateCSSUnit(blockRightPadding, "px"),
 			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -296,6 +302,7 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
 
@@ -307,6 +314,7 @@ function EditorStyles(props) {
       "line-height": designationLineHeight,
       "margin-bottom": generateCSSUnit(designationBottomSpacing, "px"),
       "text-transform": designationTextTransform,
+      "text-decoration": designationTextDecoration,
       "font-style": designationFontStyle,
     },
 
@@ -318,6 +326,7 @@ function EditorStyles(props) {
       "line-height": descriptionLineHeight,
       "margin-bottom": generateCSSUnit(descriptionBottomSpacing, "px"),
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
     },
 
@@ -421,7 +430,7 @@ function EditorStyles(props) {
       "background-image": backgroundType === "image" && overlayType === "gradient"
         ? backgroundImageEffect
         : backgroundType === "gradient"
-        ? generateBackgroundImageEffect(
+        ? gradient ? gradient : generateBackgroundImageEffect(
             `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
             `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
             gradientDirection,
@@ -463,7 +472,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ":{
-        "opacity": hideWidgetMobile? 0.2 : 1,
+        "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
         'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
         'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
         'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -522,7 +531,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ":{
-        "opacity": hideWidgetTablet? 0.2 : 1,
+        "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
         'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
         'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
         'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import Spacer from "./spacer";
 import Resizable from "re-resizable";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -54,6 +55,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-divider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={spacerDividerAlignment}

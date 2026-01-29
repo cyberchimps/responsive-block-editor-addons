@@ -63,6 +63,8 @@
      buttonStyleToggle,
      textTextTransform,
      textFontStyle,
+     inheritFromTheme,
+     textTextDecoration
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -85,10 +87,11 @@
    }else if(buttonAlign === 'left') {
      justifyButtonDirection = 'flex-start';
    }
+   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
    var selectors = {
     "": {
-      'opacity': hideWidget ? 0.2 : 1,
+      'opacity': hideWidget && isOn ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMargin, "px")} ${generateCSSUnit(blockRightMargin, "px")} ${generateCSSUnit(blockBottomMargin, "px")} ${generateCSSUnit(blockLeftMargin, "px")}`,
       "padding": `${generateCSSUnit(blockTopPadding, "px")} ${generateCSSUnit(blockRightPadding, "px")} ${generateCSSUnit(blockBottomPadding, "px")} ${generateCSSUnit(blockLeftPadding, "px")}`,
       "display": 'flex',
@@ -96,21 +99,22 @@
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
       "width": buttonWidthCSS,
-      "background-color": buttonBackground,
-      "border": buttonBorder,
+      "background-color": inheritFromTheme ? '' : buttonBackground,
+      "border": inheritFromTheme ? '' : buttonBorder,
       "border-radius": buttonBorderRadius,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover": {
-      "background-color": buttonBackgroundHover,
-      "border": buttonBorderHover,
+      "background-color": inheritFromTheme ? '' : buttonBackgroundHover,
+      "border": inheritFromTheme ? '' : buttonBorderHover,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
-      "color": textColor,
-      "font-family": textFontFamily,
+      "color": inheritFromTheme ? '' : textColor,
+      "font-family": inheritFromTheme ? 'Default' : textFontFamily,
       "font-size": `${generateCSSUnit(textFontSize, "px")} !important`,
-      "font-weight": textFontWeight,
-      "line-height": textLineHeight,
+      "font-weight": inheritFromTheme ? '' : textFontWeight,
+      "line-height": inheritFromTheme ? '' : textLineHeight,
       "text-transform": textTextTransform,
+      "text-decoration": textTextDecoration,
       "font-style": textFontStyle,
     },
     " .responsive-block-editor-addons-call-mail-button-icon": {
@@ -121,10 +125,10 @@
       "width": `${generateCSSUnit(iconSize, "px")} !important`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-text": {
-      "color": textColorHover,
+      "color": inheritFromTheme ? '' : textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon": {
-      "fill": textColorHover,
+      "fill": inheritFromTheme ? '' : textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left": {
       "margin-right": generateCSSUnit(iconTextGap, "px")
@@ -136,7 +140,7 @@
  
    var mobile_selectors = {
     "": {
-      'opacity': hideWidgetMobile ? 0.2 : 1,
+      'opacity': hideWidgetMobile && isOn ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMarginMobile, "px")} ${generateCSSUnit(blockRightMarginMobile, "px")} ${generateCSSUnit(blockBottomMarginMobile, "px")} ${generateCSSUnit(blockLeftMarginMobile, "px")}`,
       "padding": `${generateCSSUnit(blockTopPaddingMobile, "px")} ${generateCSSUnit(blockRightPaddingMobile, "px")} ${generateCSSUnit(blockBottomPaddingMobile, "px")} ${generateCSSUnit(blockLeftPaddingMobile, "px")}`,
     },
@@ -160,7 +164,7 @@
  
    var tablet_selectors = {
     "": {
-      'opacity': hideWidgetTablet ? 0.2 : 1,
+      'opacity': hideWidgetTablet && isOn ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMarginTablet, "px")} ${generateCSSUnit(blockRightMarginTablet, "px")} ${generateCSSUnit(blockBottomMarginTablet, "px")} ${generateCSSUnit(blockLeftMarginTablet, "px")}`,
       "padding": `${generateCSSUnit(blockTopPaddingTablet, "px")} ${generateCSSUnit(blockRightPaddingTablet, "px")} ${generateCSSUnit(blockBottomPaddingTablet, "px")} ${generateCSSUnit(blockLeftPaddingTablet, "px")}`,
     },

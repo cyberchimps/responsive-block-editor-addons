@@ -243,6 +243,17 @@ function EditorStyles(props) {
     featuresFontStyle,
     ctaTextTransform,
     ctaFontStyle,
+    inheritFromTheme,
+    gradient,
+    gradientButton,
+    gradientButtonH,
+    titleTextDecoration,
+    prefixTextDecoration,
+    amountTextDecoration,
+    suffixTextDecoration,
+    subpriceTextDecoration,
+    featuresTextDecoration,
+    ctaTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -265,7 +276,7 @@ function EditorStyles(props) {
   if (buttonHbackgroundType === "color") {
     updatedButtonBgHColor = ctaHoverBackColor;
   } else if (buttonHbackgroundType == "gradient") {
-    updatedButtonBgHImage = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    updatedButtonBgHImage = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   }
 
   let updatedButtonBackgroundColor = "";
@@ -273,7 +284,7 @@ function EditorStyles(props) {
   if (buttonbackgroundType == "color") {
     updatedButtonBackgroundColor = ctaBackColor;
   } else if (buttonbackgroundType == "gradient") {
-    updatedButtonBackgroundImage = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    updatedButtonBackgroundImage = gradientButton ? gradientButton :`linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   }
 
   let imgopacity = opacity / 100;
@@ -288,27 +299,28 @@ function EditorStyles(props) {
   if ("right" == blockAlign) {
     alignStyle = "flex-end";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
-      color: ctaColor + "!important",
-      "background-color": updatedButtonBackgroundColor,
-      "background-image": backgroundImage ? updatedButtonBackgroundImage : 'none',
+      color: inheritFromTheme ? '' : ctaColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor,
+      "background-image": buttonbackgroundType == "gradient" ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
-      "padding-left": generateCSSUnit(ctaButtonLeftPadding, "px"),
-      "padding-right": generateCSSUnit(ctaButtonRightPadding, "px"),
-      "padding-top": generateCSSUnit(ctaButtonTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaButtonBottomPadding, "px"),
-      "border-color": ctaBorderColor,
-      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
-      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
-      "border-style": ctaBorderStyle,
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(ctaButtonLeftPadding, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(ctaButtonRightPadding, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(ctaButtonTopPadding, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(ctaButtonBottomPadding, "px"),
+      "border-color": inheritFromTheme ? '' : ctaBorderColor,
+      "border-radius": inheritFromTheme ? '' : generateCSSUnit(ctaBorderRadius, "px"),
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(ctaBorderWidth, "px"),
+      "border-style": inheritFromTheme ? 'solid' : ctaBorderStyle,
       "line-height": ctaLineHeight,
-      "font-weight": ctaFontWeight,
+      "font-weight": inheritFromTheme ? '' : ctaFontWeight,
       "font-size": generateCSSUnit(ctaFontSize, "px"),
-      "font-family": ctaFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : ctaFontFamily,
       "box-shadow":
         generateCSSUnit(buttonBoxShadowHOffset, "px") +
         " " +
@@ -322,14 +334,15 @@ function EditorStyles(props) {
         " " +
         buttonBoxShadowPositionCSS,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       "font-style": ctaFontStyle,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover": {
-      color: ctaHoverColor + "!important",
-      "background-color": updatedButtonBgHColor,
+      color: inheritFromTheme ? '' : ctaHoverColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBgHColor,
       "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBgHImage,
-      "border-color" : ctaHoverBorderColor,
+      "border-color" : inheritFromTheme ? '' : ctaHoverBorderColor,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {
@@ -344,7 +357,6 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget? 0.2 : 1,
       "text-align": blockAlign,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -358,7 +370,7 @@ function EditorStyles(props) {
         blockbackgroundType == "color"
           ? `${hexToRgba(blockbackgroundColor || "#fff", 0)}`
           : "",
-      opacity: blockbackgroundType == "color" ? blockBackColorOpacity : 100,
+      "opacity": blockbackgroundType == "color" ? hideWidget && isOn ? 0.2 : blockBackColorOpacity : hideWidget && isOn ? 0.2 : 1,
       "background-image":
         blockbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
@@ -399,7 +411,7 @@ function EditorStyles(props) {
           : "#eee",
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               `${hexToRgba(
                 backgroundColor1 || "#fff",
                 gradientOpacity || 0
@@ -459,6 +471,7 @@ function EditorStyles(props) {
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
 
@@ -474,6 +487,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(prefixFontSize, "px"),
       "font-family": prefixFontFamily,
       "text-transform": prefixTextTransform,
+      "text-decoration": prefixTextDecoration,
       "font-style": prefixFontStyle,
     },
 
@@ -484,6 +498,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(amountFontSize, "px"),
       "font-family": amountFontFamily,
       "text-transform": amountTextTransform,
+      "text-decoration": amountTextDecoration,
       "font-style": amountFontStyle,
     },
 
@@ -494,6 +509,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(suffixFontSize, "px"),
       "font-family": suffixFontFamily,
       "text-transform": suffixTextTransform,
+      "text-decoration": suffixTextDecoration,
       "font-style": suffixFontStyle,
     },
 
@@ -506,6 +522,7 @@ function EditorStyles(props) {
       "font-family": subpriceFontFamily,
       "margin-bottom": generateCSSUnit(subpriceBottomSpacing, "px"),
       "text-transform": subpriceTextTransform,
+      "text-decoration": subpriceTextDecoration,
       "font-style": subpriceFontStyle,
     },
 
@@ -517,13 +534,14 @@ function EditorStyles(props) {
       "font-family": featuresFontFamily,
       "margin-bottom": generateCSSUnit(featuresBottomSpacing, "px"),
       "text-transform": featuresTextTransform,
+      "text-decoration": featuresTextDecoration,
       "font-style": featuresFontStyle,
     },
   };
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -582,7 +600,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),

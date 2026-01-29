@@ -144,6 +144,11 @@ function EditorStyles(props) {
     excerptFontStyle,
     ctaTextTransform,
     ctaFontStyle,
+    gradientButton,
+    titleTextDecoration,
+    metaTextDecoration,
+    excerptTextDecoration,
+    ctaTextDecoration,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -172,7 +177,7 @@ function EditorStyles(props) {
   let backgroundImageGradient = "";
   let pcColor = "";
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     backgroundImageGradient = "";
     pcColor = ctaBackColor;
@@ -184,10 +189,11 @@ function EditorStyles(props) {
   } else {
     updatedButtonBackgroundhColor = '';
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
       'padding-right': generateCSSUnit(blockRightPadding, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -205,6 +211,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-title a": {
       "color": titleTypographyColor,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       'font-style': titleFontStyle,
       "line-height": titleLineHeight,
       "font-family": titleFontFamily,
@@ -213,6 +220,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-byline": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
       "font-family": metaFontFamily,
       "font-weight": metaFontWeight,
@@ -223,21 +231,25 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-date": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-author a": {
       'color': metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-taxonomy a": {
       "color": metaTypographyColor,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       'font-style': metaFontStyle,
     },
     " .responsive-block-editor-addons-block-post-carousel-excerpt": {
       "color": excerptTypographyColor,
       "text-transform": excerptTextTransform,
+      "text-decoration": excerptTextDecoration,
       'font-style': excerptFontStyle,
       "text-align": blockAlign,
       "font-family": excerptFontFamily,
@@ -254,6 +266,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       "color": ctaColor,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       'font-style': ctaFontStyle,
       "background-color": pcColor,
       "background-image": backgroundImageGradient,
@@ -319,7 +332,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -360,7 +373,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

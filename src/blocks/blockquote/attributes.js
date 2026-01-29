@@ -233,6 +233,9 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  gradient: {
+    type: "string",
+  },
   gradientDirection: {
     type: "number",
     default: 90,
@@ -583,7 +586,6 @@ const attributes = {
   },
   twFontWeight: {
     type: "string",
-    default: "",
   },
   twLineHeight: {
     type: "number",
@@ -610,6 +612,14 @@ const attributes = {
     default: "",
   },
   twFontStyle: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+  quoteTextDecoration: {
     type: "string",
     default: "",
   },

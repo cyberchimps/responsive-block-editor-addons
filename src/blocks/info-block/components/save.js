@@ -118,8 +118,7 @@ export default class Save extends Component {
       is_image = (
         <div className="responsive-block-editor-addons-ifb-image-icon-content responsive-block-editor-addons-ifb-imgicon-wrap">
           <div className="responsive-block-editor-addons-ifb-icon-wrap">
-            <span className="responsive-block-editor-addons-ifb-icon">
-              {renderSVG(icon)}
+            <span className="responsive-block-editor-addons-ifb-icon rbea-dynamic-icon" data-icon={icon} aria-hidden="true">
             </span>
           </div>
         </div>

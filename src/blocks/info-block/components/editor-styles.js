@@ -259,6 +259,34 @@ function EditorStyles(props) {
     resheadFontStyle,
     ressubHeadTextTransform,
     ressubHeadFontStyle,
+    ctaBlockTopRadius,
+    ctaBlockTopRadiusTablet,
+    ctaBlockTopRadiusMobile,
+    ctaBlockBottomRadius,
+    ctaBlockBottomRadiusTablet,
+    ctaBlockBottomRadiusMobile,
+    ctaBlockLeftRadius,
+    ctaBlockLeftRadiusTablet,
+    ctaBlockLeftRadiusMobile,
+    ctaBlockRightRadius,
+    ctaBlockRightRadiusTablet,
+    ctaBlockRightRadiusMobile,
+    ctaButtonTopPadding,
+    ctaButtonBottomPadding,
+    ctaButtonLeftPadding,
+    ctaButtonRightPadding,
+    ctaButtonTopPaddingTablet,
+    ctaButtonBottomPaddingTablet,
+    ctaButtonLeftPaddingTablet,
+    ctaButtonRightPaddingTablet,
+    ctaButtonTopPaddingMobile,
+    ctaButtonBottomPaddingMobile,
+    ctaButtonLeftPaddingMobile,
+    ctaButtonRightPaddingMobile,
+    gradientButton,
+    ctaTextTextDecoration,
+    resheadTextDecoration,
+    ressubHeadTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -310,7 +338,7 @@ function EditorStyles(props) {
   let backgroundImageGradient = "";
   let buttonColor = "";
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     backgroundImageGradient = "";
     buttonColor = resctaBgColor !== "empty" && ctaBackColor === "transparent" ? resctaBgColor : ctaBackColor;  //For compatibility with v1.3.2
@@ -320,13 +348,13 @@ function EditorStyles(props) {
   } else {
     updatedButtonBackgroundhColor = "";
   }
-
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color": "empty" !== boxBackgroundColor && "#ffffff" === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
         boxBackgroundColor || "#ffffff",
         newopacity || 0
@@ -428,7 +456,7 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-ifb-cta-button": {
-      "background-color": buttonColor,
+      "background-color": ctaBackColor,
       "background-image": backgroundImageGradient,
       "border-color": resCtaBorderColor !== "empty" && ctaBorderColor === "#333" ?  resCtaBorderColor : ctaBorderColor,  //For compatibility with v1.3.2
     },
@@ -495,6 +523,7 @@ function EditorStyles(props) {
       "line-height": resheadLineHeight,
       "margin-bottom": generateCSSUnit(resheadBottomSpacing, "px"),
       "text-transform": resheadTextTransform,
+      "text-decoration": resheadTextDecoration,
       "font-style": resheadFontStyle,
     },
 
@@ -505,6 +534,7 @@ function EditorStyles(props) {
       "line-height": ressubHeadLineHeight,
       "margin-bottom": generateCSSUnit(ressubHeadBottomSpacing, "px"),
       "text-transform": ressubHeadTextTransform,
+      "text-decoration": ressubHeadTextDecoration,
       "font-style": ressubHeadFontStyle,
     },
 
@@ -519,6 +549,7 @@ function EditorStyles(props) {
       "font-family": ctaTextFontFamily,
       "line-height": ctaTextLineHeight,
       "text-transform": ctaTextTextTransform,
+      "text-decoration": ctaTextTextDecoration,
       "font-style": ctaTextFontStyle,
     },
 
@@ -530,11 +561,14 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
       "border-width": resctaBorderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(resctaBorderWidth, "px") : generateCSSUnit(ctaBorderWidth, "px"), //For compatibility with v1.3.2
       "border-style": resctaBorderStyle !== "empty" && ctaBorderColor === "solid" ? resctaBorderStyle : ctaBorderStyle, //For compatibility with v1.3.2
-      "border-radius": resctaBorderRadius !== 999 && ctaBorderRadius === 0  ? generateCSSUnit(resctaBorderRadius, "px") : generateCSSUnit(ctaBorderRadius, "px"), //For compatibility with v1.3.2
-      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
-      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
-      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
-      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadius, "px"),
+      "padding-top": generateCSSUnit(ctaButtonTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaButtonBottomPadding, "px"),
+      "padding-left": generateCSSUnit(ctaButtonLeftPadding, "px"),
+      "padding-right": generateCSSUnit(ctaButtonRightPadding, "px"),
       "font-size": generateCSSUnit(resctaFontSize, "px"),
       "font-weight": resctaFontWeight,
     },
@@ -545,7 +579,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       // padding: generateCSSUnit(contentPaddingMobile, "px"),
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
@@ -601,10 +635,14 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(ctaTextBottomSpacingMobile, "px"),
     },
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
-      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
-      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
-      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaButtonTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaButtonBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaButtonLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaButtonRightPaddingMobile, "px"),
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-ifb-icon": {
       "border-top-left-radius": generateCSSUnit(iconTopRadiusMobile, "px"),
@@ -626,7 +664,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       // padding: generateCSSUnit(contentPaddingTablet, "px"),
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
@@ -682,10 +720,14 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(ctaTextBottomSpacingTablet, "px"),
     },
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
-      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
-      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
-      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaButtonTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaButtonBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaButtonLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaButtonRightPaddingTablet, "px"),
+      "border-top-left-radius": generateCSSUnit(ctaBlockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(ctaBlockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-ifb-icon": {
       "border-top-left-radius": generateCSSUnit(iconTopRadiusTablet, "px"),

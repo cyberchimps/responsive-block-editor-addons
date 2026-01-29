@@ -787,6 +787,46 @@ const attributes = {
 		type: "string",
 		default: "",
 	},
+	isPreview: {
+		type: "boolean",
+		default: false, 
+	},
+	topTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	innerTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	bottomTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	circularTopTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	circularInnerValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	circularBottomTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	semiCircularTopTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	semiCircularInnerValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
+	semiCircularBottomTitleValueTextDecoration: {
+		type: "string",
+		default: "",
+	},
 };
 
 export default attributes;

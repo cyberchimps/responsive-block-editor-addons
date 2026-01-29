@@ -7,7 +7,7 @@ import RbeaTabRadioControl from "../rbea-tab-radio-control";
  * Box-Shadow reusable component.
  *
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 
 const { ColorPalette } = wp.blockEditor;
 

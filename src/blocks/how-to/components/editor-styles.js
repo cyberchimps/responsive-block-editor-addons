@@ -74,14 +74,18 @@ function EditorStyles(props) {
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
+        mainHeadingTextDecoration,
+        subHeadingTextDecoration,
+        descriptionTextDecoration,
     } = props.attributes;
 
     const border = "none" !== borderStyle ? generateCSSUnit(borderWidth, "px") + " " + borderStyle + " " + borderColor : "";
     const borderRad = "none" !== borderStyle ? generateCSSUnit(borderRadius, "px") : ""; 
+    const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
     var selectors = {
         "": {
-            "opacity": hideWidget ? 0.2 : 1,
+            "opacity": hideWidget && isOn ? 0.2 : 1,
             "text-align": overallAlignment,
             "padding": generateCSSUnit(10, "px"),
         },
@@ -93,6 +97,7 @@ function EditorStyles(props) {
             "font-size": generateCSSUnit(mainHeadingFontSize, "px"),
             "font-weight": mainHeadingFontWeight,
             "margin-bottom": generateCSSUnit(rowGap, "px"),
+            "text-decoration": mainHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-sub-heading-time": {
             "color": secondaryHeadingColor,
@@ -103,6 +108,7 @@ function EditorStyles(props) {
             "font-size": generateCSSUnit(subHeadingFontSize, "px"),
             "font-weight": subHeadingFontWeight,
             "margin-right": generateCSSUnit(timeMargin, "px"),
+            "text-decoration": subHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-time-value": {
             "color": descriptionColor,
@@ -110,7 +116,8 @@ function EditorStyles(props) {
             "line-height": descriptionLineHeight,
             "font-family": descriptionFontFamily,
             "font-size": generateCSSUnit(descriptionFontSize, "px"),
-            "font-weight": descriptionFontWeight
+            "font-weight": descriptionFontWeight,
+            "text-decoration": descriptionTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-sub-heading-cost": {
             "color": secondaryHeadingColor,
@@ -120,7 +127,8 @@ function EditorStyles(props) {
             "font-family": subHeadingFontFamily,
             "font-size": generateCSSUnit(subHeadingFontSize, "px"),
             "font-weight": subHeadingFontWeight,
-            "margin-right": generateCSSUnit(costMargin, "px")
+            "margin-right": generateCSSUnit(costMargin, "px"),
+            "text-decoration": subHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-cost-value": {
             "color": descriptionColor,
@@ -129,7 +137,8 @@ function EditorStyles(props) {
             "line-height": descriptionLineHeight,
             "font-family": descriptionFontFamily,
             "font-size": generateCSSUnit(descriptionFontSize, "px"),
-            "font-weight": descriptionFontWeight
+            "font-weight": descriptionFontWeight,
+            "text-decoration": descriptionTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-sub-heading-tools": {
             "color": secondaryHeadingColor,
@@ -137,7 +146,8 @@ function EditorStyles(props) {
             "line-height": subHeadingLineHeight,
             "font-family": subHeadingFontFamily,
             "font-size": generateCSSUnit(subHeadingFontSize, "px"),
-            "font-weight": subHeadingFontWeight
+            "font-weight": subHeadingFontWeight,
+            "text-decoration": subHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-tools-list-item": {
             "color": descriptionColor,
@@ -147,6 +157,7 @@ function EditorStyles(props) {
             "font-size": generateCSSUnit(descriptionFontSize, "px"),
             "font-weight": descriptionFontWeight,
             "list-style": toolsListStyle,
+            "text-decoration": descriptionTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-sub-heading-materials": {
             "color": secondaryHeadingColor,
@@ -154,7 +165,8 @@ function EditorStyles(props) {
             "line-height": subHeadingLineHeight,
             "font-family": subHeadingFontFamily,
             "font-size": generateCSSUnit(subHeadingFontSize, "px"),
-            "font-weight": subHeadingFontWeight
+            "font-weight": subHeadingFontWeight,
+            "text-decoration": subHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-materials-list-item": {
             "color": descriptionColor,
@@ -164,6 +176,7 @@ function EditorStyles(props) {
             "font-size": generateCSSUnit(descriptionFontSize, "px"),
             "font-weight": descriptionFontWeight,
             "list-style": materialsListStyle,
+            "text-decoration": descriptionTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-sub-heading-steps": {
             "color": secondaryHeadingColor,
@@ -173,6 +186,7 @@ function EditorStyles(props) {
             "font-family": subHeadingFontFamily,
             "font-size": generateCSSUnit(subHeadingFontSize, "px"),
             "font-weight": subHeadingFontWeight,
+            "text-decoration": subHeadingTextDecoration,
         },
         " .responsive-block-editor-addons-block-how-to-time-area": {
             "margin-top": generateCSSUnit(rowGap, "px"),
@@ -203,7 +217,7 @@ function EditorStyles(props) {
 
     var mobile_selectors = {
         "": {
-            "opacity": hideWidgetMobile ? 0.2 : 1,
+            "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
         },
         " .responsive-block-editor-addons-block-how-to-main-heading": {
             "line-height": mainHeadingLineHeight,
@@ -276,7 +290,7 @@ function EditorStyles(props) {
 
     var tablet_selectors = {
         "": {
-            "opacity": hideWidgetTablet ? 0.2 : 1,
+            "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
         },
         " .responsive-block-editor-addons-block-how-to-main-heading": {
             "line-height": mainHeadingLineHeight,

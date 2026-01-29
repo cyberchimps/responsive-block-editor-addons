@@ -175,6 +175,10 @@ function EditorStyles(props) {
     metaFontStyle,
     titleFontStyle,
     continueFontStyle,
+    excerptTextDecoration,
+    metaTextDecoration,
+    titleTextDecoration,
+    continueTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -243,11 +247,11 @@ function EditorStyles(props) {
     varpaginationBorderColor = paginationBorderColor;
     varpaginationActiveBorderColor = paginationActiveBorderColor;
   }
-
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "z-index": z_index,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
       'padding-right': generateCSSUnit(blockRightPadding, "px"),
@@ -339,6 +343,7 @@ function EditorStyles(props) {
       "font-family": titleFontFamily,
       "font-weight": titleFontWeight,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-block-post-grid-title a:hover": {
@@ -346,6 +351,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-grid-author a": {
       color: metaTypographyColor,
+      "text-decoration": metaTextDecoration,
+    },
+    " .responsive-block-editor-addons-block-post-grid-byline time": {
+      "text-decoration": metaTextDecoration,
     },
     " .responsive-block-editor-addons-block-post-grid-byline": {
       color: metaTypographyColor,
@@ -353,6 +362,7 @@ function EditorStyles(props) {
       "font-weight": metaFontWeight,
       "line-height": metaLineHeight,
       "text-transform": metaTextTransform,
+      "text-decoration": metaTextDecoration,
       "font-style": metaFontStyle,
       "font-size": generateCSSUnit(metaFontSize, "px"),
       "margin-bottom": generateCSSUnit(metaBottomSpacing, "px"),
@@ -363,6 +373,7 @@ function EditorStyles(props) {
       "font-weight": excerptFontWeight,
       "line-height": excerptLineHeight,
       "text-transform": excerptTextTransform,
+      "text-decoration": excerptTextDecoration,
       "font-style": excerptFontStyle,
       "font-size": generateCSSUnit(excerptFontSize, "px"),
     },
@@ -374,6 +385,7 @@ function EditorStyles(props) {
       "font-weight": continueFontWeight,
       "line-height": continueLineHeight,
       "text-transform": continueTextTransform,
+      "text-decoration": continueTextDecoration,
       "font-style": continueFontStyle,
       "font-size": generateCSSUnit(continueFontSize, "px"),
 	  "font-family": continueFontFamily,
@@ -420,7 +432,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "z-index": z_indexMobile,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
@@ -497,7 +509,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "z-index": z_indexTablet,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),

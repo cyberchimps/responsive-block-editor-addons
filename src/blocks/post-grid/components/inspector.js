@@ -203,6 +203,10 @@ export default class Inspector extends Component {
       metaFontStyle,
       titleFontStyle,
       continueFontStyle,
+      excerptTextDecoration,
+      metaTextDecoration,
+      titleTextDecoration,
+      continueTextDecoration,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -1033,9 +1037,11 @@ export default class Inspector extends Component {
 					transform: attributes.excerptTextTransform,
           fontstyle: attributes.excerptFontStyle,
           color: attributes.excerptTypographyColor,
+          textDecoration: attributes.excerptTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1052,10 +1058,12 @@ export default class Inspector extends Component {
 					transform: attributes.metaTextTransform,
           fontstyle: attributes.metaFontStyle,
           color: attributes.metaTypographyColor,
+          textDecoration: attributes.metaTextDecoration,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1074,10 +1082,12 @@ export default class Inspector extends Component {
           typographyColorControl: typographyColorControl,
 					typographyColorControlHover: typographyColorControlHover,
 					emptyColorControl: emptyColorControl,
+          textDecoration: attributes.titleTextDecoration,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
           showColorWithHoverControlTab={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1096,10 +1106,12 @@ export default class Inspector extends Component {
           typographyColorControl: readmoreTypographyColorControl,
 					typographyColorControlHover: readmoreTypographyColorControlHover,
 					emptyColorControl: emptyColorControl,
+          textDecoration: attributes.continueTextDecoration,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
           showColorWithHoverControlTab={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1409,44 +1421,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import renderSVG from "../renderQuoteIcon";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -85,6 +86,7 @@ export default class Edit extends Component {
 
     return [
       // Show the alignment toolbar on focus
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <style id={`responsive-block-editor-addons-blockquote-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar

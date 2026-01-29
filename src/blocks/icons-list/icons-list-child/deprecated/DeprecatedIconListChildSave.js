@@ -36,8 +36,7 @@ export default class DeprecatedIconListChildSave extends Component {
     if (source_type == "icon") {
       if (icon) {
         image_icon_html = (
-          <span className="responsive-block-editor-addons-icon-list__source-icon">
-            {renderSVG(icon)}
+          <span className="responsive-block-editor-addons-icon-list__source-icon rbea-dynamic-icon" data-icon={icon} aria-hidden="true">
           </span>
         );
       }

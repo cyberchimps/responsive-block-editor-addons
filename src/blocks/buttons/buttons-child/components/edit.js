@@ -10,6 +10,7 @@ import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../../renderIcon";
 import { loadGoogleFont } from "../../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -94,6 +95,7 @@ export default class Edit extends Component {
         borderWidth,
         borderColor,
         blockTopRadius,
+        inheritFromThemeLocalTimestamp
       },
       isSelected,
       setAttributes,
@@ -120,6 +122,7 @@ export default class Edit extends Component {
     return (
       <Fragment>
       <style id={`responsive-block-editor-addons-buttons-child-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         {buttonFontFamily && loadGoogleFont(buttonFontFamily)}
         <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />
 
@@ -133,7 +136,7 @@ export default class Edit extends Component {
             )}
             key={`${block_id}`}
           >
-            <a
+            <div
               className={classnames(
                 "responsive-block-editor-addons-buttons-repeater",
                 "responsive-block-editor-addons-button__wrapper",
@@ -173,7 +176,7 @@ export default class Edit extends Component {
                   {renderSVG(icon)}
                 </span>
               )}
-            </a>
+            </div>
           </div>
           {/* {isSelected && (
             <form

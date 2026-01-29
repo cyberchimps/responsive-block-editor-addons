@@ -1,3 +1,5 @@
+import { convertTruthyFalsyValue } from "../../utils/helper";
+
 const attributes = {
 	block_id: {
 	  type: "string",
@@ -291,6 +293,26 @@ const attributes = {
 		default: "",
 	},
     textFontStyle: {
+		type: "string",
+		default: "",
+	},
+	inheritFromTheme: {
+		type: "boolean",
+		default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
+	},
+	inheritFromThemesaved: {
+		type: "boolean",
+		default: false,
+	},
+	inheritFromThemeLocalTimestamp: {
+		type: "string",
+		default: "",
+	},
+	isPreview: {
+		type: "boolean",
+		default: false, 
+	},
+	textTextDecoration: {
 		type: "string",
 		default: "",
 	},

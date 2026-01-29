@@ -111,7 +111,15 @@ const attributes = {
   overlayTextTextTransform: {
 		type: 'string',
 		default: "",
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  overlayTextTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

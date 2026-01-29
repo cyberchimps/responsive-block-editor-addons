@@ -257,6 +257,13 @@ function EditorStyles(props) {
     backSubtitleFontStyle,
     backButtonTextTransform,
     backButtonFontStyle,
+    gradientButton,
+    gradientButtonH,
+    backButtonTextDecoration,
+    backSubtitleTextDecoration,
+    backTitleTextDecoration,
+    frontSubtitleTextDecoration,
+    frontTitleTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -348,7 +355,7 @@ function EditorStyles(props) {
   let btnColor = ctaBackColor;
   let btnOpacity = buttonopacity;
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     btnColor = ctaBackColor;
     btnOpacity = buttonopacity;
@@ -358,15 +365,16 @@ function EditorStyles(props) {
   let btnHColor = ctaHoverBackColor;
   let btnHOpacity = buttonHopacity;
   if (buttonHbackgroundType == "gradient") {
-    backgroundHoverImageGradient = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    backgroundHoverImageGradient = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   } else if (buttonHbackgroundType == "color") {
     btnHColor = ctaHoverBackColor;
     btnHOpacity = buttonHopacity;
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMargin, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
       "margin-right": generateCSSUnit(blockRightMargin, "px"),
@@ -389,9 +397,6 @@ function EditorStyles(props) {
         frontBackgroundColor || "#ffffff",
         coloropacity
       )}`,
-      "color": frontTitleTypographyColor,
-      "text-transform": frontTitleTextTransform,
-      "font-style": frontTitleFontStyle,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
@@ -434,6 +439,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "color": frontTitleTypographyColor,
       "text-transform": frontTitleTextTransform,
+      "text-decoration": frontTitleTextDecoration,
       "font-style": frontTitleFontStyle,
       "font-family": frontTitleFontFamily,
       "font-size": generateCSSUnit(frontTitleFontSize, "px"),
@@ -443,6 +449,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
       "color": frontTitleTypographyColor,
       "text-transform": frontSubtitleTextTransform,
+      "text-decoration": frontSubtitleTextDecoration,
       "font-style": frontSubtitleFontStyle,
       "font-family": frontSubtitleFontFamily,
       "font-size": generateCSSUnit(frontSubtitleFontSize, "px"),
@@ -459,9 +466,6 @@ function EditorStyles(props) {
         backBackgroundColor || "#ffffff",
         backcoloropacity
       )}`,
-      "color": backTitleTypographyColor,
-      "text-transform": backTitleTextTransform,
-      "font-style": backTitleFontStyle,
       transform: flipStyleBack,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
@@ -495,11 +499,13 @@ function EditorStyles(props) {
       "font-weight": backTitleFontWeight,
       "line-height": backTitleLineHeight,
       "text-transform": backTitleTextTransform,
+      "text-decoration": backTitleTextDecoration,
       "font-style": backTitleFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
       color: backTitleTypographyColor,
       "text-transform": backSubtitleTextTransform,
+      "text-decoration": backSubtitleTextDecoration,
       "font-style": backSubtitleFontStyle,
       "font-family": backSubtitleFontFamily,
       "font-size": generateCSSUnit(backSubtitleFontSize, "px"),
@@ -549,6 +555,7 @@ function EditorStyles(props) {
       "font-weight": backButtonFontWeight,
       "line-height": backButtonLineHeight,
       "text-transform": backButtonTextTransform,
+      "text-decoration": backButtonTextDecoration,
       "font-style": backButtonFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
@@ -582,7 +589,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
@@ -646,7 +653,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-position": getImagePostionCSS(backgroundPositionFocalTablet),

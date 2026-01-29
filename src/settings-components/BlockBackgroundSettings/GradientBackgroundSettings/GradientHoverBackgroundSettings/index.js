@@ -11,6 +11,8 @@
 import RbeaRangeControl from "../../../../utils/components/rbea-range-control";
 import RbeaAngleRangeControl from "../../../../utils/components/rbea-angle-range-control";
 import RbeaColorControl from "../../../../utils/components/rbea-color-control";
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../../utils/index.js";
  
  // Extend component
  const { Component, Fragment } = wp.element;
@@ -29,73 +31,69 @@ import RbeaColorControl from "../../../../utils/components/rbea-color-control";
                hovercolorLocation2,
                hovergradientDirection,
                opacity,
+               gradientHover,
            },
            setAttributes,
        } = this.props;
- 
+     
+       // Gradient options for WordPress GradientPicker (same as container)
+      const gradientOptions = [
+          {
+          name: 'JShine',
+          gradient:
+              'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+          slug: 'jshine',
+          },
+          {
+          name: 'Moonlit Asteroid',
+          gradient:
+              'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+          slug: 'moonlit-asteroid',
+          },
+          {
+          name: 'Rastafarie',
+          gradient:
+              'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+          slug: 'rastafari',
+          },
+      ];
+  
+      // Convert old gradient attributes to WordPress gradient format if needed
+      const getGradientHValue = () => {
+          // If gradient already exists (WordPress format), use it
+          if (gradientHover) {
+            return gradientHover;
+          }
+          
+          // Otherwise, convert from old attributes to WordPress format
+          if (hoverbackgroundColor1 || hoverbackgroundColor2) {
+          const imgopacity = opacity ? opacity / 100 : 1;
+          const color1 = hexToRgba(hoverbackgroundColor1 || "#fff", imgopacity);
+          const color2 = hexToRgba(hoverbackgroundColor2 || "#fff", imgopacity);
+          const location1 = hovercolorLocation1 !== undefined ? hovercolorLocation1 : 0;
+          const location2 = hovercolorLocation2 !== undefined ? hovercolorLocation2 : 100;
+          const direction = hovergradientDirection !== undefined ? hovergradientDirection : 90;
+          
+          return `linear-gradient(${direction}deg, ${color1} ${location1}%, ${color2} ${location2}%)`;
+          }
+          
+          return undefined;
+      };
+  
+      // Handle gradient change - save to new format
+      const onGradientHChange = (value) => {
+          setAttributes({ gradientHover: value });
+      };
+
      var advancedControls;
        advancedControls = (
-           <Fragment>
-       <RbeaColorControl
-            label = {__("Color 1", "responsive-block-editor-addons")}
-            colorValue={hoverbackgroundColor1}
-            onChange={(colorValue) => setAttributes({ hoverbackgroundColor1: colorValue })}
-            resetColor={() => setAttributes({ hoverbackgroundColor1: "" })}
-        />
-        <RbeaColorControl
-            label = {__("Color 2", "responsive-block-editor-addons")}
-            colorValue={hoverbackgroundColor2}
-            onChange={(colorValue) => setAttributes({ hoverbackgroundColor2: colorValue })}
-            resetColor={() => setAttributes({ hoverbackgroundColor2: "" })}
-        />
-       <RbeaRangeControl
-       label={__("Color Location 1", "responsive-block-editor-addons")}
-       value={hovercolorLocation1}
-       min={0}
-       max={100}
-       onChange={(value) =>
-       setAttributes({
-           hovercolorLocation1: value !== undefined ? value : 0,
-       })
-   }
-       />
-       <RbeaRangeControl
-       label={__("Color Location 2", "responsive-block-editor-addons")}
-       value={hovercolorLocation2}
-       min={0}
-       max={100}
-       onChange={(value) =>
-       setAttributes({
-           hovercolorLocation2: value !== undefined ? value : 100,
-       })
-   }
-       />
-       <RbeaAngleRangeControl
-       label={__(
-           "Angle",
-           "responsive-block-editor-addons"
-   )}
-       value={hovergradientDirection}
-       min={0}
-       max={360}
-       onChange={(value) =>
-       setAttributes({
-           hovergradientDirection: value !== undefined ? value : 90,
-       })
-   }
-       />
-       {((hoverbackgroundColor1 && hoverbackgroundColor1 != '') || (hoverbackgroundColor2 && hoverbackgroundColor2 != '')) && (
-          <RbeaRangeControl
-          label={__("Opacity", "responsive-block-editor-addons")}
-          value={opacity}
-          onChange={(value) =>
-            setAttributes({ opacity: value !== undefined ? value : 20 })
-          }
-          min={0}
-          max={100}
-        />
-        )}
-       </Fragment>
+          <Fragment>
+            <GradientPicker
+              value={getGradientHValue()}
+              onChange={onGradientHChange}
+              gradients={gradientOptions}
+            />
+          </Fragment>
        );
  
  

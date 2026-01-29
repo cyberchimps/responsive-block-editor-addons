@@ -10,6 +10,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -38,8 +39,8 @@ registerBlockType("responsive-block-editor-addons/buttons", {
     
   attributes: attributes,
   example: {
-    atrributes: {
-      btn_count: 2
+    attributes: {
+      isPreview: true,
     }
   },
   responsive_block_editor_addons_settings_data: {
@@ -49,7 +50,7 @@ registerBlockType("responsive-block-editor-addons/buttons", {
   },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="buttons" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

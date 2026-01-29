@@ -41,6 +41,7 @@ export default class Inspector extends Component {
     super(...arguments);
   }
 
+
   render() {
     const {
       attributes: {
@@ -157,6 +158,9 @@ export default class Inspector extends Component {
         subtitleFontStyle,
         textTextTransform,
         textFontStyle,
+        titleTextDecoration,
+        subtitleTextDecoration,
+        textTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -648,9 +652,11 @@ export default class Inspector extends Component {
                   color: titleTypographyColor,
                   transform: titleTextTransform,
                   fontstyle: titleFontStyle,
+                  textDecoration: titleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -670,9 +676,11 @@ export default class Inspector extends Component {
                   color: subtitleTypographyColor,
                   transform: subtitleTextTransform,
                   fontstyle: subtitleFontStyle,
+                  textDecoration: subtitleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -689,9 +697,11 @@ export default class Inspector extends Component {
                   color: textTypographyColor,
                   transform: textTextTransform,
                   fontstyle: textFontStyle,
+                  textDecoration: textTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -701,44 +711,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
             <PanelBody
               title={__("General", "responsive-block-editor-addons")}
               initialOpen={false}

@@ -24,6 +24,10 @@ import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
+import PresetControl from "../../../settings-components/PresetSettings";
+import { presets, resetPreset } from './presets';
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../utils/index.js";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -336,6 +340,10 @@ export default class Inspector extends Component {
         descriptionTextTransform,
         descriptionFontStyle,
         hasImagePositionMigrated,
+        gradientOverlay,
+        titleTextDecoration,
+        designationTextDecoration,
+        descriptionTextDecoration
       },
       setAttributes,
     } = this.props;
@@ -599,6 +607,66 @@ export default class Inspector extends Component {
 
     // Background image URL
     let background_image_url = backgroundImage || '';
+
+    const gradientOptions = [
+      {
+        name: 'JShine',
+        gradient:
+          'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+        slug: 'jshine',
+      },
+      {
+        name: 'Moonlit Asteroid',
+        gradient:
+          'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+        slug: 'moonlit-asteroid',
+      },
+      {
+        name: 'Rastafarie',
+        gradient:
+          'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+        slug: 'rastafari',
+      },
+    ];
+
+    const getGradientOverlayValue = () => {
+      if (gradientOverlay) {
+        return gradientOverlay;
+      }
+      
+      const overlayOpacity = opacity ? opacity / 100 : 1;
+
+      const color1 = hexToRgba(
+        gradientOverlayColor1 || "#ffffff",
+        overlayOpacity
+      );
+      const color2 = hexToRgba(
+        gradientOverlayColor2 || "#ffffff",
+        overlayOpacity
+      );
+
+      const stop1 =
+        gradientOverlayLocation1 !== undefined
+          ? `${gradientOverlayLocation1}%`
+          : "0%";
+      const stop2 =
+        gradientOverlayLocation2 !== undefined
+          ? `${gradientOverlayLocation2}%`
+          : "100%";
+
+      if (gradientOverlayType === "radial") {
+        const position = gradientOverlayPosition || "center center";
+        return `radial-gradient(at ${position}, ${color1} ${stop1}, ${color2} ${stop2})`;
+      }
+
+      const angle =
+        gradientOverlayAngle !== undefined ? gradientOverlayAngle : 90;
+      return `linear-gradient(${angle}deg, ${color1} ${stop1}, ${color2} ${stop2})`;
+    };
+
+    const onGradientOverlayChange = (value) => {
+      setAttributes({ gradientOverlay: value });
+    };
 
     return (
       <InspectorControls key="inspector">
@@ -937,6 +1005,21 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+
+            <PanelBody
+              title={__("Presets", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <PresetControl
+                label={__('Select Preset', 'responsive-block-editor-addons')}
+                presets={presets}
+                onApply={(newAttrs) => setAttributes(newAttrs)}
+                activeId={null}
+                isResetAllowed={true}
+                resetAttr={resetPreset}
+                onResetApply={(newAttrs) => setAttributes(newAttrs)}
+              />
+            </PanelBody>
             <RbeaSupportControl blockSlug={"team"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
@@ -1215,126 +1298,14 @@ export default class Inspector extends Component {
 
                       {"gradient" == overlayType && (
                         <Fragment>
-                          <RbeaColorControl
-                            label = {"Color 1"}
-                            colorValue={gradientOverlayColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                gradientOverlayColor1: colorValue,
-                              })
-                            }
-                            resetColor={() => setAttributes({ gradientOverlayColor1: "" })}
+                          <GradientPicker
+                            value={getGradientOverlayValue()}
+                            onChange={onGradientOverlayChange}
+                            gradients={gradientOptions}
                           />
-                          <RbeaColorControl
-                            label = {"Color 2"}
-                            colorValue={gradientOverlayColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                gradientOverlayColor2: colorValue,
-                              })
-                            }
-                            resetColor={() => setAttributes({ gradientOverlayColor2: "" })}
-                          />
-                          <RbeaTabRadioControl
-                            label={__("Type", "responsive-block-editor-addons")}
-                            value={gradientOverlayType}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayType: value })
-                            }
-                            options={[
-                              { value: "linear", label: __("Linear", "responsive-block-editor-addons") },
-                              { value: "radial", label: __("Radial", "responsive-block-editor-addons") },
-                            ]}
-                            defaultValue={"linear"}
-                          />
-                          <RbeaRangeControl
-                            label={__("Color Location 1", "responsive-block-editor-addons")}
-                            value={gradientOverlayLocation1}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayLocation1: value })
-                            }
-                            min={0}
-                            max={100}
-                          />
-                          <RbeaRangeControl
-                            label={__("Color Location 2", "responsive-block-editor-addons")}
-                            value={gradientOverlayLocation2}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayLocation2: value })
-                            }
-                            min={0}
-                            max={100}
-                          />
-                          {"linear" == gradientOverlayType && (
-                            <RbeaAngleRangeControl
-                              label={__("Angle", "responsive-block-editor-addons")}
-                              value={gradientOverlayAngle}
-                              onChange={(value) =>
-                                setAttributes({ gradientOverlayAngle: value })
-                              }
-                              min={0}
-                              max={360}
-                            />
-                          )}
-                          {"radial" == gradientOverlayType && (
-                            <SelectControl
-                              label={__("Type", "responsive-block-editor-addons")}
-                              value={gradientOverlayPosition}
-                              onChange={(value) =>
-                                setAttributes({
-                                  gradientOverlayPosition: value,
-                                })
-                              }
-                              options={[
-                                {
-                                  value: "center center",
-                                  label: __("Center Center", "responsive-block-editor-addons"),
-                                },
-                                {
-                                  value: "center left",
-                                  label: __("Center Left", "responsive-block-editor-addons"),
-                                },
-                                {
-                                  value: "center right",
-                                  label: __("Center Right", "responsive-block-editor-addons"),
-                                },
-                                {
-                                  value: "top center",
-                                  label: __("Top Center", "responsive-block-editor-addons"),
-                                },
-                                { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
-                                { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
-                                {
-                                  value: "bottom center",
-                                  label: __("Bottom Center", "responsive-block-editor-addons"),
-                                },
-                                {
-                                  value: "bottom left",
-                                  label: __("Bottom Left", "responsive-block-editor-addons"),
-                                },
-                                {
-                                  value: "bottom right",
-                                  label: __("Bottom Right", "responsive-block-editor-addons"),
-                                },
-                              ]}
-                              __nextHasNoMarginBottom
-                              __next40pxDefaultSize={true}
-                            />
-                          )}
                         </Fragment>
                       )}
                     </Fragment>
-                  )}
-                  {backgroundImage && (
-                    <RbeaRangeControl
-                    label={__("Opacity", "responsive-block-editor-addons")}
-                    value={opacity}
-                    onChange={(value) =>
-                      setAttributes({ opacity: value !== undefined ? value : 20 })
-                    }
-                    min={0}
-                    max={100}
-                  />
                   )}
                 </Fragment>
               )}
@@ -1355,10 +1326,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: titleBottomSpacingTablet,
                   transform: titleTextTransform,
                   fontstyle: titleFontStyle,
+                  textDecoration: titleTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1381,10 +1354,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: designationBottomSpacingTablet,
                   transform: designationTextTransform,
                   fontstyle: designationFontStyle,
+                  textDecoration: designationTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1407,10 +1382,12 @@ export default class Inspector extends Component {
                   bottomSpacingTablet: descriptionBottomSpacingTablet,
                   transform: descriptionTextTransform,
                   fontstyle: descriptionFontStyle,
+                  textDecoration: descriptionTextDecoration,
                 }}
                 showLetterSpacing={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
+                showTextDecoration={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1505,44 +1482,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                "Hide on Desktop",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Tablet",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Mobile",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
             <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

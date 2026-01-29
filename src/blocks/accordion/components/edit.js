@@ -26,14 +26,21 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import PresetControl from "../../../settings-components/PresetSettings";
+import { presets, resetPreset } from './presets';
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../utils/index.js";
 
 import {
   __experimentalToggleGroupControl as ToggleGroupControl,
   __experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -108,7 +115,17 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       blockLeftMarginMobile,
       blockRightMarginMobile,
       blockNewSpacingValuesUpdated,
+      titleBgGradient,
+      contentBgGradient,
     } = attributes;
+
+    // Sync legacy gradient flags to new background type controls
+    if (titleBgGradient) {
+      setAttributes({ backgroundType: "gradient", titleBgGradient: false });
+    }
+    if (contentBgGradient) {
+      setAttributes({ contentBackgroundType: "gradient", contentBgGradient: false });
+    }
 
     // Assigning block_id in the attribute.
     setAttributes({ block_id: this.props.clientId });
@@ -420,6 +437,12 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     hideWidget,
     hideWidgetMobile,
     hideWidgetTablet,
+    backgroundType,
+    contentBackgroundType,
+    gradient,
+    contentGradient,
+    contentTextDecoration,
+    titleTextDecoration,
     },
       setAttributes,
     } = this.props;
@@ -508,6 +531,90 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
         label: __("900", "responsive-block-editor-addons"),
       },
     ];
+
+    // Background Type Options
+    const backgroundTypeOptions = [
+      { value: "color", label: __("Color", "responsive-block-editor-addons") },
+      {
+        value: "gradient",
+        label: __("Gradient", "responsive-block-editor-addons"),
+      },
+    ];
+
+    // Gradient options for WordPress GradientPicker (same as container)
+    const gradientOptions = [
+      {
+        name: 'JShine',
+        gradient:
+          'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+        slug: 'jshine',
+      },
+      {
+        name: 'Moonlit Asteroid',
+        gradient:
+          'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+        slug: 'moonlit-asteroid',
+      },
+      {
+        name: 'Rastafarie',
+        gradient:
+          'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+        slug: 'rastafari',
+      },
+    ];
+
+    // Convert old gradient attributes to WordPress gradient format if needed
+    const getGradientValue = () => {
+      // If gradient already exists (WordPress format), use it
+      if (gradient) {
+        return gradient;
+      }
+      
+      // Otherwise, convert from old attributes to WordPress format
+      if (titleBackgroundColor || titleSecondaryBackgroundColor) {
+        const imgopacity = titleBackgroundColorOpacity ? titleBackgroundColorOpacity / 100 : 1;
+        const color1 = hexToRgba(titleBackgroundColor || "#fff", imgopacity);
+        const color2 = hexToRgba(titleSecondaryBackgroundColor || "#fff", imgopacity);
+        // const location1 = colorLocation1 !== undefined ? colorLocation1 : 0;
+        // const location2 = colorLocation2 !== undefined ? colorLocation2 : 100;
+        const direction = titleGradientDegree !== undefined ? titleGradientDegree : 90;
+        
+        return `linear-gradient(${direction}deg, ${color1} 0%, ${color2} 100%)`;
+      }
+      
+      return undefined;
+    };
+
+    const getContentGradientValue = () => {
+      // If gradient already exists (WordPress format), use it
+      if (contentGradient) {
+        return contentGradient;
+      }
+      
+      // Otherwise, convert from old attributes to WordPress format
+      if (contentBackgroundColor || contentSecondaryBackgroundColor) {
+        const imgopacity = contentBackgroundColorOpacity ? contentBackgroundColorOpacity / 100 : 1;
+        const color1 = hexToRgba(contentBackgroundColor || "#fff", imgopacity);
+        const color2 = hexToRgba(contentSecondaryBackgroundColor || "#fff", imgopacity);
+        // const location1 = colorLocation1 !== undefined ? colorLocation1 : 0;
+        // const location2 = colorLocation2 !== undefined ? colorLocation2 : 100;
+        const direction = contentGradientDegree !== undefined ? contentGradientDegree : 90;
+        
+        return `linear-gradient(${direction}deg, ${color1} 0%, ${color2} 100%)`;
+      }
+      
+      return undefined;
+    };
+
+    // Handle gradient change - save to new format
+    const onGradientChange = (value) => {
+      setAttributes({ gradient: value });
+    };
+
+    const onContentGradientChange = (value) => {
+      setAttributes({ contentGradient: value });
+    };
+
     const getAccordionItemTemplate = memoize((accordion_count, accordion) => {
       return times(accordion_count, (n) => [
         "responsive-block-editor-addons/accordion-item",
@@ -569,7 +676,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 
     const accordionGeneralSettings = () => {
       return (
-        <PanelBody>
+        <>
+        <PanelBody
+          title={__("General", "responsive-block-editor-addons")}
+          initialOpen={true}
+        >
           <div className="responsive-block-editor-addons-grid-2-layout">
             <RbeaTabRadioControl
               label={__("Layout", "responsive-block-editor-addons")}
@@ -640,6 +751,21 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           )}
           {"accordion" === layout && accordionIconSettings()}
         </PanelBody>
+        <PanelBody
+            title={__("Presets", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+          <PresetControl
+            label={__('Select Preset', 'responsive-block-editor-addons')}
+            presets={presets}
+            onApply={(newAttrs) => setAttributes(newAttrs)}
+            activeId={null}
+            isResetAllowed={true}
+            resetAttr={resetPreset}
+            onResetApply={(newAttrs) => setAttributes(newAttrs)}
+          />
+        </PanelBody>
+        </>
       );
     };
 
@@ -659,14 +785,6 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 									resetColor={() => setAttributes({ titleActiveTextColor: "" })}
 								/>
               <RbeaColorControl
-									label = {__("Title Background Color", "responsive-block-editor-addons")}
-									colorValue={titleBackgroundColor} //titleBackgroundColor
-									onChange={(colorValue) =>
-										setAttributes({ titleBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ titleBackgroundColor: "" })}
-								/>
-              <RbeaColorControl
 									label = {__("Active Title Background Color", "responsive-block-editor-addons")}
 									colorValue={titleActiveBackgroundColor}
 									onChange={(colorValue) =>
@@ -674,114 +792,61 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 									}
 									resetColor={() => setAttributes({ titleActiveBackgroundColor: "" })}
 								/>
-                
-            <ToggleControl
-              label={__("Title Gradient Background", "responsive-block-editor-addons")}
-              checked={titleBgGradient}
-              onChange={() =>
-                this.props.setAttributes({
-                  titleBgGradient: !titleBgGradient,
-                })
-              }
-              __nextHasNoMarginBottom
-            />
-            {titleBgGradient && (
-              
-               <RbeaColorControl
-               label = {__("Secondary Background Color", "responsive-block-editor-addons")}
-               colorValue={titleSecondaryBackgroundColor}
-               onChange={(colorValue) =>
-                 setAttributes({ titleSecondaryBackgroundColor: colorValue })
-               }
-               resetColor={() => setAttributes({ titleSecondaryBackgroundColor: "" })}
-             />
-            )}
-
-            {titleBgGradient && (
-              <RbeaAngleRangeControl
-                label={__("Angle", "responsive-block-editor-addons")}
-                value={titleGradientDegree}
-                onChange={(value) =>
-                  setAttributes({
-                    titleGradientDegree: value !== undefined ? value : 100,
-                  })
-                }
-                min={0}
-                max={360}
+              <RbeaBackgroundTypeControl
+                label={__("Title Background Type", "responsive-block-editor-addons")}
+                value={backgroundType}
+                onChange={(value) => setAttributes({ backgroundType: value })}
+                options={backgroundTypeOptions}
               />
-            )}
-            <RbeaRangeControl
-              label={__(
-                "Background Color Opacity",
-                "responsive-block-editor-addons"
+              {"color" == backgroundType && (
+                <Fragment>
+                  <RbeaColorControl
+                    label = {__("Background Color", "responsive-block-editor-addons")}
+                    colorValue={titleBackgroundColor} //titleBackgroundColor
+                    onChange={(colorValue) =>
+                      setAttributes({ titleBackgroundColor: colorValue })
+                    }
+                    resetColor={() => setAttributes({ titleBackgroundColor: "" })}
+                  />
+                </Fragment>
               )}
-              value={titleBackgroundColorOpacity}
-              onChange={(value) =>
-                setAttributes({
-                  titleBackgroundColorOpacity:
-                    value !== undefined ? value : 100,
-                })
-              }
-              min={0}
-              max={100}
-            />
-             <RbeaColorControl
-									label = {__("Content Background Color", "responsive-block-editor-addons")}
-									colorValue={contentBackgroundColor}
-									onChange={(colorValue) =>
-										setAttributes({ contentBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ contentBackgroundColor: "" })}
-								/>
-            <ToggleControl
-              label="Content Gradient Background"
-              checked={contentBgGradient}
-              onChange={() =>
-                this.props.setAttributes({
-                  contentBgGradient: !contentBgGradient,
-                })
-              }
-              __nextHasNoMarginBottom
-            />
-            {contentBgGradient && [
-              <Fragment>
-                 <RbeaColorControl
-									label = {__("Secondary Background Color", "responsive-block-editor-addons")}
-									colorValue={contentSecondaryBackgroundColor}
-									onChange={(colorValue) =>
-										setAttributes({ contentSecondaryBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ contentSecondaryBackgroundColor: "" })}
-								/>
-              
-              <RbeaAngleRangeControl
-                label={__("Angle", "responsive-block-editor-addons")}
-                value={contentGradientDegree}
-                onChange={(value) =>
-                  setAttributes({
-                    contentGradientDegree: value !== undefined ? value : 100,
-                  })
-                }
-                min={0}
-                max={360}
-              />,
-              </Fragment>
-            ]}
-            <RbeaRangeControl
-              label={__(
-                "Background Color Opacity",
-                "responsive-block-editor-addons"
+              {"gradient" == backgroundType && (
+                <Fragment>
+                  <GradientPicker
+                    value={getGradientValue()}
+                    onChange={onGradientChange}
+                    gradients={gradientOptions}
+                  />
+                </Fragment>
               )}
-              value={contentBackgroundColorOpacity}
-              onChange={(value) =>
-                setAttributes({
-                  contentBackgroundColorOpacity:
-                    value !== undefined ? value : 100,
-                })
-              }
-              min={0}
-              max={100}
-            />
+              <RbeaBackgroundTypeControl
+                label={__("Content Background Type", "responsive-block-editor-addons")}
+                value={contentBackgroundType}
+                onChange={(value) => setAttributes({ contentBackgroundType: value })}
+                options={backgroundTypeOptions}
+              />
+              {"color" == contentBackgroundType && (
+                <Fragment>
+                  <RbeaColorControl
+                    label = {__("Content Background Color", "responsive-block-editor-addons")}
+                    colorValue={contentBackgroundColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ contentBackgroundColor: colorValue })
+                    }
+                    resetColor={() => setAttributes({ contentBackgroundColor: "" })}
+                  />
+                </Fragment>
+              )}
+              {"gradient" == contentBackgroundType && (
+                <Fragment>
+                  <GradientPicker
+                    value={getContentGradientValue()}
+                    onChange={onContentGradientChange}
+                    gradients={gradientOptions}
+                  />
+                </Fragment>
+              )}
+            
         </PanelBody>
       );
     };
@@ -842,9 +907,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               color: titleTypographyColor,
               transform: titleTextTransform,
               fontstyle: titleFontStyle,
+              textDecoration: titleTextDecoration,
             }}
 			    	showLetterSpacing = { false }
             showColorControl={ true }
+            showTextDecoration={true}
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
           />
@@ -861,9 +928,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               color: contentTypographyColor,
               transform: contentTextTransform,
               fontstyle: contentFontStyle,
+              textDecoration: contentTextDecoration,
             }}
 			    	showLetterSpacing = { false }
             showColorControl = { true }
+            showTextDecoration = {true}
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
           />
@@ -1158,6 +1227,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-style-accordion-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <InspectorControls>
           <InspectorTabs>
             <InspectorTab key={"content"}>
@@ -1175,44 +1245,6 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <RbeaExtensions {...this.props} />
-              <PanelBody
-                title={__("Responsive Conditions", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ToggleControl
-                  label={__(
-                    "Hide on Desktop",
-                    "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidget}
-                  onChange={(value) =>
-                    setAttributes({ hideWidget: !hideWidget })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label={__(
-                    "Hide on Tablet",
-                    "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidgetTablet}
-                  onChange={(value) =>
-                    setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label={__(
-                    "Hide on Mobile",
-                    "responsive-block-editor-addons"
-                  )}
-                  checked={hideWidgetMobile}
-                  onChange={(value) =>
-                    setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                  }
-                  __nextHasNoMarginBottom
-                />
-              </PanelBody>
               <PanelBody
                 title={__("Z Index", "responsive-block-editor-addons")}
                 initialOpen={false}
@@ -1304,6 +1336,8 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             `responsive-block-editor-addons-accordion-layout-${this.props.attributes.layout}`,
             `responsive-block-editor-addons-accordion-expand-first-${this.props.attributes.expandFirstItem}`,
             `responsive-block-editor-addons-accordion-inactive-other-${this.props.attributes.inactiveOtherItems}`,
+            `responsive-block-editor-addons-block-accordion`,
+            `block-${this.props.attributes.block_id}`,
             equalHeightClass
           )}
       data-accordiontoggle = { true }

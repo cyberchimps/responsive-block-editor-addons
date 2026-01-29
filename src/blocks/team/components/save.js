@@ -53,6 +53,7 @@ export default class Save extends Component {
       <div key={`block-${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-team-wrapper",
+          "responsive-block-editor-addons-block-team",
           `block-${block_id}`,
           {
             "has-columns": count > 1,

@@ -118,6 +118,9 @@ export default class Inspector extends Component {
         textFontStyle,
         linkTextTransform,
         linkFontStyle,
+        linkTextDecoration,
+        textTextDecoration,
+        titleTextDecoration,
 			},
 			setAttributes,
 		} = this.props;
@@ -251,10 +254,12 @@ export default class Inspector extends Component {
             bottomSpacingMobile: titleBottomSpacingMobile,
             transform: titleTextTransform,
             fontstyle: titleFontStyle,
+            textDecoration: titleTextDecoration,
 						}}
 						showLetterSpacing = { false }
             showColorControl={true}
             showTextBottomSpacing={true}
+            showTextDecoration={true}
 						setAttributes={ setAttributes }
 						{...this.props}            
 					/>
@@ -275,10 +280,12 @@ export default class Inspector extends Component {
             bottomSpacingMobile: textBottomSpacingMobile,
             transform: textTextTransform,
             fontstyle: textFontStyle,
+            textDecoration: textTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}            
 				/>
@@ -298,10 +305,12 @@ export default class Inspector extends Component {
             bottomSpacingMobile: linkBottomSpacingMobile,
             transform: linkTextTransform,
             fontstyle: linkFontStyle,
+            textDecoration: linkTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showTextBottomSpacing={true}
           showColorControl={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}            
 				/>
@@ -326,44 +335,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

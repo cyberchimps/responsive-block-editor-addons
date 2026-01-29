@@ -27,6 +27,9 @@ export default class Save extends Component {
       buttonSize,
       icon,
       iconPosition,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
     let callHref = `tel:${phone}`;
     let mailHref = `mailto: ${mail}`;
@@ -35,13 +38,20 @@ export default class Save extends Component {
         className={classnames(
           this.props.className, 
           "responsive-block-editor-addons-block-call-mail-button",
-          `block-${block_id}`
+          `block-${block_id}`,
+          inheritFromTheme ? "wp-block-button" : null
         )}
+        data-rbea-inherit-wrapper="true"
+        data-inherit-from-theme={inheritFromThemesaved ? '1' : '0'}
+        data-local-timestamp={inheritFromThemeLocalTimestamp || ''}
+        data-rbea-inherit-parent="self"
+        data-rbea-inherit-child=".responsive-block-editor-addons-call-mail-button-button-container"
       >
         <a
           className={classnames(
             "responsive-block-editor-addons-call-mail-button-button-container",
-            buttonSize
+            buttonSize,
+            inheritFromTheme ? "wp-block-button wp-block-button__link" : null
           )}
           href={"call" === buttonToShow ? callHref : mailHref}
         >
@@ -49,10 +59,12 @@ export default class Save extends Component {
             <span
               className={classnames(
                 `responsive-block-editor-addons-call-mail-button-icon`,
-                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`
+                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`,
+                "rbea-dynamic-icon"
               )}
+              data-icon={icon}
+              aria-hidden="true"
             >
-              {renderSVG(icon)}
             </span>
           )}
           {"call" === buttonToShow && (
@@ -73,10 +85,12 @@ export default class Save extends Component {
             <span
               className={classnames(
                 `responsive-block-editor-addons-call-mail-button-icon`,
-                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`
+                `responsive-block-editor-addons-call-mail-button-icon-iconPosition-${iconPosition}`,
+                "rbea-dynamic-icon"
               )}
+              data-icon={icon}
+              aria-hidden="true"
             >
-              {renderSVG(icon)}
             </span>
           )}
         </a>

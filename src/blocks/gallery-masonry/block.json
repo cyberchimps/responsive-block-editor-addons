@@ -207,7 +207,7 @@
     },
     "filterTabTypographyTextDecoration": {
       "type": "string",
-      "default": "none"
+      "default": ""
     },
     "filterTabTopPadding": {
       "type": "number",
@@ -364,6 +364,10 @@
     "filterTabTypographyFontStyle": {
       "type": "string",
       "default": "normal"
-    }
+    },
+    "isPreview": {
+      "type": "boolean",
+      "default": false
+	  }
   }
 }

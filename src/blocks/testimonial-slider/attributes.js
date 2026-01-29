@@ -951,7 +951,23 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  descTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  nameTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  companyTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

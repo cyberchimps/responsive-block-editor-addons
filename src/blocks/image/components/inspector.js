@@ -219,7 +219,9 @@ export default class Inspector extends Component {
       captionIsMarginControlConnected,
       imagePositionTab,
       layoverHeadingFontStyle,
-      captionFontStyle
+      captionFontStyle,
+      layoverHeadingTextDecoration,
+      captionTextDecoration,
     } = attributes;
 
     // To populate new control values with existing padding margin control values for backward compatibility.
@@ -1674,9 +1676,11 @@ if (!imageIsRadiusValueUpdated) {
                 transform: layoverHeadingTextTransform,
                 color: layoverHeadingTypographyColor,
                 fontstyle: layoverHeadingFontStyle,
+                textDecoration: layoverHeadingTextDecoration,
               }}
               showLetterSpacing={true}
               showColorControl={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />
@@ -1705,9 +1709,11 @@ if (!imageIsRadiusValueUpdated) {
                 transform: captionTextTransform,
                 color: captionTypographyColor,
                 fontstyle: captionFontStyle,
+                textDecoration: captionTextDecoration,
               }}
               showLetterSpacing={true}
               showColorControl={true}
+              showTextDecoration={true}
               setAttributes={setAttributes}
               {...this.props}
             />
@@ -1718,44 +1724,7 @@ if (!imageIsRadiusValueUpdated) {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-            title={__("Responsive Conditions", "responsive-block-editor-addons")}
-            initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                "Hide on Desktop",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Tablet",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Mobile",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
             <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}
               initialOpen={false}

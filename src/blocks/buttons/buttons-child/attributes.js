@@ -1,3 +1,5 @@
+import { convertTruthyFalsyValue } from "../../../utils/helper";
+
 const attributes = {
   block_id: {
     type: "string",
@@ -146,15 +148,20 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  gradient: {
+    type: "string",
+  },
   gradientDirection: {
     type: "number",
     default: 90,
   },
   backgroundColor1: {
     type: "string",
+    default: "#007cba",
   },
   backgroundColor2: {
     type: "string",
+    default: "#007cba",
   },
   opacity: {
     type: "number",
@@ -249,7 +256,15 @@ const attributes = {
   },
   inheritFromTheme: {
     type: "boolean",
+    default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
     default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
   },
   hoverEffect: {
     type: "string",
@@ -429,6 +444,22 @@ const attributes = {
   noFollow: {
     type: "boolean",
     default: false,
+  },
+  hideWidget: {
+  type: "boolean",
+  default: false,
+  },
+  hideWidgetTablet: {
+  type: "boolean",
+  default: false,
+  },
+  hideWidgetMobile: {
+  type: "boolean",
+  default: false,
+  },
+  buttonTextDecoration: {
+  type: "string",
+  default: "none",
   },
 };
 

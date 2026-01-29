@@ -1,3 +1,7 @@
+const containerPadding = (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 10;
+
+const rowColGap = (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_gap) ? parseInt(responsive_globals.default_container_gap) : 20;
+
 const attributes = {
   block_id: {
     type: "string",
@@ -33,7 +37,7 @@ const attributes = {
   },
   innerContentCustomWidthDesktop: {
     type: "number",
-    default: 1340,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_content_width) ? parseInt(responsive_globals.default_content_width) : 1340,
   },
   innerContentCustomWidthTablet: {
     type: "number",
@@ -80,7 +84,7 @@ const attributes = {
   },
   rowGapDesktop: {
     type: "number",
-    default: 20,
+    default: rowColGap,
   },
   rowGapTablet: {
     type: "number",
@@ -102,7 +106,7 @@ const attributes = {
   },
   columnGapDesktop: {
     type: "number",
-    default: 20,
+    default: rowColGap,
   },
   columnGapTablet: {
     type: "number",
@@ -503,19 +507,19 @@ const attributes = {
   },
   containerTopPadding: {
     type: "number",
-    default: 10,
+    default: containerPadding,
   },
   containerBottomPadding: {
     type: "number",
-    default: 10,
+    default: containerPadding,
   },
   containerLeftPadding: {
     type: "number",
-    default: 10,
+    default: containerPadding,
   },
   containerRightPadding: {
     type: "number",
-    default: 10,
+    default: containerPadding,
   },
   containerTopPaddingTablet: {
     type: "number",
@@ -643,6 +647,10 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

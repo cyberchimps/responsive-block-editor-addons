@@ -11,6 +11,7 @@ import Edit from "./components/edit";
 import {Button} from "@wordpress/components";
 
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 import  {LayoutModal}  from "./layout/layout-modal";
 
 /**
@@ -35,18 +36,21 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
     __("importer", "responsive-block-editor-addons"),
     __("layouts", "responsive-block-editor-addons"),
   ],
+  attributes: {
+    isPreview: {
+      type: 'boolean',
+      default: false,
+    },
+  },
   example: {
     attributes: {
-      // previewImage: "https://images.unsplash.com/photo-1581093458790-ec69b1f69c61?auto=format&fit=crop&w=600&q=80",
-      previewTitle: __("Template Library", "responsive-block-editor-addons"),
-      previewDescription: __("Click to browse a collection of templates", "responsive-block-editor-addons"),
+      isPreview: true,
     },
-    innerBlocks: [],
   },
   /* Render the block in editor. */
   edit: (props) => {
     return (
-        <Edit {...props} />
+      props.attributes.isPreview ? <BlockPreview image="templates" /> : <Edit {...props} />
     );
   },
 
@@ -60,6 +64,29 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
  * Add a Pattern Importer button to the toolbar.
  */
 let patternButtonExist = false;
+
+const isTemplateButtonEnabled = () => {
+  const toggle = responsive_globals?.template_library_button_on;
+
+  if (typeof toggle === "undefined") {
+    return true;
+  }
+
+  if (typeof toggle === "string") {
+    return toggle === "1" || toggle.toLowerCase() === "true";
+  }
+
+  return !!toggle;
+};
+
+const removePatternButton = () => {
+  const existingWrapper = document.querySelector(".rbea-pattern-wrapper");
+  if (existingWrapper) {
+    existingWrapper.remove();
+  }
+  patternButtonExist = false;
+};
+
 wp.data.subscribe(() => {
   appendImportButton();
 });
@@ -68,6 +95,11 @@ wp.data.subscribe(() => {
  * Build the pattern importer button.
  */
 function appendImportButton() {
+  if (!isTemplateButtonEnabled()) {
+    removePatternButton();
+    return;
+  }
+
   if (patternButtonExist) {
     return;
   }

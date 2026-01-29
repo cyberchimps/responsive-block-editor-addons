@@ -1061,7 +1061,19 @@ bodyBorderBottomRightRadius: {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  headingTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

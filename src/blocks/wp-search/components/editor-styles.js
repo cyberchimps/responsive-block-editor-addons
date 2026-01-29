@@ -107,6 +107,8 @@
      inputFontStyle,
      buttonTextTransform, 
      buttonFontStyle,
+     inputTextDecoration,
+     buttonTextDecoration,
    } = props.attributes;
 
    let width;
@@ -164,10 +166,11 @@
    let inputBorderRadiusTablet = "classic" === layout ? `${blockTopRadiusTablet}px 0px 0px ${blockLeftRadiusTablet}px` : `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
    let iconBorderRadiusTablet = "minimal" === layout ? `${blockTopRadiusTablet}px 0px 0px ${blockLeftRadiusTablet}px` : `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
    let buttonBorderRadiusTablet = `0px ${blockRightRadiusTablet}px ${blockBottomRadiusTablet}px 0px`;
+   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
    var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "width": width,
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
@@ -221,6 +224,7 @@
      "margin": 0,
      "font-family": inputFontFamily,
      "text-transform": inputTextTransform,
+     "text-decoration": inputTextDecoration,
      "font-style": inputFontStyle,
      "font-size": generateCSSUnit(inputFontSize, "px"),
      "font-weight": inputFontWeight,
@@ -272,6 +276,7 @@
       "color": buttonTextColor,
       "font-family": buttonFontFamily,
       "text-transform": buttonTextTransform,
+      "text-decoration": buttonTextDecoration,
       "font-style": buttonFontStyle,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-weight": buttonFontWeight,
@@ -286,7 +291,7 @@
  
    var mobile_selectors = {
     " ":{
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -320,7 +325,7 @@
  
    var tablet_selectors = {
     " ":{
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

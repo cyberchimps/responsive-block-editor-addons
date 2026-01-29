@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import Googlemap from "./googlemap";
 import Controls from "./controls";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -78,6 +79,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-googlemap-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the block controls on focus
       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 

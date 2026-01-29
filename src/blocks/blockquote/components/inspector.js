@@ -314,6 +314,7 @@ export default class Inspector extends Component {
         quoteTextTransform,
         quoteFontStyle,
         twFontStyle,
+        quoteTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -914,9 +915,11 @@ export default class Inspector extends Component {
                 color: quoteTypographyColor,
                 transform: quoteTextTransform,
                 fontstyle: quoteFontStyle,
+                textDecoration: quoteTextDecoration,
 				    	}}
 				    	showLetterSpacing = { false }
               showColorControl={true}
+              showTextDecoration={true}
 				    	setAttributes={ setAttributes }
 				    	{...this.props}
 				    />
@@ -1027,44 +1030,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

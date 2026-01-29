@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -38,19 +39,14 @@ registerBlockType("responsive-block-editor-addons/expand", {
     align: ["wide", "full", "center", "left", "right"],
   },
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example title */
-            blockTitle: __( 'Title for this block', 'responsive-block-editor-addons' ),
-            /* translators: example description */
-            expandLessText: __( 'Some short text that can be expanded to show more details.', 'responsive-block-editor-addons' ),
-            /* translators: example label */
-            moreLabel: __( 'Show more', 'responsive-block-editor-addons' ),
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="expand-show-more" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

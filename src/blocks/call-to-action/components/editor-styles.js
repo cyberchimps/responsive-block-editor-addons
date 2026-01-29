@@ -191,8 +191,13 @@ function EditorStyles(props) {
   ctaTextFontStyle,
   buttonTextTextTransform,
   buttonTextFontStyle,
+  inheritFromTheme,
+  gradientButton,
+  gradient,
+  ctaTitleTextDecoration,
+  ctaTextTextDecoration,
+  buttonTextTextDecoration,
   } = props.attributes;
-
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
   let updatedButtonBackgroundImage = '';
@@ -206,7 +211,7 @@ function EditorStyles(props) {
   }
 
   if ( 'gradient' === buttonbackgroundType) {
-    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+    updatedButtonBackgroundImage = gradientButton ? gradientButton : generateBackgroundImageEffect(
       buttonbackgroundColor1,
       buttonbackgroundColor2,
       buttongradientDirection,
@@ -232,24 +237,26 @@ function EditorStyles(props) {
   }else if (iconPosition === 'after') {
     ctaIconMargin = `auto 0 auto ${generateCSSUnit(iconSpace, "px")}`
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
-      "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
+      "color": inheritFromTheme ? '' : buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
       "opacity": ctaTextOpacity / 100,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button": {
-      "color": hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
+      "color": inheritFromTheme ? '' : hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-link-text": {
       "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
-      "font-family": buttonTextFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
+      "text-decoration": buttonTextTextDecoration,
       "font-style": buttonTextFontStyle,
     },
 
@@ -268,14 +275,14 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color":
-        backgroundType == "color"
+        inheritFromTheme ? '' : backgroundType == "color"
           ? (ctaBackgroundColor !== "empty" && backgroundColor === "#f2f2f2" ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`) // For compatibility with v1.3.2.
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               backgroundColor1,
               backgroundColor2,
               gradientDirection,
@@ -344,6 +351,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(ctaTitleBottomSpacing, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
       "text-transform": ctaTitleTextTransform,
+      "text-decoration": ctaTitleTextDecoration,
       "font-style": ctaTitleFontStyle,
     },
 
@@ -355,6 +363,7 @@ function EditorStyles(props) {
       "font-weight": contentFontWeight !== 'empty' && ctaTextFontWeight === "400" ? contentFontWeight : ctaTextFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(ctaTextBottomSpacing, "px"),
       "text-transform": ctaTextTextTransform,
+      "text-decoration": ctaTextTextDecoration,
       "font-style": ctaTextFontStyle,
     },
 
@@ -368,8 +377,8 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(ctaBlockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadius, "px"),
-      "border-color": buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
-      "background-color": updatedButtonBackgroundColor,
+      "border-color": inheritFromTheme ? '' : buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
+      "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor ? updatedButtonBackgroundColor : '#32373c',
       "border-width": buttonborderWidth !== 999 && ctaBorderWidth === 1 ? buttonborderWidth : (ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px"), // For compatibility with v1.3.2.
@@ -382,11 +391,12 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-family": buttonTextFontFamily,
-      "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
-      "line-height": buttonTextLineHeight,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSize, "px"),
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
+      "line-height": inheritFromTheme ? '' : buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
+      "text-decoration": buttonTextTextDecoration,
       "font-style": buttonTextFontStyle,
     }
   };
@@ -397,7 +407,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
     },
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -427,7 +437,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+      "font-size": inheritFromTheme ? '' : `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
@@ -448,7 +458,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
     },
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
@@ -478,7 +488,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,

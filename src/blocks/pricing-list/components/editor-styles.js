@@ -103,6 +103,9 @@ function EditorStyles(props) {
   descriptionFontStyle,
   priceTextTransform,
   priceFontStyle,
+  titleTextDecoration,
+  descriptionTextDecoration,
+  priceTextDecoration,
   } = props.attributes;
 
   var align = contentAlign;
@@ -111,10 +114,11 @@ function EditorStyles(props) {
   } else if ("right" === align) {
     align = "flex-end";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(pricingTopPadding, "px"),
       'padding-right': generateCSSUnit(pricingRightPadding, "px"),
       'padding-bottom': generateCSSUnit(pricingBottomPadding, "px"),
@@ -144,6 +148,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-title": {
       "color": titleTypographyColor,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
@@ -154,6 +159,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-description": {
       "color": descriptionTypographyColor,
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
       "line-height": descriptionLineHeight,
       "font-weight": descriptionFontWeight,
@@ -163,6 +169,7 @@ function EditorStyles(props) {
     " .responsive-block-editior-addons-pricing-list-item-price-wrap": {
       "color": priceTypographyColor,
       "text-transform": priceTextTransform,
+      "text-decoration": priceTextDecoration,
       "font-style": priceFontStyle,
       "line-height": priceLineHeight,
       "font-weight": priceFontWeight,
@@ -187,7 +194,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(pricingTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(pricingRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(pricingBottomPaddingMobile, "px"),
@@ -222,7 +229,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(pricingTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(pricingRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(pricingBottomPaddingTablet, "px"),

@@ -50,8 +50,7 @@ export default class Save extends Component {
     if (isCollapsible && icon) {
       icon_html = (
         <span className="responsive-block-editor-addons-toc__collapsible-wrap">
-          <span className="responsive-block-editor-addons-toc__collapsible-icon">
-            {renderSVG(icon)}
+          <span className="responsive-block-editor-addons-toc__collapsible-icon rbea-dynamic-icon" data-icon={icon} aria-hidden="true">
           </span>
         </span>
       );
@@ -93,7 +92,13 @@ export default class Save extends Component {
           </div>
           <TableOfContents
             headers={
-              headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
+              headerLinks ? (() => {
+                try {
+                  return JSON.parse(headerLinks.replace(/u0022/g, '"'));
+                } catch (e) {
+                  return [];
+                }
+              })() : []
             }
             mappingHeaders={allowedAnchors}
             blockProp={this.props}

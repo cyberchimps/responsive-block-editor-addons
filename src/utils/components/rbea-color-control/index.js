@@ -1,13 +1,33 @@
 import { __ } from '@wordpress/i18n';
-import { ColorPicker } from '@wordpress/components';
+import { ColorPicker, ColorPalette } from '@wordpress/components';
 import { IconButton } from '@wordpress/components';
 import { useState, useEffect, useRef } from '@wordpress/element';
+import { useSetting } from '@wordpress/block-editor';
 
 const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popupRef = useRef(null);
   const popupSizeRef = useRef(null);
   const [popupHeight, setPopupHeight] = useState(0);
+  
+  // Get theme colors from WordPress settings
+  const colors = useSetting('color.palette') || [];
+
+  // Resolve CSS variable to hex ONLY for ColorPicker display 
+  const getDisplayColor = (color) => {
+    if (!color || !color.includes('var(')) {
+      return color; // Already hex or empty
+    }
+    
+    // Extract variable name and resolve it for display only
+    const varName = color.replace(/var\(|\)/g, '').trim();
+    const resolvedColor = window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue(varName)
+      .trim();
+    
+    return resolvedColor || color; // Return resolved hex for display
+  };
 
     
   useEffect(() => {
@@ -77,11 +97,24 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
             <div className="rbea-color-control__popup">
               <div ref={popupSizeRef}>
                 <ColorPicker
-                  color={colorValue}
+                  color={getDisplayColor(colorValue)}
                   onChangeComplete={(newColor) => {
                     onChange(newColor.hex);
                   }}
                 />
+                
+                {colors.length > 0 && (
+                  <div className="rbea-color-palette-wrapper">
+                    <ColorPalette
+                      colors={colors}
+                      value={colorValue}
+                      onChange={(newColor) => {
+                        onChange(newColor);
+                      }}
+                      disableCustomColors={true}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           )}

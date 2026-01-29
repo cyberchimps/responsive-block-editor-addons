@@ -8,6 +8,7 @@ import EditorStyles from "./editor-styles";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -97,6 +98,7 @@ class SpacerEdit extends Component {
     return (
       <>
         <style id={`responsive-block-editor-addons-section-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <ResizableBox
           className={classnames(
             this.props.className,

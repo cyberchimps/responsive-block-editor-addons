@@ -272,7 +272,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "block-id-{$attributes['block_id']} responsive-block-editor-addons-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "responsive-block-editor-addons-block-responsive-block-editor-addons-post-grid block-{$attributes['block_id']} block-id-{$attributes['block_id']} responsive-block-editor-addons-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );
@@ -711,7 +711,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'continueFontFamily'          => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'continueFontWeight'          => array(
 					'type'    => 'string',
@@ -783,15 +782,12 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'titleFontFamily'             => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'metaFontFamily'              => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'excerptFontFamily'           => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'excerptFontSize'             => array(
 					'type'    => 'number',
@@ -1195,6 +1191,26 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'continueFontStyle'  => array(
 					'type'	=> 'string',
+					'default' => '',
+				),
+				'isPreview' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'excerptTextDecoration' => array(
+					'type'   => 'string',
+					'default' => '',
+				),
+				'metaTextDecoration' => array(
+					'type'   => 'string',
+					'default' => '',
+				),
+				'titleTextDecoration' => array(
+					'type'   => 'string',
+					'default' => '',
+				),
+				'continueTextDecoration' => array(
+					'type'   => 'string',
 					'default' => '',
 				),
 			),

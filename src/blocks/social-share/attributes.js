@@ -450,6 +450,14 @@ const attributes = {
     type: "string",
     default: "",
   },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  labelTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

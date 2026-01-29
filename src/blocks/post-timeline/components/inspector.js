@@ -1044,8 +1044,10 @@ export default class Inspector extends Component {
 					height: attributes.dateLineHeight,
           transform: attributes.dateTextTransform,
           fontstyle: attributes.dateFontStyle,
+          textDecoration: attributes.dateTextDecoration,
 					}}
 					showLetterSpacing = { false }
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1065,10 +1067,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.headingBottomSpacingTablet,
           transform: attributes.headingTextTransform,
           fontstyle: attributes.headingFontStyle,
+          textDecoration: attributes.headingTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1088,10 +1092,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.authorBottomSpacingTablet,
           transform: attributes.authorTextTransform,
           fontstyle: attributes.authorFontStyle,
+          textDecoration: attributes.authorTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1111,10 +1117,12 @@ export default class Inspector extends Component {
           bottomSpacingTablet: attributes.contentBottomSpacingTablet,
           transform: attributes.contentTextTransform,
           fontstyle: attributes.contentFontStyle,
+          textDecoration: attributes.contentTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1133,9 +1141,11 @@ export default class Inspector extends Component {
 					emptyColorControl: emptyColorControl,
           transform: attributes.continueTextTransform,
           fontstyle: attributes.continueFontStyle,
+          textDecoration: attributes.continueTextDecoration,
 					}}
 					showLetterSpacing = { false }
           showColorWithHoverControlTab={true}
+          showTextDecoration={true}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1265,44 +1275,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

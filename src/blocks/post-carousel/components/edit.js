@@ -14,6 +14,7 @@ import generateCSSUnit from "../../../generateCSSUnit";
 import Style from "style-it";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { compose } = wp.compose;
 
@@ -222,6 +223,7 @@ class LatestPostsBlock extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-post-carousel-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <Inspector
           {...{ setAttributes, ...this.props }}
           postCount={latestPosts && latestPosts.length}

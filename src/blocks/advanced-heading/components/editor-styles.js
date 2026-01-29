@@ -144,9 +144,10 @@ function EditorStyles(props) {
     subHeadingTitleFontStyle,
   } = props.attributes;
 
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
   var selectors = {
     "": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "text-align": headingAlignment,
       "margin-top": topMargin !== 999 && blockTopMargin === 0 ? generateCSSUnit(topMargin, "px") : generateCSSUnit(blockTopMargin, "px"),
       "margin-bottom": bottomMargin !== 999 && blockBottomMargin === 0 ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(blockBottomMargin, "px"),
@@ -192,16 +193,16 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "text-align": headingAlignmentMobile,
-      "margin-top": topMargin !== 999 && blockTopMargin === 0 ? generateCSSUnit(topMargin, "px") : generateCSSUnit(blockTopMargin, "px"),
-      "margin-bottom": bottomMargin !== 999 && blockBottomMargin === 0 ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(blockBottomMargin, "px"),
-      "margin-left": leftMargin !== 999 && blockLeftMargin === 0 ? generateCSSUnit(leftMargin, "px") : generateCSSUnit(blockLeftMargin, "px"),
-      "margin-right": rightMargin !== 999 && blockRightMargin === 0 ? generateCSSUnit(rightMargin, "px") : generateCSSUnit(blockRightMargin, "px"),
-      "padding-top": topPadding !== 999 && blockTopPadding === 10 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 10 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"),
-      "padding-left": leftPadding !== 999 && blockLeftPadding === 10 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": rightPadding !== 999 && blockRightPadding === 10 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"),
+      "margin-top": topMarginMobile !== 999 && blockTopMarginMobile === "" ? generateCSSUnit(topMarginMobile, "px") : (blockTopMarginMobile ? generateCSSUnit(blockTopMarginMobile, "px") : generateCSSUnit(blockTopMarginTablet, "px")),
+      "margin-bottom": bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? generateCSSUnit(bottomMarginMobile, "px") : (blockBottomMarginMobile ? generateCSSUnit(blockBottomMarginMobile, "px") : generateCSSUnit(blockBottomMarginTablet, "px")),
+      "margin-left": leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? generateCSSUnit(leftMarginMobile, "px") : (blockLeftMarginMobile ? generateCSSUnit(blockLeftMarginMobile, "px") : generateCSSUnit(blockLeftMarginTablet, "px")),
+      "margin-right": rightMarginMobile !== 999 && blockRightMarginMobile === "" ? generateCSSUnit(rightMarginMobile, "px") : (blockRightMarginMobile ? generateCSSUnit(blockRightMarginMobile, "px") : generateCSSUnit(blockRightMarginTablet, "px")),
+      "padding-top": topPaddingMobile !== 999 && blockTopPaddingMobile === "" ? generateCSSUnit(topPaddingMobile, "px") : (blockTopPaddingMobile ? generateCSSUnit(blockTopPaddingMobile, "px") : generateCSSUnit(blockTopPaddingTablet, "px")),
+      "padding-bottom": bottomPaddingMobile !== 999 && blockBottomPaddingMobile === "" ? generateCSSUnit(bottomPaddingMobile, "px") : (blockBottomPaddingMobile ? generateCSSUnit(blockBottomPaddingMobile, "px") : generateCSSUnit(blockBottomPaddingTablet, "px")),
+      "padding-left": leftPaddingMobile !== 999 && blockLeftPaddingMobile === "" ? generateCSSUnit(leftPaddingMobile, "px") : (blockLeftPaddingMobile ? generateCSSUnit(blockLeftPaddingMobile, "px") : generateCSSUnit(blockLeftPaddingTablet, "px")),
+      "padding-right": rightPaddingMobile !== 999 && blockRightPaddingMobile === "" ? generateCSSUnit(rightPaddingMobile, "px") : (blockRightPaddingMobile ? generateCSSUnit(blockRightPaddingMobile, "px") : generateCSSUnit(blockRightPaddingTablet, "px")),
     },
     " .responsive-heading-title-text": {
       "font-size": generateCSSUnit(headingTitleFontSizeMobile, "px"),
@@ -218,7 +219,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "text-align": headingAlignmentTablet,
       "margin-top": topMarginTablet !== 999 && blockTopMarginTablet === "" ? generateCSSUnit(topMarginTablet, "px") : (blockTopMarginTablet ? generateCSSUnit(blockTopMarginTablet, "px") : generateCSSUnit(blockTopMargin, "px")),
       "margin-bottom": bottomMarginTablet !== 999 && blockBottomMarginTablet === "" ? generateCSSUnit(bottomMarginTablet, "px") : (blockBottomMarginTablet ? generateCSSUnit(blockBottomMarginTablet, "px") : generateCSSUnit(blockBottomMargin, "px")),

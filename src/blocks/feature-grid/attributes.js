@@ -162,7 +162,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -323,11 +322,9 @@ const attributes = {
   },
   buttonbackgroundColor1: {
     type: "string",
-    default: "#fff",
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHbackgroundType: {
     type: "string",
@@ -350,7 +347,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   titleFontFamily: {
     type: "string",
@@ -792,6 +788,31 @@ const attributes = {
     default: "",
   },
   descFontStyle: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
+  },
+  ctaTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  titleTextDecoration: {
     type: "string",
     default: "",
   },

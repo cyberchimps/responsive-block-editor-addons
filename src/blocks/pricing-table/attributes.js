@@ -1,3 +1,6 @@
+import { type } from "jquery";
+import { convertTruthyFalsyValue } from "../../utils/helper";
+
 const ITEM_COUNT = 1;
 
 const pricingTable = [];
@@ -177,7 +180,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -345,7 +347,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHbackgroundType: {
     type: "string",
@@ -368,7 +369,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   titleFontFamily: {
     type: "string",
@@ -958,6 +958,59 @@ const attributes = {
     default: "",
   },
   ctaFontStyle: {
+    type: "string",
+    default: "",
+  },
+  inheritFromTheme: {
+    type: "boolean",
+    default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
+    default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  prefixTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  amountTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  suffixTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  subpriceTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  featuresTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  ctaTextDecoration: {
     type: "string",
     default: "",
   },

@@ -769,6 +769,28 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientOverlay: {
+    type: "string",
+  },
+  titleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  designationTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextDecoration: {
+    type: "string",
+    default: "",
+  },    
 };
 export default attributes;

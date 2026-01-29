@@ -470,7 +470,25 @@ const attributes = {
   positionTab: {
     type: "string",
     default: "desktop",
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientHover: {
+    type: "string",
+  },
+  tabTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  tabContentTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

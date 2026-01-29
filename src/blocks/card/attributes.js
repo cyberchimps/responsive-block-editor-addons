@@ -1,3 +1,5 @@
+import { convertTruthyFalsyValue } from "../../utils/helper";
+
 const ITEM_COUNT = 1;
 const cardsArray = [];
 const { __ } = wp.i18n;
@@ -243,7 +245,6 @@ const attributes = {
   },
   backgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   backgroundType: {
     type: "string",
@@ -399,7 +400,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonbackgroundType: {
     type: "string",
@@ -1024,6 +1024,40 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  inheritFromTheme: {
+    type: "boolean",
+    default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
+    default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  contentTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  subTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  headingTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

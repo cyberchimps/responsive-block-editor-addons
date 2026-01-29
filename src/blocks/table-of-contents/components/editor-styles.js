@@ -225,6 +225,8 @@ function EditorStyles(props) {
     headingFontStyle,
     contentTextTransform,
     contentFontStyle,
+    headingTextDecoration,
+    contentTextDecoration,
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -255,11 +257,12 @@ function EditorStyles(props) {
   }else {
     headingBgColorTemp = '#0984ff'
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
       "z-index": zIndex,
-		  "opacity": hideWidget? 0.2 : 1,
+		  "opacity": hideWidget && isOn ? 0.2 : 1,
       display: "flex",
       "background-color":
         backgroundType == "color"
@@ -301,6 +304,7 @@ function EditorStyles(props) {
 
       // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
 			"font-style": headingFontStyle,
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
@@ -334,6 +338,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(bodyBorderLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRadius, "px"),
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
 			"font-style": contentFontStyle,
     },
     ' .responsive-block-editor-addons_table-of-contents-placeholder': {
@@ -359,6 +364,7 @@ function EditorStyles(props) {
       "border-radius": generateCSSUnit(bodyBorderRadius, "px"),
       color: bodyColor,
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
 			"font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a": {
@@ -403,7 +409,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
     },
@@ -484,7 +490,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
     },

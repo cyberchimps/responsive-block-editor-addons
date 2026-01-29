@@ -71,6 +71,10 @@ class TypographyControl extends Component {
         // Font Weight Options
         const fontWeightOptions = [
             {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+            },
+            {
                 value: "100",
                 label: __("100", "responsive-block-editor-addons"),
             },
@@ -128,6 +132,11 @@ class TypographyControl extends Component {
 
         // Text Decoration Options
         const textDecorationOptions = [
+            {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+                // icon: textDecorationIcons.underline,
+            },
             {
                 value: "underline",
                 label: __("Header", "responsive-block-editor-addons"),
@@ -329,7 +338,6 @@ class TypographyControl extends Component {
                         value={this.props.values.textDecoration}
                         onChange={this.props.onChangeTextDecoration}
                         allowReset
-                        defaultValue="none"
                     />
                 )}
                 {this.props.showTextBottomSpacing == true && (

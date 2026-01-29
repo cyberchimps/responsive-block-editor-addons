@@ -129,6 +129,9 @@ function EditorStyles(props) {
         countFontStyle,
         listTextTransform,
         listFontStyle,
+        titleTextDecoration,
+        countTextDecoration,
+        listTextDecoration,
     } = props.attributes;
 
 
@@ -151,10 +154,11 @@ function EditorStyles(props) {
     const boxShadowValues = generateCSSUnit(boxShadowHOffset, "px") + " " + generateCSSUnit(boxShadowVOffset, "px") + " " + generateCSSUnit(boxShadowBlur, "px") + " " + generateCSSUnit(boxShadowSpread, "px") + " " + boxShadowColor + " " + boxShadowPositionCSS;
 
     const hoverboxShadowValues = hoverboxShadowColor !== '' ? generateCSSUnit(hoverboxShadowHOffset, "px") + " " + generateCSSUnit(hoverboxShadowVOffset, "px") + " " + generateCSSUnit(hoverboxShadowBlur, "px") + " " + generateCSSUnit(hoverboxShadowSpread, "px") + " " + hoverboxShadowColor + " " + hoverboxShadowPositionCSS : '';
+    const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
     var selectors = {
         " ":{
-            "opacity": hideWidget? 0.2 : 1,
+            "opacity": hideWidget && isOn ? 0.2 : 1,
             'padding-top': generateCSSUnit(blockTopPadding, "px"),
 			'padding-right': generateCSSUnit(blockRightPadding, "px"),
 			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -190,6 +194,7 @@ function EditorStyles(props) {
             "font-weight": titleFontWeight,
             "line-height": titleLineHeight,
             "text-transform": titleTextTransform,
+            "text-decoration": titleTextDecoration,
             "font-style": titleFontStyle,
         },
         " .responsive-block-editor-addons-block-count": {
@@ -199,6 +204,7 @@ function EditorStyles(props) {
             "font-weight": countFontWeight,
             "line-height": countLineHeight,
             "text-transform": countTextTransform,
+            "text-decoration": countTextDecoration,
             "font-style": countFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item": {
@@ -209,6 +215,7 @@ function EditorStyles(props) {
             "font-weight": listFontWeight,
             "line-height": generateCSSUnit(listLineHeight, "px"),
             "text-transform": listTextTransform,
+            "text-decoration": listTextDecoration,
             "font-style": listFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item:hover": {
@@ -235,7 +242,7 @@ function EditorStyles(props) {
 
     var mobile_selectors = {
         " ":{
-            "opacity": hideWidgetMobile? 0.2 : 1,
+            "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
             'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
 			'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
 			'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -274,7 +281,7 @@ function EditorStyles(props) {
 
     var tablet_selectors = {
         " ":{
-            "opacity": hideWidgetTablet? 0.2 : 1,
+            "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
             'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
 			'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
 			'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

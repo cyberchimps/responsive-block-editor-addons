@@ -156,7 +156,13 @@ function EditorStyles(props) {
     titleTextTransform,
     titleFontStyle,
     descriptionTextTransform,
-    descriptionFontStyle
+    descriptionFontStyle,
+    backgroundType,
+    gradient,
+    hoverGradient,
+    hoverBackgroundType,
+    titleTextDecoration,
+    descriptionTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -179,8 +185,8 @@ function EditorStyles(props) {
     hoverboxShadowPositionCSS = "";
   }
 
-  var hoverGradient =
-    "linear-gradient(" +
+  var hoverGradientCalc =
+    hoverGradient ? hoverGradient : "linear-gradient(" +
     hoverGradientDegree +
     "deg," +
     hexToRgba(itemHoverBackgroundColor || "#ffffff", hoverImgopacity || 0) +
@@ -191,7 +197,7 @@ function EditorStyles(props) {
     ) +
     ")";
 
-    let backgroundImageFirst = `linear-gradient( 
+    let backgroundImageFirst = gradient ? `${gradient},url(${backgroundImageOne})` : `linear-gradient( 
     ${gradientDegree}deg,
     ${hexToRgba(
       itemBackgroundColor || "#ffffff",
@@ -202,7 +208,7 @@ function EditorStyles(props) {
       imgopacity || 0
     )}),url(${backgroundImageOne})`
 
-    let backgroundImageSecond = `linear-gradient( 
+    let backgroundImageSecond = gradient ? `${gradient},url(${backgroundImageTwo})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -213,7 +219,7 @@ function EditorStyles(props) {
         imgopacity || 0
       )}),url(${backgroundImageTwo})`
 
-    let backgroundImageThird = `linear-gradient( 
+    let backgroundImageThird = gradient ? `${gradient},url(${backgroundImageThree})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -224,7 +230,7 @@ function EditorStyles(props) {
         imgopacity || 0
       )}),url(${backgroundImageThree})`
 
-    let backgroundImageFourth = `linear-gradient( 
+    let backgroundImageFourth = gradient ? `${gradient},url(${backgroundImageFour})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -249,10 +255,11 @@ function EditorStyles(props) {
         gutterMargin = '';
       }
     }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color": itemBackgroundColor,
       "text-align": contentAlign,
       "border-style": blockBorderStyle,
@@ -303,7 +310,7 @@ function EditorStyles(props) {
     },
 
     ":hover .responsive-block-editor-addons-add-image": {
-      "background-image": hoverGradient,
+      "background-image": hoverGradientCalc,
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
@@ -333,6 +340,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-family": titleFontFamily,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -343,6 +351,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
       "font-family": descriptionFontFamily,
       "text-transform": descriptionTextTransform,
+      "text-decoration": descriptionTextDecoration,
       "font-style": descriptionFontStyle,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-weight": descriptionFontWeight,
@@ -358,7 +367,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-        "opacity": hideWidgetMobile ? 0.2 : 1,
+        "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
         "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
         "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
@@ -390,7 +399,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-        "opacity": hideWidgetTablet ? 0.2 : 1,
+        "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
         "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
         "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),

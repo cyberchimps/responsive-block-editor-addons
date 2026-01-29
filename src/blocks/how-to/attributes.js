@@ -375,6 +375,18 @@ const attributes = {
       type: "boolean",
       default: false,
     },
+    mainHeadingTextDecoration: {
+      type: "string",
+      default: "",
+    },
+    subHeadingTextDecoration: {
+      type: "string",
+      default: "",
+    },
+    descriptionTextDecoration: {
+      type: "string",
+      default: "",
+    },
 };
 
 export default attributes;

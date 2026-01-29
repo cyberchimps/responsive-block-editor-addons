@@ -6,6 +6,7 @@ import Inspector from "./inspector";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import renderSVG from "../../../renderIcon";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 /**
  * WordPress dependencies
  */
@@ -57,6 +58,7 @@ export default class Edit extends Component {
         icon,
         iconPosition,
         buttonAlign,
+        inheritFromTheme,
       },
       setAttributes,
       mergeBlocks,
@@ -89,6 +91,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-call-mail-button-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
         <ToolbarGroup controls={toolbarControls} />
       </BlockControls>,
@@ -104,10 +107,11 @@ export default class Edit extends Component {
         )}
         key={`${block_id}`}
       >
-        <a
+        <div
           className={classnames(
             "responsive-block-editor-addons-call-mail-button-button-container",
-            buttonSize
+            buttonSize,
+            inheritFromTheme ? 'wp-block-button' : null,
           )}
           href={"call" === buttonToShow ? callHref : mailHref}
         >
@@ -123,10 +127,11 @@ export default class Edit extends Component {
           )}
           {"call" === buttonToShow && (
             <RichText
-              tagName="span"
+              tagName="div"
               placeholder={__("Call", "responsive-block-editor-addons")}
               value={callText}
-              className="responsive-block-editor-addons-call-mail-button-text"
+              className={classnames("responsive-block-editor-addons-call-mail-button-text",
+                                      inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
               onChange={(value) => setAttributes({ callText: value })}
               multiline={false}
               allowedFormats={[
@@ -144,7 +149,8 @@ export default class Edit extends Component {
               value={mailText}
               onChange={(value) => setAttributes({ mailText: value })}
               multiline={false}
-              className="responsive-block-editor-addons-call-mail-button-text"
+              className={classnames("responsive-block-editor-addons-call-mail-button-text",
+                                      inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
               allowedFormats={[
                 "core/bold",
                 "core/italic",
@@ -163,7 +169,7 @@ export default class Edit extends Component {
               {renderSVG(icon)}
             </span>
           )}
-        </a>
+        </div>
       </div>,
     ];
   }

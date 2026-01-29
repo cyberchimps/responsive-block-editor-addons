@@ -1,0 +1,40 @@
+.rbea-preset-wrapper {
+    .rbea-preset-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 12px;
+
+        label {
+            font-family: "Roboto", sans-serif;
+            color: #666666;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 100%;
+        }
+
+        .dashicon.dashicons.dashicons-image-rotate {
+            font-size: 12px;
+            color: #666666;
+            &.preset-active {
+                color: #007CBA;
+                cursor: pointer;
+            }
+        }
+    }
+    .rbea-preset-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        .rbea-preset-card {
+            cursor: pointer;
+        }
+        .rbea-preset-active-card {
+            svg {
+                rect:first-of-type {
+                    stroke: #007CBA;
+                }
+            }
+        }
+    }
+}

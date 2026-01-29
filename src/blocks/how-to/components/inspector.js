@@ -188,6 +188,9 @@ export default class Inspector extends Component {
                 hideWidget,
                 hideWidgetTablet,
                 hideWidgetMobile,
+                mainHeadingTextDecoration,
+                subHeadingTextDecoration,
+                descriptionTextDecoration,
             },
             setAttributes,
         } = this.props;
@@ -554,10 +557,12 @@ export default class Inspector extends Component {
                                     sizeTablet: mainHeadingFontSizeTablet,
                                     weight: mainHeadingFontWeight,
                                     height: mainHeadingLineHeight,
-                                    spacing: mainHeadingLetterSpacing
+                                    spacing: mainHeadingLetterSpacing,
+                                    textDecoration: mainHeadingTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />
@@ -571,10 +576,12 @@ export default class Inspector extends Component {
                                     sizeTablet: subHeadingFontSizeTablet,
                                     weight: subHeadingFontWeight,
                                     height: subHeadingLineHeight,
-                                    spacing: subHeadingLetterSpacing
+                                    spacing: subHeadingLetterSpacing,
+                                    textDecoration: subHeadingTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />
@@ -588,10 +595,12 @@ export default class Inspector extends Component {
                                     sizeTablet: descriptionFontSizeTablet,
                                     weight: descriptionFontWeight,
                                     height: descriptionLineHeight,
-                                    spacing: descriptionLetterSpacing
+                                    spacing: descriptionLetterSpacing,
+                                    textDecoration: descriptionTextDecoration,
                                 }}
                                 showLetterSpacing={true}
                                 showTextTransform={false}
+                                showTextDecoration={true}
                                 setAttributes={setAttributes}
                                 {...this.props}
                             />
@@ -639,44 +648,7 @@ export default class Inspector extends Component {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'advance'}>
-                        <PanelBody
-                        title={__("Responsive Conditions", "responsive-block-editor-addons")}
-                        initialOpen={false}
-                        >
-                            <ToggleControl
-                                label={__(
-                                "Hide on Desktop",
-                                "responsive-block-editor-addons"
-                                )}
-                                checked={hideWidget}
-                                onChange={(value) =>
-                                setAttributes({ hideWidget: !hideWidget })
-                                }
-                                __nextHasNoMarginBottom
-                            />
-                            <ToggleControl
-                                label={__(
-                                "Hide on Tablet",
-                                "responsive-block-editor-addons"
-                                )}
-                                checked={hideWidgetTablet}
-                                onChange={(value) =>
-                                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                                }
-                                __nextHasNoMarginBottom
-                            />
-                            <ToggleControl
-                                label={__(
-                                "Hide on Mobile",
-                                "responsive-block-editor-addons"
-                                )}
-                                checked={hideWidgetMobile}
-                                onChange={(value) =>
-                                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                                }
-                                __nextHasNoMarginBottom
-                            />
-                        </PanelBody>
+                        
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>

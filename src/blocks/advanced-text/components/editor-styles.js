@@ -97,13 +97,17 @@ function EditorStyles(props) {
     subtitleFontStyle,
     textTextTransform,
     textFontStyle,
+    titleTextDecoration,
+    subtitleTextDecoration,
+    textTextDecoration,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      'opacity': hideWidget ? 0.2 : blockOpacityModified,
+      'opacity': hideWidget && isOn ? 0.2 : blockOpacityModified,
       'z-index': zIndex,
       'max-width': generateCSSUnit(containerWidth, "px"),
       "margin-top": generateCSSUnit(containerTopMargin, "px"),
@@ -135,6 +139,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "line-height": titleLineHeight,
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-subtitle": {
@@ -148,6 +153,7 @@ function EditorStyles(props) {
       "font-weight": subtitleFontWeight,
       "line-height": subtitleLineHeight,
       "text-transform": subtitleTextTransform,
+      "text-decoration": subtitleTextDecoration,
       "font-style": subtitleFontStyle,
     },
     " .responsive-block-editor-addons-text-content": {
@@ -159,13 +165,14 @@ function EditorStyles(props) {
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
       "text-transform": textTextTransform,
+      "text-decoration": textTextDecoration,
       "font-style": textFontStyle,
     },
   };
 
   var mobile_selectors = {
     " ": {
-      'opacity': hideWidgetMobile ? 0.2 : blockOpacityModified,
+      'opacity': hideWidgetMobile && isOn ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthMobile, "px"),
       "margin-top": generateCSSUnit(containerTopMarginMobile, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginMobile, "px"),
@@ -199,7 +206,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      'opacity': hideWidgetTablet ? 0.2 : blockOpacityModified,
+      'opacity': hideWidgetTablet && isOn ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthTablet, "px"),
       "margin-top": generateCSSUnit(containerTopMarginTablet, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginTablet, "px"),

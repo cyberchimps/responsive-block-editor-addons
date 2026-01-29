@@ -36,6 +36,10 @@ export function LayoutModal(props) {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [noSearchResult, setNoSearchResult] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [hoveredTemplate, setHoveredTemplate] = useState(null);
+  const [hoveredHeader, setHoveredHeader] = useState(false);
 
   const debounce = (func, delay) => {
     let timeoutId;
@@ -79,7 +83,61 @@ export function LayoutModal(props) {
   }, [searchQuery, siteData, noSearchResult, currentTab]);
   useEffect(() => {
     isUserProCapableCheck();
+    loadFavorites();
   }, []);
+
+  // Load favorites from WordPress user meta
+  const loadFavorites = async () => {
+    try {
+      const response = await apiFetch({ 
+        path: '/rbeablocks/v1/layouts/favorites' 
+      });
+      if (response && Array.isArray(response)) {
+        setFavorites(response);
+      } else {
+        setFavorites([]);
+      }
+    } catch (error) {
+      console.error('Error loading favorites:', error);
+      setFavorites([]);
+    }
+  };
+
+  // Save favorites to WordPress user meta
+  const saveFavorites = async (templateId, action) => {
+    try {
+      const response = await apiFetch({
+        path: '/rbeablocks/v1/layouts/favorites',
+        method: action === 'add' ? 'PATCH' : 'DELETE',
+        data: { rbea_blocks_favorite_key: templateId }
+      });
+      if (response && Array.isArray(response)) {
+        setFavorites(response);
+      }
+    } catch (error) {
+      console.error('Error saving favorites:', error);
+    }
+  };
+
+  // Toggle favorite status
+  const toggleFavorite = async (site) => {
+    const isCurrentlyFavorite = favorites.includes(site.id.toString());
+    const action = isCurrentlyFavorite ? 'remove' : 'add';
+    await saveFavorites(site.id, action);
+  };
+
+  // Check if a site is favorite
+  const isFavorite = (site) => {
+    return favorites.includes(site.id.toString());
+  };
+
+  // Toggle favorites view
+  const toggleFavoritesView = () => {
+    setShowFavorites(!showFavorites);
+    if (!showFavorites) {
+      setSearchQuery(""); // Clear search when showing favorites
+    }
+  };
   const {removeBlock} = useDispatch("core/block-editor");
   const isUserProCapableCheck = async () => {
     try {
@@ -161,10 +219,18 @@ export function LayoutModal(props) {
   const PagesTabContent = () => {
     // Content for the Pages tab
     const handleCardClick = (site) => {
-      setCurrentTab("pageinnertab");
+      setCurrentTab('pageinnertab');
       setSelectedSite(site);
       setRequiredPlugins(site.required_plugins);
     };
+
+    const handleFavoriteClick = (e, site) => {
+      e.stopPropagation(); // Prevent card click
+      toggleFavorite(site);
+    };
+
+    // Get data to display - either favorites or all sites
+    const displayData = showFavorites ? sitesData.filter(site => favorites.includes(site.id.toString())) : sitesData;
     return (
       <div
         style={{
@@ -184,10 +250,15 @@ export function LayoutModal(props) {
           onClose={handleCloseToast}
         />
         <div className="pages-tab-content">
-          {noSearchResult ? (
+          {showFavorites && favorites.length === 0 ? (
+            <div className="rbea-no-favorites">
+              <h3>No favorites yet</h3>
+              <p>Click the heart icon on any template to add it to your favorites.</p>
+            </div>
+          ) : noSearchResult ? (
             <Noresultfound />
           ) : (
-            sitesData?.map((site) => (
+            displayData?.map((site) => (
               <div
                 className="rba-popup-card-component"
                 key={site.id}
@@ -215,6 +286,30 @@ export function LayoutModal(props) {
                     Pro
                   </div>
                 )}
+                <button
+                  className={`rba-favorite-button ${isFavorite(site) ? 'favorited' : ''}`}
+                  onClick={(e) => handleFavoriteClick(e, site)}
+                  onMouseEnter={() => setHoveredTemplate(site.id)}
+                  onMouseLeave={() => setHoveredTemplate(null)}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.245 2.50498C4.975 2.43748 3.70125 2.86248 2.76375 3.79998C0.887495 5.67998 1.08375 8.83498 3.09125 10.845L3.7325 11.4862L9.56 17.3187C9.67715 17.4355 9.83582 17.5011 10.0012 17.5011C10.1667 17.5011 10.3253 17.4355 10.4425 17.3187L16.2675 11.4862L16.9087 10.845C18.9162 8.83498 19.1112 5.67998 17.2337 3.80123C15.3575 1.92248 12.2087 2.12248 10.2025 4.13123L10 4.33373L9.79749 4.13123C8.79375 3.12498 7.51625 2.57248 6.245 2.50498Z"
+                      fill={isFavorite(site) ? "#B60808" : "#9CA3AF"}
+                    />
+                  </svg>
+                  {hoveredTemplate === site.id && (
+                    <div className="rba-custom-tooltip">
+                      {isFavorite(site) ? 'Remove from favourites' : 'Add to favourites'}
+                    </div>
+                  )}
+                </button>
                 <div className="card-content">
                   <div className="card-content-heading">
                     {site.title.rendered.replace(/&#8211;|Gutenberg/g, "")}
@@ -615,33 +710,59 @@ export function LayoutModal(props) {
                   </button> */}
                 </div>
                 <div className="modal-header">
-                  <div className="rba-popup-searchform">
-                    <input
-                      id="search-input-query"
-                      className="rba-pop-up-search-button-input"
-                      type="text"
-                      placeholder={__("Search Templates...", "my-textdomain")}
-                      onChange={(e) => {
-                        setSearchQuery(e.target.value);
-                      }}
-                    />
+                  <div className="modal-header-search-container">
+                    <div className="rba-popup-searchform">
+                      <input
+                        id="search-input-query"
+                        className="rba-pop-up-search-button-input"
+                        type="text"
+                        placeholder={__("Search Templates...", "my-textdomain")}
+                        onChange={(e) => {
+                          setSearchQuery(e.target.value);
+                        }}
+                      />
 
+                      <button
+                        className="rba-pop-up-search-button"
+                        onClick={handleSearchClick}
+                      >
+                        <svg
+                          width="17"
+                          height="16"
+                          viewBox="0 0 17 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M6.54772 0.852417C10.1192 0.852417 13.0953 3.78468 13.0953 7.30339C13.0953 8.59359 12.7382 9.76649 12.0239 10.8221L16.0715 14.3408L14.8811 15.631L10.8334 12.2296C9.64296 13.2852 8.21439 13.8717 6.54772 13.8717C2.97629 13.8717 0.000102997 10.9394 0.000102997 7.42068C0.000102997 3.78468 2.97629 0.852417 6.54772 0.852417ZM6.54772 11.995C9.16677 11.995 11.3096 9.88378 11.3096 7.30339C11.3096 4.723 9.16677 2.61177 6.54772 2.61177C3.92867 2.61177 1.78582 4.723 1.78582 7.30339C1.78582 9.88378 3.92867 11.995 6.54772 11.995Z"
+                            fill="#E2E5E7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                     <button
-                      className="rba-pop-up-search-button"
-                      onClick={handleSearchClick}
+                      className={`rba-favorites-header-button ${showFavorites ? 'active' : ''}`}
+                      onClick={toggleFavoritesView}
+                      onMouseEnter={() => setHoveredHeader(true)}
+                      onMouseLeave={() => setHoveredHeader(false)}
                     >
                       <svg
-                        width="17"
-                        height="16"
-                        viewBox="0 0 17 16"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M6.54772 0.852417C10.1192 0.852417 13.0953 3.78468 13.0953 7.30339C13.0953 8.59359 12.7382 9.76649 12.0239 10.8221L16.0715 14.3408L14.8811 15.631L10.8334 12.2296C9.64296 13.2852 8.21439 13.8717 6.54772 13.8717C2.97629 13.8717 0.000102997 10.9394 0.000102997 7.42068C0.000102997 3.78468 2.97629 0.852417 6.54772 0.852417ZM6.54772 11.995C9.16677 11.995 11.3096 9.88378 11.3096 7.30339C11.3096 4.723 9.16677 2.61177 6.54772 2.61177C3.92867 2.61177 1.78582 4.723 1.78582 7.30339C1.78582 9.88378 3.92867 11.995 6.54772 11.995Z"
-                          fill="#E2E5E7"
+                          d="M6.245 2.50498C4.975 2.43748 3.70125 2.86248 2.76375 3.79998C0.887495 5.67998 1.08375 8.83498 3.09125 10.845L3.7325 11.4862L9.56 17.3187C9.67715 17.4355 9.83582 17.5011 10.0012 17.5011C10.1667 17.5011 10.3253 17.4355 10.4425 17.3187L16.2675 11.4862L16.9087 10.845C18.9162 8.83498 19.1112 5.67998 17.2337 3.80123C15.3575 1.92248 12.2087 2.12248 10.2025 4.13123L10 4.33373L9.79749 4.13123C8.79375 3.12498 7.51625 2.57248 6.245 2.50498Z"
+                          fill={showFavorites ? "#B60808" : "#9CA3AF"}
                         />
                       </svg>
+                      {hoveredHeader && (
+                        <div className="rba-custom-tooltip">
+                          Favourites
+                        </div>
+                      )}
                     </button>
                   </div>
                 </div>
@@ -662,7 +783,7 @@ export function LayoutModal(props) {
                   >
                     <path
                       d="M9.19565 0C12.6489 0 15.4859 2.71875 15.9652 6.25H18L14.5761 10.4167L11.1522 6.25H13.4217C12.9815 4.19792 11.2598 2.65625 9.19565 2.65625C7.77717 2.65625 6.525 3.39583 5.73261 4.51042L4.05978 2.47917C5.31196 0.958333 7.15109 0 9.19565 0ZM8.80435 14C5.36087 14 2.51413 11.2813 2.03478 7.75H0L3.42391 3.58333C4.56848 4.96875 5.70326 6.36458 6.84783 7.75H4.57826C5.01848 9.80208 6.74022 11.3438 8.80435 11.3438C10.2228 11.3438 11.475 10.6042 12.2674 9.48958L13.9402 11.5208C12.688 13.0417 10.8587 14 8.80435 14Z"
-                      fill="#E2E5E7"
+                      fill="#9CA3AF"
                     />
                   </svg>
                 </button>
@@ -690,7 +811,7 @@ export function LayoutModal(props) {
                   >
                     <path
                       d="M13 2.66183L8.35151 7.24171L13 11.8216L11.1485 13.6458L6.5 9.07883L1.86465 13.6458L0 11.8086L4.63535 7.24171L0 2.67477L1.86465 0.837646L6.5 5.40458L11.1485 0.837646L13 2.66183Z"
-                      fill="#E2E5E7"
+                      fill="#9CA3AF"
                     />
                   </svg>
                 </button>

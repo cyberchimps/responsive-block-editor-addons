@@ -230,7 +230,16 @@ export default class Inspector extends Component {
 				circularBottomTitleValueFontStyle,
 				semiCircularTopTitleValueFontStyle,
 				semiCircularInnerValueFontStyle,
-				semiCircularBottomTitleValueFontStyle
+				semiCircularBottomTitleValueFontStyle,
+				topTitleValueTextDecoration,
+				innerTitleValueTextDecoration,
+				bottomTitleValueTextDecoration,
+				circularTopTitleValueTextDecoration,
+				circularInnerValueTextDecoration,
+				circularBottomTitleValueTextDecoration,
+				semiCircularTopTitleValueTextDecoration,
+				semiCircularInnerValueTextDecoration,
+				semiCircularBottomTitleValueTextDecoration,
 			},
 			setAttributes,
 		} = this.props;
@@ -832,9 +841,11 @@ export default class Inspector extends Component {
 												transform: topTitleValueTextTransform,
 												color: topTitleValueTypographyColor,
                   								fontstyle: topTitleValueFontStyle,
+												textDecoration: topTitleValueTextDecoration,
 											}}
 											showLetterSpacing={true}
 											showColorControl={true}
+											showTextDecoration={true}
 											setAttributes={setAttributes}
 											{...this.props}
 										/>
@@ -858,9 +869,11 @@ export default class Inspector extends Component {
 													transform: innerTitleValueTextTransform,
 													color: innerTitleValueTypographyColor,
 													fontstyle: innerTitleValueFontStyle,
+													textDecoration: innerTitleValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -882,9 +895,11 @@ export default class Inspector extends Component {
 												transform: bottomTitleValueTextTransform,
 												color: bottomTitleValueTypographyColor,
 												fontstyle: bottomTitleValueFontStyle,
+												textDecoration: bottomTitleValueTextDecoration,
 											}}
 											showLetterSpacing={true}
 											showColorControl={true}
+											showTextDecoration={true}
 											setAttributes={setAttributes}
 											{...this.props}
 										/>
@@ -908,9 +923,11 @@ export default class Inspector extends Component {
 													transform: circularTopTitleValueTextTransform,
 													color: circularTopTitleValueTypographyColor,
 													fontstyle: circularTopTitleValueFontStyle,
+													textDecoration: circularTopTitleValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -932,10 +949,12 @@ export default class Inspector extends Component {
 													spacing: circularInnerValueLetterSpacing,
 													color: circularInnerValueTypographyColor,
 													fontstyle: circularInnerValueFontStyle,
+													textDecoration: circularInnerValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showTextTransform={false}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -959,9 +978,11 @@ export default class Inspector extends Component {
 													transform: circularBottomTitleValueTextTransform,
 													color: circularBottomTitleValueTypographyColor,
 													fontstyle: circularBottomTitleValueFontStyle,
+													textDecoration: circularBottomTitleValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -985,9 +1006,11 @@ export default class Inspector extends Component {
 													transform: semiCircularTopTitleValueTextTransform,
 													color: semiCircularTopTitleValueTypographyColor,
 													fontstyle: semiCircularTopTitleValueFontStyle,
+													textDecoration: semiCircularTopTitleValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1009,10 +1032,12 @@ export default class Inspector extends Component {
 													spacing: semiCircularInnerValueLetterSpacing,
 													color: semiCircularInnerValueTypographyColor,
 													fontstyle: semiCircularInnerValueFontStyle,
+													textDecoration: semiCircularInnerValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
 												showTextTransform={false}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1036,9 +1061,11 @@ export default class Inspector extends Component {
 													transform: semiCircularBottomTitleValueTextTransform,
 													color: semiCircularBottomTitleValueTypographyColor,
 													fontstyle: semiCircularBottomTitleValueFontStyle,
+													textDecoration: semiCircularBottomTitleValueTextDecoration,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
+												showTextDecoration={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1067,44 +1094,7 @@ export default class Inspector extends Component {
 
 						<RbeaExtensions {...this.props} />
 
-						<PanelBody
-							title={__("Responsive Conditions", "responsive-block-editor-addons")}
-							initialOpen={false}
-						>
-							<ToggleControl
-								label={__(
-								"Hide on Desktop",
-								"responsive-block-editor-addons"
-								)}
-								checked={hideWidget}
-								onChange={(value) =>
-								setAttributes({ hideWidget: !hideWidget })
-								}
-								__nextHasNoMarginBottom
-							/>
-							<ToggleControl
-								label={__(
-								"Hide on Tablet",
-								"responsive-block-editor-addons"
-								)}
-								checked={hideWidgetTablet}
-								onChange={(value) =>
-								setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-								}
-								__nextHasNoMarginBottom
-							/>
-							<ToggleControl
-								label={__(
-								"Hide on Mobile",
-								"responsive-block-editor-addons"
-								)}
-								checked={hideWidgetMobile}
-								onChange={(value) =>
-								setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-								}
-								__nextHasNoMarginBottom
-							/>
-						</PanelBody>
+						
           			
 					<PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

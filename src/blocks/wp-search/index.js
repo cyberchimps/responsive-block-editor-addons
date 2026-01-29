@@ -12,6 +12,7 @@ import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -35,16 +36,14 @@ registerBlockType("responsive-block-editor-addons/wp-search", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            layout: "classic",
-
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="wp-search" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

@@ -28,6 +28,9 @@ export default class Save extends Component {
       popupButtonText,
       block_id,
       anchor,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
 
     return [
@@ -41,10 +44,20 @@ export default class Save extends Component {
       >
         {isPopupVariantSelected &&
           <>
-            <div className="responsive-block-editor-addons-popup-trigger-wrap">
+            <div className={classnames(
+              "responsive-block-editor-addons-popup-trigger-wrap",
+              inheritFromTheme ? "wp-block-button" : null
+              )}
+              data-rbea-inherit-wrapper="true"
+              data-inherit-from-theme={inheritFromThemesaved ? '1' : '0'}
+              data-local-timestamp={inheritFromThemeLocalTimestamp || ''}
+              data-rbea-inherit-parent="self"
+              data-rbea-inherit-child=".responsive-block-editor-addons-popup-button-trigger"
+              data-rbea-inherit-child-extra="wp-block-button"
+            >
 
               {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" data-trigger-id={`trigger-${block_id}`}> {popupButtonText}
+                <button type="button" className={classnames("responsive-block-editor-addons-popup-button-trigger", "responsive-block-editor-addons-popup-modal-trigger", inheritFromTheme ? "wp-block-button wp-block-button__link" : null)} data-trigger-id={`trigger-${block_id}`}> {popupButtonText}
                 </button>
               }
 
@@ -54,7 +67,7 @@ export default class Save extends Component {
 
               {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'icon' &&
                 <div className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-icon-trigger" data-trigger-id={`trigger-${block_id}`}>
-                  {renderSVG(popupIconTrigger)}
+                  <span className="rbea-dynamic-icon" data-icon={popupIconTrigger} aria-hidden="true"></span>
                 </div>
               }
 

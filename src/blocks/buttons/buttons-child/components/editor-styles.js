@@ -102,6 +102,11 @@ function EditorStyles(props) {
     borderOpacity,
     buttonTextTransform,
     buttonFontStyle,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
+    gradient,
+    buttonTextDecoration,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -177,7 +182,7 @@ function EditorStyles(props) {
     updatedBackgroundHColor = hbackground;
   }
   if (backgroundType == "gradient") {
-    updatedBackgroundImage = generateBackgroundImageEffect(
+    updatedBackgroundImage = gradient ? gradient : generateBackgroundImageEffect(
       backgroundColor1,
       backgroundColor2,
       gradientDirection,
@@ -185,8 +190,12 @@ function EditorStyles(props) {
       colorLocation2
     );
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__icon svg": {
       color: icon_color+ '!important',
       width: generateCSSUnit(iconsize, "px"),
@@ -202,7 +211,7 @@ function EditorStyles(props) {
       color: icon_hover_color+ '!important',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
-      color:  hColor ? hColor : color,
+      color:  inheritFromTheme ? '' : hColor ? hColor : color,
       "opacity": `${typographyOpacityControlValue}`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link": {
@@ -216,13 +225,13 @@ function EditorStyles(props) {
         "margin-bottom": `${generateCSSUnit(blockBottomMargin, "px")} !important`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "border-color": borderColor ? hexToRgba(borderColor, borderOpacityControlValue) : "#000",
-      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
-      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-color": inheritFromTheme ? '' : borderColor ? hexToRgba(borderColor, borderOpacityControlValue) : "#000",
+      "border-top-left-radius": inheritFromTheme ? '' : generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": inheritFromTheme ? '' : generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": inheritFromTheme ? '' : generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": inheritFromTheme ? '' : generateCSSUnit(blockLeftRadius, "px"),
+      "border-style": inheritFromTheme ? 'solid' : borderStyle,
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(borderWidth, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -235,20 +244,21 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
-      "background-image": updatedBackgroundImage,
-      "background-color": updatedBackgroundColor,
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(blockRightPadding, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(blockBottomPadding, "px"),
+      "background-image": inheritFromTheme ? '' : updatedBackgroundImage,
+      "background-color": inheritFromTheme ? '' : updatedBackgroundColor,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
-      "font-family": buttonFontFamily,
-      "font-weight": buttonFontWeight,
-      "line-height": buttonLineHeight,
+      "font-family": inheritFromTheme ? 'Default' : buttonFontFamily,
+      "font-weight": inheritFromTheme ? '' : buttonFontWeight,
+      "line-height": inheritFromTheme ? '' : buttonLineHeight,
       "opacity": imgopacity,
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
       "text-transform": buttonTextTransform,
+      "text-decoration": buttonTextDecoration,
       "font-style": buttonFontStyle,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div": {
@@ -278,6 +288,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeMobile, "px") + "!important",
     },
@@ -300,6 +313,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeTablet, "px") + "!important",
     },

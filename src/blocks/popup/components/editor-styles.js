@@ -171,6 +171,9 @@ function EditorStyles(props) {
     popupButtonTypographyFontStyle,
     popupTextTypographyTextTransform,
     popupTextTypographyFontStyle,
+    inheritFromTheme,
+    popupButtonTypographyTextDecoration,
+    popupTextTypographyTextDecoration,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -310,40 +313,44 @@ function EditorStyles(props) {
     'solid': { 'background-color': popupButtonBGHoverColor },
     'gradient': { 'background-image': popupButtonHoverBGGradient },
   }[popupButtonBGHoverState] || { 'background-color': 'transparent' };
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
         "justify-content": popupTriggerAlign,  
     },
     " .responsive-block-editor-addons-popup-button-trigger": {
-      "color": popupButtonColor,
+      "color": inheritFromTheme ? '' : popupButtonColor,
       ...buttonBGColor,
-      "font-family": popupButtonTypographyFontFamily,
+      "background-color": inheritFromTheme ? '' : popupButtonBGColor,
+      "font-family": inheritFromTheme ? 'Default' : popupButtonTypographyFontFamily,
       "font-size": generateCSSUnit(popupButtonTypographyFontSize, "px"),
-      "font-weight": parseInt(popupButtonTypographyFontWeight),
-      "line-height": popupButtonTypographyLineHeight,
-      "letter-spacing": generateCSSUnit(popupButtonTypographyLetterSpacing, "px"),
-      "padding-top": generateCSSUnit(popupButtonPaddingTop, "px"),
-      "padding-bottom": generateCSSUnit(popupButtonPaddingBottom, "px"),
-      "padding-left": generateCSSUnit(popupButtonPaddingLeft, "px"),
-      "padding-right": generateCSSUnit(popupButtonPaddingRight, "px"),
-      "border-width": generateCSSUnit(popupButtonBorderWidth, "px"),
-      "border-style": popupButtonBorderStyle,
-      "border-color": popupButtonBorderColor,
-      "border-top-left-radius": generateCSSUnit(popupButtonTopRadius, "px"),
-      "border-top-right-radius": generateCSSUnit(popupButtonRightRadius, "px"),
-      "border-bottom-right-radius": generateCSSUnit(popupButtonBottomRadius, "px"),
-      "border-bottom-left-radius": generateCSSUnit(popupButtonLeftRadius, "px"),
-      "text-transform": popupButtonTypographyTextTransform,
-      "font-style": popupButtonTypographyFontStyle,
+      "font-weight": inheritFromTheme ? '' : parseInt(popupButtonTypographyFontWeight),
+      "line-height": inheritFromTheme ? '' : popupButtonTypographyLineHeight,
+      "letter-spacing": inheritFromTheme ? '' : generateCSSUnit(popupButtonTypographyLetterSpacing, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingTop, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingBottom, "px"),
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingLeft, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingRight, "px"),
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(popupButtonBorderWidth, "px"),
+      "border-style": inheritFromTheme ? 'solid' : popupButtonBorderStyle,
+      "border-color": inheritFromTheme ? '' : popupButtonBorderColor,
+      "border-top-left-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonTopRadius, "px"),
+      "border-top-right-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonRightRadius, "px"),
+      "border-bottom-right-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonBottomRadius, "px"),
+      "border-bottom-left-radius": inheritFromTheme ? '' : generateCSSUnit(popupButtonLeftRadius, "px"),
+      "text-transform": inheritFromTheme ? '' : popupButtonTypographyTextTransform,
+      "text-decoration": inheritFromTheme ? '' : popupButtonTypographyTextDecoration,
+      "font-style": inheritFromTheme ? '' : popupButtonTypographyFontStyle,
     },
     " .responsive-block-editor-addons-popup-button-trigger:hover": {
-      "color": popupButtonHoverColor,
+      "color": inheritFromTheme ? '' : popupButtonHoverColor,
       ...buttonHoverBGColor,
-      "border-color": popupButtonBorderHoverColor,
+      "background-color": inheritFromTheme ? '' : popupButtonBGHoverColor,
+      "border-color": inheritFromTheme ? '' : popupButtonBorderHoverColor,
     },
     " .responsive-block-editor-addons-popup-text-trigger": {
       "color": popupTextTypographyTypographyColor,
@@ -400,7 +407,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignMobile,
@@ -443,7 +450,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignTablet,

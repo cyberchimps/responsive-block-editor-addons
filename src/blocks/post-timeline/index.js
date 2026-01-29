@@ -3,10 +3,11 @@
  */
 
 // Import block dependencies and components
-import edit from "./components/edit";
+import Edit from "./components/edit";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -35,7 +36,11 @@ registerBlockType("responsive-block-editor-addons/post-timeline", {
     __("timeline", "responsive-block-editor-addons"),
     __("latest", "responsive-block-editor-addons"),
   ],
-    example: {},
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
 
   getEditWrapperProps(attributes) {
     const { align } = attributes;
@@ -44,7 +49,9 @@ registerBlockType("responsive-block-editor-addons/post-timeline", {
     }
   },
 
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="post-timeline" /> : <Edit {...props} />;
+  },
 
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_postgrid_postType: {

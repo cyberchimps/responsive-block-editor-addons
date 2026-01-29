@@ -10,6 +10,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -37,17 +38,15 @@ registerBlockType("responsive-block-editor-addons/count-down", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            days: __("29", 'responsive-block-editor-addons' ),
-            hours: __("23", 'responsive-block-editor-addons' ),
-            minutes: __("59", 'responsive-block-editor-addons' ),
-            seconds: __("59", 'responsive-block-editor-addons' ),
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
-  edit: Edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="countdown" /> : <Edit {...props} />;
+  },
 
   /* Save the block markup. */
   save: Save,

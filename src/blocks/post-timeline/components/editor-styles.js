@@ -155,6 +155,11 @@ function EditorStyles(props) {
   contentFontStyle,
   continueTextTransform,
   continueFontStyle,
+  dateTextDecoration,
+  headingTextDecoration,
+  authorTextDecoration,
+  contentTextDecoration,
+  continueTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -166,10 +171,11 @@ function EditorStyles(props) {
   if ("outset" === hoverboxShadowPosition) {
     hoverboxShadowPositionCSS = "";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
       'padding-right': generateCSSUnit(blockRightPadding, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -234,6 +240,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(continueFontSize, "px"),
       "font-family": continueFontFamily,
       "text-transform": continueTextTransform,
+      "text-decoration": continueTextDecoration,
       "font-style": continueFontStyle,
     },
     " .responsive-block-editor-addons-timeline__link_parent:hover .responsive-block-editor-addons-timeline__link": {
@@ -277,6 +284,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(dateFontSize, "px"),
       "font-family": dateFontFamily,
       "text-transform": dateTextTransform,
+      "text-decoration": dateTextDecoration,
       "font-style": dateFontStyle,
     },
     " .responsive-block-editor-addons-content": {
@@ -292,6 +300,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(headingFontSize, "px"),
       "font-family": headingFontFamily,
       "text-transform": headingTextTransform,
+      "text-decoration": headingTextDecoration,
       "font-style": headingFontStyle,
     },
     " .responsive-block-editor-addons-block-post-timeline-byline": {
@@ -304,6 +313,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(authorFontSize, "px"),
       "font-family": authorFontFamily,
       "text-transform": authorTextTransform,
+      "text-decoration": authorTextDecoration,
       "font-style": authorFontStyle,
     },
     " .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
@@ -313,6 +323,7 @@ function EditorStyles(props) {
       "font-family": contentFontFamily,
       "margin-bottom": generateCSSUnit(contentBottomSpacing, "px"),
       "text-transform": contentTextTransform,
+      "text-decoration": contentTextDecoration,
       "font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
@@ -321,6 +332,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(dateFontSize, "px"),
       "font-family": dateFontFamily,
       "text-transform": dateTextTransform,
+      "text-decoration": dateTextDecoration,
       "font-style": dateFontStyle,
     },
 
@@ -345,7 +357,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -419,7 +431,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

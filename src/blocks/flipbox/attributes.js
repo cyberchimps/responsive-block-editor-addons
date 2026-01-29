@@ -122,7 +122,6 @@ const attributes = {
   },
   buttonbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonHTextColor: {
     type: "string",
@@ -159,7 +158,6 @@ const attributes = {
   },
   buttonHbackgroundColor2: {
     type: "string",
-    default: "#fff",
   },
   buttonBorderRadius: {
     type: "number",
@@ -1080,7 +1078,37 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
+  },
+  backButtonTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  backSubtitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  backTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  frontSubtitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  frontTitleTextDecoration: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

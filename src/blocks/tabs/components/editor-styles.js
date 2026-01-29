@@ -119,6 +119,10 @@ function EditorStyles(props) {
     alignTabs,
     alignTabsT,
     alignTabsM,
+    gradient,
+    gradientHover,
+    tabTitleTextDecoration,
+    tabContentTextDecoration,
   } = props.attributes;
 
 
@@ -126,7 +130,7 @@ function EditorStyles(props) {
 
   var blockBackground = "";
   if (backgroundType == "gradient") {
-    blockBackground = generateBackgroundImageEffect(
+    blockBackground = gradient ? gradient : generateBackgroundImageEffect(
       `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
       `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
       gradientDirection,
@@ -168,10 +172,11 @@ function EditorStyles(props) {
   if ("outset" === hoverboxShadowPosition) {
     hoverboxShadowPositionCSS = "";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ":{
-		  "opacity": hideWidget? 0.2 : 1,
+		  "opacity": hideWidget && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(tabsTopPadding, "px"),
       "padding-bottom": generateCSSUnit(tabsBottomPadding, "px"),
       "padding-left": generateCSSUnit(tabsLeftPadding, "px"),
@@ -207,7 +212,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradientHover ? gradientHover : generateBackgroundImageEffect(
             `${hexToRgba(
               hoverbackgroundColor1 || "#ffffff",
               imgopacity || 0
@@ -251,6 +256,7 @@ function EditorStyles(props) {
 			"color": tabTitleTypographyColor,
       "font-family": tabTitleFontFamily,
       "text-transform": tabTitleTextTransform,
+      "text-decoration": tabTitleTextDecoration,
       "font-style": tabTitleFontStyle,
 			"font-weight": tabTitleFontWeight,
 			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
@@ -263,6 +269,7 @@ function EditorStyles(props) {
 			"color": tabContentTypographyColor,
       "font-family": tabContentFontFamily,
       "text-transform": tabContentTextTransform,
+      "text-decoration": tabContentTextDecoration,
       "font-style": tabContentFontStyle,
 			"font-weight": tabContentFontWeight,
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
@@ -278,7 +285,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ":{
-		  "opacity": hideWidgetMobile? 0.2 : 1,
+		  "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(tabsTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(tabsBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(tabsLeftPaddingMobile, "px"),
@@ -308,7 +315,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ":{
-		  "opacity": hideWidgetTablet? 0.2 : 1,
+		  "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(tabsTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(tabsBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(tabsLeftPaddingTablet, "px"),

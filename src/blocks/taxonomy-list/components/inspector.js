@@ -216,6 +216,9 @@ export default class Inspector extends Component {
       countFontStyle,
       listTextTransform,
       listFontStyle,
+      titleTextDecoration,
+      countTextDecoration,
+      listTextDecoration,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -689,9 +692,11 @@ if (!gridIsRadiusValueUpdated) {
                       color: titleTypographyColor,
                       transform: titleTextTransform,
                       fontstyle: titleFontStyle,
+                      textDecoration: titleTextDecoration,
                     }}
                     showLetterSpacing={false}
                     showColorControl={true}
+                    showTextDecoration={true}
                     setAttributes={setAttributes}
                     {...this.props}
                   />
@@ -712,9 +717,11 @@ if (!gridIsRadiusValueUpdated) {
                         color: countTypographyColor,
                         transform: countTextTransform,
                         fontstyle: countFontStyle,
+                        textDecoration: countTextDecoration,
                       }}
                       showLetterSpacing={false}
                       showColorControl={true}
+                      showTextDecoration={true}
                       setAttributes={setAttributes}
                       {...this.props}
                     />
@@ -740,9 +747,11 @@ if (!gridIsRadiusValueUpdated) {
 										emptyColorControl: emptyColorControl,
                     transform: listTextTransform,
                     fontstyle: listFontStyle,
+                    textDecoration: listTextDecoration,
                   }}
                   showLetterSpacing={false}
                   showColorWithHoverControlTab={true}
+                  showTextDecoration={true}
                   setAttributes={setAttributes}
                   {...this.props}
                 />
@@ -1006,44 +1015,7 @@ if (!gridIsRadiusValueUpdated) {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                "Hide on Desktop",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Tablet",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Mobile",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

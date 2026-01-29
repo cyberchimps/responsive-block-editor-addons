@@ -19,10 +19,13 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import { RadioControl} from "@wordpress/components";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../utils/index.js";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -322,6 +325,12 @@ export default class Inspector extends Component {
         descriptionTextTransform,
         descriptionFontStyle,
         hasImagePositionMigrated,
+        backgroundType,
+        gradient,
+        hoverGradient,
+        hoverBackgroundType,
+        titleTextDecoration,
+        descriptionTextDecoration,
       },
       setAttributes,
     } = this.props;
@@ -444,6 +453,87 @@ export default class Inspector extends Component {
         label: __("900", "responsive-block-editor-addons"),
       },
     ];
+
+    // Background Type Options
+    const backgroundTypeOptions = [
+      { value: "color", label: __("Color", "responsive-block-editor-addons") },
+      {
+        value: "gradient",
+        label: __("Gradient", "responsive-block-editor-addons"),
+      },
+    ];
+
+    // Gradient options for WordPress GradientPicker (same as container)
+    const gradientOptions = [
+      {
+        name: 'JShine',
+        gradient:
+          'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+        slug: 'jshine',
+      },
+      {
+        name: 'Moonlit Asteroid',
+        gradient:
+          'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+        slug: 'moonlit-asteroid',
+      },
+      {
+        name: 'Rastafarie',
+        gradient:
+          'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+        slug: 'rastafari',
+      },
+    ];
+
+    // Convert old gradient attributes to WordPress gradient format if needed
+    const getGradientValue = () => {
+      // If gradient already exists (WordPress format), use it
+      if (gradient) {
+        return gradient;
+      }
+      
+      // Otherwise, convert from old attributes to WordPress format
+      if (itemBackgroundColor || secondaryBackgroundColor) {
+        const imgopacity = opacity ? opacity / 100 : 1;
+        const color1 = hexToRgba(itemBackgroundColor || "#fff", imgopacity);
+        const color2 = hexToRgba(secondaryBackgroundColor || "#fff", imgopacity);
+        const direction = gradientDegree !== undefined ? gradientDegree : 90;
+        
+        return `linear-gradient(${direction}deg, ${color1} 0%, ${color2} 100%)`;
+      }
+      
+      return undefined;
+    };
+
+    const getHoverGradientValue = () => {
+      // If gradient already exists (WordPress format), use it
+      if (hoverGradient) {
+        return hoverGradient;
+      }
+      
+      // Otherwise, convert from old attributes to WordPress format
+      if (itemHoverBackgroundColor || hoverSecondaryBackgroundColor) {
+        const imgopacity = hoverOpacity ? hoverOpacity / 100 : 1;
+        const color1 = hexToRgba(itemHoverBackgroundColor || "#fff", imgopacity);
+        const color2 = hexToRgba(hoverSecondaryBackgroundColor || "#fff", imgopacity);
+        // const location1 = colorLocation1 !== undefined ? colorLocation1 : 0;
+        // const location2 = colorLocation2 !== undefined ? colorLocation2 : 100;
+        const direction = hoverGradientDegree !== undefined ? hoverGradientDegree : 90;
+        
+        return `linear-gradient(${direction}deg, ${color1} 0%, ${color2} 100%)`;
+      }
+      
+      return undefined;
+    };
+
+     // Handle gradient change - save to new format
+    const onGradientChange = (value) => {
+      setAttributes({ gradient: value });
+    };
+
+    const onHoverGradientChange = (value) => {
+      setAttributes({ hoverGradient: value });
+    };
 
     // Update color value
     const onChangeBackgroundColor = (value) =>
@@ -1240,71 +1330,33 @@ export default class Inspector extends Component {
               title={__("Overlay Color", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-               <RbeaColorControl
-									label = {__("Background Color", "responsive-block-editor-addons")}
-									colorValue={itemBackgroundColor}
-									onChange={(colorValue) =>
-										setAttributes({ itemBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ itemBackgroundColor: "" })}
-								/>
-              <ToggleControl
-                label="Gradient Background"
-                checked={bgGradient}
-                onChange={() =>
-                  this.props.setAttributes({
-                    bgGradient: !bgGradient,
-                  })
-                }
-                __nextHasNoMarginBottom
-              />
-              {bgGradient && (
-                <PanelBody
-                  title={__(
-                    "Secondary Background Color",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={true}
-                >
-                   <RbeaColorControl
-									label = {__("Secondary Background Color", "responsive-block-editor-addons")}
-									colorValue={secondaryBackgroundColor}
-									onChange={(colorValue) =>
-										setAttributes({ secondaryBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ secondaryBackgroundColor: "" })}
-								/>
-                </PanelBody>
-              )}
-              {bgGradient && (
-                <RbeaAngleRangeControl
-                  label={__(
-                    "Angle",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={gradientDegree}
-                  onChange={(value) =>
-                    setAttributes({
-                      gradientDegree: value !== undefined ? value : 100,
-                    })
-                  }
-                  min={0}
-                  max={360}
+               <RbeaBackgroundTypeControl
+                  label={__("Type", "responsive-block-editor-addons")}
+                  value={backgroundType}
+                  onChange={(value) => setAttributes({ backgroundType: value })}
+                  options={backgroundTypeOptions}
                 />
-              )}
-              <RbeaRangeControl
-                label={__(
-                  "Background Color Opacity",
-                  "responsive-block-editor-addons"
+                {"color" == backgroundType && (
+                  <Fragment>
+                    <RbeaColorControl
+                      label = {__("Background Color", "responsive-block-editor-addons")}
+                      colorValue={itemBackgroundColor} //titleBackgroundColor
+                      onChange={(colorValue) =>
+                        setAttributes({ itemBackgroundColor: colorValue })
+                      }
+                      resetColor={() => setAttributes({ itemBackgroundColor: "" })}
+                    />
+                  </Fragment>
                 )}
-                value={opacity}
-                onChange={(value) =>
-                  setAttributes({ opacity: value !== undefined ? value : 70 })
-                }
-                min={0}
-                max={100}
-                allowReset
-              />
+                {"gradient" == backgroundType && (
+                  <Fragment>
+                    <GradientPicker
+                      value={getGradientValue()}
+                      onChange={onGradientChange}
+                      gradients={gradientOptions}
+                    />
+                  </Fragment>
+                )}
             </PanelBody>
             <PanelBody
               title={__(
@@ -1313,73 +1365,33 @@ export default class Inspector extends Component {
               )}
               initialOpen={false}
             >
-               <RbeaColorControl
-									label = {__("Hover Background Color", "responsive-block-editor-addons")}
-									colorValue={itemHoverBackgroundColor}
-									onChange={(colorValue) =>
-										setAttributes({ itemHoverBackgroundColor: colorValue })
-									}
-									resetColor={() => setAttributes({ itemHoverBackgroundColor: "" })}
-								/>
-              <ToggleControl
-                label={__("Gradient Background", "responsive-block-editor-addons")}
-                checked={hoverBgGradient}
-                onChange={() =>
-                  this.props.setAttributes({
-                    hoverBgGradient: !hoverBgGradient,
-                  })
-                }
-                __nextHasNoMarginBottom
+              <RbeaBackgroundTypeControl
+                label={__("Type", "responsive-block-editor-addons")}
+                value={hoverBackgroundType}
+                onChange={(value) => setAttributes({ hoverBackgroundType: value })}
+                options={backgroundTypeOptions}
               />
-              {hoverBgGradient && (
-                <PanelBody
-                  title={__(
-                    "Secondary Background Color",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={true}
-                >
-                   <RbeaColorControl
-                    label = {__("Secondary Background Color", "responsive-block-editor-addons")}
-                    colorValue={hoverSecondaryBackgroundColor}
+              {"color" == hoverBackgroundType && (
+                <Fragment>
+                  <RbeaColorControl
+                    label = {__("Content Background Color", "responsive-block-editor-addons")}
+                    colorValue={itemHoverBackgroundColor}
                     onChange={(colorValue) =>
-                      setAttributes({ hoverSecondaryBackgroundColor: colorValue })
+                      setAttributes({ itemHoverBackgroundColor: colorValue })
                     }
-                    resetColor={() => setAttributes({ hoverSecondaryBackgroundColor: "" })}
+                    resetColor={() => setAttributes({ itemHoverBackgroundColor: "" })}
                   />
-                </PanelBody>
+                </Fragment>
               )}
-              {hoverBgGradient && (
-                <RbeaAngleRangeControl
-                  label={__(
-                    "Angle",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={hoverGradientDegree}
-                  onChange={(value) =>
-                    setAttributes({
-                      hoverGradientDegree: value !== undefined ? value : 100,
-                    })
-                  }
-                  min={0}
-                  max={360}
-                />
+              {"gradient" == hoverBackgroundType && (
+                <Fragment>
+                  <GradientPicker
+                    value={getHoverGradientValue()}
+                    onChange={onHoverGradientChange}
+                    gradients={gradientOptions}
+                  />
+                </Fragment>
               )}
-              <RbeaRangeControl
-                label={__(
-                  "Background Color Opacity",
-                  "responsive-block-editor-addons"
-                )}
-                value={hoverOpacity}
-                onChange={(value) =>
-                  setAttributes({
-                    hoverOpacity: value !== undefined ? value : 70,
-                  })
-                }
-                min={0}
-                max={100}
-                allowReset
-              />
             </PanelBody>
 			    <PanelBody
 			    	title={__("Text Colors", "responsive-block-editor-addons")}
@@ -1421,11 +1433,13 @@ export default class Inspector extends Component {
           bottomSpacingMobile: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
           transform: titleTextTransform,
-          fontstyle: titleFontStyle
+          fontstyle: titleFontStyle,
+          textDecoration: titleTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -1444,11 +1458,13 @@ export default class Inspector extends Component {
           bottomSpacingMobile: descriptionBottomSpacingMobile,
           bottomSpacingTablet: descriptionBottomSpacingTablet,
           transform: descriptionTextTransform,
-          fontstyle: descriptionFontStyle
+          fontstyle: descriptionFontStyle,
+          textDecoration: descriptionTextDecoration,
 					}}
 					showLetterSpacing={false}
           showColorControl={true}
           showTextBottomSpacing={true}
+          showTextDecoration={true}
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
@@ -1684,44 +1700,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-            title={__("Responsive Conditions", "responsive-block-editor-addons")}
-            initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                "Hide on Desktop",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Tablet",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                "Hide on Mobile",
-                "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

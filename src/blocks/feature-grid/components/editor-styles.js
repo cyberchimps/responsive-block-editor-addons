@@ -232,9 +232,15 @@ function EditorStyles(props) {
       ctaBlockBottomRadiusMobile,
       ctaBlockLeftRadiusMobile,
       ctaTextTransform,
-        ctaFontStyle,
-        titleFontStyle,
-        descFontStyle,
+      ctaFontStyle,
+      titleFontStyle,
+      descFontStyle,
+      gradient,
+      gradientButton,
+      gradientButtonH,
+      ctaTextDecoration,
+      descTextDecoration,
+      titleTextDecoration,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -257,7 +263,7 @@ function EditorStyles(props) {
   if (buttonHbackgroundType === "color") {
     updatedButtonBgHColor = ctaHoverBackColor;
   } else if (buttonHbackgroundType == "gradient") {
-    updatedButtonBgHImage = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    updatedButtonBgHImage = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   }
 
   let updatedButtonBackgroundColor = "";
@@ -265,13 +271,14 @@ function EditorStyles(props) {
   if (buttonbackgroundType == "color") {
     updatedButtonBackgroundColor = ctaBackColor;
   } else if (buttonbackgroundType == "gradient") {
-    updatedButtonBackgroundImage = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    updatedButtonBackgroundImage = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   }
 
   let imgopacity = opacity / 100;
   let blockimgopacity = blockopacity / 100;
   let columnbackcoloropacity = columnBackColorOpacity / 100;
   let gradientOpacity = opacity / 100;
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .wp-block-responsive-block-editor-addons-feature-grid-item__button": {
@@ -310,6 +317,7 @@ function EditorStyles(props) {
         " " +
         buttonBoxShadowPositionCSS,
       "text-transform": ctaTextTransform,
+      "text-decoration": ctaTextDecoration,
       "font-style": ctaFontStyle,
     },
 
@@ -332,7 +340,6 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
       "text-align": blockAlign,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -346,7 +353,7 @@ function EditorStyles(props) {
         blockbackgroundType == "color"
           ? `${hexToRgba(blockbackgroundColor || "#fff", 0)}`
           : "",
-      opacity: blockbackgroundType == "color" ? blockBackColorOpacity : 100,
+      "opacity": blockbackgroundType == "color" ? hideWidget && isOn ? 0.2 : blockBackColorOpacity : hideWidget && isOn ? 0.2 : 1,
       "background-image":
         blockbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
@@ -383,7 +390,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType === "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               `${hexToRgba(
                 backgroundColor1 || "#fff",
                 gradientOpacity || 0
@@ -445,6 +452,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "text-transform": titleTextTransform,
+      "text-decoration": titleTextDecoration,
       "font-style": titleFontStyle,
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
@@ -455,6 +463,7 @@ function EditorStyles(props) {
       color: descTypographyColor,
       "line-height": descLineHeight,
       "text-transform": descTextTransform,
+      "text-decoration": descTextDecoration,
       "font-style": descFontStyle,
       "font-weight": descFontWeight,
       "font-size": generateCSSUnit(descFontSize, "px"),
@@ -466,7 +475,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -516,7 +525,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),

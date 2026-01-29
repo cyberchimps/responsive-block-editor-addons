@@ -6,6 +6,8 @@ import Inspector from "./inspector";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import renderSVG from "../../../renderIcon";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+
 /**
  * WordPress dependencies
  */
@@ -67,6 +69,7 @@ export default class Edit extends Component {
     
     return [
       <style id={`responsive-block-editor-addons-inline-notice-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={noticeAlignment}

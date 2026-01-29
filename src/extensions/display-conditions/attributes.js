@@ -11,7 +11,7 @@ const DisplayConditionsAttributes = {
         default: false,
     },
     RBEASystem: {
-        type: 'boolean',
+        type: 'string',
     },
     RBEABrowser: {
         type: 'string',

@@ -114,7 +114,13 @@ const deprecated = [
                 </div>
                 <DeprecatedTableOfContents
                     headers={
-                    headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
+                    headerLinks ? (() => {
+                      try {
+                        return JSON.parse(headerLinks.replace(/u0022/g, '"'));
+                      } catch (e) {
+                        return [];
+                      }
+                    })() : []
                     }
                     mappingHeaders={allowedAnchors}
                     blockProp={props}
@@ -202,7 +208,13 @@ const deprecated = [
                     </div>
                     <TableOfContents
                         headers={
-                        headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
+                        headerLinks ? (() => {
+                          try {
+                            return JSON.parse(headerLinks.replace(/u0022/g, '"'));
+                          } catch (e) {
+                            return [];
+                          }
+                        })() : []
                         }
                         mappingHeaders={allowedAnchors}
                         blockProp={props}
