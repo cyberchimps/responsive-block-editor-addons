@@ -9,6 +9,10 @@
  * @subpackage Responsive_Block_Editor_Addons/includes
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * The core plugin class Responsive_Block_Editor_Addons.
  *

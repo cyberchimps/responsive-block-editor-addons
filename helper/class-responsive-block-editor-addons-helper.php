@@ -9,6 +9,10 @@
  * @subpackage Responsive_Block_Editor_Addons/helper
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * The helper plugin class Responsive_Block_Editor_Addons_Helper.
  *

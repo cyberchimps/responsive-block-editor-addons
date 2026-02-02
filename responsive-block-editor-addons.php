@@ -1,16 +1,21 @@
 <?php
 /**
  * Plugin Name:     Responsive Blocks - WordPress Gutenberg Blocks
- * Plugin URI:      cyberchimps.com
+ * Plugin URI:      https://cyberchimps.com/responsive-blocks/
  * Description:     Responsive Blocks offers 50+ Gutenberg blocks so you can design beautiful pages without writing a single line of code.
  * Author:          CyberChimps
  * Author URI:		https://cyberchimps.com/responsive-blocks/
+ * License:         GPLv2 or later
  * Text Domain:     responsive-block-editor-addons
  * Domain Path:     /languages
  * Version:         2.1.9
  *
  * @package         Responsive_Block_Editor_Addons
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );

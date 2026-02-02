@@ -6,6 +6,10 @@
  * @package Responsive Blocks
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Registers the taxonomy list block on server
  */

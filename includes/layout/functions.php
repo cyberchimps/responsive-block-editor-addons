@@ -6,6 +6,10 @@
  * @package RBEA Templates
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 if ( ! function_exists( 'rbea_block_templates_get_filesystem' ) ) :
 	/**
 	 * Get an instance of WP_Filesystem_Direct.
