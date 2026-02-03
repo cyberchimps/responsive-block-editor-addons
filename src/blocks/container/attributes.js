@@ -502,6 +502,46 @@ const attributes = {
   containerBorderWidth: {
     type: "number",
   },
+  containerBorderTopWidth: {
+    type: "number",
+  },
+  containerBorderRightWidth: {
+    type: "number",
+  },
+  containerBorderBottomWidth: {
+    type: "number",
+  },
+  containerBorderLeftWidth: {
+    type: "number",
+  },
+  containerBorderTopWidthTablet: {
+    type: "number",
+  },
+  containerBorderRightWidthTablet: {
+    type: "number",
+  },
+  containerBorderBottomWidthTablet: {
+    type: "number",
+  },
+  containerBorderLeftWidthTablet: {
+    type: "number",
+  },
+  containerBorderTopWidthMobile: {
+    type: "number",
+  },
+  containerBorderRightWidthMobile: {
+    type: "number",
+  },
+  containerBorderBottomWidthMobile: {
+    type: "number",
+  },
+  containerBorderLeftWidthMobile: {
+    type: "number",
+  },
+  containerBorderIsWidthControlConnected: {
+    type: "boolean",
+    default: false,
+  },
   containerBorderColor: {
     type: "string",
   },

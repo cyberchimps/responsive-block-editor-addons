@@ -1,4 +1,4 @@
-import { useEffect, useState } from "@wordpress/element";
+import { useEffect, useState, Fragment } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/blockEditor";
 import {
@@ -18,7 +18,9 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
-import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
+import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
@@ -112,6 +114,18 @@ export default function Inspector(props) {
     containerBorderRadius,
     containerBorderStyle,
     containerBorderWidth,
+    containerBorderTopWidth,
+    containerBorderRightWidth,
+    containerBorderBottomWidth,
+    containerBorderLeftWidth,
+    containerBorderTopWidthTablet,
+    containerBorderRightWidthTablet,
+    containerBorderBottomWidthTablet,
+    containerBorderLeftWidthTablet,
+    containerBorderTopWidthMobile,
+    containerBorderRightWidthMobile,
+    containerBorderBottomWidthMobile,
+    containerBorderLeftWidthMobile,
     containerBorderColor,
     boxShadowColor,
     boxShadowHOffset,
@@ -602,6 +616,34 @@ export default function Inspector(props) {
     paddingMobileBottom: 0,
     paddingMobileLeft: 0,
   };
+
+  // Migrate legacy containerBorderWidth to responsive per-side border width attributes
+  useEffect(() => {
+    // Check if this is an old block instance that needs migration
+    const hasLegacyBorderWidth = containerBorderWidth !== undefined && containerBorderWidth !== null;
+    const hasNewAttributes = containerBorderTopWidth !== undefined;
+
+    // Perform one-time migration only if legacy attribute exists and new attributes don't
+    if (hasLegacyBorderWidth && !hasNewAttributes) {
+      setAttributes({
+        // Desktop
+        containerBorderTopWidth: containerBorderWidth,
+        containerBorderRightWidth: containerBorderWidth,
+        containerBorderBottomWidth: containerBorderWidth,
+        containerBorderLeftWidth: containerBorderWidth,
+        // Tablet
+        containerBorderTopWidthTablet: containerBorderWidth,
+        containerBorderRightWidthTablet: containerBorderWidth,
+        containerBorderBottomWidthTablet: containerBorderWidth,
+        containerBorderLeftWidthTablet: containerBorderWidth,
+        // Mobile
+        containerBorderTopWidthMobile: containerBorderWidth,
+        containerBorderRightWidthMobile: containerBorderWidth,
+        containerBorderBottomWidthMobile: containerBorderWidth,
+        containerBorderLeftWidthMobile: containerBorderWidth,
+      });
+    }
+  }, []); // Empty dependency array ensures this runs only once
 
   const wrapOptions = [
     {
@@ -1584,15 +1626,25 @@ export default function Inspector(props) {
             title={__("Border", "responsive-block-editor-addons")}
             initialOpen={false}
           >
-            <RbeaBlockBorderHelperControl
+            <RbeaBorderStyleTabControl
+              selected={containerBorderStyle}
+              onChange={(value) => setAttributes({ containerBorderStyle: value })}
+            />
+            <RbeaColorControl
+              label={__("Color", "responsive-block-editor-addons")}
+              colorValue={containerBorderColor}
+              onChange={(colorValue) =>
+                setAttributes({ containerBorderColor: colorValue })
+              }
+              resetColor={() => setAttributes({ containerBorderColor: "" })}
+            />
+            <ResponsiveBorderWidthControl
+              attrNameTemplate="containerBorder%s"
+              {...props}
+            />
+            <RbeaBorderRadiusControl
               attrNameTemplate="container%s"
-              values={{
-                radius: containerBorderRadius,
-                style: containerBorderStyle,
-                width: containerBorderWidth,
-                color: containerBorderColor,
-              }}
-              setAttributes={setAttributes}
+              label="Border Radius"
               {...props}
             />
           </PanelBody>
