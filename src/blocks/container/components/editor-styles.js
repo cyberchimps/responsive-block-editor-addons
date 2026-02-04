@@ -99,6 +99,18 @@ function EditorStyles(props, deviceType) {
 		backgroundType,
 		containerBorderStyle,
 		containerBorderWidth,
+		containerBorderTopWidth,
+		containerBorderRightWidth,
+		containerBorderBottomWidth,
+		containerBorderLeftWidth,
+		containerBorderTopWidthTablet,
+		containerBorderRightWidthTablet,
+		containerBorderBottomWidthTablet,
+		containerBorderLeftWidthTablet,
+		containerBorderTopWidthMobile,
+		containerBorderRightWidthMobile,
+		containerBorderBottomWidthMobile,
+		containerBorderLeftWidthMobile,
 		containerTopRadius,
 		containerRightRadius,
 		containerBottomRadius,
@@ -167,9 +179,18 @@ function EditorStyles(props, deviceType) {
 
   	const { clientId } = props;
 
+	// Use responsive per-side border widths with fallback to legacy containerBorderWidth
+	const borderTopWidthDesktop = containerBorderTopWidth !== undefined ? containerBorderTopWidth : containerBorderWidth;
+	const borderRightWidthDesktop = containerBorderRightWidth !== undefined ? containerBorderRightWidth : containerBorderWidth;
+	const borderBottomWidthDesktop = containerBorderBottomWidth !== undefined ? containerBorderBottomWidth : containerBorderWidth;
+	const borderLeftWidthDesktop = containerBorderLeftWidth !== undefined ? containerBorderLeftWidth : containerBorderWidth;
+
 	const borderStyles = {
 		'border-style': containerBorderStyle,
-		'border-width': generateCSSUnit(containerBorderWidth, 'px'),
+		'border-top-width': generateCSSUnit(borderTopWidthDesktop, 'px'),
+		'border-right-width': generateCSSUnit(borderRightWidthDesktop, 'px'),
+		'border-bottom-width': generateCSSUnit(borderBottomWidthDesktop, 'px'),
+		'border-left-width': generateCSSUnit(borderLeftWidthDesktop, 'px'),
 		'border-top-left-radius': generateCSSUnit(containerTopRadius, 'px'),
 		'border-top-right-radius': generateCSSUnit(containerRightRadius, 'px'),
 		'border-bottom-right-radius': generateCSSUnit(containerBottomRadius, 'px'),
@@ -177,14 +198,42 @@ function EditorStyles(props, deviceType) {
 		'border-color': containerBorderColor,
 	}
 
+	// Tablet border widths with fallback chain: tablet → desktop → legacy
+	const borderTopWidthTablet = containerBorderTopWidthTablet !== undefined ? containerBorderTopWidthTablet :
+	                              borderTopWidthDesktop;
+	const borderRightWidthTablet = containerBorderRightWidthTablet !== undefined ? containerBorderRightWidthTablet :
+	                               borderRightWidthDesktop;
+	const borderBottomWidthTablet = containerBorderBottomWidthTablet !== undefined ? containerBorderBottomWidthTablet :
+	                                borderBottomWidthDesktop;
+	const borderLeftWidthTablet = containerBorderLeftWidthTablet !== undefined ? containerBorderLeftWidthTablet :
+	                              borderLeftWidthDesktop;
+
 	const borderStylesTablet = {
+		'border-top-width': generateCSSUnit(borderTopWidthTablet, 'px'),
+		'border-right-width': generateCSSUnit(borderRightWidthTablet, 'px'),
+		'border-bottom-width': generateCSSUnit(borderBottomWidthTablet, 'px'),
+		'border-left-width': generateCSSUnit(borderLeftWidthTablet, 'px'),
 		'border-top-left-radius': generateCSSUnit(containerTopRadiusTablet, 'px'),
 		'border-top-right-radius': generateCSSUnit(containerRightRadiusTablet, 'px'),
 		'border-bottom-right-radius': generateCSSUnit(containerBottomRadiusTablet, 'px'),
 		'border-bottom-left-radius': generateCSSUnit(containerLeftRadiusTablet, 'px'),
 	}
 
+	// Mobile border widths with fallback chain: mobile → tablet → desktop → legacy
+	const borderTopWidthMobile = containerBorderTopWidthMobile !== undefined ? containerBorderTopWidthMobile :
+	                             borderTopWidthTablet;
+	const borderRightWidthMobile = containerBorderRightWidthMobile !== undefined ? containerBorderRightWidthMobile :
+	                               borderRightWidthTablet;
+	const borderBottomWidthMobile = containerBorderBottomWidthMobile !== undefined ? containerBorderBottomWidthMobile :
+	                                borderBottomWidthTablet;
+	const borderLeftWidthMobile = containerBorderLeftWidthMobile !== undefined ? containerBorderLeftWidthMobile :
+	                              borderLeftWidthTablet;
+
 	const borderStylesMobile = {
+		'border-top-width': generateCSSUnit(borderTopWidthMobile, 'px'),
+		'border-right-width': generateCSSUnit(borderRightWidthMobile, 'px'),
+		'border-bottom-width': generateCSSUnit(borderBottomWidthMobile, 'px'),
+		'border-left-width': generateCSSUnit(borderLeftWidthMobile, 'px'),
 		'border-top-left-radius': generateCSSUnit(containerTopRadiusMobile, 'px'),
 		'border-top-right-radius': generateCSSUnit(containerRightRadiusMobile, 'px'),
 		'border-bottom-right-radius': generateCSSUnit(containerBottomRadiusMobile, 'px'),
@@ -658,22 +707,22 @@ function EditorStyles(props, deviceType) {
 
 	if ( overlayType && 'none' !== overlayType ) {
 		const desktopBorderWidth = {
-			'top': containerBorderWidth || 0,
-			'right': containerBorderWidth || 0,
-			'bottom': containerBorderWidth || 0,
-			'left': containerBorderWidth || 0,
+			'top': borderTopWidthDesktop || 0,
+			'right': borderRightWidthDesktop || 0,
+			'bottom': borderBottomWidthDesktop || 0,
+			'left': borderLeftWidthDesktop || 0,
 		};
 		const tabletBorderWidth = {
-			'top': containerBorderWidth || desktopBorderWidth.top,
-			'right': containerBorderWidth || desktopBorderWidth.right,
-			'bottom': containerBorderWidth || desktopBorderWidth.bottom,
-			'left': containerBorderWidth || desktopBorderWidth.left,
+			'top': borderTopWidthTablet || desktopBorderWidth.top,
+			'right': borderRightWidthTablet || desktopBorderWidth.right,
+			'bottom': borderBottomWidthTablet || desktopBorderWidth.bottom,
+			'left': borderLeftWidthTablet || desktopBorderWidth.left,
 		};
 		const mobileBorderWidth = {
-			'top': containerBorderWidth || tabletBorderWidth.top,
-			'right': containerBorderWidth || tabletBorderWidth.right,
-			'bottom': containerBorderWidth || tabletBorderWidth.bottom,
-			'left': containerBorderWidth || tabletBorderWidth.left,
+			'top': borderTopWidthMobile || tabletBorderWidth.top,
+			'right': borderRightWidthMobile || tabletBorderWidth.right,
+			'bottom': borderBottomWidthMobile || tabletBorderWidth.bottom,
+			'left': borderLeftWidthMobile || tabletBorderWidth.left,
 		}
 
 		let overlayCSSDesktop = {};
