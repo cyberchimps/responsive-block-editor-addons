@@ -92,7 +92,13 @@ export default class Save extends Component {
           </div>
           <TableOfContents
             headers={
-              headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
+              headerLinks ? (() => {
+                try {
+                  return JSON.parse(headerLinks.replace(/u0022/g, '"'));
+                } catch (e) {
+                  return [];
+                }
+              })() : []
             }
             mappingHeaders={allowedAnchors}
             blockProp={this.props}

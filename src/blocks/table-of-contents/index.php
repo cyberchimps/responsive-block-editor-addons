@@ -21,6 +21,7 @@ function responsive_block_editor_addons_extract_headings_from_content( $content 
 			if ( 'core/heading' === $block['blockName'] ) {
 				$level   = isset( $block['attrs']['level'] ) ? $block['attrs']['level'] : 2;
 				$content = wp_strip_all_tags( $block['innerHTML'] );
+				$content = html_entity_decode( $content, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
 				if ( ! empty( trim( $content ) ) ) {
 					$headings[] = array(
 						'level'   => $level,
@@ -37,11 +38,13 @@ function responsive_block_editor_addons_extract_headings_from_content( $content 
 				$content = '';
 				if ( isset( $block['attrs']['headingTitle'] ) && ! empty( trim( $block['attrs']['headingTitle'] ) ) ) {
 					$content = wp_strip_all_tags( $block['attrs']['headingTitle'] );
+					$content = html_entity_decode( $content, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
 				} elseif ( ! empty( $block['innerHTML'] ) ) {
 					// Extract only the heading tag content (h1-h6), not the description
 					preg_match( '/<h[1-6][^>]*class="responsive-heading-title-text"[^>]*>(.*?)<\/h[1-6]>/is', $block['innerHTML'], $matches );
 					if ( ! empty( $matches[1] ) ) {
 						$content = wp_strip_all_tags( $matches[1] );
+						$content = html_entity_decode( $content, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
 					}
 				}
 				
@@ -102,9 +105,10 @@ function responsive_block_editor_addons_add_toc_headings_data( $block_content, $
 	// Add data-headings attribute to the wrapper
 	if ( ! empty( $filtered ) ) {
 		$headings_json = wp_json_encode( $filtered );
+		$headings_encoded = base64_encode( $headings_json );
 		$block_content = preg_replace(
 			'/(<div[^>]*class="responsive-block-editor-addons-toc__wrap"[^>]*)/',
-			'$1 data-headings="' . esc_attr( $headings_json ) . '"',
+			'$1 data-headings="' . esc_attr( $headings_encoded ) . '"',
 			$block_content,
 			1
 		);

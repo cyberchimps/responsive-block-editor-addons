@@ -34,11 +34,16 @@ jQuery(function ($) {
     }
 
     // Get headings data from PHP (extracted from post content)
-    var headingsData = $wrap.data("headings");
-    try {
-      headingsData = typeof headingsData === "string" ? JSON.parse(headingsData) : headingsData;
-    } catch (e) {
-      headingsData = null;
+    // Data is base64 encoded to avoid HTML entity encoding issues
+    var headingsAttr = $wrap.attr("data-headings");
+    var headingsData = null;
+    if (headingsAttr) {
+      try {
+        var decoded = atob(headingsAttr);
+        headingsData = JSON.parse(decoded);
+      } catch (e) {
+        headingsData = null;
+      }
     }
 
     // If no PHP data, fallback to DOM extraction (backward compatibility)
