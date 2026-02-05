@@ -36,15 +36,20 @@ function EditorStyles(props) {
     contentPadding,
     contentPaddingMobile,
     contentPaddingTablet,
-	borderColor,//For compatibility with v1.3.2
-	borderStyle,//For compatibility with v1.3.2
-	borderWidth,//For compatibility with v1.3.2
-	borderRadius,//For compatibility with v1.3.2
+    borderColor,//For compatibility with v1.3.2
+    borderStyle,//For compatibility with v1.3.2
+    borderWidth,//For compatibility with v1.3.2
+    borderRadius,//For compatibility with v1.3.2
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {};
   var tablet_selectors = {};
   var mobile_selectors = {};
+
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var boxShadowPositionCSS = boxShadowPosition;
   var hoverboxShadowPositionCSS = hoverboxShadowPosition;
@@ -57,6 +62,7 @@ function EditorStyles(props) {
   }
   selectors = {
     " ": {
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "box-shadow":
         boxShadowPositionCSS +
         " " +
@@ -124,12 +130,18 @@ function EditorStyles(props) {
   };
 
   tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       padding: generateCSSUnit(titlePaddingTablet, "px"),
     },
   };
 
   mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       padding: generateCSSUnit(titlePaddingMobile, "px"),
     },

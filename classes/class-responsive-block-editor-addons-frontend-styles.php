@@ -2945,6 +2945,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
+			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+
 			$box_shadow_position_css       = $attr['boxShadowPosition'];
 			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
@@ -2956,6 +2958,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
 					'box-shadow' =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -3018,9 +3021,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin' => '0',
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] && $is_on ? 'none' : 'block',
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] && $is_on ? 'none' : 'block',
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -3073,6 +3084,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'borderStyle'            => 'empty', // For compatibility with v1.3.2.
 				'borderWidth'            => 999, // For compatibility with v1.3.2.
 				'borderRadius'           => 999, // For compatibility with v1.3.2.
+				'hideWidget'             => false,
+				'hideWidgetTablet'       => false,
+				'hideWidgetMobile'       => false,
 			);
 		}
 
