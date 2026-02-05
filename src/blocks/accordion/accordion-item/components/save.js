@@ -62,7 +62,9 @@ export default function save(props) {
       className={classnames(
         className,
         "responsive-block-editor-addons-accordion-item__outer-wrap",
-        `responsive-block-editor-addons-block-${block_id}`
+        "responsive-block-editor-addons-block-accordion-item",
+        `responsive-block-editor-addons-block-${block_id}`,
+        `block-${block_id}`
       )}
     >
       {accordionRenderAccordion()}

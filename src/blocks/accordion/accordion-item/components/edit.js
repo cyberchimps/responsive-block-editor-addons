@@ -338,7 +338,9 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
         <div
           className={classnames(
             "responsive-block-editor-addons-accordion-item__outer-wrap",
+            "responsive-block-editor-addons-block-accordion-item",
             `responsive-block-editor-addons-block-${this.props.clientId}`,
+            `block-${this.props.clientId}`,
             this.props.isSelected && false !== this.state.isFocused
               ? "responsive-block-editor-addons-accordion__active"
               : ""
