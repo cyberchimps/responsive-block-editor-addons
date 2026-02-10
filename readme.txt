@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.1.9
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -216,7 +216,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.1.9 - 12th January 2025 =
+= 2.2.0 - 10th February 2026 =
+* Improvement – Container Block: Enhanced Border Width controls by introducing dedicated top, right, bottom, and left options with full responsive support for Desktop, Tablet, and Mobile.
+* Fix – Accordion Block: Resolved an issue where the accordion did not collapse correctly within the editor.
+* Fix – Table of Contents Block: Fixed a block crash caused by invalid JSON parsing
+
+= 2.1.9 - 12th January 2026 =
 * Improvement – Enhanced the RBA Color Picker to display colors from the theme color palette.
 
 = 2.1.8 - 30th December 2025 =
