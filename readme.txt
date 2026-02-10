@@ -220,7 +220,6 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 * Improvement – Container Block: Enhanced Border Width controls by introducing dedicated top, right, bottom, and left options with full responsive support for Desktop, Tablet, and Mobile.
 * Fix – Accordion Block: Resolved an issue where the accordion did not collapse correctly within the editor.
 * Fix – Table of Contents Block: Fixed a block crash caused by invalid JSON parsing
-* Fix – Enhanced Security: Strengthened the codebase to further protect your website.
 
 = 2.1.9 - 12th January 2026 =
 * Improvement – Enhanced the RBA Color Picker to display colors from the theme color palette.
