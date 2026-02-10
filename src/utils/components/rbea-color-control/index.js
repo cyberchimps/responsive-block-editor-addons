@@ -105,6 +105,9 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
                 
                 {colors.length > 0 && (
                   <div className="rbea-color-palette-wrapper">
+                    <h4 className="rbea-color-palette-heading">
+                      {__('Theme Color Palette', 'responsive-block-editor-addons')}
+                    </h4>
                     <ColorPalette
                       colors={colors}
                       value={colorValue}
