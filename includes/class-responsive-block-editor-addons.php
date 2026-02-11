@@ -2158,6 +2158,106 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Find form block by block_id in post content.
+	 * Recursively searches through blocks and inner blocks.
+	 *
+	 * @param array  $blocks  Array of blocks to search.
+	 * @param string $block_id The block_id to find.
+	 * @return array|null Block attributes if found, null otherwise.
+	 * @since 2.2.1
+	 */
+	private function find_form_block_by_id( $blocks, $block_id ) {
+		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+			return null;
+		}
+
+		foreach ( $blocks as $block ) {
+			// Only search in our form blocks.
+			if ( isset( $block['blockName'] ) && 'responsive-block-editor-addons/form' === $block['blockName'] ) {
+				// Check if this is the block we're looking for.
+				if ( isset( $block['attrs']['block_id'] ) && $block['attrs']['block_id'] === $block_id ) {
+					return $block['attrs'];
+				}
+			}
+
+			// Recursively search inner blocks.
+			if ( ! empty( $block['innerBlocks'] ) ) {
+				$result = $this->find_form_block_by_id( $block['innerBlocks'], $block_id );
+				if ( null !== $result ) {
+					return $result;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get form block attributes by searching post, site builder, and widgets.
+	 *
+	 * @param string $block_id    The block_id to find.
+	 * @param int    $post_id     The post ID to search first (0 if not available).
+	 * @param bool   $block_found Reference parameter to indicate if block was found.
+	 * @return array|null Block attributes if found, null otherwise.
+	 * @since 2.2.1
+	 */
+	private function get_form_block_attributes( $block_id, $post_id, &$block_found = false ) {
+		$block_found = false;
+
+		// Search in the specific post first.
+		if ( $post_id > 0 ) {
+			$post_content = get_post_field( 'post_content', $post_id );
+			if ( $post_content ) {
+				$blocks = parse_blocks( $post_content );
+				$block_attrs = $this->find_form_block_by_id( $blocks, $block_id );
+				if ( null !== $block_attrs ) {
+					$block_found = true;
+					return $block_attrs;
+				}
+			}
+		}
+
+		// Search in Responsive Add-ons Site Builder posts.
+		$site_builder_args = array(
+			'post_type'      => 'resp-site-builder',
+			'post_status'    => array( 'publish' ),
+			'posts_per_page' => -1,
+		);
+		$site_builder_query = new WP_Query( $site_builder_args );
+
+		if ( ! empty( $site_builder_query->posts ) ) {
+			foreach ( $site_builder_query->posts as $sb_post ) {
+				if ( is_object( $sb_post ) && ! empty( $sb_post->post_content ) ) {
+					$blocks = parse_blocks( $sb_post->post_content );
+					$block_attrs = $this->find_form_block_by_id( $blocks, $block_id );
+					if ( null !== $block_attrs ) {
+						$block_found = true;
+						return $block_attrs;
+					}
+				}
+			}
+		}
+
+		// Final fallback: Search in widget areas.
+		$widget_blocks = get_option( 'widget_block' );
+		if ( ! empty( $widget_blocks ) && is_array( $widget_blocks ) ) {
+			foreach ( $widget_blocks as $widget ) {
+				if ( ! empty( $widget['content'] ) ) {
+					$blocks = parse_blocks( $widget['content'] );
+					$block_attrs = $this->find_form_block_by_id( $blocks, $block_id );
+					if ( null !== $block_attrs ) {
+						$block_found = true;
+						return $block_attrs;
+					}
+				}
+			}
+		}
+
+		// Block not found.
+		return null;
+	}
+
+	/**
 	 * RBA Form Block Processing.
 	 *
 	 * @param WP_REST_Request $request WP_Query object.
@@ -2167,10 +2267,46 @@ class Responsive_Block_Editor_Addons {
 		$params    = $request->get_params();
 		$form_data = $params['form_data'];
 		$page_url  = $params['page_url'];
-		$email_to  = sanitize_email( $params['email_to'] );
-		$subject   = sanitize_text_field( $params['subject'] );
-		$site_name = $params['site_name'];
-		$site_url  = $params['site_url'];
+		$block_id  = isset( $params['block_id'] ) ? sanitize_text_field( $params['block_id'] ) : '';
+		$post_id   = isset( $params['post_id'] ) ? absint( $params['post_id'] ) : 0;
+		$site_name = isset( $params['site_name'] ) ? $params['site_name'] : '';
+		$site_url  = isset( $params['site_url'] ) ? $params['site_url'] : '';
+
+		// Require block_id and post_id - reject if block_id is missing.
+		if ( empty( $block_id ) ) {
+			return rest_ensure_response(
+				array(
+					'success' => false,
+					'message' => 'Block ID and Post ID are required.',
+				)
+			);
+		}
+
+		// Security fix: Get block attributes from server-side, never trust client input.
+		$block_found = false;
+		$block_attrs = $this->get_form_block_attributes( $block_id, $post_id, $block_found );
+
+		// If block not found, reject the request.
+		if ( ! $block_found || null === $block_attrs ) {
+			return rest_ensure_response(
+				array(
+					'success' => false,
+					'message' => 'Form block not found. Invalid submission.',
+				)
+			);
+		}
+
+		// Extract email_to from block attributes.
+		$email_to = isset( $block_attrs['formEmailTo'] ) && ! empty( $block_attrs['formEmailTo'] ) 
+			? $block_attrs['formEmailTo'] 
+			: get_bloginfo( 'admin_email' );
+		$email_to = sanitize_email( $email_to );
+
+		// Extract subject from block attributes.
+		$subject = isset( $block_attrs['formEmailSubject'] ) && ! empty( $block_attrs['formEmailSubject'] )
+			? $block_attrs['formEmailSubject']
+			: '';
+		$subject = sanitize_text_field( $subject );
 
 		$table_content = '';
 

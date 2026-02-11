@@ -33,8 +33,17 @@
             e.preventDefault();
             $('.responsive-block-editor-addons-form-submit-success-message, .responsive-block-editor-addons-form-submit-error-message').hide()
 
-            let formId = $form.attr('id');
-            let blockId = formId.replace('rba-form-', '');
+            // Get the specific form that was submitted, not all forms
+            var $currentForm = $(this);
+            let formId = $currentForm.attr('id');
+            let blockId = formId ? formId.replace('rba-form-', '') : '';
+
+            // Validate blockId was extracted correctly
+            if (!blockId) {
+                console.error('Form block ID not found. Form ID:', formId);
+                $('.responsive-block-editor-addons-form-submit-error-message').show();
+                return;
+            }
 
             var form = document.getElementById(`rba-form-${blockId}`);
             var inputs = form.getElementsByTagName('input');
@@ -61,9 +70,7 @@
                 fields.push(`${label.textContent}: ${input.value}`)
             });
 
-            let formEmailTo = $form.data('email-to')
-                formEmailTo = formEmailTo === '' || formEmailTo === undefined ? rbea_form_block.adminEmail : formEmailTo
-            let formSubject = $form.data('subject')
+            let postId = $currentForm.data('post-id') || 0;
 
             $.ajax({
                 type: 'POST',
@@ -72,8 +79,8 @@
                 data: {
                     form_data: mergeDuplicateKeys(fields),
                     page_url: window.location.href,
-                    email_to: formEmailTo,
-                    subject: formSubject,
+                    block_id: blockId,
+                    post_id: postId,
                     site_name: rbea_form_block.siteName,
                     site_url: rbea_form_block.siteurl,
                 },

@@ -37,7 +37,7 @@ export default class Save extends Component {
       >
 
         {isFormVariantSelected &&
-        <form className="responsive-block-editor-addons-form__form" id={`rba-form-${block_id}`} data-email-to={formEmailTo} data-subject={formEmailSubject}>
+        <form className="responsive-block-editor-addons-form__form" id={`rba-form-${block_id}`}>
           <InnerBlocks.Content />
 
           <div className="responsive-block-editor-addons-form-submit-button-container">
