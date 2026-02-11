@@ -102,7 +102,7 @@ export default class Edit extends Component {
         {!isFormVariantSelected && VariantSelector()}
         {isFormVariantSelected && 
         <>
-          <form className="responsive-block-editor-addons-form__form" id={`rba-form-${block_id}`} data-email-to={formEmailTo} data-subject={formEmailSubject}>
+          <form className="responsive-block-editor-addons-form__form" id={`rba-form-${block_id}`}>
             <InnerBlocks
               templateLock={false}
               template={formVariant === 'contact' ? variations[0]?.innerBlocks : variations[1]?.innerBlocks}
