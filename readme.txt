@@ -216,6 +216,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
+= 2.2.1 - 11th February 2026 =
+* Fix – Security Enhancement: Addressed a vulnerability in the Form Block REST API that could allow unintended email behavior.
+
 = 2.2.0 - 10th February 2026 =
 * Improvement – Container Block: Enhanced Border Width controls by introducing dedicated top, right, bottom, and left options with full responsive support for Desktop, Tablet, and Mobile.
 * Fix – Accordion Block: Resolved an issue where the accordion did not collapse correctly within the editor.

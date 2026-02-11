@@ -2164,7 +2164,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array  $blocks  Array of blocks to search.
 	 * @param string $block_id The block_id to find.
 	 * @return array|null Block attributes if found, null otherwise.
-	 * @since 1.7.9
+	 * @since 2.2.1
 	 */
 	private function find_form_block_by_id( $blocks, $block_id ) {
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
