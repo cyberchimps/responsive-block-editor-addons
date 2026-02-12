@@ -36,6 +36,7 @@ const BLOCK_VERSION_CONFIGS = {
       buttonFontSize: 14,
       buttonFontSizeTablet: 14,
       buttonFontSizeMobile: 14,
+      buttonFontWeight: 600,
     },
   },
   // Add more blocks as needed:
