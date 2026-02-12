@@ -97,7 +97,6 @@ export default class Edit extends Component {
         hoverEffect,
         inheritFromTheme,
         buttonPreset,
-        borderRadius,
         borderStyle,
         borderWidth,
         borderColor,

@@ -24,7 +24,6 @@ function EditorStyles(props) {
     vMarginMobile,
     hMarginMobile,
     borderWidth,
-    borderRadius,
     borderStyle,
     borderColor,
     borderHColor,
