@@ -41,6 +41,8 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     this.state = {
       isFocused: "false",
     };
+    // Bind the accordion click handler for editor
+    this.handleAccordionClick = this.handleAccordionClick.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +84,78 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
       element.innerHTML = EditorStyles(this.props);
     }
   }
+
+  handleAccordionClick(e) {
+    // Only prevent toggle if user is actively editing (focused or selecting text)
+    const richTextEditable = e.target.closest('.editor-rich-text__editable');
+    if (richTextEditable) {
+      const isFocused = document.activeElement === richTextEditable || 
+                       richTextEditable.contains(document.activeElement);
+      const hasSelection = window.getSelection().toString().length > 0;
+      
+      // Only skip if actively editing
+      if (isFocused || hasSelection) {
+        return;
+      }
+    }
+
+    // Find the accordion item element
+    const accordionItem = e.currentTarget.closest(
+      ".responsive-block-editor-addons-accordion-item"
+    );
+    if (!accordionItem) return;
+
+    // Find the content element
+    const contentElement = accordionItem.querySelector(
+      ".responsive-block-editor-addons-accordion-content"
+    );
+    if (!contentElement) return;
+
+    // Check if accordion is currently open
+    const isActive = accordionItem.classList.contains(
+      "responsive-block-editor-addons-accordion-item-active"
+    );
+
+    // Toggle accordion
+    if (isActive) {
+      // Close accordion
+      accordionItem.classList.remove(
+        "responsive-block-editor-addons-accordion-item-active"
+      );
+      accordionItem.setAttribute("aria-expanded", false);
+      contentElement.style.display = "none";
+    } else {
+      // Open accordion
+      accordionItem.classList.add(
+        "responsive-block-editor-addons-accordion-item-active"
+      );
+      accordionItem.setAttribute("aria-expanded", true);
+      contentElement.style.display = "block";
+    }
+
+    // Force icon state to match accordion state (override WordPress selection state)
+    // Check the NEW state after toggle (inverted from isActive)
+    const iconElement = accordionItem.querySelector('.responsive-block-editor-addons-icon');
+    const iconActiveElement = accordionItem.querySelector('.responsive-block-editor-addons-icon-active');
+    
+    if (iconElement && iconActiveElement) {
+      // isActive was the state BEFORE toggle, so after toggle it's inverted
+      const newStateIsActive = !isActive;
+      
+      if (newStateIsActive) {
+        // Now open: hide '+' icon, show '-' icon
+        iconElement.style.display = 'none';
+        iconActiveElement.style.display = 'inline-block';
+      } else {
+        // Now closed: show '+' icon, hide '-' icon
+        iconElement.style.display = 'inline-block';
+        iconActiveElement.style.display = 'none';
+      }
+    }
+
+    e.stopPropagation();
+  }
+
   render() {
     const { attributes, setAttributes } = this.props;
     const {
@@ -216,7 +290,11 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
             className="responsive-block-editor-addons-accordion-item"
             role="tab"
           >
-            <div className="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles">
+            <div
+              className="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles"
+              onClick={this.handleAccordionClick}
+              style={{ cursor: "pointer" }}
+            >
               {"accordion" === layout && accordionRenderIcon()}
               <RichText
                 tagName={"span" != headingTag ? headingTag : "div"}
@@ -260,7 +338,9 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
         <div
           className={classnames(
             "responsive-block-editor-addons-accordion-item__outer-wrap",
+            "responsive-block-editor-addons-block-accordion-item",
             `responsive-block-editor-addons-block-${this.props.clientId}`,
+            `block-${this.props.clientId}`,
             this.props.isSelected && false !== this.state.isFocused
               ? "responsive-block-editor-addons-accordion__active"
               : ""

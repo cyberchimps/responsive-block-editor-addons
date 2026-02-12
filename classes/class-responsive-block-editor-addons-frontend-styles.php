@@ -2945,6 +2945,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
+			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+
 			$box_shadow_position_css       = $attr['boxShadowPosition'];
 			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
@@ -2956,6 +2958,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
 					'box-shadow' =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -3018,9 +3021,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin' => '0',
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] && $is_on ? 'none' : 'block',
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] && $is_on ? 'none' : 'block',
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -3073,6 +3084,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'borderStyle'            => 'empty', // For compatibility with v1.3.2.
 				'borderWidth'            => 999, // For compatibility with v1.3.2.
 				'borderRadius'           => 999, // For compatibility with v1.3.2.
+				'hideWidget'             => false,
+				'hideWidgetTablet'       => false,
+				'hideWidgetMobile'       => false,
 			);
 		}
 
@@ -24191,36 +24205,66 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$box_shadow_position_css_hover = '';
 			}
 
-			// Border CSS to be applied here.
+		// Border CSS to be applied here.
 
-			$border = array(
-				'border-style'               => $attr['containerBorderStyle'],
-				'border-width'               => self::get_css_value( $attr['containerBorderWidth'], 'px' ),
-				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadius'], 'px' ),
-				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadius'], 'px' ),
-				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadius'], 'px' ),
-				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadius'], 'px' ),
-				'border-color'               => $attr['containerBorderColor'],
-			);
+		// Use responsive per-side border widths with fallback to legacy containerBorderWidth
+		// Check both isset() and non-empty to properly detect legacy blocks (empty string defaults shouldn't override legacy values)
+		$border_top_width_desktop = ( isset( $attr['containerBorderTopWidth'] ) && '' !== $attr['containerBorderTopWidth'] ) ? $attr['containerBorderTopWidth'] : $attr['containerBorderWidth'];
+		$border_right_width_desktop = ( isset( $attr['containerBorderRightWidth'] ) && '' !== $attr['containerBorderRightWidth'] ) ? $attr['containerBorderRightWidth'] : $attr['containerBorderWidth'];
+		$border_bottom_width_desktop = ( isset( $attr['containerBorderBottomWidth'] ) && '' !== $attr['containerBorderBottomWidth'] ) ? $attr['containerBorderBottomWidth'] : $attr['containerBorderWidth'];
+		$border_left_width_desktop = ( isset( $attr['containerBorderLeftWidth'] ) && '' !== $attr['containerBorderLeftWidth'] ) ? $attr['containerBorderLeftWidth'] : $attr['containerBorderWidth'];
+
+		$border = array(
+			'border-style'               => $attr['containerBorderStyle'],
+			'border-top-width'           => self::get_css_value( $border_top_width_desktop, 'px' ),
+			'border-right-width'         => self::get_css_value( $border_right_width_desktop, 'px' ),
+			'border-bottom-width'        => self::get_css_value( $border_bottom_width_desktop, 'px' ),
+			'border-left-width'          => self::get_css_value( $border_left_width_desktop, 'px' ),
+			'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadius'], 'px' ),
+			'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadius'], 'px' ),
+			'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadius'], 'px' ),
+			'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadius'], 'px' ),
+			'border-color'               => $attr['containerBorderColor'],
+		);
 
 			// If there's no border-color, set it to inherit.
 			if ( empty( $border['border-color'] ) ) {
 				$border['border-color'] = 'inherit';
 			}
 
-			$border_tablet = array(
-				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusTablet'], 'px' ),
-				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusTablet'], 'px' ),
-				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusTablet'], 'px' ),
-				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusTablet'], 'px' ),
-			);
+		// Tablet border widths with fallback chain: tablet → desktop → legacy
+		$border_top_width_tablet = ( isset( $attr['containerBorderTopWidthTablet'] ) && '' !== $attr['containerBorderTopWidthTablet'] ) ? $attr['containerBorderTopWidthTablet'] : $border_top_width_desktop;
+		$border_right_width_tablet = ( isset( $attr['containerBorderRightWidthTablet'] ) && '' !== $attr['containerBorderRightWidthTablet'] ) ? $attr['containerBorderRightWidthTablet'] : $border_right_width_desktop;
+		$border_bottom_width_tablet = ( isset( $attr['containerBorderBottomWidthTablet'] ) && '' !== $attr['containerBorderBottomWidthTablet'] ) ? $attr['containerBorderBottomWidthTablet'] : $border_bottom_width_desktop;
+		$border_left_width_tablet = ( isset( $attr['containerBorderLeftWidthTablet'] ) && '' !== $attr['containerBorderLeftWidthTablet'] ) ? $attr['containerBorderLeftWidthTablet'] : $border_left_width_desktop;
 
-			$border_mobile = array(
-				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusMobile'], 'px' ),
-				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusMobile'], 'px' ),
-				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusMobile'], 'px' ),
-				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusMobile'], 'px' ),
-			);
+		$border_tablet = array(
+			'border-top-width'           => self::get_css_value( $border_top_width_tablet, 'px' ),
+			'border-right-width'         => self::get_css_value( $border_right_width_tablet, 'px' ),
+			'border-bottom-width'        => self::get_css_value( $border_bottom_width_tablet, 'px' ),
+			'border-left-width'          => self::get_css_value( $border_left_width_tablet, 'px' ),
+			'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusTablet'], 'px' ),
+			'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusTablet'], 'px' ),
+			'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusTablet'], 'px' ),
+			'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusTablet'], 'px' ),
+		);
+
+		// Mobile border widths with fallback chain: mobile → tablet → desktop → legacy
+		$border_top_width_mobile = ( isset( $attr['containerBorderTopWidthMobile'] ) && '' !== $attr['containerBorderTopWidthMobile'] ) ? $attr['containerBorderTopWidthMobile'] : $border_top_width_tablet;
+		$border_right_width_mobile = ( isset( $attr['containerBorderRightWidthMobile'] ) && '' !== $attr['containerBorderRightWidthMobile'] ) ? $attr['containerBorderRightWidthMobile'] : $border_right_width_tablet;
+		$border_bottom_width_mobile = ( isset( $attr['containerBorderBottomWidthMobile'] ) && '' !== $attr['containerBorderBottomWidthMobile'] ) ? $attr['containerBorderBottomWidthMobile'] : $border_bottom_width_tablet;
+		$border_left_width_mobile = ( isset( $attr['containerBorderLeftWidthMobile'] ) && '' !== $attr['containerBorderLeftWidthMobile'] ) ? $attr['containerBorderLeftWidthMobile'] : $border_left_width_tablet;
+
+		$border_mobile = array(
+			'border-top-width'           => self::get_css_value( $border_top_width_mobile, 'px' ),
+			'border-right-width'         => self::get_css_value( $border_right_width_mobile, 'px' ),
+			'border-bottom-width'        => self::get_css_value( $border_bottom_width_mobile, 'px' ),
+			'border-left-width'          => self::get_css_value( $border_left_width_mobile, 'px' ),
+			'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusMobile'], 'px' ),
+			'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusMobile'], 'px' ),
+			'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusMobile'], 'px' ),
+			'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusMobile'], 'px' ),
+		);
 
 			// Container Background CSS to be applied here.
 
@@ -24693,26 +24737,26 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$mobile_selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['containerRightMarginMobile'] ? self::get_css_value( $right_margin_mobile, 'px' ) . ' !important' : '' );
 			}
 
-			// Overlay CSS.
-			if ( ! empty( $attr['overlayType'] ) && 'none' !== $attr['overlayType'] ) {
-				$desktop_border_width = array(
-					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
-					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
-					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
-					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
-				);
-				$tablet_border_width  = array(
-					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['top'],
-					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['right'],
-					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['bottom'],
-					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['left'],
-				);
-				$mobile_border_width  = array(
-					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['top'],
-					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['right'],
-					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['bottom'],
-					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['left'],
-				);
+		// Overlay CSS.
+		if ( ! empty( $attr['overlayType'] ) && 'none' !== $attr['overlayType'] ) {
+			$desktop_border_width = array(
+				'top'    => ( isset( $border_top_width_desktop ) && '' !== $border_top_width_desktop ) ? $border_top_width_desktop : 0,
+				'right'  => ( isset( $border_right_width_desktop ) && '' !== $border_right_width_desktop ) ? $border_right_width_desktop : 0,
+				'bottom' => ( isset( $border_bottom_width_desktop ) && '' !== $border_bottom_width_desktop ) ? $border_bottom_width_desktop : 0,
+				'left'   => ( isset( $border_left_width_desktop ) && '' !== $border_left_width_desktop ) ? $border_left_width_desktop : 0,
+			);
+			$tablet_border_width  = array(
+				'top'    => ( isset( $border_top_width_tablet ) && '' !== $border_top_width_tablet ) ? $border_top_width_tablet : $desktop_border_width['top'],
+				'right'  => ( isset( $border_right_width_tablet ) && '' !== $border_right_width_tablet ) ? $border_right_width_tablet : $desktop_border_width['right'],
+				'bottom' => ( isset( $border_bottom_width_tablet ) && '' !== $border_bottom_width_tablet ) ? $border_bottom_width_tablet : $desktop_border_width['bottom'],
+				'left'   => ( isset( $border_left_width_tablet ) && '' !== $border_left_width_tablet ) ? $border_left_width_tablet : $desktop_border_width['left'],
+			);
+			$mobile_border_width  = array(
+				'top'    => ( isset( $border_top_width_mobile ) && '' !== $border_top_width_mobile ) ? $border_top_width_mobile : $tablet_border_width['top'],
+				'right'  => ( isset( $border_right_width_mobile ) && '' !== $border_right_width_mobile ) ? $border_right_width_mobile : $tablet_border_width['right'],
+				'bottom' => ( isset( $border_bottom_width_mobile ) && '' !== $border_bottom_width_mobile ) ? $border_bottom_width_mobile : $tablet_border_width['bottom'],
+				'left'   => ( isset( $border_left_width_mobile ) && '' !== $border_left_width_mobile ) ? $border_left_width_mobile : $tablet_border_width['left'],
+			);
 
 				$overlay_css_desktop = array();
 				$overlay_css_tablet = array();
@@ -25023,6 +25067,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerBottomRadiusMobile'     => 0,
 				'containerBorderStyle'            => '',
 				'containerBorderWidth'            => '',
+				'containerBorderTopWidth'         => '',
+				'containerBorderRightWidth'       => '',
+				'containerBorderBottomWidth'      => '',
+				'containerBorderLeftWidth'        => '',
+				'containerBorderTopWidthTablet'   => '',
+				'containerBorderRightWidthTablet' => '',
+				'containerBorderBottomWidthTablet' => '',
+				'containerBorderLeftWidthTablet'  => '',
+				'containerBorderTopWidthMobile'   => '',
+				'containerBorderRightWidthMobile' => '',
+				'containerBorderBottomWidthMobile' => '',
+				'containerBorderLeftWidthMobile'  => '',
+				'containerBorderIsWidthControlConnected' => false,
 				'containerBorderColor'            => '',
 				'containerTopPadding'             => $rbea_default_container_padding,
 				'containerBottomPadding'          => $rbea_default_container_padding,
