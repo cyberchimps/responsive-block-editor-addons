@@ -806,6 +806,37 @@ const attributes = {
     type: "string",
     default: "",
   },
+  starRating: {
+    type: "number",
+    default: 5,
+  },
+  starRange: {
+    type: "number",
+    default: 5,
+  },
+  starAlignment: {
+    type: "string",
+    default: "left",
+  },
+  starColor: {
+    type: "string",
+    default: "#f0ad4e",
+  },
+  starUnmarkedColor: {
+    type: "string",
+    default: "#ccd6df",
+  },
+  starSize: {
+    type: "number",
+    default: 18,
+  },
+  starGap: {
+    type: "number",
+    default: 2,
+  },
+  blockVer: {
+    type: "string",
+  },
 };
 
 export default attributes;

@@ -39,6 +39,61 @@ const BLOCK_VERSION_CONFIGS = {
       buttonFontWeight: 600,
     },
   },
+  "testimonial": {
+    currentVersion: "2.0",
+    newBlockDefaults: {
+      count: 1,
+      testimonialBlock: [
+        {
+          testimonialName: "Judith Black",
+          testimonialTitle: "CEO of Workcation",
+          testimonialContent: "“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”",
+          testimonialImgURL: {
+            sizes: {
+              full: {
+                url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+              },
+              thumbnail: {
+                url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+              },
+              medium: {
+                url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+              }
+            }
+          },
+          testimonialImgId: "0",
+        }
+      ],
+      backgroundColor: "#FFFFFF",
+      opacity: 100,
+      contentTypographyColor: "#101828",
+      contentFontSize: 24,
+      contentFontSizeTablet: 24,
+      contentFontSizeMobile: 24,
+      contentFontFamily: "inter",
+      contentFontWeight: 600,
+      contentBottomSpacing: 40,
+      contentBottomSpacingTablet: 40,
+      contentBottomSpacingMobile: 40,
+      nameTypographyColor: "#101828",
+      nameFontFamily: "inter",
+      nameFontSize: 14,
+      nameFontSizeTablet: 14,
+      nameFontSizeMobile: 14,
+      nameFontWeight: 600,
+      titleTypographyColor: "#4a5565",
+      titleFontFamily: "inter",
+      titleFontWeight: 400,
+      titleFontSize: 14,
+      titleFontSizeTablet: 14,
+      titleFontSizeMobile: 14,
+      starColor: "#7C86FF",
+      imageShape: "circle",
+      imageWidth: 48,
+      imageWidthTablet: 48,
+      imageWidthMobile: 48,
+    },
+  }
   // Add more blocks as needed:
   // spacer: {
   //   currentVersion: "2.0",
@@ -64,12 +119,12 @@ export function initializeBlockVersion(blockName, attributes, clientId) {
 
   // NEW block (no block_id) → Set version and new defaults
   if (!attributes.block_id) {
-    updates.blockVersion = config.currentVersion;
+    updates.blockVer = config.currentVersion;
     Object.assign(updates, config.newBlockDefaults);
   }
   // OLD block (has block_id but no version) → Mark as 1.0
-  else if (!attributes.blockVersion) {
-    updates.blockVersion = "1.0";
+  else if (!attributes.blockVer) {
+    updates.blockVer = "1.0";
   }
 
   return updates;

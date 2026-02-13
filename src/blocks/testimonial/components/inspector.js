@@ -450,7 +450,14 @@ export default class Inspector extends Component {
         gradientOverlay,
         contentTextDecoration,
         nameTextDecoration,
-        titleTextDecoration
+        titleTextDecoration,
+        starRating,
+        starRange,
+        starAlignment,
+        starColor,
+        starUnmarkedColor,
+        starSize,
+        starGap,
     },
       setAttributes,
     } = this.props;
@@ -833,6 +840,45 @@ export default class Inspector extends Component {
                   return <div>{tabout}</div>;
                 }}
               </TabPanel>
+            </PanelBody>
+            <PanelBody
+              title={__("Star Rating", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <RbeaRangeControl
+                label={__("Total Stars", "responsive-block-editor-addons")}
+                value={starRange}
+                onChange={(value) => setAttributes({ starRange: value })}
+                min={1}
+                max={10}
+                step={1}
+              />
+              <RbeaRangeControl
+                label={__("Rating", "responsive-block-editor-addons")}
+                value={starRating}
+                onChange={(value) => setAttributes({ starRating: value })}
+                min={0}
+                max={starRange || 5}
+                step={0.5}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Star Alignment", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <BaseControl __nextHasNoMarginBottom>
+                <p>{__("Alignment", "responsive-block-editor-addons")}</p>
+                <div className="responsive-block-editor-addons-alignment">
+                  <AlignmentToolbar
+                    value={starAlignment}
+                    onChange={(value) =>
+                      setAttributes({ starAlignment: value })
+                    }
+                    controls={["left", "center", "right"]}
+                    isCollapsed={false}
+                  />
+                </div>
+              </BaseControl>
             </PanelBody>
             <PanelBody
               title={__("Image", "responsive-block-editor-addons")}
@@ -1237,6 +1283,23 @@ export default class Inspector extends Component {
 				      	  setAttributes={setAttributes}
 				      	{...this.props}
 				      />
+            <PanelBody
+              title={__("Star Rating Style", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <RbeaColorControl
+                label={__("Star Color", "responsive-block-editor-addons")}
+                colorValue={starColor}
+                onChange={(newColor) => setAttributes({ starColor: newColor })}
+                resetColor={() => setAttributes({ starColor: "#f0ad4e" })}
+              />
+              <RbeaColorControl
+                label={__("Unmarked Color", "responsive-block-editor-addons")}
+                colorValue={starUnmarkedColor}
+                onChange={(newColor) => setAttributes({ starUnmarkedColor: newColor })}
+                resetColor={() => setAttributes({ starUnmarkedColor: "#ccd6df" })}
+              />
+            </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}

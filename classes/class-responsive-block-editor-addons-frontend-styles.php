@@ -12848,6 +12848,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+			$block_version = isset( $attr['blockVer'] ) ? (float) $attr['blockVer'] : 1.0;
+			$is_new_version = $block_version >= 2.0;
 
 			$selectors        = array(
 				' ' => array(
@@ -12866,6 +12868,41 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'display'         => 'flex',
+					'align-items'     => 'center',
+					'justify-content' => ( 'center' === $attr['starAlignment'] ) ? 'center' : ( ( 'right' === $attr['starAlignment'] ) ? 'flex-end' : 'flex-start' ),
+					'margin-bottom'   => self::get_css_value( $attr['contentBottomSpacing'], 'px' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'color'       => $attr['starUnmarkedColor'] ? $attr['starUnmarkedColor'] : '#ccd6df',
+					'font-size'   => self::get_css_value( $attr['starSize'] ? $attr['starSize'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGap'] ? $attr['starGap'] : 2, 'px' ),
+					'display'      => 'inline-flex',
+					'align-items'  => 'center',
+					'line-height'  => '1',
+				),
+				' .responsive-block-editor-addons-star-rating-star svg' => array(
+					'width'  => '1em',
+					'height' => '1em',
+				),
+				' .responsive-block-editor-addons-star-rating-star:last-child' => array(
+					'margin-right' => '0',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-filled' => array(
+					'color' => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-partial' => array(
+					'position' => 'relative',
+				),
+				' .responsive-block-editor-addons-star-partial-fill' => array(
+					'position' => 'absolute',
+					'left'     => '0',
+					'top'      => '0',
+					'overflow' => 'hidden',
+					'color'    => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+					'width'    => ( isset( $attr['starRating'] ) && ( $attr['starRating'] % 1 ) !== 0 ) ? ( ( ( $attr['starRating'] % 1 ) * 100 ) . '%' ) : '0%',
+				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'text-align'     => $attr['testimonialAlignment'],
 					'font-family'    => $attr['contentFontFamily'],
@@ -12883,7 +12920,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['newTestimonialCiteAlign'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacing'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacing'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidth'], 'px' ),
@@ -12927,10 +12964,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['boxShadowColor'] .
 						' ' .
 						$box_shadow_position_css,
-					'padding-top'    => self::get_css_value( $attr['contentTopPadding'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['contentRightPadding'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['contentBottomPadding'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
+					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPadding'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPadding'], 'px' ),
+					'padding-right'  => $is_new_version ? 'calc(21% + ' . self::get_css_value( $attr['contentRightPadding'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPadding'], 'px' ),
+					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPadding'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPadding'], 'px' ),
+					'padding-left'   => $is_new_version ? 'calc(21% + ' . self::get_css_value( $attr['contentLeftPadding'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial:hover' => array(
 					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
@@ -12994,13 +13031,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
-					'padding-top'    => self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ),
+					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ),
+					'padding-right'  => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ),
+					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ),
+					'padding-left'   => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
+				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'justify-content' => ( 'center' === $attr['starAlignmentMobile'] ) ? 'center' : ( ( 'right' === $attr['starAlignmentMobile'] ) ? 'flex-end' : 'flex-start' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'font-size'     => self::get_css_value( $attr['starSizeMobile'] ? $attr['starSizeMobile'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGapMobile'] ? $attr['starGapMobile'] : 2, 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
@@ -13018,7 +13062,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['testimonialCiteAlignMobile'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacingMobile'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
@@ -13052,13 +13096,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
-					'padding-top'    => self::get_css_value( $attr['contentTopPaddingTablet'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ),
+					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPaddingTablet'], 'px' ),
+					'padding-right'  => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ),
+					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ),
+					'padding-left'   => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => self::get_css_value( 0, 'px' ) . ' !important',
+				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'justify-content' => ( 'center' === $attr['starAlignmentTablet'] ) ? 'center' : ( ( 'right' === $attr['starAlignmentTablet'] ) ? 'flex-end' : 'flex-start' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'font-size'     => self::get_css_value( $attr['starSizeTablet'] ? $attr['starSizeTablet'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGapTablet'] ? $attr['starGapTablet'] : 2, 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
@@ -13076,7 +13127,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['testimonialCiteAlignTablet'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacingTablet'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
@@ -13298,6 +13349,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'		 => '',
 				'nameTextDecoration'		 => '',
 				'titleTextDecoration'		 => '',
+				'starRating'                  => 5,
+				'starRange'                    => 5,
+				'starAlignment'                => 'left',
+				'starAlignmentTablet'           => 'left',
+				'starAlignmentMobile'          => 'left',
+				'starColor'                    => '#f0ad4e',
+				'starUnmarkedColor'            => '#ccd6df',
+				'starSize'                     => 18,
+				'starSizeTablet'               => 18,
+				'starSizeMobile'               => 18,
+				'starGap'                      => 2,
+				'starGapTablet'                => 2,
+				'starGapMobile'                => 2,
+				'blockVer'				   => '',
 			);
 		}
 

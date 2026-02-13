@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import Testimonial from "./testimonial";
+import StarRating from "./StarRating";
 import times from "lodash/times";
 import classnames from "classnames";
 
@@ -34,7 +35,14 @@ export default class Save extends Component {
       count,
       gutter,
       imageSize,
-      testimonialImgURL
+      testimonialImgURL,
+      starRating,
+      starRange,
+      starAlignment,
+      starColor,
+      starUnmarkedColor,
+      starSize,
+      starGap,
     } = this.props.attributes;
 
     return (
@@ -53,6 +61,15 @@ export default class Save extends Component {
       >
         {testimonialBlock.map((test, index) => (
           <Testimonial key={`testimonial-${index}`} {...this.props}>
+            <StarRating
+              rating={starRating}
+              range={starRange}
+              alignment={starAlignment}
+              starColor={starColor}
+              starUnmarkedColor={starUnmarkedColor}
+              starSize={starSize}
+              starGap={starGap}
+            />
             <RichText.Content
               tagName="div"
               className="responsive-block-editor-addons-testimonial-text"

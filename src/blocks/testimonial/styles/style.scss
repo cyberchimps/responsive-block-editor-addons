@@ -386,3 +386,55 @@
     }
   }
 }
+
+// Star Rating Styles
+.responsive-block-editor-addons-star-rating {
+  display: flex;
+  align-items: center;
+  
+  &.justify-start {
+    justify-content: flex-start;
+  }
+  
+  &.justify-center {
+    justify-content: center;
+  }
+  
+  &.justify-end {
+    justify-content: flex-end;
+  }
+}
+
+.responsive-block-editor-addons-star-rating-star {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+  
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  &.responsive-block-editor-addons-star-partial {
+    position: relative;
+    
+    .responsive-block-editor-addons-star-partial-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      
+      svg {
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+}

@@ -190,7 +190,15 @@ function EditorStyles(props) {
   gradient,
   contentTextDecoration,
   nameTextDecoration,
-  titleTextDecoration
+  titleTextDecoration,
+  starRating,
+  starRange,
+  starAlignment,
+  starColor,
+  starUnmarkedColor,
+  starSize,
+  starGap,
+  blockVer,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -265,6 +273,7 @@ function EditorStyles(props) {
     }
   }
   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
+  const is_new_version = blockVer && parseFloat(blockVer) >= 2.0;
   
   var selectors = {
     " ":{
@@ -280,6 +289,41 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
+    },
+    " .responsive-block-editor-addons-star-rating": {
+      "display": "flex",
+      "align-items": "center",
+      "justify-content": starAlignment === "center" ? "center" : starAlignment === "right" ? "flex-end" : "flex-start",
+      "margin-bottom": "40px",
+    },
+    " .responsive-block-editor-addons-star-rating-star": {
+      "color": starUnmarkedColor || "#ccd6df",
+      "font-size": generateCSSUnit(starSize || 18, "px"),
+      "margin-right": generateCSSUnit(starGap || 2, "px"),
+      "display": "inline-flex",
+      "align-items": "center",
+      "line-height": "1",
+    },
+    " .responsive-block-editor-addons-star-rating-star svg": {
+      "width": "1em",
+      "height": "1em",
+    },
+    " .responsive-block-editor-addons-star-rating-star:last-child": {
+      "margin-right": "0",
+    },
+    " .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-filled": {
+      "color": starColor || "#f0ad4e",
+    },
+    " .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-partial": {
+      "position": "relative",
+    },
+    " .responsive-block-editor-addons-star-partial-fill": {
+      "position": "absolute",
+      "left": "0",
+      "top": "0",
+      "overflow": "hidden",
+      "color": starColor || "#f0ad4e",
+      "width": starRating && starRating % 1 !== 0 ? `${((starRating % 1) * 100)}%` : "0%",
     },
     " .responsive-block-editor-addons-testimonial-text": {
       "text-align": testimonialAlignment,
@@ -298,7 +342,7 @@ function EditorStyles(props) {
       "text-align": newTestimonialCiteAlign,
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
-      "padding-right": generateCSSUnit(imageSpacing, "px"),
+      "padding-right": is_new_version ? '1.5rem' : generateCSSUnit(imageSpacing, "px"),
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap": {
       height: generateCSSUnit(imageWidth, "px"),
@@ -331,10 +375,10 @@ function EditorStyles(props) {
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
-      "padding-top": generateCSSUnit(contentTopPadding, "px"),
-      "padding-right": generateCSSUnit(contentRightPadding, "px"),
-      "padding-bottom": generateCSSUnit(contentBottomPadding, "px"),
-      "padding-left": generateCSSUnit(contentLeftPadding, "px"),
+      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPadding, "px")})` : generateCSSUnit(contentTopPadding, "px"),
+      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPadding, "px")})` : generateCSSUnit(contentRightPadding, "px"),
+      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPadding, "px")})` : generateCSSUnit(contentBottomPadding, "px"),
+      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPadding, "px")})` : generateCSSUnit(contentLeftPadding, "px"),
     },
     " .responsive-block-editor-addons-block-testimonial:hover": {
       "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
@@ -403,10 +447,10 @@ function EditorStyles(props) {
       'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
-      "padding-top": generateCSSUnit(contentTopPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(contentRightPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(contentBottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(contentLeftPaddingMobile, "px"),
+      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPaddingMobile, "px")})` : generateCSSUnit(contentTopPaddingMobile, "px"),
+      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPaddingMobile, "px")})` : generateCSSUnit(contentRightPaddingMobile, "px"),
+      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPaddingMobile, "px")})` : generateCSSUnit(contentBottomPaddingMobile, "px"),
+      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPaddingMobile, "px")})` : generateCSSUnit(contentLeftPaddingMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
@@ -427,7 +471,7 @@ function EditorStyles(props) {
       "text-align": testimonialCiteAlignMobile,
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
-      "padding-right": generateCSSUnit(imageSpacingMobile, "px"),
+      "padding-right": blockVer && parseFloat(blockVer) >= 2.0 ? '1.5rem' : generateCSSUnit(imageSpacingMobile, "px"),
     },
       " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap": {
           height: generateCSSUnit(imageWidthMobile, "px"),
@@ -448,10 +492,10 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
-      "padding-top": generateCSSUnit(contentTopPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(contentRightPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(contentBottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(contentLeftPaddingMobile, "px"),
+      // "padding-top": generateCSSUnit(contentTopPaddingMobile, "px"),
+      // "padding-right": generateCSSUnit(contentRightPaddingMobile, "px"),
+      // "padding-bottom": generateCSSUnit(contentBottomPaddingMobile, "px"),
+      // "padding-left": generateCSSUnit(contentLeftPaddingMobile, "px"),
     },
   };
 
@@ -468,10 +512,10 @@ function EditorStyles(props) {
       'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
-      "padding-top": generateCSSUnit(contentTopPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(contentRightPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(contentBottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(contentLeftPaddingTablet, "px"),
+      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPaddingTablet, "px")})` : generateCSSUnit(contentTopPaddingTablet, "px"),
+      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPaddingTablet, "px")})` : generateCSSUnit(contentRightPaddingTablet, "px"),
+      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPaddingTablet, "px")})` : generateCSSUnit(contentBottomPaddingTablet, "px"),
+      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPaddingTablet, "px")})` : generateCSSUnit(contentLeftPaddingTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,
@@ -492,7 +536,7 @@ function EditorStyles(props) {
       "text-align": testimonialCiteAlignTablet,
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
-      "padding-right": generateCSSUnit(imageSpacingTablet, "px"),
+      "padding-right": blockVer && parseFloat(blockVer) >= 2.0 ? '1.5rem' : generateCSSUnit(imageSpacingTablet, "px"),
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap": {
         height: generateCSSUnit(imageWidthTablet, "px"),
@@ -511,10 +555,10 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
-      "padding-top": generateCSSUnit(contentTopPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(contentRightPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(contentBottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(contentLeftPaddingTablet, "px"),
+      // "padding-top": generateCSSUnit(contentTopPaddingTablet, "px"),
+      // "padding-right": generateCSSUnit(contentRightPaddingTablet, "px"),
+      // "padding-bottom": generateCSSUnit(contentBottomPaddingTablet, "px"),
+      // "padding-left": generateCSSUnit(contentLeftPaddingTablet, "px"),
     },
   };
 

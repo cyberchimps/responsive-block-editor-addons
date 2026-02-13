@@ -2,7 +2,7 @@ const attributes = {
   block_id: {
     type: "string",
   },
-  blockVersion: {
+  blockVer: {
     type: "string",
   },
   spacerHeight: {
