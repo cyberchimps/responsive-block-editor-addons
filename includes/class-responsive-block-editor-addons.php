@@ -2169,10 +2169,20 @@ class Responsive_Block_Editor_Addons {
 		$full_path       = $plugin_dir_path . $relative_path;
 		$file_path_all   = $full_path . 'responsive-sites-gutenberg-all.json';
 
-		file_put_contents($file_path_all, $filtered_json_all); //phpcs:ignore
+		$bytes_written = file_put_contents( $file_path_all, $filtered_json_all ); //phpcs:ignore
 
 		// Check if the data was successfully written to the file
-		if ( false !== $file_path_all ) {
+		if ( false !== $bytes_written ) {
+			// Store latest checksum after successful sync so future sync clicks can skip work.
+			$checksum_response = wp_remote_get( 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2' );
+			if ( ! is_wp_error( $checksum_response ) ) {
+				$checksum_body = wp_remote_retrieve_body( $checksum_response );
+				$checksum_json = json_decode( $checksum_body, true );
+				if ( is_array( $checksum_json ) && isset( $checksum_json['last_xml_export_checksums'] ) ) {
+					update_option( 'last_xml_export_checksums', sanitize_text_field( $checksum_json['last_xml_export_checksums'] ) );
+				}
+			}
+
 			wp_send_json_success( array( 'filtered_data' => $filtered_json_all ) );
 		} else {
 			wp_send_json_error( array( 'message' => 'Error writing filtered data to the file.' ) );

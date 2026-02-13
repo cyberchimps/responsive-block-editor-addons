@@ -25,6 +25,7 @@ export function LayoutModal(props) {
   const [modalOpen, setModalOpen] = useState(true);
   const [CurrentPageContent, setcurrentPageContent] = useState();
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
   const [sitesData, setSitesData] = useState(siteData);
   const [selectedSite, setSelectedSite] = useState(null);
   const [requiredPlugins, setRequiredPlugins] = useState([]);
@@ -241,11 +242,7 @@ export function LayoutModal(props) {
         }}
       >
         <Toast
-          message={
-            !Xmlupdatestatus
-              ? "Template library refreshed!"
-              : "Syncing template library in the background. The process can take anywhere between 2 to 3 minutes. We will notify you once done."
-          }
+          message={toastMessage}
           showToast={showToast}
           onClose={handleCloseToast}
         />
@@ -615,20 +612,24 @@ export function LayoutModal(props) {
     );
   };
   const checkForXMLUpdates = async () => {
-    setShowToast(true);
-
     return new Promise(async (resolve, reject) => {
       try {
+        setToastMessage("Checking for updates...");
+        setShowToast(true);
+
         const response = await apiFetch({
           path: addQueryArgs("custom/v1/responsive-pro-activation-status", { sync: true }), // Replace with your actual endpoint
         });
 
-        // let xml_update = response && response.xml_update;
-        let xml_update = true;
+        const xml_update = !!response?.xml_update;
         setXmlUpdateStatus(xml_update);
-        setShowToast(true);
 
         if (xml_update) {
+          setToastMessage(
+            "Syncing template library in the background. The process can take anywhere between 2 to 3 minutes. We will notify you once done."
+          );
+          setShowToast(true);
+
           const formData = new window.FormData();
           formData.append("action", "rbea_sync_library");
 
@@ -644,6 +645,8 @@ export function LayoutModal(props) {
               const data = JSON.parse(response.data.filtered_data);
               setSitesData(data);
               setXmlUpdateStatus(false);
+              setToastMessage("Template library refreshed!");
+              setShowToast(true);
               resolve(data); // Resolve the promise with the data when activation is successful
             } else {
               reject(new Error(`HTTP error! Status: ${response.success}`));
@@ -652,6 +655,8 @@ export function LayoutModal(props) {
             reject(error);
           }
         } else {
+          setToastMessage("Template library is already up to date.");
+          setShowToast(true);
           resolve(null); // Resolve with null when no XML update is needed
         }
       } catch (error) {
