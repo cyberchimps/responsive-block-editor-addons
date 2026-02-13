@@ -1723,6 +1723,11 @@ class Responsive_Block_Editor_Addons {
 	public function rbea_blocks_toggle() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
 		}
@@ -1746,6 +1751,11 @@ class Responsive_Block_Editor_Addons {
 	public function rbea_toggle_auto_block_recovery() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
 		}
@@ -1766,6 +1776,11 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_toggle_global_inherit_from_theme() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
 
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
@@ -1792,6 +1807,11 @@ class Responsive_Block_Editor_Addons {
 	public function rbea_toggle_custom_css() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
 		}
@@ -1812,6 +1832,11 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_toggle_template_library_button() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
 
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
@@ -1834,6 +1859,11 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_save_content_width() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
 
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
@@ -1859,6 +1889,11 @@ class Responsive_Block_Editor_Addons {
 	public function rbea_save_container_padding() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
 		}
@@ -1882,6 +1917,11 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_save_container_gap() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
 
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
