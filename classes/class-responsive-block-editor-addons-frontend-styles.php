@@ -10895,7 +10895,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image' => $updated_button_background_image,
 					'margin-left'      => 'left' === $attr['blockAlign'] ? 0 : '',
 					'margin-right'     => 'right' === $attr['blockAlign'] ? 0 : '',
-					'margin-bottom'    => self::get_css_value( $attr['buttonSpace'], 'px' ),
+					'margin-bottom'    => self::get_css_value( $attr['ctaBottomSpacing'], 'px' ),
 					'padding-left'     => $flag ? '' : self::get_css_value( $attr['ctaButtonLeftPadding'], 'px' ),
 					'padding-right'    => $flag ? '' : self::get_css_value( $attr['ctaButtonRightPadding'], 'px' ),
 					'padding-top'      => $flag ? '' : self::get_css_value( $attr['ctaButtonTopPadding'], 'px' ),
@@ -11177,7 +11177,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => $flag ? '' : self::get_css_value( $attr['ctaButtonBottomPaddingMobile'], 'px' ),
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeMobile'], 'px' ),
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeMobile'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['ctaBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-pricing-image' => array(
 					'width' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
@@ -11238,7 +11238,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => $flag ? '' : self::get_css_value( $attr['ctaButtonBottomPaddingTablet'], 'px' ),
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeTablet'], 'px' ),
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeTablet'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['ctaBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-pricing-image' => array(
 					'width' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
@@ -11530,6 +11530,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'subpriceTextDecoration'   => '',
 				'featuresTextDecoration'   => '',
 				'ctaTextDecoration'		   => '',
+				'ctaBottomSpacing'		   => '',
+				'ctaBottomSpacingMobile'   => '',
+				'ctaBottomSpacingTablet'   => '',
 			);
 		}
 

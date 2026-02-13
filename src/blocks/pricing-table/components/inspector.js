@@ -354,6 +354,9 @@ export default class Inspector extends Component {
         subpriceBottomSpacing,
         subpriceBottomSpacingMobile,
         subpriceBottomSpacingTablet,
+        ctaBottomSpacing,
+        ctaBottomSpacingMobile,
+        ctaBottomSpacingTablet,
 
         ctaButtonTopPadding,
         ctaButtonBottomPadding,
@@ -635,6 +638,9 @@ export default class Inspector extends Component {
           subpriceBottomSpacing: subpriceSpace !== undefined ? subpriceSpace : subpriceBottomSpacing,
           subpriceBottomSpacingMobile: subpriceSpaceMobile !== undefined ? subpriceSpaceMobile : subpriceBottomSpacingMobile,
           subpriceBottomSpacingTablet: subpriceSpaceTablet !== undefined ? subpriceSpaceTablet : subpriceBottomSpacingTablet,
+          ctaBottomSpacing: buttonSpace !== undefined ? buttonSpace : ctaBottomSpacing,
+          ctaBottomSpacingMobile: buttonSpaceMobile !== undefined ? buttonSpaceMobile : ctaBottomSpacingMobile,
+          ctaBottomSpacingTablet: buttonSpaceTablet !== undefined ? buttonSpaceTablet : ctaBottomSpacingTablet,
         }
       )
       this.props.setAttributes({blockIsTypographyColorValueUpdated: true});
@@ -1071,11 +1077,15 @@ export default class Inspector extends Component {
                   sizeTablet: ctaFontSizeTablet,
                   weight: ctaFontWeight,
                   height: ctaLineHeight,
+                  bottomSpacing: ctaBottomSpacing,
+                  bottomSpacingMobile: ctaBottomSpacingMobile,
+                  bottomSpacingTablet: ctaBottomSpacingTablet,
                   transform: ctaTextTransform,
                   fontstyle: ctaFontStyle,
                   textDecoration: ctaTextDecoration,
                 }}
                 showLetterSpacing={false}
+                showTextBottomSpacing={true}
                 setAttributes={setAttributes}
                 showTextDecoration={true}
                 {...this.props}
@@ -1181,61 +1191,6 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
-              <ResponsiveSpacingControl
-                title={"Title"}
-                attrNameTemplate="titleSpace%s"
-                values={{
-                  desktop: titleSpace,
-                  tablet: titleSpaceTablet,
-                  mobile: titleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Price"}
-                attrNameTemplate="priceSpace%s"
-                values={{
-                  desktop: priceSpace,
-                  tablet: priceSpaceTablet,
-                  mobile: priceSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Sub Price"}
-                attrNameTemplate="subpriceSpace%s"
-                values={{
-                  desktop: subpriceSpace,
-                  tablet: subpriceSpaceTablet,
-                  mobile: subpriceSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Button"}
-                attrNameTemplate="buttonSpace%s"
-                values={{
-                  desktop: buttonSpace,
-                  tablet: buttonSpaceTablet,
-                  mobile: buttonSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Features"}
-                attrNameTemplate="featuresSpace%s"
-                values={{
-                  desktop: featuresSpace,
-                  tablet: featuresSpaceTablet,
-                  mobile: featuresSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
             </PanelBody>
             <PanelBody
               title={__("Color Settings", "responsive-block-editor-addons")}
