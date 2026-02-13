@@ -7,6 +7,11 @@
  * @param string $content The post content to extract headings from.
  * @return array The list of headings with level, content, and anchor.
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 function responsive_block_editor_addons_extract_headings_from_content( $content ) {
 	if ( empty( $content ) ) {
 		return array();

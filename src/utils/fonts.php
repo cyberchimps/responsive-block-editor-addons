@@ -5,6 +5,10 @@
  * @package category
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Add google fonts funtion.
  *
