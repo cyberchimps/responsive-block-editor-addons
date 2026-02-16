@@ -845,13 +845,22 @@ export default class Inspector extends Component {
               title={__("Star Rating", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RbeaRangeControl
-                label={__("Total Stars", "responsive-block-editor-addons")}
-                value={starRange}
-                onChange={(value) => setAttributes({ starRange: value })}
-                min={1}
-                max={10}
-                step={1}
+              <RbeaTabRadioControl
+                label={__("Range", "responsive-block-editor-addons")}
+                value={starRange === 10 ? 10 : 5}
+                onChange={(value) => {
+                  const newRange = parseInt(value);
+                  setAttributes({ 
+                    starRange: newRange,
+                    // Adjust rating if it exceeds the new range
+                    starRating: starRating > newRange ? newRange : starRating
+                  });
+                }}
+                options={[
+                  { value: 5, label: __("1-5", "responsive-block-editor-addons") },
+                  { value: 10, label: __("1-10", "responsive-block-editor-addons") },
+                ]}
+                defaultValue={5}
               />
               <RbeaRangeControl
                 label={__("Rating", "responsive-block-editor-addons")}
@@ -859,7 +868,7 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ starRating: value })}
                 min={0}
                 max={starRange || 5}
-                step={0.5}
+                step={0.1}
               />
             </PanelBody>
             <PanelBody
