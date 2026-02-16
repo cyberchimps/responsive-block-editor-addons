@@ -315,6 +315,36 @@ export default class Inspector extends Component {
         quoteFontStyle,
         twFontStyle,
         quoteTextDecoration,
+        // Author Name Typography
+        authorNameFontFamily,
+        authorNameFontSize,
+        authorNameFontSizeTablet,
+        authorNameFontSizeMobile,
+        authorNameFontWeight,
+        authorNameLineHeight,
+        authorNameTextTransform,
+        authorNameFontStyle,
+        authorNameTextDecoration,
+        authorNameTypographyColor,
+        authorNameBottomSpacing,
+        authorNameBottomSpacingTablet,
+        authorNameBottomSpacingMobile,
+        // Author Title Typography
+        authorTitleFontFamily,
+        authorTitleFontSize,
+        authorTitleFontSizeTablet,
+        authorTitleFontSizeMobile,
+        authorTitleFontWeight,
+        authorTitleLineHeight,
+        authorTitleTextTransform,
+        authorTitleFontStyle,
+        authorTitleTextDecoration,
+        authorTitleTypographyColor,
+        authorTitleBottomSpacing,
+        authorTitleBottomSpacingTablet,
+        authorTitleBottomSpacingMobile,
+        quoteHpositionpercentage,
+        quoteVpositionpercentage,
       },
       setAttributes,
     } = this.props;
@@ -620,6 +650,39 @@ export default class Inspector extends Component {
             </PanelBody>
 
             <PanelBody
+              title={__("Author", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Show Author Image", "responsive-block-editor-addons")}
+                checked={!!this.props.attributes.showAuthorImage}
+                onChange={(v) => setAttributes({ showAuthorImage: !!v })}
+                __nextHasNoMarginBottom
+              />
+
+              <ToggleControl
+                label={__("Show Author Name", "responsive-block-editor-addons")}
+                checked={!!this.props.attributes.showAuthorName}
+                onChange={(v) => setAttributes({ showAuthorName: !!v })}
+                __nextHasNoMarginBottom
+              />
+
+              <ToggleControl
+                label={__("Show Separator", "responsive-block-editor-addons")}
+                checked={!!this.props.attributes.showAuthorSeparator}
+                onChange={(v) => setAttributes({ showAuthorSeparator: !!v })}
+                __nextHasNoMarginBottom
+              />
+
+              <ToggleControl
+                label={__("Show Author Title", "responsive-block-editor-addons")}
+                checked={!!this.props.attributes.showAuthorTitle}
+                onChange={(v) => setAttributes({ showAuthorTitle: !!v })}
+                __nextHasNoMarginBottom
+              />
+            </PanelBody>
+
+            <PanelBody
               title={__("Quotation Mark", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -672,33 +735,33 @@ export default class Inspector extends Component {
             />
               <RbeaRangeControl
                 label={__(
-                  "Horizontal Position",
+                  "Horizontal Position (%)",
                   "responsive-block-editor-addons"
                 )}
-                value={quoteHposition}
+                value={quoteHpositionpercentage}
                 onChange={(value) =>
                   this.props.setAttributes({
-                    quoteHposition: value !== undefined ? value : 30,
+                    quoteHpositionpercentage: value !== undefined ? value : 30,
                   })
                 }
                 min={0}
-                max={400}
+                max={100}
                 step={1}
                 allowReset
               />
               <RbeaRangeControl
                 label={__(
-                  "Vertical Position",
+                  "Vertical Position (%)",
                   "responsive-block-editor-addons"
                 )}
-                value={quoteVposition}
+                value={quoteVpositionpercentage}
                 onChange={(value) =>
                   this.props.setAttributes({
-                    quoteVposition: value !== undefined ? value : 20,
+                    quoteVpositionpercentage: value !== undefined ? value : 20,
                   })
                 }
                 min={0}
-                max={400}
+                max={100}
                 step={1}
                 allowReset
               />
@@ -921,6 +984,55 @@ export default class Inspector extends Component {
               showColorControl={true}
               showTextDecoration={true}
 				    	setAttributes={ setAttributes }
+				    	{...this.props}
+				    />
+				    <TypographyHelperControl
+				    	title={__("Author Name Typography", "responsive-block-editor-addons")}
+				    	attrNameTemplate="authorName%s"
+				    	values={{
+				    		family: authorNameFontFamily,
+				    		size: authorNameFontSize,
+				    		sizeMobile: authorNameFontSizeMobile,
+				    		sizeTablet: authorNameFontSizeTablet,
+				    		weight: authorNameFontWeight,
+				    		height: authorNameLineHeight,
+                color: authorNameTypographyColor,
+                // bottomSpacing: authorNameBottomSpacing,
+                // bottomSpacingMobile: authorNameBottomSpacingMobile,
+                // bottomSpacingTablet: authorNameBottomSpacingTablet,
+                transform: authorNameTextTransform,
+                fontstyle: authorNameFontStyle,
+                textDecoration: authorNameTextDecoration,
+				    	}}
+				    	showLetterSpacing={false}
+              showColorControl={true}
+              showTextDecoration={true}
+				    	setAttributes={setAttributes}
+				    	{...this.props}
+				    />
+				    <TypographyHelperControl
+				    	title={__("Author Title Typography", "responsive-block-editor-addons")}
+				    	attrNameTemplate="authorTitle%s"
+				    	values={{
+				    		family: authorTitleFontFamily,
+				    		size: authorTitleFontSize,
+				    		sizeMobile: authorTitleFontSizeMobile,
+				    		sizeTablet: authorTitleFontSizeTablet,
+				    		weight: authorTitleFontWeight,
+				    		height: authorTitleLineHeight,
+                color: authorTitleTypographyColor,
+                // bottomSpacing: authorTitleBottomSpacing,
+                // bottomSpacingMobile: authorTitleBottomSpacingMobile,
+                // bottomSpacingTablet: authorTitleBottomSpacingTablet,
+                transform: authorTitleTextTransform,
+                fontstyle: authorTitleFontStyle,
+                textDecoration: authorTitleTextDecoration,
+				    	}}
+				    	showLetterSpacing={false}
+              showColorControl={true}
+              // showTextBottomSpacing={true}
+              showTextDecoration={true}
+				    	setAttributes={setAttributes}
 				    	{...this.props}
 				    />
             {this.props.attributes.twEnabled && (

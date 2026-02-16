@@ -8,14 +8,17 @@ import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 import { initializeBlockVersion } from "../../../utils/blockVersionManager";
+import icons from "../../../utils/components/icons";
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
-const { Dashicon } = wp.components;
+const { RichText, AlignmentToolbar, BlockControls, MediaUpload } = wp.blockEditor;
+const { Button, Dashicon } = wp.components;
+
+const ALLOWED_MEDIA_TYPES = ["image"];
 
 export default class Edit extends Component {
   constructor() {
@@ -73,6 +76,16 @@ export default class Edit extends Component {
         twCustomUrl,
         twLabel,
         twFontFamily,
+        authorImage,
+        authorImgId,
+        authorName,
+        authorTitle,
+        showAuthorImage,
+        showAuthorName,
+        showAuthorSeparator,
+        showAuthorTitle,
+        authorNameFontFamily,
+        authorTitleFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -143,6 +156,8 @@ export default class Edit extends Component {
           </div>
           {quoteFontFamily && loadGoogleFont(quoteFontFamily)}
           {twFontFamily && loadGoogleFont(twFontFamily)}
+          {authorNameFontFamily && loadGoogleFont(authorNameFontFamily)}
+          {authorTitleFontFamily && loadGoogleFont(authorTitleFontFamily)}
           <RichText
             tagName="span"
             placeholder={__(
@@ -155,7 +170,90 @@ export default class Edit extends Component {
             )}
             onChange={(value) => setAttributes({ quoteContent: value })}
           />
-          {twEnabled && (
+          {((showAuthorImage || showAuthorName || showAuthorTitle) || twEnabled) && (
+            <div className="rbea-bq__footer-wrap">
+              {(showAuthorImage || showAuthorName || showAuthorTitle) && (
+                <div className="rbea-bq__author-wrap">
+                  {showAuthorImage && (
+                    <div className="rbea-bq__author-image-wrap">
+                      <MediaUpload
+                        buttonProps={{
+                          className: "change-image",
+                        }}
+                        onSelect={(value) => {
+                          setAttributes({
+                            authorImgId: value.id,
+                            authorImage: value,
+                          });
+                        }}
+                        allowed={ALLOWED_MEDIA_TYPES}
+                        type="image"
+                        value={authorImgId}
+                        render={({ open }) => (
+                          <Fragment>
+                            <Button
+                              className={
+                                authorImgId
+                                  ? "responsive-block-editor-addons-change-image"
+                                  : "responsive-block-editor-addons-add-image"
+                              }
+                              onClick={open}
+                            >
+                              {!authorImgId ? (
+                                icons.upload
+                              ) : (
+                                <img
+                                  className="rbea-bq__author-image"
+                                  src={
+                                    authorImage?.sizes?.thumbnail?.url ||
+                                    authorImage?.url
+                                  }
+                                  alt={authorImage?.alt || __("Author", "responsive-block-editor-addons")}
+                                />
+                              )}
+                            </Button>
+                            {/* {authorImgId && (
+                              <Button
+                                className="responsive-block-editor-addons-remove-image"
+                                onClick={() => {
+                                  setAttributes({
+                                    authorImgId: null,
+                                    authorImage: null,
+                                  });
+                                }}
+                              >
+                                <Dashicon icon={"dismiss"} />
+                              </Button>
+                            )} */}
+                          </Fragment>
+                        )}
+                      />
+                    </div>
+                  )}
+                  {showAuthorName && (
+                    <RichText
+                      tagName="div"
+                      className="rbea-bq__author-name"
+                      value={authorName}
+                      onChange={(value) => setAttributes({ authorName: value })}
+                      placeholder={__("Author Name", "responsive-block-editor-addons")}
+                    />
+                  )}
+                  {/* {showAuthorSeparator && showAuthorName && showAuthorTitle && (
+                    <span className="rbea-bq__author-separator">|</span>
+                  )} */}
+                  {showAuthorTitle && (
+                    <RichText
+                      tagName="div"
+                      className="rbea-bq__author-title"
+                      value={authorTitle}
+                      onChange={(value) => setAttributes({ authorTitle: value })}
+                      placeholder={__("Author Title", "responsive-block-editor-addons")}
+                    />
+                  )}
+                </div>
+              )}
+              {twEnabled && (
             <div className="rbea-bq__tweet-wrap">
               <a
                 className={tweetBtnClasses}
@@ -171,9 +269,10 @@ export default class Edit extends Component {
                 )}
                                   {showLabel && <span className="rbea-bq__label">{twLabel}</span>}
               </a>
+              </div>
+              )}
             </div>
           )}
-
         </div>
       </div>,
     ];

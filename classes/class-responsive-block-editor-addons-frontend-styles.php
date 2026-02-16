@@ -1539,6 +1539,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$hover_box_shadow_position_css = '';
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+			$block_version = isset( $attr['blockVer'] ) ? (float) $attr['blockVer'] : 1.0;
+			$is_new_version = $block_version >= 2.0;
 			$selectors = array(
 				' ' => array(
 					'display'                    => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
@@ -1620,8 +1622,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
 					'height'  => self::get_css_value( $attr['quoteSize'], 'px' ),
 					'width'   => self::get_css_value( $attr['quoteSize'], 'px' ),
-					'left'    => self::get_css_value( $attr['quoteHposition'], 'px' ),
-					'top'     => self::get_css_value( $attr['quoteVposition'], 'px' ),
+					// 'left'    => self::get_css_value( $attr['quoteHposition'], 'px' ),
+					'left' => isset($attr['quoteHpositionpercentage']) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+								? self::get_css_value($attr['quoteHpositionpercentage'], '%')
+								: self::get_css_value($attr['quoteHposition'], 'px'),
+					// 'top'     => self::get_css_value( $attr['quoteVposition'], 'px' ),
+					'top' => isset($attr['quoteVpositionpercentage']) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+								? self::get_css_value($attr['quoteVpositionpercentage'], '%')
+								: self::get_css_value($attr['quoteVposition'], 'px'),
 					'opacity' => $quoteopacity,
 				),
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote svg' => array(
@@ -1642,6 +1650,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['textRightPadding'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPadding'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPadding'], 'px' ),
+				),
+				' .rbea-bq__footer-wrap' => array(
+					'margin-top'	 => $is_new_version ? '24px' : '0px', 
+				),
+				' .rbea-bq__tweet-wrap'	 => array(
+					'margin-top'	 => $is_new_version ? '0px'	 : '12px',
 				),
 				' .rbea-bq__tweet' => array(
 					'font-family'    => $attr['twFontFamily'],
@@ -1669,6 +1683,28 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .rbea-bq__tweet:hover' => array(
 					'color'          => $attr['twHColor'],
 					'background-color' => $attr['twHBg'],
+				),
+				' .rbea-bq__author-name' => array(
+					'font-family'    => $attr['authorNameFontFamily'],
+					'font-size'      => self::get_css_value( $attr['authorNameFontSize'], 'px' ),
+					'font-weight'    => $attr['authorNameFontWeight'],
+					'line-height'    => $attr['authorNameLineHeight'],
+					'text-transform' => $attr['authorNameTextTransform'],
+					'text-decoration' => $attr['authorNameTextDecoration'],
+					'font-style'     => $attr['authorNameFontStyle'],
+					'color'          => $attr['authorNameTypographyColor'],
+					'border-right'   => $attr['showAuthorSeparator'] ? '1px solid #e5e7eb' : 'none', 
+				),
+				' .rbea-bq__author-title' => array(
+					'font-family'    => $attr['authorTitleFontFamily'],
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSize'], 'px' ),
+					'font-weight'    => $attr['authorTitleFontWeight'],
+					'line-height'    => $attr['authorTitleLineHeight'],
+					'text-transform' => $attr['authorTitleTextTransform'],
+					'text-decoration' => $attr['authorTitleTextDecoration'],
+					'font-style'     => $attr['authorTitleFontStyle'],
+					'color'          => $attr['authorTitleTypographyColor'],
+					'padding-left'   => $attr['showAuthorSeparator'] ? '12px' : '0px', 
 				),
 
 			);
@@ -1716,6 +1752,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'          => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
 					'height'         => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
 				),
+				' .rbea-bq__author-name' => array(
+					'font-size'      => self::get_css_value( $attr['authorNameFontSizeMobile'], 'px' ),
+				),
+				' .rbea-bq__author-title' => array(
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSizeMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -1761,6 +1803,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .rbea-bq__tweet svg' => array(
 					'width'          => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
 					'height'         => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
+				),
+				' .rbea-bq__author-name' => array(
+					'font-size'      => self::get_css_value( $attr['authorNameFontSizeTablet'], 'px' ),
+				),
+				' .rbea-bq__author-title' => array(
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSizeTablet'], 'px' ),
 				),
 			);
 
@@ -15028,6 +15076,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'twFontStyle'              => '',
 				'gradient'				   => '',
 				'quoteTextDecoration'	   => '',
+				'blockVer'				   => '',
+				'quoteHpositionpercentage' => '',
+				'quoteVpositionpercentage' => '',
 			);
 		}
 
