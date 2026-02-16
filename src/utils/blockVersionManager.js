@@ -98,6 +98,7 @@ const BLOCK_VERSION_CONFIGS = {
     currentVersion: "2.0",
     newBlockDefaults: {
       twEnabled: false,
+      icon: "modern",
       quoteContent: "\"Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application.\"",
       quoteAlign: "center",
       quoteAlignTablet: "center",
@@ -109,6 +110,8 @@ const BLOCK_VERSION_CONFIGS = {
       quoteFontWeight: 600,
       quoteFontStyle: "italic",
       quoteTypographyColor: "#101828",
+      quoteColor: "#101828",
+      quoteSize: 44,
     },
   },
   // Add more blocks as needed:
