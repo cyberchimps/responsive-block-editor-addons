@@ -16,13 +16,13 @@ import 'regenerator-runtime/runtime';
 const {compose} = wp.compose;
 
 const {__} = wp.i18n;
-const {Fragment, useState, useEffect} = wp.element;
+const {Fragment, useState, useEffect, useRef} = wp.element;
 const {Button, Dashicon, Modal, TabPanel} = wp.components;
 const {useDispatch} = wp.data;
 import { addQueryArgs } from '@wordpress/url';
 export function LayoutModal(props) {
   const [currentTab, setCurrentTab] = useState("rbea-patterns-tab-sections");
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const [CurrentPageContent, setcurrentPageContent] = useState();
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -34,6 +34,7 @@ export function LayoutModal(props) {
   const [isUserProCapable, setIsUserProCapable] = useState(false);
   const [Xmlupdatestatus, setXmlUpdateStatus] = useState(false);
   const {apiFetch} = wp;
+  const hasAutoOpenedRef = useRef(false);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [noSearchResult, setNoSearchResult] = useState(false);
@@ -86,6 +87,14 @@ export function LayoutModal(props) {
     isUserProCapableCheck();
     loadFavorites();
   }, []);
+
+  // Auto-open modal when block is first inserted and selected (via toolbar button)
+  useEffect(() => {
+    if (props.isSelected && !hasAutoOpenedRef.current && !modalOpen) {
+      setModalOpen(true);
+      hasAutoOpenedRef.current = true;
+    }
+  }, [props.isSelected]);
 
   // Load favorites from WordPress user meta
   const loadFavorites = async () => {
@@ -824,6 +833,7 @@ export function LayoutModal(props) {
             </Fragment>
           }
           shouldCloseOnOverlayClick
+          onRequestClose={closeModal}
           shouldShowCloseButton={false}
           className="full-screen-modal"
         >
