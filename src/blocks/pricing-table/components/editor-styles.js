@@ -440,6 +440,7 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+      "margin-bottom": "1.2em",
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item:hover": {
       "box-shadow": hoverboxShadowColor !== '' ?
