@@ -6,6 +6,10 @@
  * @package Responsive Blocks
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Renders the post grid block on server.
  *

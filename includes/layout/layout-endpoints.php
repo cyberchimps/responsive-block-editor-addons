@@ -7,6 +7,10 @@
 
 namespace RBEA\Blocks\Layouts;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 use \WP_REST_Response;
 use \WP_REST_Server;
 

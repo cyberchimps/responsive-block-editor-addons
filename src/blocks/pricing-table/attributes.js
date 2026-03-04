@@ -857,6 +857,15 @@ const attributes = {
   subpriceBottomSpacingTablet: {
     type: 'number',
   },
+  ctaBottomSpacing: {
+    type: 'number',
+  },
+  ctaBottomSpacingMobile: {
+    type: 'number',
+  },
+  ctaBottomSpacingTablet: {
+    type: 'number',
+  },
   ctaButtonTopPadding: {
     type: "number",
     default: 15,

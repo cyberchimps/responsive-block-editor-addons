@@ -217,6 +217,9 @@ function EditorStyles(props) {
     subpriceBottomSpacing,
     subpriceBottomSpacingMobile,
     subpriceBottomSpacingTablet,
+    ctaBottomSpacing,
+    ctaBottomSpacingMobile,
+    ctaBottomSpacingTablet,
 
     ctaButtonTopPadding,
     ctaButtonBottomPadding,
@@ -308,7 +311,7 @@ function EditorStyles(props) {
       "background-image": buttonbackgroundType == "gradient" ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
-      "margin-bottom": generateCSSUnit(buttonSpace, "px"),
+      "margin-bottom": generateCSSUnit(ctaBottomSpacing, "px"),
       "padding-left": inheritFromTheme ? '' : generateCSSUnit(ctaButtonLeftPadding, "px"),
       "padding-right": inheritFromTheme ? '' : generateCSSUnit(ctaButtonRightPadding, "px"),
       "padding-top": inheritFromTheme ? '' : generateCSSUnit(ctaButtonTopPadding, "px"),
@@ -437,6 +440,7 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+      "margin-bottom": "1.2em",
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item:hover": {
       "box-shadow": hoverboxShadowColor !== '' ?
@@ -591,7 +595,7 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(ctaButtonTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(ctaButtonBottomPaddingMobile, "px"),
       "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
-      "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
+      "margin-bottom": generateCSSUnit(ctaBottomSpacingMobile, "px"),
     },
       " .responsive-block-editor-addons-pricing-image": {
           width: generateCSSUnit(imageWidthMobile, "px"),
@@ -650,7 +654,7 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(ctaButtonTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(ctaButtonBottomPaddingTablet, "px"),
       "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
-      "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
+      "margin-bottom": generateCSSUnit(ctaBottomSpacingTablet, "px"),
     },
       " .responsive-block-editor-addons-pricing-image": {
           width: generateCSSUnit(imageWidthTablet, "px"),
