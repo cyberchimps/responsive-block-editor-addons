@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.2.2
+Stable tag: 2.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.2.3 - 12th March 2026 =
+* Fix - Minor bugs.
 
 = 2.2.2 - 20th February 2026 =
 * Fix – Pricing Table Block: Removed redundant bottom spacing control from the Spacing panel.
