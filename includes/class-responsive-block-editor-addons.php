@@ -226,6 +226,9 @@ class Responsive_Block_Editor_Addons {
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'responsive_block_editor_addons_render_block' ), 5, 2 );
 		}
+
+		add_filter( 'content_save_pre', array( $this, 'responsive_block_editor_addons_fix_css_vars' ), 10 );
+
 	}
 
 	/**
@@ -2910,5 +2913,21 @@ class Responsive_Block_Editor_Addons {
 		);
 
 		return is_null( $replaced_content ) ? $block_content : $replaced_content;
+	}
+
+	/**
+	 * Fix malformed CSS variables caused by Unicode dash encoding during block serialization.
+	 */
+	public function responsive_block_editor_addons_fix_css_vars( $content ) {
+
+		// Fix broken unicode dash in CSS vars.
+		$content = preg_replace(
+			'/var\(\\\\?u002d\\\\?u002dresponsive/',
+			'var(--responsive',
+			$content
+		);
+
+		return $content;
+
 	}
 }
