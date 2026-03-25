@@ -26,13 +26,6 @@ jQuery(function ($) {
       else $wrap.append($listWrap);
     }
 
-    // Clear existing list if present
-    var hasLinks = $listWrap.find("a[href^='#']").length > 0;
-    if (hasLinks) {
-      $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
-      $listWrap.empty();
-    }
-
     // Get headings data from PHP (extracted from post content)
     // Data is base64 encoded to avoid HTML entity encoding issues
     var headingsAttr = $wrap.attr("data-headings");
@@ -49,6 +42,15 @@ jQuery(function ($) {
     // If no PHP data, fallback to DOM extraction (backward compatibility)
     if (!headingsData || !Array.isArray(headingsData) || headingsData.length === 0) {
       return; // Let save.js rendered list stay, or return early
+    }
+
+    // Clear existing list only when we have valid PHP headings data to rebuild it.
+    // This prevents wiping the editor-rendered list in Gutenberg previews where
+    // `data-headings` is typically missing.
+    var hasLinks = $listWrap.find("a[href^='#']").length > 0;
+    if (hasLinks) {
+      $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
+      $listWrap.empty();
     }
 
     // Read settings from data attributes
