@@ -383,6 +383,14 @@ const attributes = {
     type: "string",
     default: "responsive-block-editor-addons-button-size-medium",
   },
+  buttonSizeTablet: {
+    type: "string",
+    default: "responsive-block-editor-addons-button-size-tablet-medium",
+  },
+  buttonSizeMobile: {
+    type: "string",
+    default: "responsive-block-editor-addons-button-size-mobile-medium",
+  },
   buttoncolorLocation1: {
     type: "number",
     default: 0,

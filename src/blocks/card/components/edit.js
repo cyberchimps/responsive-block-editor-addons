@@ -62,6 +62,8 @@ export default class Edit extends Component {
         icon,
         iconPosition,
         buttonSize,
+        buttonSizeTablet,
+        buttonSizeMobile,
         subFontFamily,
         headingFontFamily,
         contentFontFamily,
@@ -245,6 +247,8 @@ export default class Edit extends Component {
                       className={classnames(
                         "wp-block-responsive-block-editor-addons-card-item__button res-button",
                         buttonSize,
+                        buttonSizeTablet,
+                        buttonSizeMobile,
                         inheritFromTheme ? "wp-block-button wp-block-button__link" : null
                       )}
                       value={cardsArray[index]["button"]}

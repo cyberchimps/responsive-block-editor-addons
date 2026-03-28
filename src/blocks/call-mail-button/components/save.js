@@ -25,6 +25,8 @@ export default class Save extends Component {
       mail,
       buttonToShow,
       buttonSize,
+      buttonSizeTablet,
+      buttonSizeMobile,
       icon,
       iconPosition,
       inheritFromTheme,
@@ -51,6 +53,8 @@ export default class Save extends Component {
           className={classnames(
             "responsive-block-editor-addons-call-mail-button-button-container",
             buttonSize,
+            buttonSizeTablet,
+            buttonSizeMobile,
             inheritFromTheme ? "wp-block-button wp-block-button__link" : null
           )}
           href={"call" === buttonToShow ? callHref : mailHref}

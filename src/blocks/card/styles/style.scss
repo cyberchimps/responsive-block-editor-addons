@@ -236,3 +236,43 @@
 .wp-block-cover .card-content-wrap {
   color: #333;
 }
+
+@media only screen and (max-width: 976px){
+  .responsive-block-editor-addons-button-size-tablet-small {
+    font-size: 14px;
+  }
+
+  .responsive-block-editor-addons-button-size-tablet-medium {
+    font-size: 20px;
+  }
+
+  .responsive-block-editor-addons-button-size-tablet-large {
+    font-size: 26px;
+    padding: 0.8em 1.2em;
+  }
+
+  .responsive-block-editor-addons-button-size-tablet-extralarge {
+    font-size: 32px;
+    padding: 0.8em 1.2em;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .responsive-block-editor-addons-button-size-mobile-small {
+    font-size: 14px;
+  }
+
+  .responsive-block-editor-addons-button-size-mobile-medium {
+    font-size: 20px;
+  }
+
+  .responsive-block-editor-addons-button-size-mobile-large {
+    font-size: 26px;
+    padding: 0.8em 1.2em;
+  }
+
+  .responsive-block-editor-addons-button-size-mobile-extralarge {
+    font-size: 32px;
+    padding: 0.8em 1.2em;
+  }
+}

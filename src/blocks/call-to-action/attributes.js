@@ -51,6 +51,14 @@ const attributes = {
     type: "string",
     default: "responsive-block-editor-addons-cta-button-size-medium",
   },
+  buttonSizeTablet: {
+    type: "string",
+    default: "responsive-block-editor-addons-cta-button-size-medium",
+  },
+  buttonSizeMobile: {
+    type: "string",
+    default: "responsive-block-editor-addons-cta-button-size-medium",
+  },
   buttonShape: {
     type: "string",
     default: "responsive-block-editor-addons-cta-button-shape-rounded",

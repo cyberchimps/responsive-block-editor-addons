@@ -156,6 +156,46 @@ export default class Inspector extends Component {
       },
     ];
 
+    const buttonSizeOptionsTablet = [
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-tablet-small",
+        label: __("S", "responsive-block-editor-addons"),
+      },
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-tablet-medium",
+        label: __("M", "responsive-block-editor-addons"),
+      },
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-tablet-large",
+        label: __("L", "responsive-block-editor-addons"),
+      },
+      {
+        value:
+          "responsive-block-editor-addons-call-mail-button-size-tablet-extralarge",
+        label: __("XL", "responsive-block-editor-addons"),
+      },
+    ];
+
+    const buttonSizeOptionsMobile = [
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-mobile-small",
+        label: __("S", "responsive-block-editor-addons"),
+      },
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-mobile-medium",
+        label: __("M", "responsive-block-editor-addons"),
+      },
+      {
+        value: "responsive-block-editor-addons-call-mail-button-size-mobile-large",
+        label: __("L", "responsive-block-editor-addons"),
+      },
+      {
+        value:
+          "responsive-block-editor-addons-call-mail-button-size-mobile-extralarge",
+        label: __("XL", "responsive-block-editor-addons"),
+      },
+    ];
+
     const blockPaddingResetValues = {
       paddingTop: 10,
       paddingRight: 0,
@@ -197,6 +237,8 @@ export default class Inspector extends Component {
         isValidMail,
         //Button Size
         buttonSize,
+        buttonSizeTablet,
+        buttonSizeMobile,
         //Button Width
         buttonWidthType,
         buttonWidth,
@@ -387,6 +429,95 @@ export default class Inspector extends Component {
               title={__("Button Size", "responsive-block-editor-addons")}
               initialOpen={true}
             >
+              <TabPanel
+								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin rbea-buttons-inspector"
+								activeClass="active-tab"
+								tabs={[
+									{
+										name: "desktop",
+										title: <Dashicon icon="desktop" />,
+										className:
+											" responsive-desktop-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "tablet",
+										title: <Dashicon icon="tablet" />,
+										className: " responsive-tablet-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "mobile",
+										title: <Dashicon icon="smartphone" />,
+										className: " responsive-mobile-tab  responsive-responsive-tabs",
+									},
+								]}
+							>
+								{(tab) => {
+									let tabout;
+
+									if ("mobile" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__(
+                            "Button Size",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={buttonSizeMobile}
+                          options={buttonSizeOptionsMobile.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => setAttributes({ buttonSizeMobile: value })}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									} else if ("tablet" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__(
+                            "Button Size",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={buttonSizeTablet}
+                          options={buttonSizeOptionsTablet.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => setAttributes({ buttonSizeTablet: value })}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									} else {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__(
+                            "Button Size",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={buttonSize}
+                          options={buttonSizeOptions.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => setAttributes({ buttonSize: value })}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									}
+
+									return <div>{tabout}</div>;
+								}}
+							</TabPanel>
+            </PanelBody>
+            {/* <PanelBody
+              title={__("Button Size", "responsive-block-editor-addons")}
+              initialOpen={true}
+            >
               <RbeaTabRadioControl
                 label={__(
                   "Button Size Type",
@@ -400,7 +531,7 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ buttonSize: value })}
                 defaultValue={"medium"}
               />
-            </PanelBody>
+            </PanelBody> */}
             <PanelBody
               title={__("Button Width", "responsive-block-editor-addons")}
               initialOpen={true}

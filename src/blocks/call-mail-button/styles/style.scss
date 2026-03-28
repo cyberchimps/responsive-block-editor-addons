@@ -52,3 +52,87 @@
       height: 32px !important;
     }
   }
+
+  @media only screen and (max-width: 976px){
+    .responsive-block-editor-addons-call-mail-button-size-tablet-small {
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 14px !important;
+      }
+      svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+    }
+
+  .responsive-block-editor-addons-call-mail-button-size-tablet-medium {
+    padding: 8px 0 !important;
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+
+  .responsive-block-editor-addons-call-mail-button-size-tablet-large {
+    padding: 0.8em 1.2em !important;
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 26px !important;
+      }
+      svg {
+        width: 26px !important;
+        height: 26px !important;
+      }
+    }
+
+    .responsive-block-editor-addons-call-mail-button-size-tablet-extralarge {
+    padding: 0.8em 1.2em !important;
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 32px !important;
+      }
+      svg {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px){
+    .responsive-block-editor-addons-call-mail-button-size-mobile-small {
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 14px !important;
+      }
+      svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+    }
+
+  .responsive-block-editor-addons-call-mail-button-size-mobile-medium {
+    padding: 8px 0 !important;
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+
+  .responsive-block-editor-addons-call-mail-button-size-mobile-large {
+    padding: 0.8em 1.2em !important;
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 26px !important;
+      }
+      svg {
+        width: 26px !important;
+        height: 26px !important;
+      }
+    }
+
+    .responsive-block-editor-addons-call-mail-button-size-mobile-extralarge {
+    padding: 0.8em 1.2em !important;
+      .responsive-block-editor-addons-call-mail-button-text {
+        font-size: 32px !important;
+      }
+      svg {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    }
+  }
