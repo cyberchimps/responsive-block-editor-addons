@@ -98,6 +98,11 @@ jQuery(function ($) {
         listStack.pop();
         currentLevel--;
       }
+      // If we went to a shallower level but there was nothing to pop (no nested lists yet),
+      // update the currentLevel so subsequent headings nest correctly (match editor behavior).
+      if (level < currentLevel) {
+        currentLevel = level;
+      }
 
       // Create list item
       var $li = $('<li></li>');

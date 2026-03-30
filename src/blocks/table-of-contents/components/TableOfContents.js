@@ -189,21 +189,43 @@ class TableOfContents extends React.Component {
             );
         }
 
-        const createHierarchy = (formattedHeaders, currentHeader) => {
-            let lastIndex = formattedHeaders.length - 1;
-            if (formattedHeaders.length === 0 || formattedHeaders[0].level === currentHeader.level) {
-                formattedHeaders.push(Object.assign({}, currentHeader));
-            } else if (formattedHeaders[lastIndex].level < currentHeader.level) {
-                if (!formattedHeaders[lastIndex].children) {
-                    formattedHeaders[lastIndex].children = [Object.assign({}, currentHeader)];
-                } else createHierarchy(formattedHeaders[lastIndex].children, currentHeader);
-            }
-        };
+        // Build hierarchy using a stack (same idea as frontend.js).
+        // This correctly handles headings that go "back up" in level, e.g. H2 → H3 → H1.
+        const formatHeaders = (allHeaders) => {
+            const root = [];
+            const stack = [{ level: 0, list: root }];
 
-        const formatHeaders = allHeaders => {
-            let formattedHeaders2 = [];
-            allHeaders.filter(header => mappingHeaders[`h${header.level}`]).forEach(header => createHierarchy(formattedHeaders2, header));
-            return formattedHeaders2;
+            allHeaders
+                .filter((header) => mappingHeaders[`h${header.level}`])
+                .forEach((header) => {
+                    const level = Number(header.level) || 2;
+
+                    // Pop until parent level < current level
+                    while (stack.length > 1 && level <= stack[stack.length - 1].level) {
+                        stack.pop();
+                    }
+
+                    const parentList = stack[stack.length - 1].list;
+                    const node = Object.assign({}, header);
+                    parentList.push(node);
+
+                    node.children = [];
+                    stack.push({ level, list: node.children });
+                });
+
+            // Remove empty children arrays so render logic stays unchanged.
+            const prune = (items) =>
+                items.map((it) => {
+                    const children = it.children;
+                    if (children && children.length) {
+                        return Object.assign({}, it, { children: prune(children) });
+                    }
+                    const copy = Object.assign({}, it);
+                    delete copy.children;
+                    return copy;
+                });
+
+            return prune(root);
         };
 
         const parseList = list =>
