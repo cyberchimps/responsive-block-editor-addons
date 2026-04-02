@@ -1,5 +1,4 @@
 (function ($) {
-  console.log('in frontend.js====');
   $(window).on("load", function () {
     var wrap = jQuery(".responsive-block-editor-addons-block-post-carousel");
     var id;
