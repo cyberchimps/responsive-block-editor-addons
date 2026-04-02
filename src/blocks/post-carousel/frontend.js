@@ -7,8 +7,8 @@
 
       var scope = $(this).find(".responsive-post_carousel-equal-height-1");
       var post_active = scope.find(
-          ".responsive-block-editor-addons-post-carousel-inner"
-        ),
+        ".responsive-block-editor-addons-post-carousel-inner"
+      ),
         max_height = -1,
         post_active_height = -1,
         is_background_enabled = scope
@@ -16,14 +16,14 @@
           .hasClass("responsive-post__image-position-background");
       post_active.each(function (i) {
         var blog_post = $(this).find(
-            ".responsive-block-editor-addons-post-carousel-inner"
-          ),
+          ".responsive-block-editor-addons-post-carousel-inner"
+        ),
           blog_post_height = blog_post.outerHeight(),
           post_img_ht = $(this)
             .find(
               ".responsive-block-editor-addons-block-post-carousel-image-top"
             )
-            .outerHeight(),
+            .outerHeight() || 0,
           post_text_ht = $(this)
             .find(
               ".responsive-block-editor-addons-block-post-carousel-text-wrap"
@@ -35,11 +35,13 @@
         } else {
           blog_post_height = post_img_ht + post_text_ht;
         }
-
+        
         if (max_height < blog_post_height) {
           max_height = blog_post_height;
           post_active_height = max_height + 15;
+
         }
+        
       });
 
       post_active.each(function (i) {
