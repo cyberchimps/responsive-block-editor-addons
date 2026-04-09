@@ -1414,7 +1414,7 @@ class edit extends Component {
                     )}
                   </Fragment>
                 )}
-                {backgroundImage && (
+                {"image" == backgroundType && backgroundImage && (
                   <RbeaRangeControl
                   label={__("Opacity", "responsive-block-editor-addons")}
                   value={opacity}
@@ -1427,17 +1427,6 @@ class edit extends Component {
                 )}
               </Fragment>
             )}
-          {"image" == backgroundType && backgroundImage && (
-            <RbeaRangeControl
-              label={__("Opacity", "responsive-block-editor-addons")}
-              value={backgroundOpacity}
-              onChange={(value) => setAttributes({ backgroundOpacity: value })}
-              min={0}
-              max={100}
-              allowReset
-              initialPosition={0}
-            />
-          )}
         </PanelBody>
         <PanelBody title={__("Border", "responsive-block-editor-addons")} initialOpen={false}>
             <RbeaBlockBorderHelperControl

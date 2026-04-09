@@ -13535,7 +13535,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'     => $attr['backgroundRepeat'],
 					'background-position'   => $background_position_focal,
 					'background-attachment' => $attr['backgroundAttachment'],
-					'opacity'               => 'image' === $attr['backgroundType'] ? $attr['imgopacity'] : '',
+					'opacity'               => 'image' === $attr['backgroundType'] ? $imgopacity : '',
 				),
 				' .responsive-block-editor-addons-testimonial__wrap' => array(
 					'padding-left'  => self::get_css_value( $attr['columnGap'] / 2, 'px' ),
