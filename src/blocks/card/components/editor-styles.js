@@ -412,36 +412,16 @@ function EditorStyles(props) {
       "background-size": cardImageSize,
     },
 
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-0": {
-        "background-image": `url(${backgroundImageOne})`,
-        "display": backgroundImageOne? 'block' : 'none',
-    },
-
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
-    },
-
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-1": {
-        "background-image": `url(${backgroundImageTwo})`,
-        "display": backgroundImageTwo? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-1": {
       "display": backgroundImageTwo? 'none' : 'flex',
     },
 
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-2": {
-        "background-image": `url(${backgroundImageThree})`,
-        "display": backgroundImageThree? 'block' : 'none',
-    },
-
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-2": {
       "display": backgroundImageThree? 'none' : 'flex',
-    },
-
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-3": {
-         "background-image": `url(${backgroundImageFour})`,
-         "display": backgroundImageFour? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-3": {
@@ -560,7 +540,7 @@ function EditorStyles(props) {
   },
   " .responsive-block-editor-addons-card-avatar-img": {
     "background-position": getImagePostionCSS(cardImagePositionFocalMobile),
-    "background-size": cardImageSizeMobile,
+    "background-size": cardImageSizeMobile === '' || !cardImageSizeMobile ? cardImageSize : cardImageSizeMobile,
   },
   };
 
@@ -612,7 +592,7 @@ function EditorStyles(props) {
   },
   " .responsive-block-editor-addons-card-avatar-img": {
     "background-position": getImagePostionCSS(cardImagePositionFocalTablet),
-    "background-size": cardImageSizeTablet,
+    "background-size": cardImageSizeTablet === '' || !cardImageSizeTablet ? cardImageSize : cardImageSizeTablet,
   },
   };
 

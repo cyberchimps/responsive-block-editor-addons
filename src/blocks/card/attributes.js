@@ -1059,5 +1059,9 @@ const attributes = {
     type: "string",
     default: "",
   },
+  backgroundImageOneId: { type: "number", default: null },
+  backgroundImageTwoId: { type: "number", default: null },
+  backgroundImageThreeId: { type: "number", default: null },
+  backgroundImageFourId: { type: "number", default: null },
 };
 export default attributes;

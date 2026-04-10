@@ -4901,6 +4901,42 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			// Resolve size-specific image URLs from stored attachment IDs.
+			$image_size = isset( $attr['imageSize'] ) ? $attr['imageSize'] : 'full';
+
+			$resolved_image_one   = '';
+			$resolved_image_two   = '';
+			$resolved_image_three = '';
+			$resolved_image_four  = '';
+
+			if ( ! empty( $attr['backgroundImageOneId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageOneId'], $image_size );
+				$resolved_image_one = $src ? $src[0] : $attr['backgroundImageOne'];
+			} else {
+				$resolved_image_one = $attr['backgroundImageOne'];
+			}
+
+			if ( ! empty( $attr['backgroundImageTwoId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageTwoId'], $image_size );
+				$resolved_image_two = $src ? $src[0] : $attr['backgroundImageTwo'];
+			} else {
+				$resolved_image_two = $attr['backgroundImageTwo'];
+			}
+
+			if ( ! empty( $attr['backgroundImageThreeId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageThreeId'], $image_size );
+				$resolved_image_three = $src ? $src[0] : $attr['backgroundImageThree'];
+			} else {
+				$resolved_image_three = $attr['backgroundImageThree'];
+			}
+
+			if ( ! empty( $attr['backgroundImageFourId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageFourId'], $image_size );
+				$resolved_image_four = $src ? $src[0] : $attr['backgroundImageFour'];
+			} else {
+				$resolved_image_four = $attr['backgroundImageFour'];
+			}
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
@@ -5068,22 +5104,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-0' => array(
-					'background-image' => 'url(' . $attr['backgroundImageOne'] . ')',
+					'background-image' => $resolved_image_one ? 'url(' . esc_url( $resolved_image_one ) . ')' : 'none',
 					'display'          => $attr['backgroundImageOne'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-1' => array(
-					'background-image' => 'url(' . $attr['backgroundImageTwo'] . ')',
+					'background-image' => $resolved_image_two ? 'url(' . esc_url( $resolved_image_two ) . ')' : 'none',
 					'display'          => $attr['backgroundImageTwo'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-2' => array(
-					'background-image' => 'url(' . $attr['backgroundImageThree'] . ')',
+					'background-image' => $resolved_image_three ? 'url(' . esc_url( $resolved_image_three ) . ')' : 'none',
 					'display'          => $attr['backgroundImageThree'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-3' => array(
-					'background-image' => 'url(' . $attr['backgroundImageFour'] . ')',
+					'background-image' => $resolved_image_four ? 'url(' . esc_url( $resolved_image_four ) . ')' : 'none',
 					'display'          => $attr['backgroundImageFour'] ? 'block' : 'none',
 				),
 
@@ -5533,6 +5569,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'		   => '',
     			'subTextDecoration'			   => '',
     			'headingTextDecoration'		   => '',
+				'backgroundImageOneId'         => null,
+				'backgroundImageTwoId'         => null,
+				'backgroundImageThreeId'       => null,
+				'backgroundImageFourId'        => null,
 			);
 		}
 
