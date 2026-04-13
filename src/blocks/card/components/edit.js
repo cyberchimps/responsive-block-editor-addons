@@ -178,6 +178,15 @@ class Edit extends Component {
                   key={`card-avatar-${index}`}
                 >
                   <div
+                    className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`}
+                    key={`card-avatar-img-dashicon-${index}`}
+                    style={{
+                      display: resolvedImageUrls[index] ? "none" : undefined,
+                    }}
+                  >
+                    <Dashicon icon="format-image" />
+                  </div>
+                  <div
                     className={classnames(
                       "responsive-block-editor-addons-card-avatar-img",
                       `responsive-block-editor-addons-card-avatar-img-${index}`
@@ -189,15 +198,6 @@ class Edit extends Component {
                     }}
                     key={`card-avatar-img-${index}`}
                   />
-                  <div
-                    className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`}
-                    key={`card-avatar-img-dashicon-${index}`}
-                    style={{
-                      display: resolvedImageUrls[index] ? "none" : undefined,
-                    }}
-                  >
-                    <Dashicon icon="format-image" />
-                  </div>
                 </div>
               )}
               <div className="card-content-wrap" key={`card-content-wrap-${index}`}>
