@@ -495,7 +495,7 @@ export default class Inspector extends Component {
       ];
 
       return (
-        <PanelBody
+        <div
           key={index}
           title={
             __("CountUp Box ", "responsive-block-editor-addons") +
@@ -503,8 +503,13 @@ export default class Inspector extends Component {
             (index + 1)
           }
           initialOpen={false}
-          className={"rbea-repeater-panel"}
+          className={"rbea-repeater-panel rbea-countup"}
         >
+          <p>{
+            __("Select Icon for CountUp Box ", "responsive-block-editor-addons") +
+            " " +
+            (index + 1)
+          }</p>
           <FontIconPicker
             icons={svg_icons}
             renderFunc={renderSVG}
@@ -526,7 +531,7 @@ export default class Inspector extends Component {
               "responsive-block-editor-addons"
             )}
           />
-        </PanelBody>
+        </div>
       );
     };
 
@@ -773,9 +778,6 @@ export default class Inspector extends Component {
                 initialOpen={true}
               >
                 <Fragment>
-                  <p className="components-base-control__label">
-                    {__("Select Icon", "responsive-block-editor-addons")}
-                  </p>
                   {times(count, (n) => frontIconControls(n))}
                 </Fragment>
                 <RbeaRangeControl
@@ -822,15 +824,17 @@ export default class Inspector extends Component {
                         attrNameTemplate="shapeBorder%s"
                         {...this.props}
                       />
-                    <RbeaRangeControl
-                      label={__("Outline Width", "responsive-block-editor-addons")}
-                      value={shapeBorder}
-                      onChange={(value) =>
-                        setAttributes({ shapeBorder: value })
-                      }
-                      min={0}
-                      max={9}
-                    />
+                      {"outline" == iconStyle && (
+                        <RbeaRangeControl
+                          label={__("Outline Width", "responsive-block-editor-addons")}
+                          value={shapeBorder}
+                          onChange={(value) =>
+                            setAttributes({ shapeBorder: value })
+                          }
+                          min={0}
+                          max={9}
+                        />
+                      )}
                   </Fragment>
                 )}
               </PanelBody>
@@ -936,6 +940,12 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <ResponsiveNewPaddingControl 
+                attrNameTemplate="countup%s"
+                resetValues={blockPaddingResetValues}
+                label={__("CountUp Box Padding", "responsive-block-editor-addons")}
+                {...this.props}
+              />
               <ResponsiveNewPaddingControl 
                 attrNameTemplate="block%s"
                 resetValues={blockPaddingResetValues}

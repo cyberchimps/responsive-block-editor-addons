@@ -127,6 +127,18 @@ function EditorStyles(props) {
     contentTextDecoration,
     headingTextDecoration,
     dateTextDecoration,
+    countupTopPadding,
+    countupTopPaddingMobile,
+    countupTopPaddingTablet,
+    countupBottomPadding,
+    countupBottomPaddingMobile,
+    countupBottomPaddingTablet,
+    countupLeftPadding,
+    countupLeftPaddingMobile,
+    countupLeftPaddingTablet,
+    countupRightPadding,
+    countupRightPaddingMobile,
+    countupRightPaddingTablet,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -171,6 +183,10 @@ function EditorStyles(props) {
       fill: icon_color,
     },
     " .responsive-count-item": {
+      "padding-top": generateCSSUnit(countupTopPadding, "px"),
+      "padding-right": generateCSSUnit(countupRightPadding, "px"),
+      "padding-bottom": generateCSSUnit(countupBottomPadding, "px"),
+      "padding-left": generateCSSUnit(countupLeftPadding, "px"),
       "background-color": `${hexToRgba(
         itemBackgroundColor || "#ffffff",
         imgopacity || 0
@@ -258,6 +274,10 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadiusMobile, "px"),
     },
   " .responsive-count-item": {
+      "padding-top": generateCSSUnit(countupTopPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(countupRightPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(countupBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(countupLeftPaddingMobile, "px"),
       "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
@@ -302,6 +322,10 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(shapeBorderLeftRadiusTablet, "px"),
     },
     " .responsive-count-item": {
+      "padding-top": generateCSSUnit(countupTopPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(countupRightPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(countupBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(countupLeftPaddingTablet, "px"),
       "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
