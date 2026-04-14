@@ -44,6 +44,18 @@ class LatestPostsBlock extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
+
+    const { equalHeight, imagePosition } = this.props.attributes;
+    const { equalHeight: prevEqualHeight, imagePosition: prevImagePosition } = prevProps.attributes;
+
+    if (
+      equalHeight !== prevEqualHeight ||
+      imagePosition !== prevImagePosition ||
+      this.props.latestPosts !== prevProps.latestPosts
+    ) {
+      // Remove the setTimeout — image promises handle the async timing now
+      this.applyEqualHeight();
+    }
   }
 
   componentDidMount() {
@@ -59,6 +71,57 @@ class LatestPostsBlock extends Component {
         this.props.clientId
     );
     document.head.appendChild($style);
+
+    this.applyEqualHeight();
+  }
+
+  applyEqualHeight() {
+    const { equalHeight } = this.props.attributes;
+
+    const blockEl = document.querySelector(`.block-${this.props.attributes.block_id}`);
+    if (!blockEl) return;
+
+    const scope = blockEl.querySelector(".responsive-post_carousel-equal-height-true, .responsive-post_carousel-equal-height-false");
+    if (!scope) return;
+
+    if (!equalHeight) {
+      scope.querySelectorAll(".responsive-block-editor-addons-post-carousel-inner").forEach((post) => {
+        post.style.height = "";
+      });
+      return;
+    }
+
+    const isBackground = blockEl.classList.contains("responsive-post__image-position-background");
+
+    // Wait for all images to load before measuring
+    const images = Array.from(scope.querySelectorAll(".slick-slide:not(.slick-cloned) img"));
+    const imagePromises = images.map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((resolve) => {
+        img.onload = resolve;
+        img.onerror = resolve; // resolve even on error so we don't block
+      });
+    });
+
+    Promise.all(imagePromises).then(() => {
+      const posts = scope.querySelectorAll(".slick-slide:not(.slick-cloned) .responsive-block-editor-addons-post-carousel-inner");
+      let maxHeight = -1;
+
+      posts.forEach((post) => {
+        const imgEl = post.querySelector(".responsive-block-editor-addons-block-post-carousel-image-top");
+        const textEl = post.querySelector(".responsive-block-editor-addons-block-post-carousel-text-wrap");
+        const imgHt = imgEl ? imgEl.offsetHeight : 0;
+        const textHt = textEl ? textEl.offsetHeight : 0;
+        const computed = isBackground ? textHt + 15 : imgHt + textHt;
+        if (computed > maxHeight) maxHeight = computed;
+      });
+
+      if (maxHeight > 0) {
+        scope.querySelectorAll(".responsive-block-editor-addons-post-carousel-inner").forEach((post) => {
+          post.style.height = `${maxHeight + 15}px`;
+        });
+      }
+    });
   }
 
   render() {
