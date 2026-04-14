@@ -26,6 +26,9 @@ import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
 import { GradientPicker } from "@wordpress/components";
 import { hexToRgba } from "../../../utils/index.js";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
+import renderSVG from "../../../renderIcon";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -44,6 +47,8 @@ const {
   Button,
   FocalPointPicker,
 } = wp.components;
+
+let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -331,6 +336,7 @@ export default class Inspector extends Component {
         hoverBackgroundType,
         titleTextDecoration,
         descriptionTextDecoration,
+        arrowIcon,
       },
       setAttributes,
     } = this.props;
@@ -1654,30 +1660,45 @@ export default class Inspector extends Component {
                 }
                 __nextHasNoMarginBottom
               />
+              {hasArrow && (
+                <>
+                  <p className="components-base-control__label">{__("Choose Arrow", "responsive-block-editor-addons")}</p>
+                  <FontIconPicker
+                    icons={svg_icons}
+                    renderFunc={renderSVG}
+                    theme="default"
+                    value={arrowIcon}
+                    onChange={(value) => setAttributes({ arrowIcon: value })}
+                    isMulti={false}
+                    noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
+                  />
 
-              <hr className="responsive-block-editor-addons-editor__separator" />
+                  <hr className="responsive-block-editor-addons-editor__separator" />
 
-              <RbeaColorControl
-                label = {__("Color", "responsive-block-editor-addons")}
-                colorValue={arrowColor}
-                onChange={(colorValue) =>
-                  setAttributes({ arrowColor: colorValue })
-                }
-                resetColor={() => setAttributes({ arrowColor: "" })}
-              />
+                  <RbeaColorControl
+                    label = {__("Color", "responsive-block-editor-addons")}
+                    colorValue={arrowColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ arrowColor: colorValue })
+                    }
+                    resetColor={() => setAttributes({ arrowColor: "" })}
+                  />
 
-              <hr className="responsive-block-editor-addons-editor__separator" />
+                  <hr className="responsive-block-editor-addons-editor__separator" />
 
-              <RbeaRangeControl
-                label={__("Arrow Size", "responsive-block-editor-addons")}
-                value={arrowSize}
-                onChange={(newCount) => {
-                  setAttributes({ arrowSize: newCount });
-                }}
-                min={0}
-                max={100}
-                step={1}
-              />
+                  <RbeaRangeControl
+                    label={__("Arrow Size", "responsive-block-editor-addons")}
+                    value={arrowSize}
+                    onChange={(newCount) => {
+                      setAttributes({ arrowSize: newCount });
+                    }}
+                    min={0}
+                    max={100}
+                    step={1}
+                  />
+                </>
+              )}
+              
             </PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}

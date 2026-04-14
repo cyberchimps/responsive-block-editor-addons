@@ -8381,9 +8381,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'         => $attr['descriptionTypographyColor'],
 					'margin-bottom' => self::get_css_value( $attr['descriptionBottomSpacing'], 'px' ),
 				),
-				' .imagebox-arrow' => array(
-					'color'     => $attr['arrowColor'],
-					'font-size' => self::get_css_value( $attr['arrowSize'], 'px' ),
+				' .imagebox-arrow svg' => array(
+					'color'  => $attr['arrowColor'],
+					'width'  => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
 				),
 				'.responsive-block-editor-addons-block-image-boxes-0' => array(
 					'background-image' => $background_image_first,

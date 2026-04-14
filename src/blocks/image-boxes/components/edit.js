@@ -8,6 +8,7 @@ import React from "react";
 import { hexToRgba } from "../../../utils/index.js";
 import EditorStyles from "./editor-styles";
 import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+import renderSVG from "../../../renderIcon";
 
 /**
  * WordPress dependencies
@@ -99,6 +100,7 @@ export default class Edit extends Component {
         imageSize,
         showTitle,
         showDescription,
+        arrowIcon,
       },
       isSelected,
       setAttributes,
@@ -220,7 +222,7 @@ export default class Edit extends Component {
                   allowedFormats={formattingControls}
                   
                 />)}
-                {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
+                {hasArrow && <span className="imagebox-arrow">{renderSVG(arrowIcon)}</span>}
                 {isSelected && (
                   <form
                     key="form-link"

@@ -178,14 +178,12 @@ const attributes = {
   hasArrow: {
     type: "boolean",
   },
-  hasArrow: {
-    type: "boolean",
-  },
   arrowColor: {
     type: "string",
   },
   arrowSize: {
     type: "number",
+    default: 30,
   },
   boxShadowColor: {
     type: "string",
@@ -688,6 +686,10 @@ const attributes = {
   descriptionTextDecoration: {
     type: "string",
     default: "",
+  },
+  arrowIcon: {
+    type: "string",
+    default: "arrow-right",
   },
 };
 
