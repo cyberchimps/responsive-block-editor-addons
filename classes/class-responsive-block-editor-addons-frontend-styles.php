@@ -5180,10 +5180,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-button-inner' => array(
-					'padding-top'      => self::get_css_value( $attr['ctaButtonTopPadding'], 'px' ),
-					'padding-bottom'   => self::get_css_value( $attr['ctaButtonBottomPadding'], 'px' ),
-					'padding-left'     => self::get_css_value( $attr['ctaButtonLeftPadding'], 'px' ),
-					'padding-right'    => self::get_css_value( $attr['ctaButtonRightPadding'], 'px' ),
+					'padding-top'      => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonTopPadding'], 'px' ) : '',
+					'padding-bottom'   => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonBottomPadding'], 'px' ) : '',
+					'padding-left'     => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonLeftPadding'], 'px' ) : '',
+					'padding-right'    => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonRightPadding'], 'px' ) : '',
 					'margin-top'       => self::get_css_value( $attr['ctaButtonTopMargin'], 'px' ),
 					'margin-bottom'    => self::get_css_value( $attr['ctaButtonBottomMargin'], 'px' ),
 					'margin-left'      => self::get_css_value( $attr['ctaButtonLeftMargin'], 'px' ),
