@@ -34,6 +34,7 @@ function EditorStyles(props) {
     iconBackgroundColor,
     iconBackgroundOpacity,
     width,
+    height,
 	borderWidth, // For compatibility with v1.3.2.
 	borderStyle, // For compatibility with v1.3.2.
 	borderColor, // For compatibility with v1.3.2.
@@ -102,6 +103,7 @@ function EditorStyles(props) {
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
       "margin-right":
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
+      "height": !responsiveHeight && height ? generateCSSUnit(height, "px") : undefined,
       "border-width": borderWidth !== 999 && blockBorderWidth === "" ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
