@@ -833,13 +833,25 @@ export default class Inspector extends Component {
                 }}
                 __nextHasNoMarginBottom
               />
-              <ButtonSettingsControl
-                {...this.props}
-                showMarginControls={false}
-                showBackColorOpacity={false}
-                showGradientHover={true}
-                showTextOpacity={false}
-              />
+              {!inheritFromTheme && (
+                <ButtonSettingsControl
+                  {...this.props}
+                  showMarginControls={false}
+                  showBackColorOpacity={false}
+                  showGradientHover={true}
+                  showTextOpacity={false}
+                />
+              )}
+              {inheritFromTheme && (
+                <ToggleControl
+                  label={__("Open link in new tab", "responsive-block-editor-addons")}
+                  checked={buttonTarget}
+                  onChange={() => {
+                      setAttributes({ buttonTarget: !buttonTarget });
+                  }}
+                  __nextHasNoMarginBottom
+                />
+              )}
             </PanelBody>
             <RbeaSupportControl blockSlug={"pricing-table"} />
           </InspectorTab>
