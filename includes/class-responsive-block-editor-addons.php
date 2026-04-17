@@ -1521,7 +1521,7 @@ class Responsive_Block_Editor_Addons {
 		// 2. User has 3+ posts/pages with RBA blocks, OR
 		// 3. User has used template library
 		if ( $seven_day_delay_passed || $has_five_posts_with_blocks || $template_library_used ) {
-			$image_url = plugins_url( 'admin/images/responsive-blocks.svg', __DIR__ );
+			$image_url = plugins_url( 'admin/images/rbea-logo.svg', __DIR__ );
 			printf(
 				'<div class="notice notice-info rbea-ask-for-review-notice">
 					<div class="rbea-notice-content-wrapper">
@@ -2040,7 +2040,12 @@ class Responsive_Block_Editor_Addons {
 			$is_xml_updated = get_option( 'last_xml_export_checksums' );
 			$data           = get_option( 'total-responsive-sites-data' );
 			// Fetch data from the external endpoint.
-			$external_data = wp_remote_get( 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2' );
+			$external_data = wp_remote_get(
+				'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2',
+				array(
+					'timeout' => 20,
+				)
+			);
 
 			if ( is_wp_error( $external_data ) ) {
 				// Handle error from the external endpoint, if any.
@@ -2128,7 +2133,12 @@ class Responsive_Block_Editor_Addons {
 	public function rbea_sync_library() {
 		// Step 1: Get the count from the API hit
 		$count_api_url  = 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-ready-sites-requests-count';
-		$count_response = wp_remote_get( $count_api_url );
+		$count_response = wp_remote_get(
+			$count_api_url,
+			array(
+				'timeout' => 20,
+			)
+		);
 
 		if ( is_wp_error( $count_response ) ) {
 			wp_send_json_error();
@@ -2152,7 +2162,12 @@ class Responsive_Block_Editor_Addons {
 		for ( $page = 1; $page <= $total_pages; $page++ ) {
 
 			$api_url  = "https://ccreadysites.cyberchimps.com/wp-json/wp/v2/cyberchimps-sites/?per_page=100&page={$page}";
-			$response = wp_remote_get( $api_url );
+			$response = wp_remote_get(
+				$api_url,
+				array(
+					'timeout' => 20,
+				)
+			);
 
 			if ( ! is_wp_error( $response ) ) {
 				$data = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -2181,7 +2196,12 @@ class Responsive_Block_Editor_Addons {
 		// Check if the data was successfully written to the file
 		if ( false !== $bytes_written ) {
 			// Store latest checksum after successful sync so future sync clicks can skip work.
-			$checksum_response = wp_remote_get( 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2' );
+			$checksum_response = wp_remote_get(
+				'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2',
+				array(
+					'timeout' => 20,
+				)
+			);
 			if ( ! is_wp_error( $checksum_response ) ) {
 				$checksum_body = wp_remote_retrieve_body( $checksum_response );
 				$checksum_json = json_decode( $checksum_body, true );

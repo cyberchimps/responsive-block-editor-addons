@@ -693,7 +693,7 @@ export function LayoutModal(props) {
             <Fragment>
               <div className="modal-header-content">
                 <div className="modal-title">
-                {<img src={responsive_globals.plugin_url + 'admin/images/responsive-blocks.svg'} alt="rbea-logo" />}
+                {<img src={responsive_globals.plugin_url + 'admin/images/rbea-logo.svg'} alt="rbea-logo" />}
                   {__("Template Library", "my-textdomain")}
                 </div>
 
