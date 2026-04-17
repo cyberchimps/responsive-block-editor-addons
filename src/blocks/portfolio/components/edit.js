@@ -25,6 +25,7 @@ const {
   Spinner,
   PanelBody,
   SelectControl,
+  ToggleControl,
 } = wp.components;
 
 const {
@@ -85,23 +86,23 @@ class LatestPostsBlock extends Component {
 
     let categoryListOptions = [{ value: "", label: __("All", "responsive-block-editor-addons") }];
 
-    if ("" != taxonomyList) {
+    {Object.keys(taxonomyList).length > 0 && (
       Object.keys(taxonomyList).map((item, thisIndex) => {
         return taxonomyListOptions.push({
           value: taxonomyList[item]["name"],
           label: taxonomyList[item]["label"],
         });
-      });
-    }
+      })
+    )}
 
-    if ("" != categoriesList) {
+    {categoriesList.length > 0 && (
       Object.keys(categoriesList).map((item, thisIndex) => {
         return categoryListOptions.push({
           value: categoriesList[item]["id"],
           label: categoriesList[item]["name"],
         });
-      });
-    }
+      })
+    )}
 
     // Check the post type
     const isPost = "post" === attributes.postType;
@@ -112,14 +113,6 @@ class LatestPostsBlock extends Component {
     const postTypeOptions = [
       { value: "post", label: __("Post", "responsive-block-editor-addons") },
       { value: "page", label: __("Page", "responsive-block-editor-addons") },
-      {
-        value: "course",
-        label: __("Courses", "responsive-block-editor-addons"),
-      },
-      {
-        value: "lesson",
-        label: __("Lessons", "responsive-block-editor-addons"),
-      },
     ];
 
     if (!hasPosts) {
@@ -164,10 +157,11 @@ class LatestPostsBlock extends Component {
     const PostTag = attributes.postTitleTag ? attributes.postTitleTag : "h3";
 
     let setPostGridContentType = (value) => {
-      if(value !== 'post') {
-        setAttributes(attributes.categories = '')
-      }
-      setAttributes({ postType: value })
+      setAttributes({ 
+        postType: value,
+        categories: '',
+        taxonomyType: 'category'
+      });
     }
 
 	let queryControls = (
@@ -205,6 +199,15 @@ class LatestPostsBlock extends Component {
 				  />
 				</Fragment>
 			  )}
+
+        <ToggleControl
+          label={__("Exclude Current " + attributes.postType, "responsive-block-editor-addons")}
+          checked={attributes.excludeCurrentPost}
+          onChange={() => {
+            setAttributes({ excludeCurrentPost: !attributes.excludeCurrentPost });
+          }}
+          __nextHasNoMarginBottom
+        />
 		</PanelBody>
 	);
 
@@ -318,6 +321,7 @@ export default compose([
       excludeCurrentPost,
       taxonomyType,
       postType,
+      offset,
     } = props.attributes;
 
     const { getEntityRecords } = select("core");
@@ -351,7 +355,7 @@ export default compose([
         order: order,
         orderby: orderBy,
         per_page: postsToShow,
-        offset: props.attributes.offset,
+        offset,
     }
 
     if (excludeCurrentPost) {
@@ -371,8 +375,8 @@ export default compose([
       }
     }
 
-    if ( undefined !== categories && '' !== categories ) {
-      latestPostsQuery[rest_base] = (undefined === categories || '' === categories ) ? categories :category;
+    if ( undefined !== categories && '' !== categories && '' !== rest_base ) {
+      latestPostsQuery[rest_base] = category;
     }
 
     return {

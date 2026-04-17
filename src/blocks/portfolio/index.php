@@ -36,9 +36,12 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		'offset'              => $attributes['offset'],
 		'post_type'           => $attributes['postType'],
 		'ignore_sticky_posts' => 1,
-		'post__not_in'        => is_singular() ? array( get_the_ID() ) : array(),
 		'paged'               => max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ),
 	);
+
+	if ( isset( $attributes['excludeCurrentPost'] ) && $attributes['excludeCurrentPost'] ) {
+		$grid_query['post__not_in'] = is_singular() ? array( get_the_ID() ) : array();
+	}
 
 	if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
 		$grid_query['tax_query'][] = array(
@@ -84,18 +87,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				$post_thumb_size = $attributes['imageSize'];
 			}
 
-			$wrapper_styles = '';
-
-			/* portfolio wrapper styles. */
-			if ( ! empty( $wrapper_styles ) ) {
-				$wrapper_style = $wrapper_styles;
-			} else {
-				$wrapper_style = null;
-			}
-
 			/* Start the markup for the post */
 			$portfolio_markup .= sprintf(
-				'<article id="post-%1$s" class="%2$s" style="' . safecss_filter_attr( $wrapper_style ) . '">',
+				'<article id="post-%1$s" class="%2$s">',
 				esc_attr( $post_id ),
 				esc_attr( $post_classes )
 			);
