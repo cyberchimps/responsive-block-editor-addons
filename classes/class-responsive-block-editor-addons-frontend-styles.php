@@ -21264,6 +21264,27 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			}
 
+			$cta_button_alignment_tablet = isset( $attr['ctaButtonAlignmentTablet'] ) && '' !== $attr['ctaButtonAlignmentTablet'] ? $attr['ctaButtonAlignmentTablet'] : $attr['ctaButtonAlignment'];
+			$cta_button_alignment_mobile = isset( $attr['ctaButtonAlignmentMobile'] ) && '' !== $attr['ctaButtonAlignmentMobile'] ? $attr['ctaButtonAlignmentMobile'] : $attr['ctaButtonAlignment'];
+
+			$cta_button_margin_left_tablet  = '';
+			$cta_button_margin_right_tablet = '';
+			if ( 'right' === $cta_button_alignment_tablet ) {
+				$cta_button_margin_right_tablet = self::get_css_value( 0, 'px' );
+			}
+			if ( 'left' === $cta_button_alignment_tablet ) {
+				$cta_button_margin_left_tablet = self::get_css_value( 0, 'px' );
+			}
+
+			$cta_button_margin_left_mobile  = '';
+			$cta_button_margin_right_mobile = '';
+			if ( 'right' === $cta_button_alignment_mobile ) {
+				$cta_button_margin_right_mobile = self::get_css_value( 0, 'px' );
+			}
+			if ( 'left' === $cta_button_alignment_mobile ) {
+				$cta_button_margin_left_mobile = self::get_css_value( 0, 'px' );
+			}
+
 			$imgopacity = $attr['opacity'] / 100;
 
 			$background_image_gradient = '';
@@ -21765,6 +21786,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom'             => self::get_css_value( $attr['ctaButtonBottomPaddingMobile'], 'px' ),
 					'padding-left'               => self::get_css_value( $attr['ctaButtonLeftPaddingMobile'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['ctaButtonRightPaddingMobile'], 'px' ),
+					'margin'                     => 'auto',
+					'margin-left'                => $cta_button_margin_left_mobile,
+					'margin-right'               => $cta_button_margin_right_mobile,
 					'width'                      => self::get_css_value( $attr['submitButtonWidthMobile'], '%' ),
 					'height'                     => self::get_css_value( $attr['submitButtonHeightMobile'], 'px' ),
 					'border-top-left-radius'     => self::get_css_value( $attr['ctaTopRadiusMobile'], 'px' ),
@@ -21909,6 +21933,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom'             => self::get_css_value( $attr['ctaButtonBottomPaddingTablet'], 'px' ),
 					'padding-left'               => self::get_css_value( $attr['ctaButtonLeftPaddingTablet'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['ctaButtonRightPaddingTablet'], 'px' ),
+					'margin'                     => 'auto',
+					'margin-left'                => $cta_button_margin_left_tablet,
+					'margin-right'               => $cta_button_margin_right_tablet,
 					'width'                      => self::get_css_value( $attr['submitButtonWidthTablet'], '%' ),
 					'height'                     => self::get_css_value( $attr['submitButtonHeightTablet'], 'px' ),
 					'border-top-left-radius'     => self::get_css_value( $attr['ctaTopRadiusTablet'], 'px' ),
@@ -22242,6 +22269,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonHbackgroundColor1'             => '',
 				'buttonHbackgroundColor2'             => '#fff',
 				'ctaButtonAlignment'                  => 'center',
+				'ctaButtonAlignmentTablet'            => 'center',
+				'ctaButtonAlignmentMobile'            => 'center',
 				'ctaButtonmarginleft'                 => 0,
 				'ctaButtonmarginright'                => 0,
 				'ctaVpadding'                         => 15,

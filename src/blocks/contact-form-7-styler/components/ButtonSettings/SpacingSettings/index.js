@@ -66,27 +66,8 @@ class ButtonSpacingControl extends Component {
         paddingMobileLeft: 0,
       }
 
-      // backward compatibility for icon container padding control
-
-    if (!isCtaButtonPaddingMarginValueUpdated) {
-      this.props.setAttributes(
-        {
-          ctaButtonTopPadding:          ctaVpadding !== undefined ? ctaVpadding : ctaButtonTopPadding,
-          ctaButtonBottomPadding:       ctaVpadding !== undefined ? ctaVpadding : ctaButtonBottomPadding,
-          ctaButtonLeftPadding:         ctaHpadding !== undefined ? ctaHpadding : ctaButtonLeftPadding,
-          ctaButtonRightPadding:        ctaHpadding !== undefined ? ctaHpadding : ctaButtonRightPadding,
-          ctaButtonTopPaddingTablet:    ctaVpaddingTablet !== undefined ? ctaVpaddingTablet : ctaButtonTopPaddingTablet,
-          ctaButtonBottomPaddingTablet: ctaVpaddingTablet !== undefined ? ctaVpaddingTablet : ctaButtonBottomPaddingTablet,
-          ctaButtonRightPaddingTablet:  ctaHpaddingTablet !== undefined ? ctaHpaddingTablet : ctaButtonRightPaddingTablet,
-          ctaButtonLeftPaddingTablet:   ctaHpaddingTablet !== undefined ? ctaHpaddingTablet : ctaButtonLeftPaddingTablet,
-          ctaButtonTopPaddingMobile:    ctaVpaddingMobile !== undefined ? ctaVpaddingMobile : ctaButtonTopPaddingMobile,
-          ctaButtonBottomPaddingMobile: ctaVpaddingMobile !== undefined ? ctaVpaddingMobile : ctaButtonBottomPaddingMobile,
-          ctaButtonLeftPaddingMobile:   ctaHpaddingMobile !== undefined ? ctaHpaddingMobile : ctaButtonLeftPaddingMobile,
-          ctaButtonRightPaddingMobile:  ctaHpaddingMobile !== undefined ? ctaHpaddingMobile : ctaButtonRightPaddingMobile,
-        }
-      )
-      this.props.setAttributes({isCtaButtonPaddingMarginValueUpdated: true});
-    }
+      // Backward-compat migration is handled earlier in `components/inspector.js`
+      // to avoid style changes only after opening this panel.
   
 
     var advancedControls;
