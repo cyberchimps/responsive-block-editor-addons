@@ -20,6 +20,11 @@
   }
 }
 
+.wp-block-responsive-block-editor-addons-feature-grid-item {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .wp-block-responsive-block-editor-addons-feature-grid-item
   .block-editor-url-input
   input[type="text"],
@@ -132,8 +137,8 @@
 
   span {
     position: absolute;
-    left: 40%;
-    top: 40%;
+    left: 0;
+    top: 0;
   }
 }
 .responsive-block-editor-addons-feature-image-wrap {
