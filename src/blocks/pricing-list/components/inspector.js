@@ -512,29 +512,6 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
-            <PanelBody
-              title={__("Color Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <RbeaColorControl
-                label = {__("Title Color", "responsive-block-editor-addons")}
-                colorValue={titleColor}
-                onChange={(colorValue) => this.props.setAttributes({ titleColor: colorValue })}
-                resetColor={() => this.props.setAttributes({ titleColor: "" })}
-              />
-              <RbeaColorControl
-                label = {__("Content Color", "responsive-block-editor-addons")}
-                colorValue={descColor}
-                onChange={(colorValue) => this.props.setAttributes({ descColor: colorValue })}
-                resetColor={() => this.props.setAttributes({ descColor: "" })}
-              />
-              <RbeaColorControl
-                label = {__("Price Color", "responsive-block-editor-addons")}
-                colorValue={priceColor}
-                onChange={(colorValue) => this.props.setAttributes({ priceColor: colorValue })}
-                resetColor={() => this.props.setAttributes({ priceColor: "" })}
-              />
-            </PanelBody>
 				<TypographyHelperControl
 					title={__("Title Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="title%s"
