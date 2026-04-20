@@ -21648,6 +21648,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'                 => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $submit_button_box_shadow_position_css,
 					'text-transform' 			 => $attr['submitButtonTextTransform'],
 					'font-style'     			 => $attr['submitButtonFontStyle'],
+					'text-decoration'			 => $attr['submitButtonTextDecoration'],
 				),
 
 				' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
@@ -22255,6 +22256,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'submitButtonFontWeight'              => 400,
 				'submitButtonLineHeight'              => 1,
 				'submitButtonLetterSpacing'           => 0,
+				'submitButtonTextDecoration'          => '',
 				'ctaColor'                            => '#ffffff',
 				'ctaBackColor'                        => '#ff6f61',
 				'ctaHoverColor'                       => '#ffffff',

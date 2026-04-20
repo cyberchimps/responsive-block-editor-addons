@@ -360,6 +360,7 @@
       gradientHover,
       gradientButton,
       gradientButtonH,
+      submitButtonTextDecoration,
    } = props.attributes;
 
 
@@ -930,7 +931,7 @@
         submitButtonBoxShadowPositionCSS,
       "text-transform": submitButtonTextTransform,
       "font-style": submitButtonFontStyle,
-      
+      "text-decoration": submitButtonTextDecoration,
 		},  
      
      

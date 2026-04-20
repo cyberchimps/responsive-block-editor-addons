@@ -1797,6 +1797,9 @@ const attributes = {
   },
   gradientButtonH: {
     type: "string",
+  },
+  submitButtonTextDecoration: {
+    type: "string",
   }
 };
 
