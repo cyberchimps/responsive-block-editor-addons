@@ -21511,6 +21511,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-transform' => $attr['labelTextTransform'],
 					'font-style'     => $attr['labelFontStyle'],
 				),
+				' .wpcf7 form.wpcf7-form label' => array(
+					'color' => $attr['labelTypographyColor'],
+				),
 				' ::-webkit-input-placeholder'             => array(
 					'color' => $attr['placeholderColor'],
 				),

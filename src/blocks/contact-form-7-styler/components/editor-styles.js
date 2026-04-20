@@ -757,7 +757,9 @@
       "text-transform": labelTextTransform,
       "font-style": labelFontStyle,
 		},
-
+    ' .wpcf7 form.wpcf7-form label': {
+      'color': labelTypographyColor,
+    },
     ' p>label': {
       display: showLabels ? "block" : 'none',
 		},
