@@ -13565,11 +13565,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'     => self::get_css_value( $attr['imageWidth'], 'px' ),
 					'max-width' => self::get_css_value( $attr['imageWidth'], 'px' ),
 				),
+				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-color .responsive-block-editor-addons-tm__overlay' => array(
+					'background-color' => 'color' === $attr['backgroundType'] ? $attr['backgroundColor'] : '',
+				),
 				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
-					'background-color'      =>
-						'color' === $attr['backgroundType']
-						? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity )
-						: '',
 					'background-image'      =>
 						'gradient' === $attr['overlayType'] && 'image' === $attr['backgroundType']
 						? $background_image_effect
