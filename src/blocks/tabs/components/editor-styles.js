@@ -13,41 +13,41 @@ function EditorStyles(props) {
     tabBorderWidth,
     tabBackgroundColor,
     tabTitleColor,
-		tabTitleActiveColor,
-    tabTitleFontFamily, 
-    tabTitleFontSize, 
-    tabTitleFontSizeMobile, 
-    tabTitleFontSizeTablet, 
-    tabTitleFontWeight, 
+    tabTitleActiveColor,
+    tabTitleFontFamily,
+    tabTitleFontSize,
+    tabTitleFontSizeMobile,
+    tabTitleFontSizeTablet,
+    tabTitleFontWeight,
     tabTitleLineHeight,
     tabContentColor,
-    tabContentFontFamily, 
-    tabContentFontSize, 
-    tabContentFontSizeMobile, 
-    tabContentFontSizeTablet, 
-    tabContentFontWeight, 
+    tabContentFontFamily,
+    tabContentFontSize,
+    tabContentFontSizeMobile,
+    tabContentFontSizeTablet,
+    tabContentFontWeight,
     tabContentLineHeight,
     tabsZindex,
-    tabsTopPadding, 
-    tabsBottomPadding, 
-    tabsLeftPadding, 
-    tabsRightPadding, 
+    tabsTopPadding,
+    tabsBottomPadding,
+    tabsLeftPadding,
+    tabsRightPadding,
     tabsTopPaddingTablet,
-    tabsBottomPaddingTablet, 
-    tabsLeftPaddingTablet, 
-    tabsRightPaddingTablet, 
+    tabsBottomPaddingTablet,
+    tabsLeftPaddingTablet,
+    tabsRightPaddingTablet,
     tabsTopPaddingMobile,
     tabsBottomPaddingMobile,
     tabsLeftPaddingMobile,
     tabsRightPaddingMobile,
-    tabsTopMargin, 
-    tabsBottomMargin, 
-    tabsLeftMargin, 
-    tabsRightMargin, 
+    tabsTopMargin,
+    tabsBottomMargin,
+    tabsLeftMargin,
+    tabsRightMargin,
     tabsTopMarginTablet,
-    tabsBottomMarginTablet, 
-    tabsLeftMarginTablet, 
-    tabsRightMarginTablet, 
+    tabsBottomMarginTablet,
+    tabsLeftMarginTablet,
+    tabsRightMarginTablet,
     tabsTopMarginMobile,
     tabsBottomMarginMobile,
     tabsLeftMarginMobile,
@@ -125,45 +125,97 @@ function EditorStyles(props) {
     tabContentTextDecoration,
   } = props.attributes;
 
-
   let imgopacity = opacity / 100;
 
   var blockBackground = "";
   if (backgroundType == "gradient") {
-    blockBackground = gradient ? gradient : generateBackgroundImageEffect(
-      `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
-      `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
-      gradientDirection,
-      colorLocation1,
-      colorLocation2
-    );
+    blockBackground = gradient
+      ? gradient
+      : generateBackgroundImageEffect(
+          `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
+          `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
+          gradientDirection,
+          colorLocation1,
+          colorLocation2
+        );
   }
 
-  let activeTabBorderWidth = '';
-  if (tabsStyleD === 'hstyle3' || tabsStyleT === 'hstyle3' || tabsStyleM === 'hstyle3') {
-    activeTabBorderWidth = {
-      "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-right-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-left-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-bottom-width" : generateCSSUnit( 0, "px" ),
-    }
-  } else if ( ( tabsStyleD === 'vstyle8' || tabsStyleT === 'vstyle8' || tabsStyleM === 'vstyle8' ) && ( alignTabsVertical === 'left' || alignTabsVerticalT === 'left' || alignTabsVerticalM === 'left' ) ) {
-    activeTabBorderWidth = {
-      "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-left-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-right-width" : generateCSSUnit( 0, "px" ),
-    }
-  }
-  else if ( ( tabsStyleD === 'vstyle8' || tabsStyleT === 'vstyle8' || tabsStyleM === 'vstyle8' ) && ( alignTabsVertical === 'right' || alignTabsVerticalT === 'right' || alignTabsVerticalM === 'right' ) ) {
-    activeTabBorderWidth = {
-      "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-left-width" : generateCSSUnit( 0, "px" ),
-      "border-right-width" : generateCSSUnit( tabBorderWidth, "px" ),
-    }
+  // ─── Desktop border widths — driven by tabsStyleD only ───────────────────────
+  let desktopBorderWidth = {};
+  if (tabsStyleD === "hstyle3") {
+    desktopBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleD === "vstyle8" && alignTabsVertical === "left") {
+    desktopBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleD === "vstyle8" && alignTabsVertical === "right") {
+    desktopBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(0, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+    };
   }
 
+  // ─── Tablet border widths — driven by tabsStyleT only ────────────────────────
+  let tabletBorderWidth = {};
+  if (tabsStyleT === "hstyle3") {
+    tabletBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleT === "vstyle8" && alignTabsVerticalT === "left") {
+    tabletBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleT === "vstyle8" && alignTabsVerticalT === "right") {
+    tabletBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(0, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+    };
+  }
+
+  // ─── Mobile border widths — driven by tabsStyleM only ────────────────────────
+  let mobileBorderWidth = {};
+  if (tabsStyleM === "hstyle3") {
+    mobileBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleM === "vstyle8" && alignTabsVerticalM === "left") {
+    mobileBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(tabBorderWidth, "px"),
+      "border-right-width":  generateCSSUnit(0, "px"),
+    };
+  } else if (tabsStyleM === "vstyle8" && alignTabsVerticalM === "right") {
+    mobileBorderWidth = {
+      "border-top-width":    generateCSSUnit(tabBorderWidth, "px"),
+      "border-bottom-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-left-width":   generateCSSUnit(0, "px"),
+      "border-right-width":  generateCSSUnit(tabBorderWidth, "px"),
+    };
+  }
+
+  // ─── Box shadow position ──────────────────────────────────────────────────────
   let boxShadowPositionCSS      = boxShadowPosition;
   let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
@@ -172,39 +224,42 @@ function EditorStyles(props) {
   if ("outset" === hoverboxShadowPosition) {
     hoverboxShadowPositionCSS = "";
   }
+
   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
+  // ─── Desktop selectors ───────────────────────────────────────────────────────
   var selectors = {
-    " ":{
-		  "opacity": hideWidget && isOn ? 0.2 : 1,
-      "padding-top": generateCSSUnit(tabsTopPadding, "px"),
+    " ": {
+      opacity: hideWidget && isOn ? 0.2 : 1,
+      "padding-top":    generateCSSUnit(tabsTopPadding,    "px"),
       "padding-bottom": generateCSSUnit(tabsBottomPadding, "px"),
-      "padding-left": generateCSSUnit(tabsLeftPadding, "px"),
-      "padding-right": generateCSSUnit(tabsRightPadding, "px"),
-      "margin-top": generateCSSUnit(tabsTopMargin, "px"),
+      "padding-left":   generateCSSUnit(tabsLeftPadding,   "px"),
+      "padding-right":  generateCSSUnit(tabsRightPadding,  "px"),
+      "margin-top":    generateCSSUnit(tabsTopMargin,    "px"),
       "margin-bottom": generateCSSUnit(tabsBottomMargin, "px"),
-      "margin-left": generateCSSUnit(tabsLeftMargin, "px"),
-      "margin-right": generateCSSUnit(tabsRightMargin, "px"),
+      "margin-left":   generateCSSUnit(tabsLeftMargin,   "px"),
+      "margin-right":  generateCSSUnit(tabsRightMargin,  "px"),
       "z-index": tabsZindex,
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image": blockBackground,
-      "border-style" : blockBorderStyle,
-      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-style": blockBorderStyle,
+      "border-top-left-radius":     generateCSSUnit(blockTopRadius,    "px"),
+      "border-top-right-radius":    generateCSSUnit(blockRightRadius,  "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
-      "border-width" : generateCSSUnit( blockBorderWidth, "px" ),
-      "border-color" : blockBorderColor,
-      'animation-name': `${animationName}${animationDirection}`,
-      'animation-timing-function': animationCurve,
-      'animation-duration': animationDuration+'ms',
-      'animation-delay': animationDelay+'ms',
-      'animation-iteration-count': animationRepeat === 'once' ? 1 : 'infinite',
+      "border-bottom-left-radius":  generateCSSUnit(blockLeftRadius,   "px"),
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-color": blockBorderColor,
+      "animation-name":             `${animationName}${animationDirection}`,
+      "animation-timing-function":  animationCurve,
+      "animation-duration":         animationDuration + "ms",
+      "animation-delay":            animationDelay + "ms",
+      "animation-iteration-count":  animationRepeat === "once" ? 1 : "infinite",
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
     },
+
     ":hover": {
       "background-color":
         backgroundType == "color"
@@ -212,141 +267,172 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? gradientHover ? gradientHover : generateBackgroundImageEffect(
-            `${hexToRgba(
-              hoverbackgroundColor1 || "#ffffff",
-              imgopacity || 0
-            )}`,
-            `${hexToRgba(
-              hoverbackgroundColor2 || "#ffffff",
-              imgopacity || 0
-            )}`,
-            hovergradientDirection,
-            hovercolorLocation1,
-            hovercolorLocation2
-          )
+          ? gradientHover
+            ? gradientHover
+            : generateBackgroundImageEffect(
+                `${hexToRgba(hoverbackgroundColor1 || "#ffffff", imgopacity || 0)}`,
+                `${hexToRgba(hoverbackgroundColor2 || "#ffffff", imgopacity || 0)}`,
+                hovergradientDirection,
+                hovercolorLocation1,
+                hovercolorLocation2
+              )
           : undefined,
-      "box-shadow": hoverboxShadowColor !== '' ? `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}` : '',
+      "box-shadow":
+        hoverboxShadowColor !== ""
+          ? `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`
+          : "",
     },
-    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active" : {
-			"background": tabBackgroundColor,
-		},
-    " > .responsive-block-editor-addons-tabs__body-wrap " : {
-			"background": tabBackgroundColor,
-		},
-    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab" : {
-      "border-style": tabBorderWidth > 0 ? "solid" : "none",
-      ...activeTabBorderWidth,
-      "border-color" : "transparent",
-      "text-align" : tabsStyleD === 'vstyle8' ? "center" : "left"
+
+    // Active tab + body background
+    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active": {
+      background: tabBackgroundColor,
     },
-    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active" : {
-      "border-style": tabBorderWidth > 0 ? "solid" : "none",
-      ...activeTabBorderWidth,
-      "border-color" : tabBorderColor,
-      "z-index": "10",
-      "margin-bottom": tabsStyleD === "hstyle3" ? "-2px" : '',
-      "margin-right": tabsStyleD === "vstyle8" ? "-2px" : '',
+    " > .responsive-block-editor-addons-tabs__body-wrap ": {
+      background: tabBackgroundColor,
     },
-    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__body-wrap" : {
-      "border-width" : generateCSSUnit( tabBorderWidth, "px" ),
-      "border-color" : tabBorderColor,
+
+    // Desktop — inactive tab borders
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab": {
+      "border-style":  tabBorderWidth > 0 ? "solid" : "none",
+      ...desktopBorderWidth,
+      "border-color": "transparent",
+      "text-align":   tabsStyleD === "vstyle8" ? "center" : "left",
     },
-    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
-			"color": tabTitleTypographyColor,
-      "font-family": tabTitleFontFamily,
-      "text-transform": tabTitleTextTransform,
-      "text-decoration": tabTitleTextDecoration,
-      "font-style": tabTitleFontStyle,
-			"font-weight": tabTitleFontWeight,
-			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
-			"line-height": generateCSSUnit( tabTitleLineHeight, "px" ),
-		},
-    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active p" : {
-			"color": tabTitleActiveTypographyColor ,
-		},
-    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
-			"color": tabContentTypographyColor,
-      "font-family": tabContentFontFamily,
-      "text-transform": tabContentTextTransform,
+
+    // Desktop — active tab borders
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active": {
+      "border-style":  tabBorderWidth > 0 ? "solid" : "none",
+      ...desktopBorderWidth,
+      "border-color":  tabBorderColor,
+      "z-index":       "10",
+      "margin-bottom": tabsStyleD === "hstyle3" ? "-2px" : "",
+      "margin-right":  tabsStyleD === "vstyle8" ? "-2px" : "",
+    },
+
+    // Body wrap border
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__body-wrap": {
+      "border-width": generateCSSUnit(tabBorderWidth, "px"),
+      "border-color": tabBorderColor,
+    },
+
+    // Title typography
+    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p": {
+      color:              tabTitleTypographyColor,
+      "font-family":      tabTitleFontFamily,
+      "text-transform":   tabTitleTextTransform,
+      "text-decoration":  tabTitleTextDecoration,
+      "font-style":       tabTitleFontStyle,
+      "font-weight":      tabTitleFontWeight,
+      "font-size":        generateCSSUnit(tabTitleFontSize,   "px"),
+      "line-height":      generateCSSUnit(tabTitleLineHeight, "px"),
+    },
+
+    // Active title color
+    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active p": {
+      color: tabTitleActiveTypographyColor,
+    },
+
+    // Content typography
+    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p": {
+      color:             tabContentTypographyColor,
+      "font-family":     tabContentFontFamily,
+      "text-transform":  tabContentTextTransform,
       "text-decoration": tabContentTextDecoration,
-      "font-style": tabContentFontStyle,
-			"font-weight": tabContentFontWeight,
-			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
-			"line-height": generateCSSUnit( tabContentLineHeight, "px" ),
-		},
-    ".responsive-block-editor-addons-vstyle8-left" : {
-      "flex-direction": "row",
-    },
-    ".responsive-block-editor-addons-vstyle8-right" : {
-      "flex-direction": "row-reverse",
+      "font-style":      tabContentFontStyle,
+      "font-weight":     tabContentFontWeight,
+      "font-size":       generateCSSUnit(tabContentFontSize,   "px"),
+      "line-height":     generateCSSUnit(tabContentLineHeight, "px"),
     },
   };
 
-  var mobile_selectors = {
-    " ":{
-		  "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
-      "padding-top": generateCSSUnit(tabsTopPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(tabsBottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(tabsLeftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(tabsRightPaddingMobile, "px"),
-      "margin-top": generateCSSUnit(tabsTopMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(tabsBottomMarginMobile, "px"),
-      "margin-left": generateCSSUnit(tabsLeftMarginMobile, "px"),
-      "margin-right": generateCSSUnit(tabsRightMarginMobile, "px"),
-      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
-      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
-    },
-    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
-			"font-size": generateCSSUnit( tabTitleFontSizeMobile, "px" ),
-		},
-    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
-			"font-size": generateCSSUnit( tabContentFontSizeMobile, "px" ),
-		},
-    ".responsive-block-editor-addons-vstyle8-left" : {
-      "flex-direction": "row",
-    },
-    ".responsive-block-editor-addons-vstyle8-right" : {
-      "flex-direction": "row-reverse",
-    },
-  };
-
+  // ─── Tablet selectors ─────────────────────────────────────────────────────────
   var tablet_selectors = {
-    " ":{
-		  "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
-      "padding-top": generateCSSUnit(tabsTopPaddingTablet, "px"),
+    " ": {
+      opacity: hideWidgetTablet && isOn ? 0.2 : 1,
+      "padding-top":    generateCSSUnit(tabsTopPaddingTablet,    "px"),
       "padding-bottom": generateCSSUnit(tabsBottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(tabsLeftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(tabsRightPaddingTablet, "px"),
-      "margin-top": generateCSSUnit(tabsTopMarginTablet, "px"),
+      "padding-left":   generateCSSUnit(tabsLeftPaddingTablet,   "px"),
+      "padding-right":  generateCSSUnit(tabsRightPaddingTablet,  "px"),
+      "margin-top":    generateCSSUnit(tabsTopMarginTablet,    "px"),
       "margin-bottom": generateCSSUnit(tabsBottomMarginTablet, "px"),
-      "margin-left": generateCSSUnit(tabsLeftMarginTablet, "px"),
-      "margin-right": generateCSSUnit(tabsRightMarginTablet, "px"),
-      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "margin-left":   generateCSSUnit(tabsLeftMarginTablet,   "px"),
+      "margin-right":  generateCSSUnit(tabsRightMarginTablet,  "px"),
+      "border-top-left-radius":     generateCSSUnit(blockTopRadiusTablet,    "px"),
+      "border-top-right-radius":    generateCSSUnit(blockRightRadiusTablet,  "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+      "border-bottom-left-radius":  generateCSSUnit(blockLeftRadiusTablet,   "px"),
     },
-    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
-			"font-size": generateCSSUnit( tabTitleFontSizeTablet, "px" ),
-		},
-    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
-			"font-size": generateCSSUnit( tabContentFontSizeTablet, "px" ),
-		},
-    ".responsive-block-editor-addons-vstyle8-left" : {
-      "flex-direction": "row",
+
+    // Title font size
+    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p": {
+      "font-size": generateCSSUnit(tabTitleFontSizeTablet, "px"),
     },
-    ".responsive-block-editor-addons-vstyle8-right" : {
-      "flex-direction": "row-reverse",
+
+    // Content font size
+    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p": {
+      "font-size": generateCSSUnit(tabContentFontSizeTablet, "px"),
+    },
+
+    // Tablet — inactive tab border + text-align (driven by tabsStyleT)
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab": {
+      ...tabletBorderWidth,
+      "text-align": tabsStyleT === "vstyle8" ? "center" : "left",
+    },
+
+    // Tablet — active tab border + margin (driven by tabsStyleT)
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active": {
+      ...tabletBorderWidth,
+      "margin-bottom": tabsStyleT === "hstyle3" ? "-2px" : "",
+      "margin-right":  tabsStyleT === "vstyle8" ? "-2px" : "",
+    },
+  };
+
+  // ─── Mobile selectors ─────────────────────────────────────────────────────────
+  var mobile_selectors = {
+    " ": {
+      opacity: hideWidgetMobile && isOn ? 0.2 : 1,
+      "padding-top":    generateCSSUnit(tabsTopPaddingMobile,    "px"),
+      "padding-bottom": generateCSSUnit(tabsBottomPaddingMobile, "px"),
+      "padding-left":   generateCSSUnit(tabsLeftPaddingMobile,   "px"),
+      "padding-right":  generateCSSUnit(tabsRightPaddingMobile,  "px"),
+      "margin-top":    generateCSSUnit(tabsTopMarginMobile,    "px"),
+      "margin-bottom": generateCSSUnit(tabsBottomMarginMobile, "px"),
+      "margin-left":   generateCSSUnit(tabsLeftMarginMobile,   "px"),
+      "margin-right":  generateCSSUnit(tabsRightMarginMobile,  "px"),
+      "border-top-left-radius":     generateCSSUnit(blockTopRadiusMobile,    "px"),
+      "border-top-right-radius":    generateCSSUnit(blockRightRadiusMobile,  "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius":  generateCSSUnit(blockLeftRadiusMobile,   "px"),
+    },
+
+    // Title font size
+    " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p": {
+      "font-size": generateCSSUnit(tabTitleFontSizeMobile, "px"),
+    },
+
+    // Content font size
+    " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p": {
+      "font-size": generateCSSUnit(tabContentFontSizeMobile, "px"),
+    },
+
+    // Mobile — inactive tab border + text-align (driven by tabsStyleM)
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab": {
+      ...mobileBorderWidth,
+      "text-align": tabsStyleM === "vstyle8" ? "center" : "left",
+    },
+
+    // Mobile — active tab border + margin (driven by tabsStyleM)
+    ".responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active": {
+      ...mobileBorderWidth,
+      "margin-bottom": tabsStyleM === "hstyle3" ? "-2px" : "",
+      "margin-right":  tabsStyleM === "vstyle8" ? "-2px" : "",
     },
   };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-tabs.block-${props.clientId}`;
 
-  styling_css = generateCSS(selectors, id);
+  styling_css  = generateCSS(selectors,        id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");
   styling_css += generateCSS(mobile_selectors, id, true, "mobile");
 
