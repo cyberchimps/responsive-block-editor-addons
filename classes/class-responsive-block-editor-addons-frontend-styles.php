@@ -18120,52 +18120,52 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left' => self::get_css_value( $attr['iconLabelGap'], 'px' ),
 					'color'       => $attr['labelTypographyColor'],
 				),
-				' .responsive-block-editor-addons-icon-facebook, .responsive-block-editor-addons-icon-facebook-f, .responsive-block-editor-addons-icon-facebook-square, .responsive-block-editor-addons-icon-facebook-messenger' => array(
+				' .responsive-block-editor-addons-icon-facebook svg, .responsive-block-editor-addons-icon-facebook-f svg, .responsive-block-editor-addons-icon-facebook-square svg, .responsive-block-editor-addons-icon-facebook-messenger svg' => array(
 					'fill' => '#3b5998',
 				),
-				' .responsive-block-editor-addons-icon-twitter, .responsive-block-editor-addons-icon-twitter-square' => array(
+				' .responsive-block-editor-addons-icon-twitter svg, .responsive-block-editor-addons-icon-twitter-square svg' => array(
 					'fill' => '#00aced',
 				),
-				' .responsive-block-editor-addons-icon-linkedin, .responsive-block-editor-addons-icon-linkedin-in' => array(
+				' .responsive-block-editor-addons-icon-linkedin svg, .responsive-block-editor-addons-icon-linkedin-in svg' => array(
 					'fill' => '#007bb6',
 				),
-				' .responsive-block-editor-addons-icon-youtube, .responsive-block-editor-addons-icon-youtube-square' => array(
+				' .responsive-block-editor-addons-icon-youtube svg, .responsive-block-editor-addons-icon-youtube-square svg' => array(
 					'fill' => '#bb0000',
 				),
-				' .responsive-block-editor-addons-icon-pinterest, .responsive-block-editor-addons-icon-pinterest-p, .responsive-block-editor-addons-icon-pinterest-square' => array(
+				' .responsive-block-editor-addons-icon-pinterest svg, .responsive-block-editor-addons-icon-pinterest-p svg, .responsive-block-editor-addons-icon-pinterest-square svg' => array(
 					'fill' => '#bb0000',
 				),
-				' .responsive-block-editor-addons-icon-instagram' => array(
+				' .responsive-block-editor-addons-icon-instagram svg' => array(
 					'fill' => '#e95950',
 				),
-				' .responsive-block-editor-addons-icon-snapchat, .responsive-block-editor-addons-icon-snapchat-ghost,  .responsive-block-editor-addons-icon-snapchat-square' => array(
+				' .responsive-block-editor-addons-icon-snapchat svg, .responsive-block-editor-addons-icon-snapchat-ghost svg,  .responsive-block-editor-addons-icon-snapchat-square svg' => array(
 					'fill' => '#fffc00',
 				),
-				' .responsive-block-editor-addons-icon-tumblr, .responsive-block-editor-addons-icon-tumblr-square' => array(
+				' .responsive-block-editor-addons-icon-tumblr svg, .responsive-block-editor-addons-icon-tumblr-square svg' => array(
 					'fill' => '#32506d',
 				),
-				' .responsive-block-editor-addons-icon-vimeo, .responsive-block-editor-addons-icon-vimeo-v, .responsive-block-editor-addons-icon-vimeo-square' => array(
+				' .responsive-block-editor-addons-icon-vimeo svg, .responsive-block-editor-addons-icon-vimeo-v svg, .responsive-block-editor-addons-icon-vimeo-square svg' => array(
 					'fill' => '#aad450',
 				),
-				' .responsive-block-editor-addons-icon-quora' => array(
+				' .responsive-block-editor-addons-icon-quora svg' => array(
 					'fill' => '#a82400',
 				),
-				' .responsive-block-editor-addons-icon-google-plus, .responsive-block-editor-addons-icon-google-plus-g, .responsive-block-editor-addons-icon-google-plus-square' => array(
+				' .responsive-block-editor-addons-icon-google-plus svg, .responsive-block-editor-addons-icon-google-plus-g svg, .responsive-block-editor-addons-icon-google-plus-square svg' => array(
 					'fill' => '#dd4b39',
 				),
-				' .responsive-block-editor-addons-icon-reddit, .responsive-block-editor-addons-icon-reddit-alien, .responsive-block-editor-addons-icon-reddit-square' => array(
+				' .responsive-block-editor-addons-icon-reddit svg, .responsive-block-editor-addons-icon-reddit-alien svg, .responsive-block-editor-addons-icon-reddit-square svg' => array(
 					'fill' => '#FF5700',
 				),
-				' .responsive-block-editor-addons-icon-skype' => array(
+				' .responsive-block-editor-addons-icon-skype svg' => array(
 					'fill' => '#00aff0',
 				),
-				' .responsive-block-editor-addons-icon-telegram, .responsive-block-editor-addons-icon-telegram-plane' => array(
+				' .responsive-block-editor-addons-icon-telegram svg, .responsive-block-editor-addons-icon-telegram-plane svg' => array(
 					'fill' => '#0088cc',
 				),
-				' .responsive-block-editor-addons-icon-whatsapp, .responsive-block-editor-addons-icon-whatsapp-square' => array(
+				' .responsive-block-editor-addons-icon-whatsapp svg, .responsive-block-editor-addons-icon-whatsapp-square svg' => array(
 					'fill' => '#34B7F1',
 				),
-				' .responsive-block-editor-addons-icon-envelope' => array(
+				' .responsive-block-editor-addons-icon-envelope svg' => array(
 					'fill' => '#BB001B',
 				),
 			);
