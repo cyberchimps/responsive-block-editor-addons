@@ -98,7 +98,7 @@
       "justify-content": justifyButtonDirection,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthCSS,
+      "width": inheritFromTheme ? '' : buttonWidthCSS,
       "background-color": inheritFromTheme ? '' : buttonBackground,
       "border": inheritFromTheme ? '' : buttonBorder,
       "border-radius": buttonBorderRadius,
@@ -145,7 +145,7 @@
       "padding": `${generateCSSUnit(blockTopPaddingMobile, "px")} ${generateCSSUnit(blockRightPaddingMobile, "px")} ${generateCSSUnit(blockBottomPaddingMobile, "px")} ${generateCSSUnit(blockLeftPaddingMobile, "px")}`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthMobileCSS,
+      "width": inheritFromTheme ? '' : buttonWidthMobileCSS,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
       "font-size": `${generateCSSUnit(textFontSizeMobile, "px")} !important`,
@@ -169,7 +169,7 @@
       "padding": `${generateCSSUnit(blockTopPaddingTablet, "px")} ${generateCSSUnit(blockRightPaddingTablet, "px")} ${generateCSSUnit(blockBottomPaddingTablet, "px")} ${generateCSSUnit(blockLeftPaddingTablet, "px")}`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthTabletCSS,
+      "width": inheritFromTheme ? '' : buttonWidthTabletCSS,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
       "font-size": `${generateCSSUnit(textFontSizeTablet, "px")} !important`,
