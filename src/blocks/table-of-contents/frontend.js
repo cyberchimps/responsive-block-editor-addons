@@ -17,8 +17,6 @@ jQuery(function ($) {
   $(".responsive-block-editor-addons-toc__wrap").each(function () {
     var $wrap = $(this);
 
-    // Responsive conditions hide blocks via `display:none` on certain breakpoints.
-    // If the heading (or any parent) is hidden, it will have no layout boxes.
     function isHeadingVisible(headingEl) {
       if (!headingEl) return false;
       return headingEl.getClientRects && headingEl.getClientRects().length > 0;
@@ -52,8 +50,6 @@ jQuery(function ($) {
     }
 
     // Clear existing list only when we have valid PHP headings data to rebuild it.
-    // This prevents wiping the editor-rendered list in Gutenberg previews where
-    // `data-headings` is typically missing.
     var hasLinks = $listWrap.find("a[href^='#']").length > 0;
     if (hasLinks) {
       $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
@@ -85,7 +81,7 @@ jQuery(function ($) {
 
       if (currentLevel === 0) currentLevel = level;
 
-      // Deeper → open nested list
+      
       while (level > currentLevel) {
         var $newList = $('<' + ListTagName + ' class="child-list' + listTypeClass + '"></' + ListTagName + '>');
         var $lastLi = listStack[listStack.length - 1].children("li").last();
@@ -93,13 +89,12 @@ jQuery(function ($) {
         listStack.push($newList);
         currentLevel++;
       }
-      // Shallower → pop back up
+      
       while (level < currentLevel && listStack.length > 1) {
         listStack.pop();
         currentLevel--;
       }
-      // If we went to a shallower level but there was nothing to pop (no nested lists yet),
-      // update the currentLevel so subsequent headings nest correctly (match editor behavior).
+      
       if (level < currentLevel) {
         currentLevel = level;
       }

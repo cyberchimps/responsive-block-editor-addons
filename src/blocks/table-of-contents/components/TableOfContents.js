@@ -190,7 +190,7 @@ class TableOfContents extends React.Component {
         }
 
         // Build hierarchy using a stack (same idea as frontend.js).
-        // This correctly handles headings that go "back up" in level, e.g. H2 → H3 → H1.
+        // This correctly handles headings that go "back up" in level
         const formatHeaders = (allHeaders) => {
             const root = [];
             const stack = [{ level: 0, list: root }];
