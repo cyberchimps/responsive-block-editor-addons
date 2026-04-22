@@ -204,6 +204,7 @@ export default class Inspector extends Component {
         buttonWidthTablet,
         //Icon
         icon,
+        icon_color,
         iconPosition,
         iconSize,
         iconSizeMobile,
@@ -576,6 +577,12 @@ export default class Inspector extends Component {
               title={__("Button Icon", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <RbeaColorControl
+                label={__("Icon Color", "responsive-block-editor-addons")}
+                colorValue={icon_color}
+                onChange={(colorValue) => setAttributes({ icon_color: colorValue })}
+                resetColor={() => setAttributes({ icon_color: "" })}
+              />
               <p className="components-base-control__label">
                 {__("Selected Icon", "responsive-block-editor-addons")}
               </p>
