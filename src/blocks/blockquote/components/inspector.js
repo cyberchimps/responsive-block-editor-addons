@@ -4,6 +4,7 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import renderSVG from "../renderQuoteIcon";
 import ResponsiveBlocksQuoteIcon from "../ResponsiveBlocksQuoteIcon.json";
+import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
@@ -25,7 +26,12 @@ import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlock
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
-let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
+const svg_icons = Array.from(
+  new Set([
+    ...Object.keys(ResponsiveBlocksQuoteIcon),
+    ...Object.keys(ResponsiveBlocksIcon),
+  ])
+);
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
