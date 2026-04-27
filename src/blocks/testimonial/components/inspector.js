@@ -870,11 +870,6 @@ export default class Inspector extends Component {
                 max={starRange || 5}
                 step={0.1}
               />
-            </PanelBody>
-            <PanelBody
-              title={__("Star Alignment", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
               <BaseControl __nextHasNoMarginBottom>
                 <p>{__("Alignment", "responsive-block-editor-addons")}</p>
                 <div className="responsive-block-editor-addons-alignment">
