@@ -17,6 +17,7 @@ import GradientBackgroundControl from "../../../settings-components/BlockBackgro
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveSpacingControl";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
@@ -351,6 +352,11 @@ export default class Inspector extends Component {
         authorTitleBottomSpacingMobile,
         quoteHpositionpercentage,
         quoteVpositionpercentage,
+        quoteHpositionpercentageTablet,
+        quoteVpositionpercentageTablet,
+        quoteHpositionpercentageMobile,
+        quoteVpositionpercentageMobile,
+        isQuotePositionResponsiveUpdated,
       },
       setAttributes,
     } = this.props;
@@ -442,6 +448,29 @@ export default class Inspector extends Component {
         }
       )
       this.props.setAttributes({isAlignmentValueUpdated: true});
+    }
+
+    // Backward compatibility for responsive quote position controls.
+    if (!isQuotePositionResponsiveUpdated) {
+      this.props.setAttributes({
+        quoteHpositionpercentageTablet:
+          quoteHpositionpercentageTablet !== undefined
+            ? quoteHpositionpercentageTablet
+            : quoteHpositionpercentage,
+        quoteHpositionpercentageMobile:
+          quoteHpositionpercentageMobile !== undefined
+            ? quoteHpositionpercentageMobile
+            : quoteHpositionpercentage,
+        quoteVpositionpercentageTablet:
+          quoteVpositionpercentageTablet !== undefined
+            ? quoteVpositionpercentageTablet
+            : quoteVpositionpercentage,
+        quoteVpositionpercentageMobile:
+          quoteVpositionpercentageMobile !== undefined
+            ? quoteVpositionpercentageMobile
+            : quoteVpositionpercentage,
+        isQuotePositionResponsiveUpdated: true,
+      });
     }
 
     return (
@@ -739,37 +768,25 @@ export default class Inspector extends Component {
               }
               resetColor={() => setAttributes({ quoteColor: "" })}
             />
-              <RbeaRangeControl
-                label={__(
-                  "Horizontal Position (%)",
-                  "responsive-block-editor-addons"
-                )}
-                value={quoteHpositionpercentage}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteHpositionpercentage: value !== undefined ? value : 30,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
-                allowReset
+              <ResponsiveSpacingControl
+                title={__("Horizontal Position (%)", "responsive-block-editor-addons")}
+                attrNameTemplate="quoteHpositionpercentage%s"
+                values={{
+                  desktop: quoteHpositionpercentage,
+                  tablet: quoteHpositionpercentageTablet,
+                  mobile: quoteHpositionpercentageMobile,
+                }}
+                setAttributes={setAttributes}
               />
-              <RbeaRangeControl
-                label={__(
-                  "Vertical Position (%)",
-                  "responsive-block-editor-addons"
-                )}
-                value={quoteVpositionpercentage}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteVpositionpercentage: value !== undefined ? value : 20,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
-                allowReset
+              <ResponsiveSpacingControl
+                title={__("Vertical Position (%)", "responsive-block-editor-addons")}
+                attrNameTemplate="quoteVpositionpercentage%s"
+                values={{
+                  desktop: quoteVpositionpercentage,
+                  tablet: quoteVpositionpercentageTablet,
+                  mobile: quoteVpositionpercentageMobile,
+                }}
+                setAttributes={setAttributes}
               />
               <RbeaRangeControl
                 label={__("Opacity", "responsive-block-editor-addons")}

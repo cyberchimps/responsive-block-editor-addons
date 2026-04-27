@@ -1732,6 +1732,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingMobile'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPaddingMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
+					'left' => isset( $attr['quoteHpositionpercentageMobile'] ) && $attr['quoteHpositionpercentageMobile'] !== null && $attr['quoteHpositionpercentageMobile'] !== ''
+						? self::get_css_value( $attr['quoteHpositionpercentageMobile'], '%' )
+						: ( isset( $attr['quoteHpositionpercentage'] ) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteHpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteHposition'], 'px' )
+						),
+					'top' => isset( $attr['quoteVpositionpercentageMobile'] ) && $attr['quoteVpositionpercentageMobile'] !== null && $attr['quoteVpositionpercentageMobile'] !== ''
+						? self::get_css_value( $attr['quoteVpositionpercentageMobile'], '%' )
+						: ( isset( $attr['quoteVpositionpercentage'] ) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteVpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteVposition'], 'px' )
+						),
+				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'font-size' => self::get_css_value( $attr['quoteFontSizeMobile'], 'px' ),
 				),
@@ -1783,6 +1797,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['textRightPaddingTablet'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingTablet'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPaddingTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
+					'left' => isset( $attr['quoteHpositionpercentageTablet'] ) && $attr['quoteHpositionpercentageTablet'] !== null && $attr['quoteHpositionpercentageTablet'] !== ''
+						? self::get_css_value( $attr['quoteHpositionpercentageTablet'], '%' )
+						: ( isset( $attr['quoteHpositionpercentage'] ) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteHpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteHposition'], 'px' )
+						),
+					'top' => isset( $attr['quoteVpositionpercentageTablet'] ) && $attr['quoteVpositionpercentageTablet'] !== null && $attr['quoteVpositionpercentageTablet'] !== ''
+						? self::get_css_value( $attr['quoteVpositionpercentageTablet'], '%' )
+						: ( isset( $attr['quoteVpositionpercentage'] ) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteVpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteVposition'], 'px' )
+						),
 				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'font-size' => self::get_css_value( $attr['quoteFontSizeTablet'], 'px' ),
@@ -15078,7 +15106,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'quoteTextDecoration'	   => '',
 				'blockVer'				   => '',
 				'quoteHpositionpercentage' => '',
+				'quoteHpositionpercentageTablet' => '',
+				'quoteHpositionpercentageMobile' => '',
 				'quoteVpositionpercentage' => '',
+				'quoteVpositionpercentageTablet' => '',
+				'quoteVpositionpercentageMobile' => '',
 			);
 		}
 

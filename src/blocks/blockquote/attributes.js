@@ -208,12 +208,28 @@ const attributes = {
   quoteHpositionpercentage: {
     type: "number",
   },
+  quoteHpositionpercentageTablet: {
+    type: "number",
+  },
+  quoteHpositionpercentageMobile: {
+    type: "number",
+  },
   quoteVposition: {
     type: "number",
     default: 20,
   },
   quoteVpositionpercentage: {
     type: "number",
+  },
+  quoteVpositionpercentageTablet: {
+    type: "number",
+  },
+  quoteVpositionpercentageMobile: {
+    type: "number",
+  },
+  isQuotePositionResponsiveUpdated: {
+    type: "boolean",
+    default: false,
   },
   quoteAlign: {
     type: "string",

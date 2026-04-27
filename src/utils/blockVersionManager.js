@@ -135,6 +135,8 @@ const BLOCK_VERSION_CONFIGS = {
       authorTitleTypographyColor: "#4a5565",
       authorTitleFontStyle: "italic",
       quoteHpositionpercentage: 50,
+      quoteVpositionpercentageTablet: 0,
+      quoteVpositionpercentageMobile: 0,
     },
   },
   // Add more blocks as needed:

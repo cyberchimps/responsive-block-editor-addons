@@ -170,7 +170,11 @@ function EditorStyles(props) {
     showAuthorSeparator,
     blockVer,
     quoteHpositionpercentage,
-    quoteVpositionpercentage
+    quoteVpositionpercentage,
+    quoteHpositionpercentageTablet,
+    quoteVpositionpercentageTablet,
+    quoteHpositionpercentageMobile,
+    quoteVpositionpercentageMobile
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -412,6 +416,20 @@ function EditorStyles(props) {
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
+    " .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote": {
+      left:
+        quoteHpositionpercentageMobile != null && quoteHpositionpercentageMobile !== ""
+          ? generateCSSUnit(quoteHpositionpercentageMobile, "%")
+          : quoteHpositionpercentage != null
+            ? generateCSSUnit(quoteHpositionpercentage, "%")
+            : generateCSSUnit(quoteHposition, "px"),
+      top:
+        quoteVpositionpercentageMobile != null && quoteVpositionpercentageMobile !== ""
+          ? generateCSSUnit(quoteVpositionpercentageMobile, "%")
+          : quoteVpositionpercentage != null
+            ? generateCSSUnit(quoteVpositionpercentage, "%")
+            : generateCSSUnit(quoteVposition, "px"),
+    },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(textRightPaddingMobile, "px"),
@@ -462,6 +480,20 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote": {
+      left:
+        quoteHpositionpercentageTablet != null && quoteHpositionpercentageTablet !== ""
+          ? generateCSSUnit(quoteHpositionpercentageTablet, "%")
+          : quoteHpositionpercentage != null
+            ? generateCSSUnit(quoteHpositionpercentage, "%")
+            : generateCSSUnit(quoteHposition, "px"),
+      top:
+        quoteVpositionpercentageTablet != null && quoteVpositionpercentageTablet !== ""
+          ? generateCSSUnit(quoteVpositionpercentageTablet, "%")
+          : quoteVpositionpercentage != null
+            ? generateCSSUnit(quoteVpositionpercentage, "%")
+            : generateCSSUnit(quoteVposition, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingTablet, "px"),
