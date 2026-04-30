@@ -68,21 +68,25 @@ const attributes = {
 		type: "string",
 		default: ""
 	},
+	icon_color: {
+		type: "string",
+		default: "",
+	},
 	iconPosition: {
 		type: "string",
 		default: "left"
 	},
 	iconSize: {
 		type: "number",
-		default: ""
+		default: "20"
 	},
 	iconSizeMobile: {
 		type: "number",
-		default: ""
+		default: "20"
 	},
 	iconSizeTablet: {
 		type: "number",
-		default: ""
+		default: "20"
 	},
 	//Colors
 	buttonColor: {

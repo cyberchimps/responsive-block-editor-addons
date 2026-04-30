@@ -13,6 +13,7 @@
      buttonWidth,
      buttonWidthMobile,
      buttonWidthTablet,
+     icon_color,
      iconSize,
      iconSizeMobile,
      iconSizeTablet,
@@ -78,6 +79,7 @@
    let buttonBackground = buttonStyleToggle === "transparent" ? "" : buttonColor;
    let textColorHover = buttonStyleToggle === "transparent" ? buttonColorHover : buttonTextColorHover;
    let buttonBackgroundHover = buttonStyleToggle === "transparent" ? "" : buttonColorHover;
+   let iconFill = icon_color ? icon_color : textColor;
 
    let justifyButtonDirection = 'flex-start';
    if(buttonAlign === 'center') {
@@ -98,10 +100,10 @@
       "justify-content": justifyButtonDirection,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthCSS,
+      "width": inheritFromTheme ? '' : buttonWidthCSS,
       "background-color": inheritFromTheme ? '' : buttonBackground,
       "border": inheritFromTheme ? '' : buttonBorder,
-      "border-radius": buttonBorderRadius,
+      "border-radius": inheritFromTheme ? '' : buttonBorderRadius,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover": {
       "background-color": inheritFromTheme ? '' : buttonBackgroundHover,
@@ -118,7 +120,10 @@
       "font-style": textFontStyle,
     },
     " .responsive-block-editor-addons-call-mail-button-icon": {
-      "fill": textColor,
+      "fill": iconFill,
+    },
+    " .responsive-block-editor-addons-call-mail-button-icon svg, .responsive-block-editor-addons-call-mail-button-icon svg path": {
+      "fill": iconFill,
     },
     " .responsive-block-editor-addons-call-mail-button-icon svg": {
       "height": `${generateCSSUnit(iconSize, "px")} !important`,
@@ -128,7 +133,10 @@
       "color": inheritFromTheme ? '' : textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon": {
-      "fill": inheritFromTheme ? '' : textColorHover,
+      "fill": icon_color ? icon_color : ( inheritFromTheme ? '' : textColorHover ),
+    },
+    " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon svg, .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon svg path": {
+      "fill": icon_color ? icon_color : ( inheritFromTheme ? '' : textColorHover ),
     },
     " .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left": {
       "margin-right": generateCSSUnit(iconTextGap, "px")
@@ -145,7 +153,7 @@
       "padding": `${generateCSSUnit(blockTopPaddingMobile, "px")} ${generateCSSUnit(blockRightPaddingMobile, "px")} ${generateCSSUnit(blockBottomPaddingMobile, "px")} ${generateCSSUnit(blockLeftPaddingMobile, "px")}`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthMobileCSS,
+      "width": inheritFromTheme ? '' : buttonWidthMobileCSS,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
       "font-size": `${generateCSSUnit(textFontSizeMobile, "px")} !important`,
@@ -169,7 +177,7 @@
       "padding": `${generateCSSUnit(blockTopPaddingTablet, "px")} ${generateCSSUnit(blockRightPaddingTablet, "px")} ${generateCSSUnit(blockBottomPaddingTablet, "px")} ${generateCSSUnit(blockLeftPaddingTablet, "px")}`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
-      "width": buttonWidthTabletCSS,
+      "width": inheritFromTheme ? '' : buttonWidthTabletCSS,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
       "font-size": `${generateCSSUnit(textFontSizeTablet, "px")} !important`,

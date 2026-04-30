@@ -204,6 +204,7 @@ export default class Inspector extends Component {
         buttonWidthTablet,
         //Icon
         icon,
+        icon_color,
         iconPosition,
         iconSize,
         iconSizeMobile,
@@ -383,137 +384,145 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
-            <PanelBody
-              title={__("Button Size", "responsive-block-editor-addons")}
-              initialOpen={true}
-            >
-              <RbeaTabRadioControl
-                label={__(
-                  "Button Size Type",
-                  "responsive-block-editor-addons"
-                )}
-                value={buttonSize}
-                options={buttonSizeOptions.map(({ value, label }) => ({
-                  value,
-                  label,
-                }))}
-                onChange={(value) => setAttributes({ buttonSize: value })}
-                defaultValue={"medium"}
-              />
-            </PanelBody>
-            <PanelBody
-              title={__("Button Width", "responsive-block-editor-addons")}
-              initialOpen={true}
-            >
-              <RbeaTabRadioControl
-                label={__(
-                  "Button Width Type",
-                  "responsive-block-editor-addons"
-                )}
-                value={buttonWidthType}
-                options={[
-                  {
-                    value: "fixed",
-                    label: __("Fixed", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "flexible",
-                    label: __("Flexible", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "full",
-                    label: __("Full", "responsive-block-editor-addons"),
-                  },
-                ]}
-                onChange={(value) => setAttributes({ buttonWidthType: value })}
-                defaultValue={"fixed"}
-              />
-              {"flexible" === buttonWidthType && (
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
+            {
+              !inheritFromTheme && (
+                <PanelBody
+                  title={__("Button Size", "responsive-block-editor-addons")}
+                  initialOpen={true}
                 >
-                  {(tab) => {
-                    let tabout;
+                  <RbeaTabRadioControl
+                    label={__(
+                      "Button Size Type",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={buttonSize}
+                    options={buttonSizeOptions.map(({ value, label }) => ({
+                      value,
+                      label,
+                    }))}
+                    onChange={(value) => setAttributes({ buttonSize: value })}
+                    defaultValue={"med  ium"}
+                  />
+                </PanelBody>
+              )
+            }
+            {
+              !inheritFromTheme && (
+                <PanelBody
+                  title={__("Button Width", "responsive-block-editor-addons")}
+                  initialOpen={true}
+                >
+                  <RbeaTabRadioControl
+                    label={__(
+                      "Button Width Type",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={buttonWidthType}
+                    options={[
+                      {
+                        value: "fixed",
+                        label: __("Fixed", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "flexible",
+                        label: __("Flexible", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "full",
+                        label: __("Full", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                    onChange={(value) => setAttributes({ buttonWidthType: value })}
+                    defaultValue={"fixed"}
+                  />
+                  {"flexible" === buttonWidthType && (
+                    <TabPanel
+                      className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                      activeClass="active-tab"
+                      tabs={[
+                        {
+                          name: "desktop",
+                          title: <Dashicon icon="desktop" />,
+                          className:
+                            " responsive-desktop-tab  responsive-responsive-tabs",
+                        },
+                        {
+                          name: "tablet",
+                          title: <Dashicon icon="tablet" />,
+                          className:
+                            " responsive-tablet-tab  responsive-responsive-tabs",
+                        },
+                        {
+                          name: "mobile",
+                          title: <Dashicon icon="smartphone" />,
+                          className:
+                            " responsive-mobile-tab  responsive-responsive-tabs",
+                        },
+                      ]}
+                    >
+                      {(tab) => {
+                        let tabout;
 
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Button Width Mobile",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonWidthMobile}
-                            onChange={(value) =>
-                              setAttributes({ buttonWidthMobile: value })
-                            }
-                            min={0}
-                            max={1000}
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Button Width Tablet",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonWidthTablet}
-                            onChange={(value) =>
-                              setAttributes({ buttonWidthTablet: value })
-                            }
-                            min={0}
-                            max={1000}
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Button Width",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonWidth}
-                            onChange={(value) =>
-                              setAttributes({ buttonWidth: value })
-                            }
-                            min={0}
-                            max={1000}
-                          />
-                        </Fragment>
-                      );
-                    }
+                        if ("mobile" === tab.name) {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Button Width Mobile",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonWidthMobile}
+                                onChange={(value) =>
+                                  setAttributes({ buttonWidthMobile: value })
+                                }
+                                min={0}
+                                max={1000}
+                              />
+                            </Fragment>
+                          );
+                        } else if ("tablet" === tab.name) {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Button Width Tablet",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonWidthTablet}
+                                onChange={(value) =>
+                                  setAttributes({ buttonWidthTablet: value })
+                                }
+                                min={0}
+                                max={1000}
+                              />
+                            </Fragment>
+                          );
+                        } else {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Button Width",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonWidth}
+                                onChange={(value) =>
+                                  setAttributes({ buttonWidth: value })
+                                }
+                                min={0}
+                                max={1000}
+                              />
+                            </Fragment>
+                          );
+                        }
 
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-              )}
-            </PanelBody>
+                        return <div>{tabout}</div>;
+                      }}
+                    </TabPanel>
+                  )}
+                </PanelBody>
+              )
+            }
             <PanelBody
               title={__("Button Settings", "responsive-block-editor-addons")}
               initialOpen={true}
@@ -535,35 +544,45 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             {textFontFamily && loadGoogleFont(textFontFamily)}
-            <PanelBody
-              title={__("Button Style", "responsive-block-editor-addons")}
-              initialOpen={true}
-            >
-              <RbeaTabRadioControl
-                label={__("Button Style", "responsive-block-editor-addons")}
-                value={buttonStyleToggle}
-                onChange={(value) =>
-                  setAttributes({ buttonStyleToggle: value})
-                }
-                options={[
-                  { value: "rounded", label: __("Rounded", "responsive-block-editor-addons") },
-                  { value: "transparent", label: __("Transparent", "responsive-block-editor-addons") },
-                ]}
-              />
-              {"rounded" === buttonStyleToggle && (
-                <RbeaRangeControl
-                  label={__("Button Radius", "responsive-block-editor-addons")}
-                  value={buttonRadius}
-                  onChange={(value) => setAttributes({ buttonRadius: value })}
-                  min={0}
-                  max={100}
-                />
-              )}
-            </PanelBody>
+            {
+              !inheritFromTheme && (
+                <PanelBody
+                  title={__("Button Style", "responsive-block-editor-addons")}
+                  initialOpen={true}
+                >
+                  <RbeaTabRadioControl
+                    label={__("Button Style", "responsive-block-editor-addons")}
+                    value={buttonStyleToggle}
+                    onChange={(value) =>
+                      setAttributes({ buttonStyleToggle: value})
+                    }
+                    options={[
+                      { value: "rounded", label: __("Rounded", "responsive-block-editor-addons") },
+                      { value: "transparent", label: __("Transparent", "responsive-block-editor-addons") },
+                    ]}
+                  />
+                  {"rounded" === buttonStyleToggle && (
+                    <RbeaRangeControl
+                      label={__("Button Radius", "responsive-block-editor-addons")}
+                      value={buttonRadius}
+                      onChange={(value) => setAttributes({ buttonRadius: value })}
+                      min={0}
+                      max={100}
+                    />
+                  )}
+                </PanelBody>
+              )
+            }
             <PanelBody
               title={__("Button Icon", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <RbeaColorControl
+                label={__("Icon Color", "responsive-block-editor-addons")}
+                colorValue={icon_color}
+                onChange={(colorValue) => setAttributes({ icon_color: colorValue })}
+                resetColor={() => setAttributes({ icon_color: "" })}
+              />
               <p className="components-base-control__label">
                 {__("Selected Icon", "responsive-block-editor-addons")}
               </p>
@@ -758,101 +777,109 @@ export default class Inspector extends Component {
                 }}
               </TabPanel>
             </PanelBody>
-            <PanelBody
-              title={__("Button Colors", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-                <TabPanel
-                  className="responsive-block-editor-addons-inspect-tabs 
-                  responsive-block-editor-addons-inspect-tabs-col-2  
-                  responsive-block-editor-addons-color-inspect-tabs"
-                  activeClass="active-tab"
-                  initialTabName="normal" // Set the default active tab here
-                  tabs={[
-                    {
-                      name: "empty-1",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab",
-                    },
-                    {
-                      name: "normal",
-                      title: __("Normal", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-normal-tab",
-                    },
-                    {
-                      name: "empty-2",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab-middle",
-                    },
-                    {
-                      name: "hover",
-                      title: __("Hover", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-hover-tab",
-                    },
-                    {
-                      name: "empty-3",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab",
-                    },
-                  ]}
+            {
+              !inheritFromTheme && (
+                <PanelBody
+                  title={__("Button Colors", "responsive-block-editor-addons")}
+                  initialOpen={false}
                 >
-                  {(tabName) => {
-                    let color_tab;
-                    if ("normal" === tabName.name) {
-                      color_tab = (
-                        <RbeaColorControl
-							          		label = {__("Button Color", "responsive-block-editor-addons")}
-							          		colorValue={buttonColor}
-							          		onChange={(colorValue) =>
-							          			setAttributes({ buttonColor: colorValue })
-							          		}
-							          		resetColor={() => setAttributes({ buttonColor: "" })}
-							          />
-                      );
-                    } else if("hover" === tabName.name) {
-                      color_tab = (
-                        <RbeaColorControl
-								        	label = {__("Button Color Hover", "responsive-block-editor-addons")}
-								        	colorValue={buttonColorHover}
-								        	onChange={(colorValue) =>
-								        		setAttributes({ buttonColorHover: colorValue })
-								        	}
-								        	resetColor={() => setAttributes({ buttonColorHover: "" })}
-								        />
-                      );
-                    } else {
-                      color_tab = emptyColorControl;
-                    }
-                    return <div>{color_tab}</div>;
+                    <TabPanel
+                      className="responsive-block-editor-addons-inspect-tabs 
+                      responsive-block-editor-addons-inspect-tabs-col-2  
+                      responsive-block-editor-addons-color-inspect-tabs"
+                      activeClass="active-tab"
+                      initialTabName="normal" // Set the default active tab here
+                      tabs={[
+                        {
+                          name: "empty-1",
+                          title: __("", "responsive-block-editor-addons"),
+                          className: "responsive-block-editor-addons-empty-tab",
+                        },
+                        {
+                          name: "normal",
+                          title: __("Normal", "responsive-block-editor-addons"),
+                          className: "responsive-block-editor-addons-normal-tab",
+                        },
+                        {
+                          name: "empty-2",
+                          title: __("", "responsive-block-editor-addons"),
+                          className: "responsive-block-editor-addons-empty-tab-middle",
+                        },
+                        {
+                          name: "hover",
+                          title: __("Hover", "responsive-block-editor-addons"),
+                          className: "responsive-block-editor-addons-hover-tab",
+                        },
+                        {
+                          name: "empty-3",
+                          title: __("", "responsive-block-editor-addons"),
+                          className: "responsive-block-editor-addons-empty-tab",
+                        },
+                      ]}
+                    >
+                      {(tabName) => {
+                        let color_tab;
+                        if ("normal" === tabName.name) {
+                          color_tab = (
+                            <RbeaColorControl
+                                label = {__("Button Color", "responsive-block-editor-addons")}
+                                colorValue={buttonColor}
+                                onChange={(colorValue) =>
+                                  setAttributes({ buttonColor: colorValue })
+                                }
+                                resetColor={() => setAttributes({ buttonColor: "" })}
+                            />
+                          );
+                        } else if("hover" === tabName.name) {
+                          color_tab = (
+                            <RbeaColorControl
+                              label = {__("Button Color Hover", "responsive-block-editor-addons")}
+                              colorValue={buttonColorHover}
+                              onChange={(colorValue) =>
+                                setAttributes({ buttonColorHover: colorValue })
+                              }
+                              resetColor={() => setAttributes({ buttonColorHover: "" })}
+                            />
+                          );
+                        } else {
+                          color_tab = emptyColorControl;
+                        }
+                        return <div>{color_tab}</div>;
+                      }}
+                    </TabPanel>
+                </PanelBody>
+              )
+            }
+            {
+              !inheritFromTheme && (
+                <TypographyHelperControl
+                  title={__(
+                    "Button Text Typography",
+                    "responsive-block-editor-addons"
+                  )}
+                  attrNameTemplate="text%s"
+                  values={{
+                    family: textFontFamily,
+                    size: textFontSize,
+                    sizeMobile: textFontSizeMobile,
+                    sizeTablet: textFontSizeTablet,
+                    weight: textFontWeight,
+                    height: textLineHeight,
+                    typographyColorControl: typographyColorControl,
+                    typographyColorControlHover: typographyColorControlHover,
+                    emptyColorControl: emptyColorControl,
+                    transform: textTextTransform,
+                    fontstyle: textFontStyle,
+                    textDecoration: textTextDecoration,
                   }}
-                </TabPanel>
-            </PanelBody>
-            <TypographyHelperControl
-              title={__(
-                "Button Text Typography",
-                "responsive-block-editor-addons"
-              )}
-              attrNameTemplate="text%s"
-              values={{
-                family: textFontFamily,
-                size: textFontSize,
-                sizeMobile: textFontSizeMobile,
-                sizeTablet: textFontSizeTablet,
-                weight: textFontWeight,
-                height: textLineHeight,
-                typographyColorControl: typographyColorControl,
-								typographyColorControlHover: typographyColorControlHover,
-								emptyColorControl: emptyColorControl,
-                transform: textTextTransform,
-                fontstyle: textFontStyle,
-                textDecoration: textTextDecoration,
-              }}
-              showLetterSpacing={false}
-              showColorWithHoverControlTab={true}
-              showTextDecoration={true}
-              setAttributes={setAttributes}
-              {...this.props}
-            />
+                  showLetterSpacing={false}
+                  showColorWithHoverControlTab={true}
+                  showTextDecoration={true}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+              )
+            }
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}

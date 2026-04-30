@@ -110,8 +110,8 @@ export default class Edit extends Component {
         <div
           className={classnames(
             "responsive-block-editor-addons-call-mail-button-button-container",
-            buttonSize,
-            inheritFromTheme ? 'wp-block-button' : null,
+            inheritFromTheme ? null : buttonSize,
+            inheritFromTheme ? 'wp-block-button wp-block-button__link' : null,
           )}
           href={"call" === buttonToShow ? callHref : mailHref}
         >
@@ -131,7 +131,7 @@ export default class Edit extends Component {
               placeholder={__("Call", "responsive-block-editor-addons")}
               value={callText}
               className={classnames("responsive-block-editor-addons-call-mail-button-text",
-                                      inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
+                                      inheritFromTheme ? "wp-block-button" : null)}
               onChange={(value) => setAttributes({ callText: value })}
               multiline={false}
               allowedFormats={[
@@ -150,7 +150,7 @@ export default class Edit extends Component {
               onChange={(value) => setAttributes({ mailText: value })}
               multiline={false}
               className={classnames("responsive-block-editor-addons-call-mail-button-text",
-                                      inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
+                                      inheritFromTheme ? "wp-block-button" : null)}
               allowedFormats={[
                 "core/bold",
                 "core/italic",

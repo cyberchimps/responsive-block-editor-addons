@@ -16932,6 +16932,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$button_background       = 'transparent' === $attr['buttonStyleToggle'] ? '' : $attr['buttonColor'];
 			$text_color_hover        = 'transparent' === $attr['buttonStyleToggle'] ? $attr['buttonColorHover'] : $attr['buttonTextColorHover'];
 			$button_background_hover = 'transparent' === $attr['buttonStyleToggle'] ? '' : $attr['buttonColorHover'];
+			$icon_color              = isset( $attr['icon_color'] ) ? $attr['icon_color'] : '';
+			$icon_fill               = ! empty( $icon_color ) ? $icon_color : $text_color;
 
 			$justify_content_direction = 'flex-start';
 			if ( 'left' === $attr['buttonAlign'] ) {
@@ -16971,7 +16973,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'justify-content' => $justify_content_direction,
 				),
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
-					'width'            => $button_width_css,
+					'width'            => $flag ? '' : $button_width_css,
 					'border'           => $flag ? '' : $button_border,
 					'background-color' => $flag ? '' : $button_background,
 					'border-radius'    => $flag ? '' : $button_border_radius,
@@ -16987,7 +16989,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-style' => $flag ? '' : $attr['textFontStyle'],
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon' => array(
-					'fill' => $text_color,
+					'fill' => $icon_fill,
+				),
+				' .responsive-block-editor-addons-call-mail-button-icon svg, .responsive-block-editor-addons-call-mail-button-icon svg path' => array(
+					'fill' => $icon_fill,
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon svg' => array(
 					'height' => self::get_css_value( $attr['iconSize'], 'px' ) . ' !important',
@@ -17001,7 +17006,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color' => $flag ? '' : $text_color_hover,
 				),
 				' .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon' => array(
-					'fill' => $text_color_hover,
+					'fill' => ! empty( $icon_color ) ? $icon_color : $text_color_hover,
+				),
+				' .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon svg, .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon svg path' => array(
+					'fill' => ! empty( $icon_color ) ? $icon_color : $text_color_hover,
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left' => array(
 					'margin-right' => self::get_css_value( $attr['iconTextGap'], 'px' ),
@@ -17013,7 +17021,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
-					'width' => $button_width_css_mobile,
+					'width' => $flag ? '' : $button_width_css_mobile,
 				),
 				' .responsive-block-editor-addons-call-mail-button-text' => array(
 					'font-size' => $flag ? '' : self::get_css_value( $attr['textFontSizeMobile'], 'px' ) . ' !important',
@@ -17038,7 +17046,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
-					'width' => $button_width_css_tablet,
+					'width' => $flag ? '' : $button_width_css_tablet,
 				),
 				' .responsive-block-editor-addons-call-mail-button-text' => array(
 					'font-size' => $flag ? '' : self::get_css_value( $attr['textFontSizeTablet'], 'px' ) . ' !important',
@@ -17084,9 +17092,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonWidth'              => 200,
 				'buttonWidthMobile'        => 200,
 				'buttonWidthTablet'        => 200,
-				'iconSize'                 => '',
-				'iconSizeMobile'           => '',
-				'iconSizeTablet'           => '',
+				'iconSize'                 => 20,
+				'iconSizeMobile'           => 20,
+				'iconSizeTablet'           => 20,
 				'buttonColor'              => '#4aac38',
 				'buttonTextColor'          => '#ffffff',
 				'buttonColorHover'         => '',
