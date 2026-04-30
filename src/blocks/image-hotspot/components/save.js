@@ -23,6 +23,7 @@ export default class Save extends Component {
       hotspotSize,
       hotspotPadding,
       hotspotColor,
+      iconColor,
       hotspotBackground,
       hotspotOpacity,
       className,
@@ -65,6 +66,13 @@ export default class Save extends Component {
         };
 
         const innerDotStyle = {
+          color: imageHotspotsParsed[index].color
+            ? imageHotspotsParsed[index].color
+            : iconColor
+            ? iconColor
+            : hotspotColor
+            ? hotspotColor
+            : undefined,
           fill: imageHotspotsParsed[index].color
             ? imageHotspotsParsed[index].color
             : hotspotColor
