@@ -15,8 +15,10 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Dashicon, Icon, Button } = wp.components;
 const { RichText, URLInput, BlockControls, AlignmentToolbar } = wp.blockEditor;
+const { withSelect } = wp.data;
 import { loadGoogleFont } from "../../../utils/font";
-export default class Edit extends Component {
+
+class Edit extends Component {
   constructor() {
     super(...arguments);
   }
@@ -67,10 +69,41 @@ export default class Edit extends Component {
         contentFontFamily,
         buttonTarget,
         inheritFromTheme,
+        backgroundImageOne,
+        backgroundImageTwo,
+        backgroundImageThree,
+        backgroundImageFour,
+        backgroundImageOneId,
+        backgroundImageTwoId,
+        backgroundImageThreeId,
+        backgroundImageFourId,
       },
       setAttributes,
+      // These come from withSelect
+      mediaOne,
+      mediaTwo,
+      mediaThree,
+      mediaFour,
     } = this.props;
 
+    // Resolve size-specific URL from a media object, with fallbacks
+    const getResolvedUrl = (mediaObj, fallbackUrl) => {
+      if (!mediaObj) return fallbackUrl || null;
+      return (
+        mediaObj?.media_details?.sizes?.[imageSize]?.source_url ||
+        mediaObj?.media_details?.sizes?.full?.source_url ||
+        mediaObj?.source_url ||
+        fallbackUrl ||
+        null
+      );
+    };
+
+    const resolvedImageUrls = [
+      getResolvedUrl(mediaOne, backgroundImageOne),
+      getResolvedUrl(mediaTwo, backgroundImageTwo),
+      getResolvedUrl(mediaThree, backgroundImageThree),
+      getResolvedUrl(mediaFour, backgroundImageFour),
+    ];
 
     var data_copy = [...cardsArray];
 
@@ -110,7 +143,6 @@ export default class Edit extends Component {
         )}
         key={`${block_id}`}
       >
-        {" "}
         <div
           className={classnames(
             "wp-block-responsive-block-editor-addons-card__inner"
@@ -146,16 +178,26 @@ export default class Edit extends Component {
                   key={`card-avatar-${index}`}
                 >
                   <div
+                    className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`}
+                    key={`card-avatar-img-dashicon-${index}`}
+                    style={{
+                      display: resolvedImageUrls[index] ? "none" : undefined,
+                    }}
+                  >
+                    <Dashicon icon="format-image" />
+                  </div>
+                  <div
                     className={classnames(
                       "responsive-block-editor-addons-card-avatar-img",
                       `responsive-block-editor-addons-card-avatar-img-${index}`
                     )}
+                    style={{
+                      backgroundImage: resolvedImageUrls[index]
+                        ? `url(${resolvedImageUrls[index]})`
+                        : undefined,
+                    }}
                     key={`card-avatar-img-${index}`}
-                  >
-                  </div>
-                  <div className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`} key={`card-avatar-img-dashicon-${index}`}>
-                      <Dashicon icon="format-image" />
-                  </div>
+                  />
                 </div>
               )}
               <div className="card-content-wrap" key={`card-content-wrap-${index}`}>
@@ -231,12 +273,10 @@ export default class Edit extends Component {
                     inheritFromTheme ? 'wp-block-button' : null,
                   )}>
                     {"" !== icon && iconPosition == "before" && (
-                      <span
-                        className={classnames(
-                          `responsive-block-editor-addons-button__icon`,
-                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`
-                        )}
-                      >
+                      <span className={classnames(
+                        `responsive-block-editor-addons-button__icon`,
+                        `responsive-block-editor-addons-button__icon-position-${iconPosition}`
+                      )}>
                         {renderSVG(icon)}
                       </span>
                     )}
@@ -267,12 +307,10 @@ export default class Edit extends Component {
                       
                     />
                     {"" !== icon && iconPosition == "after" && (
-                      <span
-                        className={classnames(
-                          `responsive-block-editor-addons-button__icon`,
-                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`
-                        )}
-                      >
+                      <span className={classnames(
+                        `responsive-block-editor-addons-button__icon`,
+                        `responsive-block-editor-addons-button__icon-position-${iconPosition}`
+                      )}>
                         {renderSVG(icon)}
                       </span>
                     )}
@@ -317,3 +355,24 @@ export default class Edit extends Component {
     ];
   }
 }
+
+// withSelect subscribes to the core media store.
+// When getMedia() returns null initially, WordPress automatically dispatches
+// a fetch. Once the store updates with the media data, withSelect re-renders
+// the component — so the correct size URL is always shown after load.
+export default withSelect((select, props) => {
+  const { getMedia } = select("core");
+  const {
+    backgroundImageOneId,
+    backgroundImageTwoId,
+    backgroundImageThreeId,
+    backgroundImageFourId,
+  } = props.attributes;
+
+  return {
+    mediaOne:   backgroundImageOneId   ? getMedia(backgroundImageOneId)   : null,
+    mediaTwo:   backgroundImageTwoId   ? getMedia(backgroundImageTwoId)   : null,
+    mediaThree: backgroundImageThreeId ? getMedia(backgroundImageThreeId) : null,
+    mediaFour:  backgroundImageFourId  ? getMedia(backgroundImageFourId)  : null,
+  };
+})(Edit);

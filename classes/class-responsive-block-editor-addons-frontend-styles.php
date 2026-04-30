@@ -1301,7 +1301,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'fill'   => $attr['icon_color'],
 				),
 				' .responsive-count-item'           => array(
-					'background-color'           => self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ),
+					'background-color'           => '' === $attr['itemBackgroundColor'] ? '' : self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ),
+					'padding-top'                => self::get_css_value( $attr['countupTopPadding'], 'px' ),
+					'padding-right'              => self::get_css_value( $attr['countupRightPadding'], 'px' ),
+					'padding-bottom'             => self::get_css_value( $attr['countupBottomPadding'], 'px' ),
+					'padding-left'               => self::get_css_value( $attr['countupLeftPadding'], 'px' ),
 					'border-width'               => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
 					'border-color'               => $attr['blockBorderColor'],
 					'border-style'               => $attr['blockBorderStyle'],
@@ -1392,6 +1396,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['shapeBorderLeftRadiusMobile'], 'px' ),
 				),
 				' .responsive-count-item'           => array(
+					'padding-top'                => self::get_css_value( $attr['countupTopPaddingMobile'], 'px' ),
+					'padding-right'              => self::get_css_value( $attr['countupRightPaddingMobile'], 'px' ),
+					'padding-bottom'             => self::get_css_value( $attr['countupBottomPaddingMobile'], 'px' ),
+					'padding-left'               => self::get_css_value( $attr['countupLeftPaddingMobile'], 'px' ),
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusMobile'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusMobile'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusMobile'], 'px' ),
@@ -1443,6 +1451,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['shapeBorderLeftRadiusTablet'], 'px' ),
 				),
 				' .responsive-count-item'           => array(
+					'padding-top'                => self::get_css_value( $attr['countupTopPaddingTablet'], 'px' ),
+					'padding-right'              => self::get_css_value( $attr['countupRightPaddingTablet'], 'px' ),
+					'padding-bottom'             => self::get_css_value( $attr['countupBottomPaddingTablet'], 'px' ),
+					'padding-left'               => self::get_css_value( $attr['countupLeftPaddingTablet'], 'px' ),
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusTablet'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusTablet'], 'px' ),
@@ -4901,6 +4913,42 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			// Resolve size-specific image URLs from stored attachment IDs.
+			$image_size = isset( $attr['imageSize'] ) ? $attr['imageSize'] : 'full';
+
+			$resolved_image_one   = '';
+			$resolved_image_two   = '';
+			$resolved_image_three = '';
+			$resolved_image_four  = '';
+
+			if ( ! empty( $attr['backgroundImageOneId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageOneId'], $image_size );
+				$resolved_image_one = $src ? $src[0] : $attr['backgroundImageOne'];
+			} else {
+				$resolved_image_one = $attr['backgroundImageOne'];
+			}
+
+			if ( ! empty( $attr['backgroundImageTwoId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageTwoId'], $image_size );
+				$resolved_image_two = $src ? $src[0] : $attr['backgroundImageTwo'];
+			} else {
+				$resolved_image_two = $attr['backgroundImageTwo'];
+			}
+
+			if ( ! empty( $attr['backgroundImageThreeId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageThreeId'], $image_size );
+				$resolved_image_three = $src ? $src[0] : $attr['backgroundImageThree'];
+			} else {
+				$resolved_image_three = $attr['backgroundImageThree'];
+			}
+
+			if ( ! empty( $attr['backgroundImageFourId'] ) ) {
+				$src = wp_get_attachment_image_src( $attr['backgroundImageFourId'], $image_size );
+				$resolved_image_four = $src ? $src[0] : $attr['backgroundImageFour'];
+			} else {
+				$resolved_image_four = $attr['backgroundImageFour'];
+			}
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
@@ -5068,22 +5116,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-0' => array(
-					'background-image' => 'url(' . $attr['backgroundImageOne'] . ')',
+					'background-image' => $resolved_image_one ? 'url(' . esc_url( $resolved_image_one ) . ')' : 'none',
 					'display'          => $attr['backgroundImageOne'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-1' => array(
-					'background-image' => 'url(' . $attr['backgroundImageTwo'] . ')',
+					'background-image' => $resolved_image_two ? 'url(' . esc_url( $resolved_image_two ) . ')' : 'none',
 					'display'          => $attr['backgroundImageTwo'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-2' => array(
-					'background-image' => 'url(' . $attr['backgroundImageThree'] . ')',
+					'background-image' => $resolved_image_three ? 'url(' . esc_url( $resolved_image_three ) . ')' : 'none',
 					'display'          => $attr['backgroundImageThree'] ? 'block' : 'none',
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-3' => array(
-					'background-image' => 'url(' . $attr['backgroundImageFour'] . ')',
+					'background-image' => $resolved_image_four ? 'url(' . esc_url( $resolved_image_four ) . ')' : 'none',
 					'display'          => $attr['backgroundImageFour'] ? 'block' : 'none',
 				),
 
@@ -5132,10 +5180,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-button-inner' => array(
-					'padding-top'      => self::get_css_value( $attr['ctaButtonTopPadding'], 'px' ),
-					'padding-bottom'   => self::get_css_value( $attr['ctaButtonBottomPadding'], 'px' ),
-					'padding-left'     => self::get_css_value( $attr['ctaButtonLeftPadding'], 'px' ),
-					'padding-right'    => self::get_css_value( $attr['ctaButtonRightPadding'], 'px' ),
+					'padding-top'      => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonTopPadding'], 'px' ) : '',
+					'padding-bottom'   => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonBottomPadding'], 'px' ) : '',
+					'padding-left'     => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonLeftPadding'], 'px' ) : '',
+					'padding-right'    => !$attr['inheritFromTheme'] ? self::get_css_value( $attr['ctaButtonRightPadding'], 'px' ) : '',
 					'margin-top'       => self::get_css_value( $attr['ctaButtonTopMargin'], 'px' ),
 					'margin-bottom'    => self::get_css_value( $attr['ctaButtonBottomMargin'], 'px' ),
 					'margin-left'      => self::get_css_value( $attr['ctaButtonLeftMargin'], 'px' ),
@@ -5533,6 +5581,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'		   => '',
     			'subTextDecoration'			   => '',
     			'headingTextDecoration'		   => '',
+				'backgroundImageOneId'         => null,
+				'backgroundImageTwoId'         => null,
+				'backgroundImageThreeId'       => null,
+				'backgroundImageFourId'        => null,
 			);
 		}
 
@@ -8329,9 +8381,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'         => $attr['descriptionTypographyColor'],
 					'margin-bottom' => self::get_css_value( $attr['descriptionBottomSpacing'], 'px' ),
 				),
-				' .imagebox-arrow' => array(
-					'color'     => $attr['arrowColor'],
-					'font-size' => self::get_css_value( $attr['arrowSize'], 'px' ),
+				' .imagebox-arrow svg' => array(
+					'color'  => $attr['arrowColor'],
+					'width'  => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
 				),
 				'.responsive-block-editor-addons-block-image-boxes-0' => array(
 					'background-image' => $background_image_first,
@@ -13512,11 +13565,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'     => self::get_css_value( $attr['imageWidth'], 'px' ),
 					'max-width' => self::get_css_value( $attr['imageWidth'], 'px' ),
 				),
+				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-color .responsive-block-editor-addons-tm__overlay' => array(
+					'background-color' => 'color' === $attr['backgroundType'] ? $attr['backgroundColor'] : '',
+				),
 				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
-					'background-color'      =>
-						'color' === $attr['backgroundType']
-						? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity )
-						: '',
 					'background-image'      =>
 						'gradient' === $attr['overlayType'] && 'image' === $attr['backgroundType']
 						? $background_image_effect
@@ -13535,7 +13587,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'     => $attr['backgroundRepeat'],
 					'background-position'   => $background_position_focal,
 					'background-attachment' => $attr['backgroundAttachment'],
-					'opacity'               => 'image' === $attr['backgroundType'] ? $attr['imgopacity'] : '',
+					'opacity'               => 'image' === $attr['backgroundType'] ? $imgopacity : '',
 				),
 				' .responsive-block-editor-addons-testimonial__wrap' => array(
 					'padding-left'  => self::get_css_value( $attr['columnGap'] / 2, 'px' ),
@@ -14731,7 +14783,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'resshowDesc'                   => true,
 				'blockBorderStyle'              => 'none',
 				'blockBorderWidth'              => 1,
-				'opacity'                       => 10,
+				'opacity'                       => 100,
 				'icon_color'                    => '#3a3a3a',
 				'iconsize'                      => 16,
 				'resshowNum'                    => true,
@@ -14823,6 +14875,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'			=> '',
 				'headingTextDecoration'			=> '',
 				'dateTextDecoration'			=> '',
+				'countupTopPadding'             => '',
+				'countupTopPaddingMobile'       => '',
+				'countupTopPaddingTablet'       => '',
+				'countupBottomPadding'          => '',
+				'countupBottomPaddingMobile'    => '',
+				'countupBottomPaddingTablet'    => '',
+				'countupLeftPadding'            => '',
+				'countupLeftPaddingMobile'      => '',
+				'countupLeftPaddingTablet'      => '',
+				'countupRightPadding'           => '',
+				'countupRightPaddingMobile'     => '',
+				'countupRightPaddingTablet'     => '',
 			);
 		}
 
@@ -18064,52 +18128,52 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left' => self::get_css_value( $attr['iconLabelGap'], 'px' ),
 					'color'       => $attr['labelTypographyColor'],
 				),
-				' .responsive-block-editor-addons-icon-facebook, .responsive-block-editor-addons-icon-facebook-f, .responsive-block-editor-addons-icon-facebook-square, .responsive-block-editor-addons-icon-facebook-messenger' => array(
+				' .responsive-block-editor-addons-icon-facebook svg, .responsive-block-editor-addons-icon-facebook-f svg, .responsive-block-editor-addons-icon-facebook-square svg, .responsive-block-editor-addons-icon-facebook-messenger svg' => array(
 					'fill' => '#3b5998',
 				),
-				' .responsive-block-editor-addons-icon-twitter, .responsive-block-editor-addons-icon-twitter-square' => array(
+				' .responsive-block-editor-addons-icon-twitter svg, .responsive-block-editor-addons-icon-twitter-square svg' => array(
 					'fill' => '#00aced',
 				),
-				' .responsive-block-editor-addons-icon-linkedin, .responsive-block-editor-addons-icon-linkedin-in' => array(
+				' .responsive-block-editor-addons-icon-linkedin svg, .responsive-block-editor-addons-icon-linkedin-in svg' => array(
 					'fill' => '#007bb6',
 				),
-				' .responsive-block-editor-addons-icon-youtube, .responsive-block-editor-addons-icon-youtube-square' => array(
+				' .responsive-block-editor-addons-icon-youtube svg, .responsive-block-editor-addons-icon-youtube-square svg' => array(
 					'fill' => '#bb0000',
 				),
-				' .responsive-block-editor-addons-icon-pinterest, .responsive-block-editor-addons-icon-pinterest-p, .responsive-block-editor-addons-icon-pinterest-square' => array(
+				' .responsive-block-editor-addons-icon-pinterest svg, .responsive-block-editor-addons-icon-pinterest-p svg, .responsive-block-editor-addons-icon-pinterest-square svg' => array(
 					'fill' => '#bb0000',
 				),
-				' .responsive-block-editor-addons-icon-instagram' => array(
+				' .responsive-block-editor-addons-icon-instagram svg' => array(
 					'fill' => '#e95950',
 				),
-				' .responsive-block-editor-addons-icon-snapchat, .responsive-block-editor-addons-icon-snapchat-ghost,  .responsive-block-editor-addons-icon-snapchat-square' => array(
+				' .responsive-block-editor-addons-icon-snapchat svg, .responsive-block-editor-addons-icon-snapchat-ghost svg,  .responsive-block-editor-addons-icon-snapchat-square svg' => array(
 					'fill' => '#fffc00',
 				),
-				' .responsive-block-editor-addons-icon-tumblr, .responsive-block-editor-addons-icon-tumblr-square' => array(
+				' .responsive-block-editor-addons-icon-tumblr svg, .responsive-block-editor-addons-icon-tumblr-square svg' => array(
 					'fill' => '#32506d',
 				),
-				' .responsive-block-editor-addons-icon-vimeo, .responsive-block-editor-addons-icon-vimeo-v, .responsive-block-editor-addons-icon-vimeo-square' => array(
+				' .responsive-block-editor-addons-icon-vimeo svg, .responsive-block-editor-addons-icon-vimeo-v svg, .responsive-block-editor-addons-icon-vimeo-square svg' => array(
 					'fill' => '#aad450',
 				),
-				' .responsive-block-editor-addons-icon-quora' => array(
+				' .responsive-block-editor-addons-icon-quora svg' => array(
 					'fill' => '#a82400',
 				),
-				' .responsive-block-editor-addons-icon-google-plus, .responsive-block-editor-addons-icon-google-plus-g, .responsive-block-editor-addons-icon-google-plus-square' => array(
+				' .responsive-block-editor-addons-icon-google-plus svg, .responsive-block-editor-addons-icon-google-plus-g svg, .responsive-block-editor-addons-icon-google-plus-square svg' => array(
 					'fill' => '#dd4b39',
 				),
-				' .responsive-block-editor-addons-icon-reddit, .responsive-block-editor-addons-icon-reddit-alien, .responsive-block-editor-addons-icon-reddit-square' => array(
+				' .responsive-block-editor-addons-icon-reddit svg, .responsive-block-editor-addons-icon-reddit-alien svg, .responsive-block-editor-addons-icon-reddit-square svg' => array(
 					'fill' => '#FF5700',
 				),
-				' .responsive-block-editor-addons-icon-skype' => array(
+				' .responsive-block-editor-addons-icon-skype svg' => array(
 					'fill' => '#00aff0',
 				),
-				' .responsive-block-editor-addons-icon-telegram, .responsive-block-editor-addons-icon-telegram-plane' => array(
+				' .responsive-block-editor-addons-icon-telegram svg, .responsive-block-editor-addons-icon-telegram-plane svg' => array(
 					'fill' => '#0088cc',
 				),
-				' .responsive-block-editor-addons-icon-whatsapp, .responsive-block-editor-addons-icon-whatsapp-square' => array(
+				' .responsive-block-editor-addons-icon-whatsapp svg, .responsive-block-editor-addons-icon-whatsapp-square svg' => array(
 					'fill' => '#34B7F1',
 				),
-				' .responsive-block-editor-addons-icon-envelope' => array(
+				' .responsive-block-editor-addons-icon-envelope svg' => array(
 					'fill' => '#BB001B',
 				),
 			);

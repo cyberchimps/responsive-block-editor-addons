@@ -18,6 +18,13 @@ const { RichText } = wp.blockEditor;
 class Edit extends Component {
   constructor() {
     super(...arguments);
+    this.state = {
+      isCollapsed: this.props.attributes.initialCollapse || false,
+    };
+    this.toggleCollapse = this.toggleCollapse.bind(this);
+  }
+  toggleCollapse() {
+    this.setState((prev) => ({ isCollapsed: !prev.isCollapsed }));
   }
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
@@ -74,7 +81,10 @@ class Edit extends Component {
 
     if (isCollapsible && icon) {
       icon_html = (
-        <span className="responsive-block-editor-addons-toc__collapsible-icon">
+        <span
+          className="responsive-block-editor-addons-toc__collapsible-icon"
+          onClick={this.toggleCollapse}
+        >
           {renderSVG(icon)}
         </span>
       );
@@ -100,7 +110,7 @@ class Edit extends Component {
           className,
           `responsive-block-editor-addons-toc__align-${align}`,
           `responsive-block-editor-addons-toc__columns-${tColumnsDesktop}`,
-          initialCollapse ? `responsive-block-editor-addons-toc__collapse` : "",
+          this.state.isCollapsed ? `responsive-block-editor-addons-toc__collapse` : "",
           "responsive-block-editor-addons-block-table-of-contents",
           `block-${block_id}`
         )}

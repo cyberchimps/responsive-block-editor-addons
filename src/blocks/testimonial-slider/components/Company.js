@@ -25,7 +25,7 @@ class Company extends React.Component {
           value={String(company)}
           className="responsive-block-editor-addons-tm__company"
           style={{
-            color: attributes.companyColor,
+            color: attributes.companyTypographyColor,
             fontFamily: attributes.companyFontFamily,
             fontWeight: attributes.companyFontWeight,
             lineHeight: attributes.companyLineHeight,
@@ -64,7 +64,7 @@ class Company extends React.Component {
           value={String(company)}
           className="responsive-block-editor-addons-tm__company"
           style={{
-            color: attributes.companyColor,
+            color: attributes.companyTypographyColor,
             fontFamily: attributes.companyFontFamily,
             fontWeight: attributes.companyFontWeight,
             lineHeight: attributes.companyLineHeight,

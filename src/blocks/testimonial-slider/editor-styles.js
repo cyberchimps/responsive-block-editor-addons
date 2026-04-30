@@ -347,15 +347,15 @@ function EditorStyles(props) {
       "text-decoration": descTextDecoration,
       "font-style": descFontStyle,
     },
+    " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-color .responsive-block-editor-addons-tm__overlay": {
+      "background-color":
+        backgroundType == "color" ? backgroundColor : undefined,
+    },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
       "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
-      "background-color":
-        backgroundType == "color"
-          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
-          : undefined,
       "background-image": backgroundType === "image" && overlayType === "gradient"
         ? backgroundImageEffect
         : backgroundType === "gradient"

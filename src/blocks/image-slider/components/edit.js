@@ -40,6 +40,8 @@ class GalleryCarouselEdit extends Component {
       selectedImage: null,
       captionFocused: false,
     };
+    this.flkty = null;
+    this.flktyNav = null;
   }
 
   componentDidMount() {
@@ -77,6 +79,7 @@ class GalleryCarouselEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // Update inline styles
     var element = document.getElementById(
       "responsive-block-editor-addons-image-slider-style-" + this.props.clientId
     );
@@ -84,6 +87,7 @@ class GalleryCarouselEdit extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
+
     // Deselect images when deselecting the block.
     if (!this.props.isSelected && prevProps.isSelected) {
       this.setState({
@@ -93,6 +97,7 @@ class GalleryCarouselEdit extends Component {
       });
     }
 
+    // Caption focus cleanup
     if (
       !this.props.isSelected &&
       prevProps.isSelected &&
@@ -103,6 +108,7 @@ class GalleryCarouselEdit extends Component {
       });
     }
 
+    // Gutter/radius/gridSize attribute side-effects
     if (this.props.attributes.gutter <= 0) {
       this.props.setAttributes({
         radius: 0,
@@ -118,6 +124,71 @@ class GalleryCarouselEdit extends Component {
         gutterMobile: 0,
         gutterTablet: 0,
       });
+    }
+
+    // Clean up listener if nav was unmounted (thumbnails toggled off)
+    if (!this.flktyNav && this._unsubscribeMain) {
+      this._unsubscribeMain();
+      this._unsubscribeMain = null;
+      this._linkedMainFlkty = null;
+      this._linkedNavFlkty = null;
+    }
+
+    // Clean up listener if Flickity instances were replaced by a key change
+    if (
+      (this.flkty !== this._linkedMainFlkty ||
+        this.flktyNav !== this._linkedNavFlkty) &&
+      this._unsubscribeMain
+    ) {
+      this._unsubscribeMain();
+      this._unsubscribeMain = null;
+      this._linkedMainFlkty = null;
+      this._linkedNavFlkty = null;
+    }
+
+    // Wire up main → nav sync once both instances exist and are not yet linked
+    if (this.flkty && this.flktyNav && !this._unsubscribeMain) {
+      const onMainSelect = () => {
+        if (this.flktyNav) {
+          this.flktyNav.select(this.flkty.selectedIndex);
+        }
+      };
+      this.flkty.on("select", onMainSelect);
+      this._unsubscribeMain = () =>
+        this.flkty && this.flkty.off("select", onMainSelect);
+      this._linkedMainFlkty = this.flkty;
+      this._linkedNavFlkty = this.flktyNav;
+    }
+
+    // Resize both instances when block selection state changes
+    //    (fixes invisible first/last image due to wrapAround clone mis-measurement)
+    if (this.props.isSelected !== prevProps.isSelected) {
+      requestAnimationFrame(() => {
+        if (this.flkty) {
+          this.flkty.resize();
+          this.flkty.select(this.flkty.selectedIndex, false, true);
+        }
+        if (this.flktyNav) {
+          this.flktyNav.resize();
+        }
+      });
+    }
+
+    // Reload cells manually when images are added or removed
+    if (this.props.attributes.images !== prevProps.attributes.images) {
+      requestAnimationFrame(() => {
+        if (this.flkty) {
+          this.flkty.reloadCells();
+          this.flkty.resize();
+          this.flkty.select(0, false, true);
+        }
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._unsubscribeMain) {
+      this._unsubscribeMain();
     }
   }
 
@@ -222,6 +293,11 @@ class GalleryCarouselEdit extends Component {
       width,
       customWidth,
       isSmallImage,
+      autoPlay,
+      draggable,
+      autoPlaySpeed,
+      freeScroll,
+      pauseHover,
     } = attributes;
 
 
@@ -271,12 +347,14 @@ class GalleryCarouselEdit extends Component {
     });
 
     const flickityOptions = {
-      draggable: false,
-      pageDots: true,
-      prevNextButtons: true,
+      autoPlay: autoPlay && autoPlaySpeed ? parseFloat(autoPlaySpeed) : false,
+      draggable,
+      pageDots,
+      prevNextButtons,
       wrapAround: true,
-      autoPlay: false,
       cellAlign: alignCells ? "left" : "center",
+      pauseAutoPlayOnHover: pauseHover,
+      freeScroll,
       arrowShape: {
         x0: 10,
         x1: 60,
@@ -290,14 +368,14 @@ class GalleryCarouselEdit extends Component {
     };
 
     const navOptions = {
-      asNavFor: ".has-carousel",
       draggable: false,
-      pageDots: true,
+      pageDots: false,
       prevNextButtons: false,
-      wrapAround: true,
+      wrapAround: false,
       autoPlay: false,
       thumbnails: false,
       cellAlign: "left",
+      contain: true,
     };
 
     const navStyles = {
@@ -374,11 +452,12 @@ class GalleryCarouselEdit extends Component {
           <div className={className}>
             <div className={innerClasses}>
               <Flickity
+                key={`carousel-${autoPlay}-${autoPlaySpeed}-${draggable}-${freeScroll}-${pauseHover}-${pageDots}-${prevNextButtons}-${alignCells}-${gridSize}-${thumbnails}`}
                 className={flickityClasses}
                 disableImagesLoaded={false}
                 flickityRef={(c) => (this.flkty = c)}
                 options={flickityOptions}
-                reloadOnUpdate={true}
+                reloadOnUpdate={false}
                 updateOnEachImageLoad={true}
               >
                 {images.map((img, index) => {
@@ -431,18 +510,25 @@ class GalleryCarouselEdit extends Component {
           <div className={className}>
             <div className={innerClasses}>
               <Flickity
+                key={`nav-${images.length}-${gutter}-${gutterMobile}-${gutterTablet}`}
                 className={navClasses}
                 options={navOptions}
                 disableImagesLoaded={false}
-                reloadOnUpdate={true}
-                flickityRef={(c) => (this.flkty = c)}
+                reloadOnUpdate={false}
+                flickityRef={(c) => (this.flktyNav = c)}
                 updateOnEachImageLoad={true}
               >
-                {images.map((image) => {
+                {images.map((image, index) => {
                   return (
                     <div
                       className="responsive-block-editor-addons--item-thumbnail"
                       key={image.id || image.url}
+                      onClick={() => {
+                        if (this.flkty) {
+                          this.flkty.select(index);
+                        }
+                      }}
+                      style={{ cursor: 'pointer' }}
                     >
                       <figure className={navFigureClasses}>
                         <img

@@ -906,6 +906,7 @@ class edit extends Component {
 				setAttributes={setAttributes}
 				{...this.props}
 			/>
+      {("none" !== arrowDots) && (
         <PanelBody
           title={__("Color Settings", "responsive-block-editor-addons")}
           initialOpen={false}
@@ -943,6 +944,7 @@ class edit extends Component {
 					  	resetColor={() => setAttributes({ arrowColor: "" })}
 					  />
         </PanelBody>
+      )}
       </Fragment>
     );
 
@@ -1414,7 +1416,7 @@ class edit extends Component {
                     )}
                   </Fragment>
                 )}
-                {backgroundImage && (
+                {"image" == backgroundType && backgroundImage && (
                   <RbeaRangeControl
                   label={__("Opacity", "responsive-block-editor-addons")}
                   value={opacity}
@@ -1427,17 +1429,6 @@ class edit extends Component {
                 )}
               </Fragment>
             )}
-          {"image" == backgroundType && backgroundImage && (
-            <RbeaRangeControl
-              label={__("Opacity", "responsive-block-editor-addons")}
-              value={backgroundOpacity}
-              onChange={(value) => setAttributes({ backgroundOpacity: value })}
-              min={0}
-              max={100}
-              allowReset
-              initialPosition={0}
-            />
-          )}
         </PanelBody>
         <PanelBody title={__("Border", "responsive-block-editor-addons")} initialOpen={false}>
             <RbeaBlockBorderHelperControl
@@ -1558,26 +1549,16 @@ class edit extends Component {
         image_val = test_block[index]["image"];
       }
       return (
-        <>
-        <PanelBody
-          key={index}
-          title={__("Image", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}
-          initialOpen={true}
-          className={"responsive-block-editor-addons-repeater-panel"}
-        >
-            <RbeaMediaUploadControl
-              label={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
-              value={{
-                url: test_block[index]["image"]? test_block[index]["image"].url : '',
-              }}
-              onChange={(media) => {
-                this.onSelectTestImage(media, index);
-              }}
-              mediaType={'image'}
-            />
-        </PanelBody>
-       
-       </>
+        <RbeaMediaUploadControl
+          label={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
+          value={{
+            url: test_block[index]["image"]? test_block[index]["image"].url : '',
+          }}
+          onChange={(media) => {
+            this.onSelectTestImage(media, index);
+          }}
+          mediaType={'image'}
+        />
       );
     };
 
@@ -1633,7 +1614,7 @@ class edit extends Component {
             ]}
           />
         </div>
-        {"dots" != arrowDots && (
+        {("arrows" === arrowDots || 'arrows_dots' === arrowDots) && (
           <Fragment>
             <RbeaRangeControl
               label={__("Arrow Size", "responsive-block-editor-addons")}

@@ -162,6 +162,10 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
         "min-width": 'fit-content',
         "max-width": '100%',
+        "background-color": `${hexToRgba(
+          backgroundColor || "#ffffff",
+          newopacity || 0
+        )}`,
     },
     ":hover": {
       "box-shadow": hoverboxShadowColor !== '' ?
@@ -213,10 +217,6 @@ function EditorStyles(props) {
       "grid-auto-flow": iconColumns !== "auto" ? "" : "column",
       "grid-column-gap": generateCSSUnit(iconColumnsGap, "px"),
       "grid-row-gap": generateCSSUnit(iconRowsGap, "px"),
-      "background-color": `${hexToRgba(
-        backgroundColor || "#ffffff",
-        newopacity || 0
-      )}`,
     },
     " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSize, "px"),

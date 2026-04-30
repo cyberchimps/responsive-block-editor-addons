@@ -21,8 +21,14 @@ export default class PortfolioImage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.imgSize !== prevProps.imgSize) {
-      this.setImageUrl();
+    if (this.props.imgSize !== prevProps.imgSize || this.props.imgID !== prevProps.imgID) {
+      // Reset image state before fetching new image
+      this.setState({
+        imageUrl: "",
+        imageLoaded: false,
+      }, () => {
+        this.setImageUrl();
+      });
     }
   }
 
@@ -53,12 +59,15 @@ export default class PortfolioImage extends Component {
       imageUrl = this.getFullImageSize();
     }
 
-    if (imageUrl) {
-      this.setState({
-        imageUrl,
-        imageLoaded: true,
-      });
+    // Fallback to the REST-provided URL from the parent
+    if (!imageUrl) {
+      imageUrl = this.props.imgSizeLandscape || "";
     }
+
+    this.setState({
+      imageUrl,
+      imageLoaded: !!imageUrl,
+    });
   }
 
   getImageUrl() {
@@ -136,20 +145,6 @@ export default class PortfolioImage extends Component {
                         "There is no image generated for the selected image size, so a fallback image size is being used.",
                         "responsive-block-editor-addons"
                       )}
-                    </div>
-                    <div className="responsive-block-editor-addons-portfolio-image-help">
-                      <a
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={__(
-                          "Learn more about image sizes (opens in a new tab)",
-                          "responsive-block-editor-addons"
-                        )}
-                        href="https://github.com/studiopress/responsive-block-editor-addons/wiki/Post-Grid-Block#featured-image-sizes"
-                      >
-                        {__("Learn more ", "responsive-block-editor-addons")}
-                        <span>&rarr;</span>
-                      </a>
                     </div>
                   </Placeholder>
                 </Fragment>

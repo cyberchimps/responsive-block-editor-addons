@@ -180,7 +180,7 @@ const attributes = {
   },
   opacity: {
     type: "number",
-    default: 10,
+    default: 100,
   },
   icon_color: {
     type: "string",
@@ -542,6 +542,54 @@ const attributes = {
   dateTextDecoration: {
     type: "string",
     default: "",
+  },
+  blockTopPadding: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightPadding: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: '',
   },
 };
 export default attributes;

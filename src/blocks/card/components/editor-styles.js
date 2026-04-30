@@ -412,36 +412,16 @@ function EditorStyles(props) {
       "background-size": cardImageSize,
     },
 
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-0": {
-        "background-image": `url(${backgroundImageOne})`,
-        "display": backgroundImageOne? 'block' : 'none',
-    },
-
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
-    },
-
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-1": {
-        "background-image": `url(${backgroundImageTwo})`,
-        "display": backgroundImageTwo? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-1": {
       "display": backgroundImageTwo? 'none' : 'flex',
     },
 
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-2": {
-        "background-image": `url(${backgroundImageThree})`,
-        "display": backgroundImageThree? 'block' : 'none',
-    },
-
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-2": {
       "display": backgroundImageThree? 'none' : 'flex',
-    },
-
-    " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-3": {
-         "background-image": `url(${backgroundImageFour})`,
-         "display": backgroundImageFour? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-3": {
@@ -492,17 +472,17 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-button-inner": {
-      "padding-top": generateCSSUnit(ctaButtonTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaButtonBottomPadding, "px"),
-      "padding-left": generateCSSUnit(ctaButtonLeftPadding, "px"),
-      "padding-right": generateCSSUnit(ctaButtonRightPadding, "px"),
+      "padding-top": !inheritFromTheme ? generateCSSUnit(ctaButtonTopPadding, "px") : '',
+      "padding-bottom": !inheritFromTheme ? generateCSSUnit(ctaButtonBottomPadding, "px") : '',
+      "padding-left": !inheritFromTheme ? generateCSSUnit(ctaButtonLeftPadding, "px") : '',
+      "padding-right": !inheritFromTheme ? generateCSSUnit(ctaButtonRightPadding, "px") : '',
       "margin-top": generateCSSUnit(ctaButtonTopMargin, "px"),
       "margin-bottom": generateCSSUnit(ctaButtonBottomMargin, "px"),
       "margin-left": generateCSSUnit(ctaButtonLeftMargin, "px"),
       "margin-right": generateCSSUnit(ctaButtonRightMargin, "px"),
       "border-style": butborderStyle !== "empty" && ctaBorderStyle === "none" ? butborderStyle : ctaBorderStyle ? ctaBorderStyle : "none", //For compatibility with v1.3.2.
       "border-color": ctaBorderColor,
-      "border-radius": butborderRadius !== 999 && ctaBorderRadius === 2 ? bgenerateCSSUnit(butborderRadius, "px") : ctaBorderRadius //For compatibility with v1.3.2.
+      "border-radius": butborderRadius !== 999 && ctaBorderRadius === 2 ? generateCSSUnit(butborderRadius, "px") : ctaBorderRadius //For compatibility with v1.3.2.
         ? generateCSSUnit(ctaBorderRadius, "px")
         : "",
       "border-width": butborderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(butborderWidth, "px") : ctaBorderWidth //For compatibility with v1.3.2.
@@ -560,7 +540,7 @@ function EditorStyles(props) {
   },
   " .responsive-block-editor-addons-card-avatar-img": {
     "background-position": getImagePostionCSS(cardImagePositionFocalMobile),
-    "background-size": cardImageSizeMobile,
+    "background-size": cardImageSizeMobile === '' || !cardImageSizeMobile ? cardImageSize : cardImageSizeMobile,
   },
   };
 
@@ -612,7 +592,7 @@ function EditorStyles(props) {
   },
   " .responsive-block-editor-addons-card-avatar-img": {
     "background-position": getImagePostionCSS(cardImagePositionFocalTablet),
-    "background-size": cardImageSizeTablet,
+    "background-size": cardImageSizeTablet === '' || !cardImageSizeTablet ? cardImageSize : cardImageSizeTablet,
   },
   };
 

@@ -345,7 +345,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
-      color: titleTypographyColor,
+      "color": titleColor,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
@@ -356,12 +356,14 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,
-      color: descriptionTypographyColor,
+      "color": descriptionColor,
       "margin-bottom": generateCSSUnit(descriptionBottomSpacing, "px"),
     },
-    " .imagebox-arrow": {
+    " .imagebox-arrow svg": {
       color: arrowColor,
-      "font-size": generateCSSUnit(arrowSize, "px"),
+      "fill": arrowColor,
+      "width": generateCSSUnit(arrowSize, "px"),
+      "height": generateCSSUnit(arrowSize, "px"),
     },
   };
 

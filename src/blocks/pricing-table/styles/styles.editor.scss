@@ -19,6 +19,10 @@
     width: max-content;
     margin-left: auto;
     margin-right: auto;
+
+    &.wp-block-button__link {
+      height: inherit;
+    }
   }
 }
 .responsive-block-editor-addons-pricing-table-background-image-wrap {

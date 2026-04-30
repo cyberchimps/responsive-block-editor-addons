@@ -99,7 +99,9 @@ export default class Inspector extends Component {
 
     const newItems = cardsArray.map((item, thisIndex) => {
       if (index === thisIndex) {
-        (item["image"] = imag_url), (item["imageUrl"] = imag_url);
+        item["image"] = imag_url;
+        item["imageUrl"] = imag_url;
+        item["imageId"] = media && media.id ? media.id : null;
       }
       return item;
     });
@@ -119,6 +121,7 @@ export default class Inspector extends Component {
     const newItems = cardsArray.map((item, thisIndex) => {
       if (index === thisIndex) {
         item["image"] = null;
+        item["imageId"] = null;
       }
       return item;
     });
@@ -903,6 +906,7 @@ export default class Inspector extends Component {
                       onChange={(newValue) => { 
                           setAttributes({
                             backgroundImageOne: newValue.url,
+                            backgroundImageOneId: newValue.id || null,
                           });
                       }}
                       mediaType={'image'}
@@ -916,6 +920,7 @@ export default class Inspector extends Component {
                       onChange={(newValue) => { 
                           setAttributes({
                             backgroundImageTwo: newValue.url,
+                            backgroundImageTwoId: newValue.id || null,
                           });
                       }}
                       mediaType={'image'}
@@ -930,6 +935,7 @@ export default class Inspector extends Component {
                       onChange={(newValue) => { 
                           setAttributes({
                             backgroundImageThree: newValue.url,
+                            backgroundImageThreeId: newValue.id || null,
                           });
                       }}
                       mediaType={'image'}
@@ -944,6 +950,7 @@ export default class Inspector extends Component {
                       onChange={(newValue) => { 
                           setAttributes({
                             backgroundImageFour: newValue.url,
+                            backgroundImageFourId: newValue.id || null,
                           });
                       }}
                       mediaType={'image'}
@@ -1162,6 +1169,19 @@ export default class Inspector extends Component {
               title={__("Button Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                  });
+                }}
+                __nextHasNoMarginBottom
+              />
+              {!inheritFromTheme && (
                 <RbeaTabRadioControl
                   label={__("Button Size", "responsive-block-editor-addons")}
                   value={buttonSize}
@@ -1176,26 +1196,33 @@ export default class Inspector extends Component {
                   }}
                   defaultValue={"medium"}
                 />
-              {/* TODO */}
-              <ToggleControl
-                label={__("Inherit from Theme", "responsive-block-editor-addons")}
-                checked={inheritFromTheme}
-                onChange={(next) => {
-                  setAttributes({
-                    inheritFromTheme: next,
-                    inheritFromThemesaved: next,
-                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
-                  });
-                }}
-                __nextHasNoMarginBottom
-              />
-              <ButtonSettingsControl
-                {...this.props}
-                showMarginControls={true}
-                showBackColorOpacity={true}
-                showGradientHover={false}
-                showTextOpacity={true}
-              />
+              )}
+              {!inheritFromTheme && (
+                <ButtonSettingsControl
+                  {...this.props}
+                  showMarginControls={true}
+                  showBackColorOpacity={true}
+                  showGradientHover={false}
+                  showTextOpacity={true}
+                />
+              )}
+              {inheritFromTheme && (
+                <ToggleControl
+                  label={__("Open link in new tab", "responsive-block-editor-addons")}
+                  checked={buttonTarget}
+                  onChange={() => {
+                      setAttributes({ buttonTarget: !buttonTarget });
+                  }}
+                  __nextHasNoMarginBottom
+                />
+              )}
+              {inheritFromTheme && (
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="ctaButton%s"
+                  resetValues={blockMarginResetValues}
+                  {...this.props}
+                />
+              )}
             </PanelBody>
             <RbeaSupportControl blockSlug={"card"} />
           </InspectorTab>

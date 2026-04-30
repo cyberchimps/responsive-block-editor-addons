@@ -447,12 +447,14 @@ export default class Inspector extends Component {
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
-            <PanelBody
-                title={__("Icon", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                {iconColorControls()}
-              </PanelBody>
+              {( 'icon' === source_type) && (
+                <PanelBody
+                  title={__("Icon", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
+                  {iconColorControls()}
+                </PanelBody>
+              )}
               <PanelBody
                 title={__("Label", "responsive-block-editor-addons")}
                 initialOpen={false}

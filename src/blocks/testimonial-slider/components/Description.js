@@ -26,7 +26,7 @@ class Description extends React.Component {
           placeholder={__("Write Description", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__desc"
           style={{
-            color: attributes.descColor,
+            color: attributes.descTypographyColor,
             marginBottom: attributes.descSpace,
             fontFamily: attributes.descFontFamily,
             fontWeight: attributes.descFontWeight,
@@ -65,7 +65,7 @@ class Description extends React.Component {
           value={String(description)}
           className="responsive-block-editor-addons-tm__desc"
           style={{
-            color: attributes.descColor,
+            color: attributes.descTypographyColor,
             marginBottom: attributes.descSpace,
             fontFamily: attributes.descFontFamily,
             fontWeight: attributes.descFontWeight,

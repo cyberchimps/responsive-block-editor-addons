@@ -1016,7 +1016,7 @@ export default class Inspector extends Component {
                 label = {__("Blog Post Background Color", "responsive-block-editor-addons")}
                 colorValue={attributes.bgColor}
                 onChange={(colorValue) => this.props.setAttributes({ bgColor: colorValue })}
-                resetColor={() => this.props.setAttributes({ bgColorMe: "" })}
+                resetColor={() => this.props.setAttributes({ bgColor: "" })}
               />
               <RbeaColorControl
                 label = {__("Arrow & Dots Color", "responsive-block-editor-addons")}

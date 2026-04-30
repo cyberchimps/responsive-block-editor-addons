@@ -46,12 +46,7 @@
 .responsive-count-item {
   display: flex;
   flex-direction: column;
-  background-color: #f00;
   margin-bottom: 5%;
-
-  &:not(.has-background) {
-    background: hsla(240, 5%, 57%, 0.1);
-  }
 
   &__title {
     font-size: 16px;

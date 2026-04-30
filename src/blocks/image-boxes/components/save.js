@@ -41,6 +41,7 @@ export default class Save extends Component {
       imageSize,
       showTitle,
       showDescription,
+      arrowIcon,
     } = this.props.attributes;
 
     const classes = classnames(
@@ -112,7 +113,7 @@ export default class Save extends Component {
                   className="wp-block-responsive-block-editor-addons-image-boxes-block-item__description"
                   value={imageboxesBlock[index]["hover_description"]}
                 />)}
-                {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
+                {hasArrow && <span className="imagebox-arrow rbea-dynamic-icon" data-icon={arrowIcon} aria-hidden="true"></span>}
               </div>
             </a>
           ))}

@@ -1,124 +1,396 @@
-const ITEM_COUNT = 3;
-
-const portfolioItems = [];
-
-for (let i = 1; i <= ITEM_COUNT; i++) {
-  portfolioItems.push({
-    title: `Portfolio Item ${i}`,
-    desc: `Description for portfolio item ${i}. You can use this space to provide details about the project.`,
-    img_url: "",
-    img_id: "",
-    img_width: "",
-    img_height: "",
-    link: "#",
-    linkText: "View Project",
-  });
-}
-
 const attributes = {
   block_id: {
     type: "string",
   },
-  portfolioItems: {
-    type: "array",
-    default: portfolioItems,
-  },
-  layout: {
-    type: "string",
-    default: "grid", // Options: grid, list, carousel
-  },
-  columnCount: {
+  columnGap: {
     type: "number",
-    default: 3,
+    default: 0
   },
-  gutter: {
-    type: "string",
-    default: "medium", // Options: none, small, medium, large
+  columnGapTablet: {
+    type: "number",
+    default: 0
   },
-  titleTag: {
-    type: "string",
-    default: "h3",
+  columnGapMobile: {
+    type: "number",
+    default: 0
   },
-  contentAlign: {
-    type: "string",
-    default: "center", // Options: left, center, right
+  rowGap: {
+    type: "number",
+    default: ""
   },
-  titleColor: {
-    type: "string",
-    default: "#333333",
+  rowGapTablet: {
+    type: "number",
+    default: ""
   },
-  descColor: {
-    type: "string",
-    default: "#666666",
-  },
-  linkColor: {
-    type: "string",
-    default: "#007BFF",
-  },
-  linkHoverColor: {
-    type: "string",
-    default: "#0056b3",
-  },
-  blockBorderStyle: {
-    type: "string",
-    default: "solid",
+  rowGapMobile: {
+    type: "number",
+    default: ""
   },
   blockBorderWidth: {
     type: "number",
-    default: 1,
+    default: "0"
   },
   blockBorderRadius: {
     type: "number",
-    default: 8,
+    default: "0"
   },
-  blockPadding: {
-    type: "number",
-    default: 16,
-  },
-  blockMargin: {
-    type: "number",
-    default: 16,
-  },
-  blockBackground: {
+  blockBorderStyle: {
     type: "string",
-    default: "#ffffff",
+    default: "none"
   },
-  blockHoverBackground: {
+  blockBorderColor: {
     type: "string",
-    default: "#f8f9fa",
+    default: "#333"
   },
-  responsiveSettings: {
-    type: "object",
-    default: {
-      desktop: {
-        columnCount: 3,
-        gutter: "medium",
-      },
-      tablet: {
-        columnCount: 2,
-        gutter: "small",
-      },
-      mobile: {
-        columnCount: 1,
-        gutter: "small",
-      },
-    },
+  overlayTextAlign: {
+    type: "string",
+    default: "center"
   },
-  overlayTextFontStyle: {
-		type: 'string',
-		default: "",
+  overlayTextVerticalAlign: {
+    type: "string",
+    default: "center"
+  },
+  horizontalSpacing: {
+    type: "number",
+    default: 10
+  },
+  verticalSpacing: {
+    type: "number",
+    default: 15
+  },
+  overlayBackgroundColor: {
+    type: "string",
+    default: "#ff6f61"
+  },
+  overlayTextColor: {
+    type: "string",
+    default: "#fff"
+  },
+  overlayOpacity: {
+    type: "number",
+    default: 100
+  },
+  overlayTextFontFamily: {
+    type: "string",
+    default: ""
+  },
+  overlayTextFontSize: {
+    type: "number",
+    default: ""
+  },
+  overlayTextLineHeight: {
+    type: "number",
+    default: ""
+  },
+  overlayTextFontWeight: {
+    type: "string",
+    default: ""
   },
   overlayTextTextTransform: {
-		type: 'string',
-		default: "",
+    type: "string",
+    default: ""
   },
-  isPreview: {
+  postTitleTag: {
+    type: "string",
+    default: "h3"
+  },
+  itemRatio: {
+    type: "number",
+    default: 0.66
+  },
+  categories: {
+    type: "string"
+  },
+  postsToShow: {
+    type: "number",
+    default: 6
+  },
+  displayPostTitle: {
     type: "boolean",
-    default: false, 
+    default: true
+  },
+  displaySectionTitle: {
+    type: "boolean",
+    default: false
+  },
+  postLayout: {
+    type: "string",
+    default: "grid"
+  },
+  columns: {
+    type: "number",
+    default: 3
+  },
+  order: {
+    type: "string",
+    default: "desc"
+  },
+  orderBy: {
+    type: "string",
+    default: "date"
+  },
+  offset: {
+    type: "number",
+    default: 0
+  },
+  postType: {
+    type: "string",
+    default: "post"
+  },
+  postTaxonomy: {
+    type: "string",
+    default: "category"
+  },
+  taxonomyType: {
+    type: "string",
+    default: "category"
+  },
+  sectionTag: {
+    type: "string",
+    default: "section"
+  },
+  sectionTitle: {
+    type: "string"
+  },
+  sectionTitleTag: {
+    type: "string",
+    default: "h2"
+  },
+  imageSize: {
+    type: "string",
+    default: "full"
+  },
+  id: {
+    type: "number",
+    default: ""
+  },
+  layout: {
+    type: "string",
+    default: "boxed"
+  },
+  contentPadding: {
+    type: "number",
+    default: 0
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: ""
+  },
+  mobileContentPadding: {
+    type: "number",
+    default: 999
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: ""
+  },
+  hideWidget: {
+    type: "boolean",
+    default: false
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false
+  },
+  z_index: {
+    type: "number",
+    default: 1
+  },
+  z_indexMobile: {
+    type: "number",
+    default: 1
+  },
+  z_indexTablet: {
+    type: "number",
+    default: 1
+  },
+  blockTopMargin: {
+    type: "number",
+    default: ""
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: ""
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: ""
+  },
+  blockRightMargin: {
+    type: "number",
+    default: ""
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: ""
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: ""
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: ""
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: ""
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: ""
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: ""
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: ""
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: ""
+  },
+  blockIsMarginControlConnected: {
+    type: "boolean",
+    default: false
+  },
+  blockIsPaddingControlConnected: {
+    type: "boolean",
+    default: false
+  },
+  blockTopPadding: {
+    type: "number",
+    default: ""
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: ""
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: ""
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: ""
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: ""
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: ""
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: ""
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: ""
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: ""
+  },
+  blockRightPadding: {
+    type: "number",
+    default: ""
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: ""
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: ""
+  },
+  blockTopRadius: {
+    type: "number",
+    default: "0"
+  },
+  blockRightRadius: {
+    type: "number",
+    default: "0"
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: "0"
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: "0"
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: "0"
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: "0"
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: "0"
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: "0"
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: "0"
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: "0"
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: "0"
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: "0"
+  },
+  blockIsRadiusControlConnected: {
+    type: "boolean",
+    default: false
+  },
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false
+  },
+  blockIsTypographyColorValueUpdated: {
+    type: "boolean",
+    default: false
+  },
+  overlayTextTypographyColor: {
+    type: "string",
+    default: "#fff"
   },
   overlayTextTextDecoration: {
     type: "string",
     default: "",
+  },
+  overlayTextFontStyle: {
+    type: "string",
+    default: ""
+  },
+  excludeCurrentPost: {
+    type: "boolean",
+    default: true,
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
   },
 };
 

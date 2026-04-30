@@ -224,6 +224,8 @@ export default class Edit extends Component {
                           img_url: value,
                           button: data_copy[index]["button"],
                           buttonURL: data_copy[index]["buttonURL"],
+                          price_suffix: data_copy[index]["price_suffix"],
+                          sub_price: data_copy[index]["sub_price"],
                         };
                         data_copy[index] = new_content;
                         setAttributes({ pricingTable: data_copy });
