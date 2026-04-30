@@ -171,7 +171,7 @@
    var selectors = {
     " ": {
       "opacity": hideWidget && isOn ? 0.2 : 1,
-      "width": width,
+      "width": '100%',
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
@@ -213,6 +213,9 @@
         " " +
         hoverboxShadowPositionCSS : '',
     },
+    " .responsive-block-editor-addons-search-form-container": {
+      "width": width,
+    },
     " .responsive-block-editor-addons-search-form__input": {
      "border-top" : inputBorderTop + ' !important',
      "border-right": inputBorderRight + ' !important',
@@ -233,6 +236,7 @@
     },
     " .responsive-block-editor-addons-search-form__input::placeholder": {
       "color": inputTypographyColor,
+      "background-color": inputBackgroundColor,
       "opacity": 0.6,
      },
     " .responsive-block-editor-addons-search-submit": {

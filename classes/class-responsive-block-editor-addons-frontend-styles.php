@@ -19225,7 +19225,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				' ' => array(
 					'display'                    => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
-					'width'                      => $width,
+					'width'                      => '100%',
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadius'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadius'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadius'], 'px' ),
@@ -19268,6 +19268,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['hoverboxShadowColor'] .
 						' ' .
 						$hover_box_shadow_position_css : '',
+				),
+				' .responsive-block-editor-addons-search-form-container' => array(
+					'width' => $width,
 				),
 				' .responsive-block-editor-addons-search-form__input' => array(
 					'border-top'       => $input_border_top . ' !important',
