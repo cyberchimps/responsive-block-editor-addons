@@ -61,6 +61,21 @@ class GalleryCarouselEdit extends Component {
     document.head.appendChild($style);
   }
 
+  componentWillUnmount() {
+    if (this.flkty && this.flkty.slider && this.flkty.element) {
+      const slider = this.flkty.slider;
+      Array.from(
+        this.flkty.element.querySelectorAll(
+          ".responsive-block-editor-addons-gallery--item"
+        )
+      ).forEach((el) => {
+        if (el.parentNode !== slider) {
+          slider.appendChild(el);
+        }
+      });
+    }
+  }
+
   componentDidUpdate(prevProps) {
     var element = document.getElementById(
       "responsive-block-editor-addons-image-slider-style-" + this.props.clientId
