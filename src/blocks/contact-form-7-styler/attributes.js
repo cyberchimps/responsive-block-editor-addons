@@ -993,6 +993,14 @@ const attributes = {
     type: "string",
     default: "center",
   },
+  ctaButtonAlignmentTablet: {
+    type: "string",
+    default: "center",
+  },
+  ctaButtonAlignmentMobile: {
+    type: "string",
+    default: "center",
+  },
   ctaButtonmarginleft: {
     type: "number",
     default: 0,
@@ -1788,6 +1796,9 @@ const attributes = {
     type: "string",
   },
   gradientButtonH: {
+    type: "string",
+  },
+  submitButtonTextDecoration: {
     type: "string",
   }
 };

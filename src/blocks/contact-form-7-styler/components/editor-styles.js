@@ -360,6 +360,7 @@
       gradientHover,
       gradientButton,
       gradientButtonH,
+      submitButtonTextDecoration,
    } = props.attributes;
 
 
@@ -387,8 +388,8 @@
 
 
   if ("left" === ctaButtonAlignmentMobile) {
-    ctaButtonmarginleftMobile='',
-    ctaButtonmarginrightMobile='0'
+    ctaButtonmarginleftMobile='0',
+    ctaButtonmarginrightMobile=''
   }
 
   if ("center" === ctaButtonAlignmentMobile) {
@@ -406,8 +407,8 @@
 
 
   if ("left" === ctaButtonAlignmentTablet) {
-    ctaButtonmarginleftTablet='',
-    ctaButtonmarginrightTablet='0'
+    ctaButtonmarginleftTablet='0',
+    ctaButtonmarginrightTablet=''
   }
 
   if ("center" === ctaButtonAlignmentTablet) {
@@ -757,7 +758,9 @@
       "text-transform": labelTextTransform,
       "font-style": labelFontStyle,
 		},
-
+    ' .wpcf7 form.wpcf7-form label': {
+      'color': labelTypographyColor,
+    },
     ' p>label': {
       display: showLabels ? "block" : 'none',
 		},
@@ -928,7 +931,7 @@
         submitButtonBoxShadowPositionCSS,
       "text-transform": submitButtonTextTransform,
       "font-style": submitButtonFontStyle,
-      
+      "text-decoration": submitButtonTextDecoration,
 		},  
      
      
@@ -1031,7 +1034,7 @@
       "margin":"auto",
       "margin-left":generateCSSUnit(ctaButtonmarginleftMobile, "px"),
       "margin-right":generateCSSUnit(ctaButtonmarginrightMobile, "px"),
-      "width":generateCSSUnit(submitButtonWidthMobile, "px"),
+      "width":generateCSSUnit(submitButtonWidthMobile, "%"),
       "Height":generateCSSUnit(submitButtonHeightMobile, "px"),     
       "border-top-left-radius": generateCSSUnit(ctaTopRadiusMobile, "px"),
       "border-top-right-radius": generateCSSUnit(ctaRightRadiusMobile, "px"),
@@ -1162,7 +1165,7 @@
       "margin":"auto",
       "margin-left":generateCSSUnit(ctaButtonmarginleftTablet, "px"),
       "margin-right":generateCSSUnit(ctaButtonmarginrightTablet, "px"),
-      "width":generateCSSUnit(submitButtonWidthTablet, "px"),
+      "width":generateCSSUnit(submitButtonWidthTablet, "%"),
       "Height":generateCSSUnit(submitButtonHeightTablet, "px"),  
       "border-top-left-radius": generateCSSUnit(ctaTopRadiusTablet, "px"),
       "border-top-right-radius": generateCSSUnit(ctaRightRadiusTablet, "px"),
