@@ -5189,7 +5189,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'      => self::get_css_value( $attr['ctaButtonLeftMargin'], 'px' ),
 					'margin-right'     => self::get_css_value( $attr['ctaButtonRightMargin'], 'px' ),
 					'border-style'     => 'empty' !== $attr['butborderStyle'] && 'none' !== $attr['ctaBorderStyle'] ? $attr['butborderStyle'] : $attr['ctaBorderStyle'], // For compatibility with v1.3.2.
-					'border-radius'    => 999 !== $attr['butborderRadius'] && 2 === $attr['ctaBorderRadius'] ? self::get_css_value( $attr['butborderRadius'], 'px' ) : self::get_css_value( $attr['ctaBorderRadius'], 'px' ), // For compatibility with v1.3.2.
+					'border-top-left-radius' => self::get_css_value( $attr['ctaBlockTopRadius'], 'px' ),
+					'border-top-right-radius' => self::get_css_value( $attr['ctaBlockRightRadius'], 'px' ),
+					'border-bottom-left-radius' => self::get_css_value( $attr['ctaBlockBottomRadius'], 'px' ),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockLeftRadius'], 'px' ),
 					'border-width'     => 999 !== $attr['butborderWidth'] && 1 === $attr['ctaBorderWidth'] ? self::get_css_value( $attr['butborderWidth'], 'px' ) : self::get_css_value( $attr['ctaBorderWidth'], 'px' ), // For compatibility with v1.3.2.
 					'background-image' => $flag ? '' : $updated_button_background_color,
 					'border-color'     => $attr['ctaBorderColor'],
@@ -5233,6 +5236,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['ctaButtonBottomMarginMobile'], 'px' ),
 					'margin-left'    => self::get_css_value( $attr['ctaButtonLeftMarginMobile'], 'px' ),
 					'margin-right'   => self::get_css_value( $attr['ctaButtonRightMarginMobile'], 'px' ),
+					'border-top-left-radius' => self::get_css_value( $attr['ctaBlockTopRadiusMobile'], 'px' ),
+					'border-top-right-radius' => self::get_css_value( $attr['ctaBlockRightRadiusMobile'], 'px' ),
+					'border-bottom-left-radius' => self::get_css_value( $attr['ctaBlockBottomRadiusMobile'], 'px' ),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockLeftRadiusMobile'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-card-item' => array(
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusMobile'], 'px' ),
@@ -5286,6 +5293,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['ctaButtonBottomMarginTablet'], 'px' ),
 					'margin-left'    => self::get_css_value( $attr['ctaButtonLeftMarginTablet'], 'px' ),
 					'margin-right'   => self::get_css_value( $attr['ctaButtonRightMarginTablet'], 'px' ),
+					'border-top-left-radius' => self::get_css_value( $attr['ctaBlockTopRadiusTablet'], 'px' ),
+					'border-top-right-radius' => self::get_css_value( $attr['ctaBlockRightRadiusTablet'], 'px' ),
+					'border-bottom-left-radius' => self::get_css_value( $attr['ctaBlockBottomRadiusTablet'], 'px' ),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockLeftRadiusTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-card-item' => array(
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusTablet'], 'px' ),
@@ -5585,6 +5596,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundImageTwoId'         => null,
 				'backgroundImageThreeId'       => null,
 				'backgroundImageFourId'        => null,
+				'ctaBlockTopRadius'            => 0,
+				'ctaBlockRightRadius'          => 0,
+				'ctaBlockBottomRadius'         => 0,
+				'ctaBlockLeftRadius'           => 0,
+				'ctaBlockTopRadiusMobile'      => 0,
+				'ctaBlockRightRadiusMobile'    => 0,
+				'ctaBlockBottomRadiusMobile'   => 0,
+				'ctaBlockLeftRadiusMobile'     => 0,
+				'ctaBlockTopRadiusTablet'      => 0,
+				'ctaBlockRightRadiusTablet'    => 0,
+				'ctaBlockBottomRadiusTablet'   => 0,
+				'ctaBlockLeftRadiusTablet'     => 0,
 			);
 		}
 
