@@ -75,7 +75,7 @@ export default class Inspector extends Component {
     const { popupImageTrigger } = this.props.attributes;
 
     if (!media || !media.url) {
-      setAttributes({ popupImageTrigger: null });
+      setAttributes({ popupImageTrigger: undefined });
       return;
     }
 
