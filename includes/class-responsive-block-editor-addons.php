@@ -650,6 +650,14 @@ class Responsive_Block_Editor_Addons {
 				continue;
 			}
 
+			if ( 'e-floating-buttons' === $post_type->name ) {
+				continue;
+			}
+
+			if ( 'elementor_library' === $post_type->name ) {
+				continue;
+			}
+
 			$options[] = array(
 				'value' => $post_type->name,
 				'label' => $post_type->label,
