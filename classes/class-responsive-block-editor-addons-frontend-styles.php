@@ -13475,11 +13475,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$imgopacity = $attr['opacity'] / 100;
 
+			$updated_background_image = 'url(' . $attr['backgroundImage'] . ')';
 			$background_image_effect  = '';
-			$updated_background_image = '';
 
 			$color_type = '';
-			if ( 'color' === $attr['overlayType'] || '' === $attr['overlayType'] || 'none' === $attr['overlayType'] ) {
+			if ( 'color' === $attr['overlayType'] ) {
 				$color_type = self::hex_to_rgba(
 					$attr['backgroundImageColor'],
 					$imgopacity
