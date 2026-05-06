@@ -14875,7 +14875,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'			=> '',
 				'headingTextDecoration'			=> '',
 				'dateTextDecoration'			=> '',
-				'countupTopPadding'             => '',
+				'countupTopPadding'             => 30,
 				'countupTopPaddingMobile'       => '',
 				'countupTopPaddingTablet'       => '',
 				'countupBottomPadding'          => '',
