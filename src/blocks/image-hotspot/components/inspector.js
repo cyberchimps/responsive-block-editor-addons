@@ -436,10 +436,6 @@ class Inspector extends Component {
           <div
             className={`components-base-control responsive_block_addons___url-field`}
           >
-            <Dashicon
-              className={`responsive_block_addons___url-icon`}
-              icon="admin-links"
-            />
             <TextControl
               label={__("Hotspot URL", "responsive-block-editor-addons")}
               placeholder={__("Enter URL", "responsive-block-editor-addons")}
