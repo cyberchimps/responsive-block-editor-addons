@@ -652,22 +652,6 @@ export default class Inspector extends Component {
               )}
               
             </PanelBody>
-            <PanelBody
-              title={__("Border", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <RbeaBlockBorderHelperControl
-                attrNameTemplate="block%s"
-                values={{
-                  radius: blockBorderRadius,
-                  style: blockBorderStyle,
-                  width: blockBorderWidth,
-                  color: blockBorderColor,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
             <PanelBody title={__("Box Shadow", "responsive-block-editor-addons")}
 								initialOpen={false}
 							>
