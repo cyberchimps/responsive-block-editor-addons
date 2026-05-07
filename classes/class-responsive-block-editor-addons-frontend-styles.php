@@ -7244,7 +7244,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'    => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
 					'line-height'    => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing' => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
-					'text-transform' => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform' => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'=> isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 				),
 				' .gallery-filter-wrapper .gallery-filter-button' => array(
@@ -7268,7 +7268,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-style'       => isset( $attr['filterTabTypographyFontStyle'] ) ? $attr['filterTabTypographyFontStyle'] : 'normal',
 					'line-height'      => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing'   => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
-					'text-transform'   => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform'   => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'  => isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 				),
 				' .gallery-filter-wrapper .gallery-filter-button:hover, .gallery-filter-wrapper .gallery-filter-button.is-active' => array(
@@ -7315,7 +7315,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'    => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
 					'line-height'    => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing' => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
-					'text-transform' => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform' => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'=> isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 				),
 				' .gallery-filter-wrapper .gallery-filter-button' => array(
@@ -7324,7 +7324,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'      => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight']: '',
 					'line-height'      => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight']: '',
 					'letter-spacing'   => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ): '',
-					'text-transform'   => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform'   => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'  => isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 					'padding-top'      => ( $v = self::get_css_value( ( isset( $attr['filterTabTopPaddingMobile'] ) && $attr['filterTabTopPaddingMobile'] !== '' ) ? $attr['filterTabTopPaddingMobile'] : ( ( isset( $attr['filterTabTopPadding'] ) && $attr['filterTabTopPadding'] !== '' ) ? $attr['filterTabTopPadding'] : 7 ), 'px' ) ) ? $v : '',
 					'padding-right'    => ( $v = self::get_css_value( ( isset( $attr['filterTabRightPaddingMobile'] ) && $attr['filterTabRightPaddingMobile'] !== '' ) ? $attr['filterTabRightPaddingMobile'] : ( ( isset( $attr['filterTabRightPadding'] ) && $attr['filterTabRightPadding'] !== '' ) ? $attr['filterTabRightPadding'] : 7 ), 'px' ) ) ? $v : '',
@@ -7385,7 +7385,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'    => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
 					'line-height'    => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing' => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
-					'text-transform' => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform' => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'=> isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 				),
 				' .gallery-filter-wrapper .gallery-filter-button' => array(
@@ -7394,7 +7394,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'      => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
 					'line-height'      => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing'   => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
-					'text-transform'   => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
+					'text-transform'   => $attr['filterTabTypographyTextTransform'],
 					'text-decoration'  => isset( $attr['filterTabTypographyTextDecoration'] ) ? $attr['filterTabTypographyTextDecoration'] : '',
 					'padding-top'    => '' !== ( $v = self::get_css_value( ( isset( $attr['filterTabTopPaddingTablet'] ) && $attr['filterTabTopPaddingTablet'] !== '' ) ? $attr['filterTabTopPaddingTablet'] : ( ( isset( $attr['filterTabTopPadding'] ) && $attr['filterTabTopPadding'] !== '' ) ? $attr['filterTabTopPadding'] : 7 ), 'px' ) ) ? $v : '',
 					'padding-right'  => '' !== ( $v = self::get_css_value( ( isset( $attr['filterTabRightPaddingTablet'] ) && $attr['filterTabRightPaddingTablet'] !== '' ) ? $attr['filterTabRightPaddingTablet'] : ( ( isset( $attr['filterTabRightPadding'] ) && $attr['filterTabRightPadding'] !== '' ) ? $attr['filterTabRightPadding'] : 7 ), 'px' ) ) ? $v : '',
@@ -7473,6 +7473,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'customHeight'             => '',
 				'columnsize'               => 3,
 				'filterTabRightPaddingMobile' => 30,
+				'filterTabTypographyFontFamily' => '',
+				'filterTabTypographyFontSize' => 14,
+				'filterTabTypographyFontSizeTablet' => '',
+				'filterTabTypographyFontSizeMobile' => '',
+				'filterTabTypographyFontWeight' => 400,
+				'filterTabTypographyLineHeight' => 1.5,
+				'filterTabTypographyLetterSpacing' => 0,
+				'filterTabTypographyTextTransform' => 'none',
+				'filterTabTypographyTextDecoration' => '',
 			);
 		}
 

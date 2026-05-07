@@ -176,8 +176,7 @@
       "default": "left"
     },
     "filterTabTypographyFontFamily": {
-      "type": "string",
-      "default": "Abel"
+      "type": "string"
     },
     "filterTabTypographyFontSize": {
       "type": "number",
@@ -203,7 +202,7 @@
     },
     "filterTabTypographyTextTransform": {
       "type": "string",
-      "default": "none"
+      "default": ""
     },
     "filterTabTypographyTextDecoration": {
       "type": "string",
