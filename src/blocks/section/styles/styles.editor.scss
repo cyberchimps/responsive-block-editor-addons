@@ -325,8 +325,7 @@
     .rbea-tab-radio-control-wrapper {
       .rbea-tab-radio-options{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr); 
         gap: 0;
         box-shadow: inset 0 0 0 0.5px #C9C8C8;
         border-radius: 6px; 

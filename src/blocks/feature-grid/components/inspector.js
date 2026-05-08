@@ -705,14 +705,12 @@ export default class Inspector extends Component {
                     setAttributes({
                       ctaColor: "#333",
                       ctaBackColor: "#3f46ae",
-                      ctaHoverColor: "#fff",
+                      ctaHoverColor: "#333",
                       ctaHoverBackColor: "#3f46ae",
                       ctaBorderColor: "#333",
                       ctaBorderStyle: "none",
                       ctaBorderRadius: 0,
                       ctaBorderWidth: 2,
-                      ctaHpadding: 30,
-                      ctaVpadding: 15,
                       descSpace: 40,
                     });
                   }
@@ -726,10 +724,6 @@ export default class Inspector extends Component {
                       ctaBorderStyle: "solid",
                       ctaBorderWidth: 2,
                       descSpace: 40,
-                      ctaButtonTopPadding: 15,
-                      ctaButtonBottomPadding: 15,
-                      ctaButtonLeftPadding: 30,
-                      ctaButtonRightPadding: 30,
                       ctaBlockTopRadius: 5,
                       ctaBlockRightRadius: 5,
                       ctaBlockBottomRadius: 5,
@@ -746,8 +740,6 @@ export default class Inspector extends Component {
                       ctaBorderStyle: "",
                       ctaBorderRadius: "",
                       ctaBorderWidth: "",
-                      ctaHpadding: "",
-                      ctaVpadding: "",
                     });
                   }
                 }}

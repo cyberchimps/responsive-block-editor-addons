@@ -877,15 +877,15 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'rowGap'                      => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => 20,
 				),
 				'rowGapTablet'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => 20,
 				),
 				'rowGapMobile'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => 20,
 				),
 				'blockBorderWidth'            => array(
 					'type'    => 'number',

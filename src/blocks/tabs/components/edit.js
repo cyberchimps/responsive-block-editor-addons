@@ -61,6 +61,13 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
      if (null !== element && undefined !== element) {
        element.innerHTML = EditorStyles(this.props);
      }
+     
+     // Reset tab order whenever innerBlocks change
+     if (prevProps.innerBlocksCount !== this.props.innerBlocksCount) {
+       setTimeout(() => {
+         this.props.resetTabOrder();
+       }, 0);
+     }
    }
  
    componentDidMount() {
@@ -77,8 +84,12 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
          this.props.clientId
      );
      document.head.appendChild($style);
-     this.updateTabTitle();
-     this.props.resetTabOrder();
+     
+     // Delay initialization to ensure innerBlocks are mounted
+     setTimeout(() => {
+       this.props.resetTabOrder();
+       this.updateTabTitle();
+     }, 50);
    }
 
    updateTabsTitle(header, index) {
@@ -310,8 +321,12 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
  export default compose(
 	withSelect( ( select, props ) => {
 		const { getDeviceType } = select( 'core/editor' );
+		const { getBlock } = select( 'core/block-editor' );
+		const block = getBlock( props.clientId );
+		
 		return {
 			deviceType: getDeviceType(),
+			innerBlocksCount: block ? block.innerBlocks.length : 0,
 		}
 	}),
 	withDispatch( (dispatch, { clientId }, { select }) => {
@@ -326,6 +341,8 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
 		
 		return {
 			resetTabOrder() {
+				if (!block || !block.innerBlocks) return;
+				
 				times( block.innerBlocks.length, n => {
 					updateBlockAttributes( block.innerBlocks[ n ].clientId, {
 						id: n,
@@ -333,6 +350,8 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
 				} );
 			},
 			updateActiveTab(activeTab) {
+				if (!block) return;
+				
 				updateBlockAttributes( block.clientId, {
 					activeTab: activeTab,
 				} );
@@ -341,7 +360,6 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
 						activeTab: activeTab,
 					} );
 				} );
-				this.resetTabOrder();
 			},
 			moveTab( tabId, newIndex ) {
 				moveBlockToPosition( tabId, clientId, clientId, parseInt( newIndex ) );
