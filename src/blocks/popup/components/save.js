@@ -71,7 +71,7 @@ export default class Save extends Component {
                 </div>
               }
 
-              {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'image' && popupImageTrigger != undefined && <img className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" data-trigger-id={`trigger-${block_id}`} src={popupImageTrigger} alt="popupImageTrigger" />}
+              {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'image' && (popupImageTrigger != undefined && popupImageTrigger !== '') && <img className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" data-trigger-id={`trigger-${block_id}`} src={popupImageTrigger} alt="popupImageTrigger" />}
 
             </div>
 
