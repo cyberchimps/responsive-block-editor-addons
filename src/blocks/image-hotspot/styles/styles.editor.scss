@@ -26,7 +26,6 @@
 
 .wp-block-responsive-block-editor-addons-image-hotspot__modal {
 	.responsive-block-editor-addons-modal-editor-tabs {
-		height: 430px;
 		width: 450px;
 	}
 	.components-tab-panel__tabs {
@@ -49,6 +48,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		column-gap: 20px;
+		margin-top: 20px;
 
 		button {
 		 	&.is-primary {
@@ -76,5 +76,12 @@
 		flex-direction: column;
 		justify-content: space-evenly;
 		height: 75%;
+		gap: 20px;
+
+		.responsive_block_addons___url-field {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
 	}
 }

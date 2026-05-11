@@ -328,7 +328,6 @@ const attributes = {
   },
   buttonHbackgroundType: {
     type: "string",
-    default: "color",
   },
   buttonHcolorLocation1: {
     type: "number",
@@ -697,15 +696,19 @@ const attributes = {
   },
   ctaButtonTopPadding: {
     type: "number",
+    default: 15,
   },
   ctaButtonBottomPadding: {
     type: "number",
+    default: 15,
   },
   ctaButtonLeftPadding: {
     type: "number",
+    default: 30,
   },
   ctaButtonRightPadding: {
     type: "number",
+    default: 30,
   },
   ctaButtonTopPaddingTablet: {
     type: "number",

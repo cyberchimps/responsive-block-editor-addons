@@ -7,7 +7,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     icon: "lightbulb",
     title: __("Title ", "responsive-block-editor-addons") + i,
     amount: "1234",
-    features: "",
+    features: __("Description ", "responsive-block-editor-addons") + i,
   });
 }
 
@@ -591,5 +591,9 @@ const attributes = {
     type: "number",
     default: '',
   },
+  countupTopPadding: {
+    type: "number",
+    default: 30,
+  }
 };
 export default attributes;

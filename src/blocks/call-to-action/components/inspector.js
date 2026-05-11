@@ -699,7 +699,7 @@ export default class Inspector extends Component {
 					{...this.props}
 				/>
 				)}
-				{resctaType === "button" && (
+				{resctaType === "button" && !inheritFromTheme && (
           <TypographyHelperControl
 				  	title={__("Button Typography", "responsive-block-editor-addons")}
 				  	attrNameTemplate="buttonText%s"

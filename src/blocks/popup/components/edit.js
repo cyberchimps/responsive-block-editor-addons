@@ -165,8 +165,8 @@ class Edit extends Component {
                 </p>
               }
 
-              {popupTriggerType === 'image' && popupImageTrigger == undefined && <p>Please Select Image</p>}
-              {popupTriggerType === 'image' && popupImageTrigger != undefined && <img onClick={() => this.setState({ isModalOpen: true })} className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" src={popupImageTrigger} alt="popupImageTrigger" data-trigger-id={`trigger-${block_id}`}/>}
+              {popupTriggerType === 'image' && (popupImageTrigger == undefined || popupImageTrigger === '') && <p>Please Select Image</p>}
+              {popupTriggerType === 'image' && (popupImageTrigger != undefined && popupImageTrigger !== '') && <img onClick={() => this.setState({ isModalOpen: true })} className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" src={popupImageTrigger} alt="popupImageTrigger" data-trigger-id={`trigger-${block_id}`}/>}
 
             </div>
             <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`} data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
