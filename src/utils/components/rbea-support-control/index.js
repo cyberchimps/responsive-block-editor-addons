@@ -1,4 +1,4 @@
-const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/responsive-blocks.svg';
+const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/rbea-logo.svg';
 
 const RbeaSupportControl = ({ blockSlug }) => {
     const blockData = (typeof responsive_globals !== 'undefined' && Array.isArray(responsive_globals.blocks))

@@ -34,6 +34,51 @@ export default class Edit extends Component {
     super(...arguments);
     this.onSelectForm = this.onSelectForm.bind(this);
   }
+
+  migrateSubmitButtonPaddingAttributes() {
+    const { attributes, setAttributes } = this.props;
+    const {
+      isCtaButtonPaddingMarginValueUpdated,
+      ctaButtonTopPadding,
+      ctaButtonBottomPadding,
+      ctaButtonLeftPadding,
+      ctaButtonRightPadding,
+      ctaButtonTopPaddingTablet,
+      ctaButtonBottomPaddingTablet,
+      ctaButtonRightPaddingTablet,
+      ctaButtonLeftPaddingTablet,
+      ctaButtonTopPaddingMobile,
+      ctaButtonBottomPaddingMobile,
+      ctaButtonLeftPaddingMobile,
+      ctaButtonRightPaddingMobile,
+      // legacy attrs
+      ctaHpadding,
+      ctaHpaddingTablet,
+      ctaHpaddingMobile,
+      ctaVpadding,
+      ctaVpaddingTablet,
+      ctaVpaddingMobile,
+    } = attributes;
+
+    if (isCtaButtonPaddingMarginValueUpdated) return;
+
+    setAttributes({
+      ctaButtonTopPadding:          ctaVpadding !== undefined ? ctaVpadding : ctaButtonTopPadding,
+      ctaButtonBottomPadding:       ctaVpadding !== undefined ? ctaVpadding : ctaButtonBottomPadding,
+      ctaButtonLeftPadding:         ctaHpadding !== undefined ? ctaHpadding : ctaButtonLeftPadding,
+      ctaButtonRightPadding:        ctaHpadding !== undefined ? ctaHpadding : ctaButtonRightPadding,
+      ctaButtonTopPaddingTablet:    ctaVpaddingTablet !== undefined ? ctaVpaddingTablet : ctaButtonTopPaddingTablet,
+      ctaButtonBottomPaddingTablet: ctaVpaddingTablet !== undefined ? ctaVpaddingTablet : ctaButtonBottomPaddingTablet,
+      ctaButtonRightPaddingTablet:  ctaHpaddingTablet !== undefined ? ctaHpaddingTablet : ctaButtonRightPaddingTablet,
+      ctaButtonLeftPaddingTablet:   ctaHpaddingTablet !== undefined ? ctaHpaddingTablet : ctaButtonLeftPaddingTablet,
+      ctaButtonTopPaddingMobile:    ctaVpaddingMobile !== undefined ? ctaVpaddingMobile : ctaButtonTopPaddingMobile,
+      ctaButtonBottomPaddingMobile: ctaVpaddingMobile !== undefined ? ctaVpaddingMobile : ctaButtonBottomPaddingMobile,
+      ctaButtonLeftPaddingMobile:   ctaHpaddingMobile !== undefined ? ctaHpaddingMobile : ctaButtonLeftPaddingMobile,
+      ctaButtonRightPaddingMobile:  ctaHpaddingMobile !== undefined ? ctaHpaddingMobile : ctaButtonRightPaddingMobile,
+      isCtaButtonPaddingMarginValueUpdated: true,
+    });
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { formId, isHtml, formJson } = this.props.attributes;
     var element = document.getElementById(
@@ -45,6 +90,7 @@ export default class Edit extends Component {
       element.innerHTML = EditorStyles(this.props);
     }
 
+    this.migrateSubmitButtonPaddingAttributes();
     this.onSelectForm(formId);
   }
 
@@ -60,6 +106,7 @@ export default class Edit extends Component {
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
+    this.migrateSubmitButtonPaddingAttributes();
   }
 
   onSelectForm(id) {
