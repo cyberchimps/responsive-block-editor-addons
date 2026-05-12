@@ -165,7 +165,7 @@
 }
 
 /*
-! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -786,6 +786,10 @@ img {
   display: grid;
 }
 
+.h-\[50px\]{
+  height: 50px;
+}
+
 .w-1\/4{
   width: 25%;
 }
@@ -826,20 +830,28 @@ img {
   width: 50px;
 }
 
-.h-\[50px\]{
-  height: 50px;
-}
-
 .w-full{
   width: 100%;
+}
+
+.min-w-0{
+  min-width: 0px;
 }
 
 .max-w-\[700px\]{
   max-width: 700px;
 }
 
+.flex-1{
+  flex: 1 1 0%;
+}
+
 .cursor-pointer{
   cursor: pointer;
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -910,6 +922,10 @@ img {
   border-radius: 0.25rem;
 }
 
+.rounded-2xl{
+  border-radius: 1rem;
+}
+
 .rounded-3xl{
   border-radius: 1.5rem;
 }
@@ -957,6 +973,11 @@ img {
 .\!border-gray-300{
   --tw-border-opacity: 1 !important;
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1)) !important;
+}
+
+.border-\[\#CBD5E1\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
 }
 
 .border-blue-200{
@@ -1106,6 +1127,10 @@ img {
   padding: 1.5rem;
 }
 
+.p-\[40px\]{
+  padding: 40px;
+}
+
 .px-0\.625{
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -1201,6 +1226,14 @@ img {
   padding-bottom: 60px;
 }
 
+.pb-4{
+  padding-bottom: 1rem;
+}
+
+.pb-\[40px\]{
+  padding-bottom: 40px;
+}
+
 .pl-3\.7{
   padding-left: 3.7rem;
 }
@@ -1209,8 +1242,28 @@ img {
   padding-left: 1.5rem;
 }
 
+.pl-\[1px\]{
+  padding-left: 1px;
+}
+
+.pr-\[1px\]{
+  padding-right: 1px;
+}
+
+.pt-4{
+  padding-top: 1rem;
+}
+
+.pt-6{
+  padding-top: 1.5rem;
+}
+
 .text-center{
   text-align: center;
+}
+
+.font-sans{
+  font-family: Inter, sans-serif;
 }
 
 .text-2xl{
@@ -1221,6 +1274,22 @@ img {
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-\[14px\]{
+  font-size: 14px;
+}
+
+.text-\[16px\]{
+  font-size: 16px;
+}
+
+.text-\[18px\]{
+  font-size: 18px;
+}
+
+.text-\[30px\]{
+  font-size: 30px;
 }
 
 .text-base{
@@ -1283,6 +1352,22 @@ img {
   line-height: 2rem;
 }
 
+.leading-\[20px\]{
+  line-height: 20px;
+}
+
+.leading-\[24px\]{
+  line-height: 24px;
+}
+
+.leading-\[28px\]{
+  line-height: 28px;
+}
+
+.leading-\[36px\]{
+  line-height: 36px;
+}
+
 .leading-relaxed{
   line-height: 1.625;
 }
@@ -1291,9 +1376,23 @@ img {
   line-height: 1.25;
 }
 
+.tracking-normal{
+  letter-spacing: 0em;
+}
+
+.text-\[\#1E293B\]{
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#2563EB\]{
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#475569\]{
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
 }
 
 .text-\[\#64748B\]{
@@ -1382,6 +1481,10 @@ img {
   transition-duration: 150ms;
 }
 
+.\[box-shadow\:0px_1px_2px_-1px_rgba\(0\2c 0\2c 0\2c 0\.1\)\2c 0px_1px_3px_0px_rgba\(0\2c 0\2c 0\2c 0\.1\)\]{
+  box-shadow: 0px 1px 2px -1px rgba(0,0,0,0.1),0px 1px 3px 0px rgba(0,0,0,0.1);
+}
+
 #wpbody-content{
   font-family: Inter, sans-serif;
   padding-bottom: 0;
@@ -1454,6 +1557,86 @@ img {
     circle {
     stroke: #4B5563;
   }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: 56px;
+  padding: 16px;
+  margin: 0;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #1e293b;
+  width: 100%;
+}
+
+@media (min-width: 782px) {
+  body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+    min-height: 56px;
+    height: 56px;
+    line-height: 24px;
+  }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: 56px;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #1e293b;
+  width: 100%;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::-moz-placeholder, body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::-moz-placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input:-ms-input-placeholder, body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input:-ms-input-placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::placeholder,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
+  border: none;
+  box-shadow: none;
 }
 
 .hover\:bg-blue-100:hover{

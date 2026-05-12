@@ -73,6 +73,66 @@
     }
 }
 
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+    box-sizing: border-box;
+    min-height: 56px;
+    height: 56px;
+    padding: 16px;
+    margin: 0;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #1e293b;
+    width: 100%;
+}
+
+@media (min-width: 782px) {
+    body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+        min-height: 56px;
+        height: 56px;
+        line-height: 24px;
+    }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input {
+    box-sizing: border-box;
+    min-height: 56px;
+    height: 56px;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #1e293b;
+    width: 100%;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::placeholder,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::placeholder {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #64748b;
+    opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
+    border: none;
+    box-shadow: none;
+}
+
 @layer base {
 
     input[type="number"]::-webkit-outer-spin-button,
