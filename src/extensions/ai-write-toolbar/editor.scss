@@ -1,10 +1,6 @@
 /* AI Write — gradient pill button inside the block contextual toolbar. */
 
-/* Wrapper span only exists so the Popover has a stable DOM anchor. */
-.rbea-ai-write-toolbar-button-anchor {
-	display: inline-flex;
-}
-
+.rbea-ai-write-toolbar-button.components-toolbar-button,
 .rbea-ai-write-toolbar-button.components-button {
 	display: inline-flex;
 	align-items: center;

@@ -1,21 +1,25 @@
 /**
  * AI Write — gradient pill in the block contextual toolbar.
  *
- * Added to every block by filtering `editor.BlockEdit` and rendering a
- * `<BlockControls>` fill. No per-block name list is maintained.
+ * Implemented like Nexter Blocks (The Plus Addons): `registerFormatType` ties
+ * this UI to RichText. The format's `edit` callback runs in the RichText
+ * context for each text field, so the control appears only while that field is
+ * active — not for the whole block when another area is focused. The button is
+ * rendered via `BlockControls` (same slot as the floating block toolbar).
  *
  * Global on/off via the `rbea_ai_write_toolbar_enabled` filter (later wired
  * up to Ai Suite settings for post-type / role gating).
  */
 import { Fragment, useState, useRef } from '@wordpress/element';
-import { addFilter, applyFilters } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
+import { applyFilters } from '@wordpress/hooks';
 import { BlockControls } from '@wordpress/block-editor';
+import { registerFormatType } from '@wordpress/rich-text';
 import {
 	Button,
 	Popover,
 	SelectControl,
 	TextareaControl,
+	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -394,20 +398,17 @@ function AiWriteToolbarButton() {
 	return (
 		<Fragment>
 			<ToolbarGroup>
-				<span
+				<ToolbarButton
 					ref={ anchorRef }
-					className="rbea-ai-write-toolbar-button-anchor"
+					className="rbea-ai-write-toolbar-button"
+					title={ __( 'AI Write', 'responsive-block-editor-addons' ) }
+					onClick={ () => setIsOpen( ( open ) => ! open ) }
 				>
-					<Button
-						className="rbea-ai-write-toolbar-button"
-						onClick={ () => setIsOpen( ( open ) => ! open ) }
-					>
-						<AiWriteIcon />
-						<span className="rbea-ai-write-toolbar-button__label">
-							{ __( 'AI Write', 'responsive-block-editor-addons' ) }
-						</span>
-					</Button>
-				</span>
+					<AiWriteIcon />
+					<span className="rbea-ai-write-toolbar-button__label">
+						{ __( 'AI Write', 'responsive-block-editor-addons' ) }
+					</span>
+				</ToolbarButton>
 			</ToolbarGroup>
 			{ isOpen && (
 				<Popover
@@ -426,24 +427,27 @@ function AiWriteToolbarButton() {
 	);
 }
 
-const withAiWriteToolbar = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		if ( ! props.isSelected || ! isAiWriteToolbarGloballyEnabled() ) {
-			return <BlockEdit { ...props } />;
-		}
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-				<BlockControls>
-					<AiWriteToolbarButton />
-				</BlockControls>
-			</Fragment>
-		);
-	};
-}, 'withAiWriteToolbar' );
+const RBEA_AI_WRITE_FORMAT = 'responsive-block-editor-addons/ai-write';
 
-addFilter(
-	'editor.BlockEdit',
-	'responsive-block-editor-addons/ai-write-toolbar',
-	withAiWriteToolbar
-);
+/**
+ * RichText format `edit` — Nexter-style: BlockControls from inside the format
+ * so the slot fills the block toolbar only for the active RichText instance.
+ */
+function AiWriteFormatEdit() {
+	if ( ! isAiWriteToolbarGloballyEnabled() ) {
+		return null;
+	}
+
+	return (
+		<BlockControls group="other">
+			<AiWriteToolbarButton />
+		</BlockControls>
+	);
+}
+
+registerFormatType( RBEA_AI_WRITE_FORMAT, {
+	title: __( 'AI Write', 'responsive-block-editor-addons' ),
+	tagName: 'span',
+	className: 'rbea-ai-write-format',
+	edit: AiWriteFormatEdit,
+} );
