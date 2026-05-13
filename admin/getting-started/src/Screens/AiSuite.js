@@ -1,23 +1,45 @@
 import { __ } from "@wordpress/i18n";
 import { useState } from "react";
 import { Button, FormToggle, SelectControl, Spinner, TextControl } from "@wordpress/components";
+import {
+  getAiSuitePostTypeOptions,
+  getAiSuiteUserRoleOptions,
+  getAiSuiteToneOptions,
+  getAiSuiteLengthOptions,
+  getAiSuiteLanguageOptions,
+} from "../../../../src/utils/ai-suite-choices.js";
 
 const DEFAULT_SETTINGS = {
-  enable_ai_writer: false,
-  post_types: '',
-  user_role_access: '',
+  enable_ai_writer: true,
+  post_types: 'all',
+  user_role_access: 'editor',
   provider: 'google-gemini',
   model: 'gemini-2.5-flash-lite',
   api_key: '',
-  default_tone: '',
-  default_length: '',
-  default_language: '',
-  max_tokens: '',
+  default_tone: 'professional',
+  default_length: 'large',
+  default_language: 'english',
+  max_tokens: 1500,
 };
 
-const selectPlaceholder = [
-  { label: __( '— Select —', 'responsive-block-editor-addons' ), value: '' },
-];
+/**
+ * @param {unknown} value
+ * @param {number}  fallback
+ * @return {number}
+ */
+function normalizeMaxTokens( value, fallback ) {
+  if ( value === '' || value === null || value === undefined ) {
+    return fallback;
+  }
+  const n =
+    typeof value === 'number' && Number.isFinite( value )
+      ? Math.trunc( value )
+      : parseInt( String( value ).replace( /\D/g, '' ), 10 );
+  if ( ! Number.isFinite( n ) ) {
+    return fallback;
+  }
+  return Math.min( 10000, Math.max( 100, n ) );
+}
 
 const PROVIDER_OPTIONS = [
   { label: __( 'Google Gemini', 'responsive-block-editor-addons' ), value: 'google-gemini' },
@@ -145,11 +167,15 @@ function humanizeConnectionError( err ) {
 
 const AiSuite = () => {
 
-  // Initial values come from `rbealocalize.ai_suite` (printed into the page on
-  // load by PHP), with `DEFAULT_SETTINGS` as a safety fallback.
+  const rawAiSuite =
+    ( typeof rbealocalize !== 'undefined' && rbealocalize.ai_suite ) || {};
   const initialSettings = {
     ...DEFAULT_SETTINGS,
-    ...( ( typeof rbealocalize !== 'undefined' && rbealocalize.ai_suite ) || {} ),
+    ...rawAiSuite,
+    max_tokens: normalizeMaxTokens(
+      rawAiSuite.max_tokens,
+      DEFAULT_SETTINGS.max_tokens
+    ),
   };
 
   const [enableAiWriter, setEnableAiWriter] = useState( !! initialSettings.enable_ai_writer );
@@ -173,15 +199,17 @@ const AiSuite = () => {
 
   const applySettings = ( settings ) => {
     setEnableAiWriter( !! settings.enable_ai_writer );
-    setPostTypes( settings.post_types || '' );
-    setUserRoleAccess( settings.user_role_access || '' );
+    setPostTypes( settings.post_types || DEFAULT_SETTINGS.post_types );
+    setUserRoleAccess( settings.user_role_access || DEFAULT_SETTINGS.user_role_access );
     setProvider( settings.provider || DEFAULT_SETTINGS.provider );
     setModel( settings.model || DEFAULT_SETTINGS.model );
     setApiKey( settings.api_key || '' );
-    setDefaultTone( settings.default_tone || '' );
-    setDefaultLength( settings.default_length || '' );
-    setDefaultLanguage( settings.default_language || '' );
-    setMaxTokens( settings.max_tokens || '' );
+    setDefaultTone( settings.default_tone || DEFAULT_SETTINGS.default_tone );
+    setDefaultLength( settings.default_length || DEFAULT_SETTINGS.default_length );
+    setDefaultLanguage( settings.default_language || DEFAULT_SETTINGS.default_language );
+    setMaxTokens(
+      normalizeMaxTokens( settings.max_tokens, DEFAULT_SETTINGS.max_tokens )
+    );
   };
 
   const resetConnectionStatus = () => {
@@ -260,6 +288,10 @@ const AiSuite = () => {
         throw new Error( message );
       }
       const merged = { ...DEFAULT_SETTINGS, ...( body.data || payload ) };
+      merged.max_tokens = normalizeMaxTokens(
+        merged.max_tokens,
+        DEFAULT_SETTINGS.max_tokens
+      );
       setSavedSettings( merged );
       applySettings( merged );
       setSaveStatus( 'saved' );
@@ -322,7 +354,7 @@ const AiSuite = () => {
                     hideLabelFromVision
                     label={__( 'Select Post Types', 'responsive-block-editor-addons' )}
                     value={postTypes}
-                    options={selectPlaceholder}
+                    options={getAiSuitePostTypeOptions( __ )}
                     onChange={setPostTypes}
                   />
                 </div>
@@ -337,7 +369,7 @@ const AiSuite = () => {
                     hideLabelFromVision
                     label={__( 'User Role Access', 'responsive-block-editor-addons' )}
                     value={userRoleAccess}
-                    options={selectPlaceholder}
+                    options={getAiSuiteUserRoleOptions( __ )}
                     onChange={setUserRoleAccess}
                   />
                 </div>
@@ -456,7 +488,7 @@ const AiSuite = () => {
                   hideLabelFromVision
                   label={__( 'Default Tone', 'responsive-block-editor-addons' )}
                   value={defaultTone}
-                  options={selectPlaceholder}
+                  options={getAiSuiteToneOptions( __ )}
                   onChange={setDefaultTone}
                 />
               </div>
@@ -467,7 +499,7 @@ const AiSuite = () => {
                   hideLabelFromVision
                   label={__( 'Default Length', 'responsive-block-editor-addons' )}
                   value={defaultLength}
-                  options={selectPlaceholder}
+                  options={getAiSuiteLengthOptions( __ )}
                   onChange={setDefaultLength}
                 />
               </div>
@@ -478,7 +510,7 @@ const AiSuite = () => {
                   hideLabelFromVision
                   label={__( 'Default Language', 'responsive-block-editor-addons' )}
                   value={defaultLanguage}
-                  options={selectPlaceholder}
+                  options={getAiSuiteLanguageOptions( __ )}
                   onChange={setDefaultLanguage}
                 />
               </div>
@@ -491,7 +523,14 @@ const AiSuite = () => {
                   label={__( 'Max Tokens', 'responsive-block-editor-addons' )}
                   value={maxTokens}
                   type="number"
-                  onChange={setMaxTokens}
+                  min={100}
+                  max={10000}
+                  onChange={ ( v ) =>
+                    setMaxTokens(
+                      normalizeMaxTokens( v, DEFAULT_SETTINGS.max_tokens )
+                    )
+                  }
+                  placeholder="1500"
                 />
               </div>
             </div>

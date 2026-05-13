@@ -7,11 +7,12 @@
  * active — not for the whole block when another area is focused. The button is
  * rendered via `BlockControls` (same slot as the floating block toolbar).
  *
- * Global on/off via the `rbea_ai_write_toolbar_enabled` filter (later wired
- * up to Ai Suite settings for post-type / role gating).
+ * Global on/off via the `rbea_ai_write_toolbar_enabled` filter (receives the
+ * computed boolean and current `postType` as the second argument).
  */
 import { Fragment, useState, useRef } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
+import { useSelect } from '@wordpress/data';
 import { BlockControls } from '@wordpress/block-editor';
 import { create, insert, registerFormatType } from '@wordpress/rich-text';
 import {
@@ -24,6 +25,10 @@ import {
 } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import {
+	getAiSuiteLengthOptions,
+	getAiSuiteToneOptions,
+} from '../../utils/ai-suite-choices.js';
 
 const SUGGESTED_PROMPTS = [
 	'Hero headline',
@@ -34,22 +39,41 @@ const SUGGESTED_PROMPTS = [
 	'FAQ answer',
 ];
 
-const LENGTH_OPTIONS = [
-	{ label: '', value: '' },
-	{ label: __( 'Short', 'responsive-block-editor-addons' ), value: 'short' },
-	{ label: __( 'Medium', 'responsive-block-editor-addons' ), value: 'medium' },
-	{ label: __( 'Long', 'responsive-block-editor-addons' ), value: 'long' },
-];
+/**
+ * Ai Suite + post context: whether the AI Write toolbar may render.
+ *
+ * @param {string} postType Current editor post type from `core/editor` (empty if unavailable).
+ * @return {boolean}
+ */
+function isAiWriteToolbarAllowedForPostType( postType ) {
+	const aiSuite =
+		( typeof window !== 'undefined' &&
+			window.responsive_globals &&
+			window.responsive_globals.ai_suite ) ||
+		{};
 
-const TONE_OPTIONS = [
-	{ label: '', value: '' },
-	{ label: __( 'Casual', 'responsive-block-editor-addons' ), value: 'casual' },
-	{ label: __( 'Professional', 'responsive-block-editor-addons' ), value: 'professional' },
-	{ label: __( 'Friendly', 'responsive-block-editor-addons' ), value: 'friendly' },
-];
+	let allowed = true;
+	if ( ! aiSuite.enable_ai_writer ) {
+		allowed = false;
+	}
+	if ( allowed && ! aiSuite.ai_write_role_allowed ) {
+		allowed = false;
+	}
+	const scope = aiSuite.post_types || 'all';
+	if ( allowed && ! postType ) {
+		allowed = false;
+	}
+	if ( allowed && 'all' === scope ) {
+		allowed = true;
+	} else if ( allowed && 'post' === scope ) {
+		allowed = 'post' === postType;
+	} else if ( allowed && 'page' === scope ) {
+		allowed = 'page' === postType;
+	} else if ( allowed ) {
+		allowed = false;
+	}
 
-function isAiWriteToolbarGloballyEnabled() {
-	return applyFilters( 'rbea_ai_write_toolbar_enabled', true );
+	return applyFilters( 'rbea_ai_write_toolbar_enabled', allowed, postType );
 }
 
 function AiWriteIcon() {
@@ -200,9 +224,14 @@ function AiWritePopoverContent( {
 	const hasApiKey = !! aiSuite.has_api_key;
 	const settingsUrl = aiSuite.settings_url || '#';
 
+	const lengthOptions = getAiSuiteLengthOptions( __ );
+	const toneOptions = getAiSuiteToneOptions( __ );
+
 	const [ prompt, setPrompt ] = useState( '' );
-	const [ length, setLength ] = useState( aiSuite.default_length || '' );
-	const [ tone, setTone ] = useState( aiSuite.default_tone || '' );
+	const [ length, setLength ] = useState(
+		aiSuite.default_length || 'large'
+	);
+	const [ tone, setTone ] = useState( aiSuite.default_tone || 'professional' );
 	const [ isGenerating, setIsGenerating ] = useState( false );
 	const [ generatedContent, setGeneratedContent ] = useState( '' );
 	const [ generationError, setGenerationError ] = useState( '' );
@@ -377,14 +406,14 @@ function AiWritePopoverContent( {
 				<SelectControl
 					label={ __( 'Length', 'responsive-block-editor-addons' ) }
 					value={ length }
-					options={ LENGTH_OPTIONS }
+					options={ lengthOptions }
 					onChange={ setLength }
 					className="rbea-ai-write-popover__length"
 				/>
 				<SelectControl
 					label={ __( 'Tone', 'responsive-block-editor-addons' ) }
 					value={ tone }
-					options={ TONE_OPTIONS }
+					options={ toneOptions }
 					onChange={ setTone }
 					className="rbea-ai-write-popover__tone"
 				/>
@@ -513,7 +542,15 @@ const RBEA_AI_WRITE_FORMAT = 'responsive-block-editor-addons/ai-write';
  * so the slot fills the block toolbar only for the active RichText instance.
  */
 function AiWriteFormatEdit( { value, onChange } ) {
-	if ( ! isAiWriteToolbarGloballyEnabled() ) {
+	const postType = useSelect( ( select ) => {
+		const editorSelect = select( 'core/editor' );
+		if ( ! editorSelect || typeof editorSelect.getCurrentPostType !== 'function' ) {
+			return '';
+		}
+		return editorSelect.getCurrentPostType() || '';
+	}, [] );
+
+	if ( ! isAiWriteToolbarAllowedForPostType( postType ) ) {
 		return null;
 	}
 

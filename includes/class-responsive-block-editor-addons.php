@@ -1963,22 +1963,149 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_get_ai_suite_settings() {
 		$defaults = array(
-			'enable_ai_writer' => false,
-			'post_types'       => '',
-			'user_role_access' => '',
+			'enable_ai_writer' => true,
+			'post_types'       => 'all',
+			'user_role_access' => 'editor',
 			'provider'         => 'google-gemini',
 			'model'            => 'gemini-2.5-flash-lite',
 			'api_key'          => '',
-			'default_tone'     => '',
-			'default_length'   => '',
-			'default_language' => '',
-			'max_tokens'       => '',
+			'default_tone'     => 'professional',
+			'default_length'   => 'large',
+			'default_language' => 'english',
+			'max_tokens'       => 1500,
 		);
 		$saved = get_option( 'rbea_ai_suite_settings', array() );
 		if ( ! is_array( $saved ) ) {
 			$saved = array();
 		}
-		return array_merge( $defaults, $saved );
+		$merged = array_merge( $defaults, $saved );
+
+		// Treat stored empty strings as "unset" so defaults apply after first install / partial saves.
+		$fill_if_empty = array(
+			'post_types',
+			'user_role_access',
+			'provider',
+			'model',
+			'default_tone',
+			'default_length',
+			'default_language',
+		);
+		foreach ( $fill_if_empty as $key ) {
+			if ( ! isset( $merged[ $key ] ) || '' === trim( (string) $merged[ $key ] ) ) {
+				$merged[ $key ] = $defaults[ $key ];
+			}
+		}
+
+		$mt = isset( $merged['max_tokens'] ) ? absint( $merged['max_tokens'] ) : 0;
+		if ( $mt < 100 ) {
+			$mt = 1500;
+		}
+		if ( $mt > 10000 ) {
+			$mt = 10000;
+		}
+		$merged['max_tokens'] = $mt;
+
+		return $merged;
+	}
+
+	/**
+	 * Language slug => English name for AI prompts (must match JS `src/utils/ai-suite-choices.js`).
+	 *
+	 * @return array<string, string>
+	 */
+	public function rbea_get_ai_suite_language_labels() {
+		static $labels = null;
+		if ( null !== $labels ) {
+			return $labels;
+		}
+
+		$labels = array(
+			'afrikaans'         => 'Afrikaans',
+			'amharic'           => 'Amharic',
+			'arabic'            => 'Arabic',
+			'azerbaijani'       => 'Azerbaijani',
+			'belarusian'        => 'Belarusian',
+			'bulgarian'         => 'Bulgarian',
+			'bengali'           => 'Bengali',
+			'bosnian'           => 'Bosnian',
+			'catalan'           => 'Catalan',
+			'cebuano'           => 'Cebuano',
+			'czech'             => 'Czech',
+			'welsh'             => 'Welsh',
+			'danish'            => 'Danish',
+			'german'            => 'German',
+			'greek'             => 'Greek',
+			'english'           => 'English',
+			'esperanto'        => 'Esperanto',
+			'spanish'           => 'Spanish',
+			'estonian'          => 'Estonian',
+			'basque'            => 'Basque',
+			'persian'           => 'Persian',
+			'finnish'           => 'Finnish',
+			'french'            => 'French',
+			'galician'          => 'Galician',
+			'gujarati'          => 'Gujarati',
+			'hebrew'            => 'Hebrew',
+			'hindi'             => 'Hindi',
+			'croatian'          => 'Croatian',
+			'hungarian'         => 'Hungarian',
+			'armenian'          => 'Armenian',
+			'indonesian'        => 'Indonesian',
+			'icelandic'         => 'Icelandic',
+			'italian'           => 'Italian',
+			'japanese'          => 'Japanese',
+			'javanese'          => 'Javanese',
+			'georgian'          => 'Georgian',
+			'kazakh'            => 'Kazakh',
+			'khmer'             => 'Khmer',
+			'kannada'           => 'Kannada',
+			'korean'            => 'Korean',
+			'kurdish'           => 'Kurdish',
+			'kyrgyz'            => 'Kyrgyz',
+			'lao'               => 'Lao',
+			'lithuanian'        => 'Lithuanian',
+			'latvian'           => 'Latvian',
+			'macedonian'        => 'Macedonian',
+			'malayalam'         => 'Malayalam',
+			'mongolian'         => 'Mongolian',
+			'marathi'           => 'Marathi',
+			'malay'             => 'Malay',
+			'burmese'           => 'Burmese',
+			'norwegian_bokmal'  => 'Norwegian Bokmål',
+			'nepali'            => 'Nepali',
+			'dutch'             => 'Dutch',
+			'norwegian_nynorsk' => 'Norwegian Nynorsk',
+			'occitan'           => 'Occitan',
+			'punjabi'           => 'Punjabi',
+			'polish'            => 'Polish',
+			'portuguese'        => 'Portuguese',
+			'romanian'          => 'Romanian',
+			'russian'           => 'Russian',
+			'sakha_yakut'       => 'Sakha (Yakut)',
+			'sindhi'            => 'Sindhi',
+			'sinhala'           => 'Sinhala',
+			'slovak'            => 'Slovak',
+			'slovenian'         => 'Slovenian',
+			'albanian'          => 'Albanian',
+			'serbian'           => 'Serbian',
+			'swedish'           => 'Swedish',
+			'swahili'           => 'Swahili',
+			'tamil'             => 'Tamil',
+			'telugu'            => 'Telugu',
+			'thai'              => 'Thai',
+			'tagalog'           => 'Tagalog',
+			'turkish'           => 'Turkish',
+			'tatar'             => 'Tatar',
+			'uyghur'            => 'Uyghur',
+			'ukrainian'         => 'Ukrainian',
+			'urdu'              => 'Urdu',
+			'uzbek'             => 'Uzbek',
+			'vietnamese'        => 'Vietnamese',
+			'yoruba'            => 'Yoruba',
+			'chinese'           => 'Chinese',
+		);
+
+		return $labels;
 	}
 
 	/**
@@ -2007,7 +2134,6 @@ class Responsive_Block_Editor_Addons {
 			'default_tone',
 			'default_length',
 			'default_language',
-			'max_tokens',
 		);
 
 		$clean = $current;
@@ -2023,9 +2149,72 @@ class Responsive_Block_Editor_Addons {
 			}
 		}
 
+		if ( array_key_exists( 'max_tokens', $post ) ) {
+			$clean['max_tokens'] = absint( $post['max_tokens'] );
+		}
+
+		$allowed_post_types = array( 'all', 'post', 'page' );
+		if ( ! in_array( (string) $clean['post_types'], $allowed_post_types, true ) ) {
+			$clean['post_types'] = 'all';
+		}
+
+		$allowed_roles = array( 'administrator', 'editor' );
+		if ( ! in_array( (string) $clean['user_role_access'], $allowed_roles, true ) ) {
+			$clean['user_role_access'] = 'editor';
+		}
+
+		$allowed_tones = array( 'informative', 'casual', 'friendly', 'professional', 'inspirational' );
+		if ( ! in_array( (string) $clean['default_tone'], $allowed_tones, true ) ) {
+			$clean['default_tone'] = 'professional';
+		}
+
+		$allowed_lengths = array( 'short', 'medium', 'large', 'big' );
+		if ( ! in_array( (string) $clean['default_length'], $allowed_lengths, true ) ) {
+			$clean['default_length'] = 'large';
+		}
+
+		$lang_labels = $this->rbea_get_ai_suite_language_labels();
+		if ( ! isset( $lang_labels[ (string) $clean['default_language'] ] ) ) {
+			$clean['default_language'] = 'english';
+		}
+
+		$max_tokens = absint( $clean['max_tokens'] );
+		if ( $max_tokens < 100 ) {
+			$max_tokens = 1500;
+		}
+		if ( $max_tokens > 10000 ) {
+			$max_tokens = 10000;
+		}
+		$clean['max_tokens'] = $max_tokens;
+
 		update_option( 'rbea_ai_suite_settings', $clean );
 
 		wp_send_json_success( $clean );
+	}
+
+	/**
+	 * Whether the logged-in user satisfies Ai Suite "User Role Access" for the AI Write toolbar.
+	 *
+	 * @param string $user_role_access Saved setting: `administrator` or `editor`.
+	 * @return bool
+	 */
+	protected function rbea_ai_write_current_user_passes_role_gate( $user_role_access ) {
+		$user = wp_get_current_user();
+		if ( ! $user || ! $user->ID ) {
+			return false;
+		}
+		$uid = (int) $user->ID;
+		if ( function_exists( 'is_multisite' ) && is_multisite() && function_exists( 'is_super_admin' ) && is_super_admin( $uid ) ) {
+			return true;
+		}
+		$access = (string) $user_role_access;
+		if ( 'administrator' === $access ) {
+			return user_can( $user, 'manage_options' );
+		}
+		if ( 'editor' === $access ) {
+			return user_can( $user, 'edit_others_posts' ) || user_can( $user, 'manage_options' );
+		}
+		return false;
 	}
 
 	/**
@@ -2033,29 +2222,34 @@ class Responsive_Block_Editor_Addons {
 	 *
 	 * Mirrors the dashboard `ai_suite` shape but never sends the raw API key
 	 * to the editor — only `has_api_key` so the UI can show / hide the
-	 * "Connect your API key" notice.
+	 * "Connect your API key" notice. Includes `post_types` and `ai_write_role_allowed`
+	 * for AI Write toolbar gating (no API key).
 	 *
 	 * @return array
 	 */
 	public function rbea_get_ai_suite_indicators() {
 		$settings = $this->rbea_get_ai_suite_settings();
 		return array(
-			'enable_ai_writer' => (bool) $settings['enable_ai_writer'],
-			'has_api_key'      => '' !== trim( (string) $settings['api_key'] ),
-			'provider'         => $settings['provider'],
-			'model'            => $settings['model'],
-			'default_tone'     => $settings['default_tone'],
-			'default_length'   => $settings['default_length'],
-			'settings_url'     => admin_url( 'admin.php?page=responsive_block_editor_addons#/ai-suite' ),
+			'enable_ai_writer'        => (bool) $settings['enable_ai_writer'],
+			'has_api_key'             => '' !== trim( (string) $settings['api_key'] ),
+			'provider'                => $settings['provider'],
+			'model'                   => $settings['model'],
+			'default_tone'            => $settings['default_tone'],
+			'default_length'          => $settings['default_length'],
+			'default_language'        => $settings['default_language'],
+			'post_types'              => $settings['post_types'],
+			'ai_write_role_allowed'   => $this->rbea_ai_write_current_user_passes_role_gate( $settings['user_role_access'] ),
+			'settings_url'            => admin_url( 'admin.php?page=responsive_block_editor_addons#/ai-suite' ),
 		);
 	}
 
 	/**
 	 * AJAX handler — proxy a generation request to the configured AI provider.
 	 *
-	 * Accepts `prompt`, `length`, `tone` from $_POST. Reads the saved API key,
-	 * provider, and model from `rbea_ai_suite_settings` (so the secret never
-	 * leaves PHP). Returns the generated text or a humanized error.
+	 * Accepts `prompt`, `length`, `tone`, and optional `language` from $_POST
+	 * (language falls back to saved Ai Suite default when omitted). Reads API
+	 * key, provider, model, and `max_tokens` from `rbea_ai_suite_settings`.
+	 * `maxOutputTokens` uses saved `max_tokens` (default 1500, clamped 100–10000).
 	 */
 	public function rbea_ai_generate() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
@@ -2067,8 +2261,12 @@ class Responsive_Block_Editor_Addons {
 
 		$post   = wp_unslash( $_POST );
 		$prompt = isset( $post['prompt'] ) ? sanitize_textarea_field( (string) $post['prompt'] ) : '';
-		$length = isset( $post['length'] ) ? sanitize_text_field( (string) $post['length'] ) : '';
-		$tone   = isset( $post['tone'] ) ? sanitize_text_field( (string) $post['tone'] ) : '';
+		$length   = isset( $post['length'] ) ? sanitize_text_field( (string) $post['length'] ) : '';
+		$tone     = isset( $post['tone'] ) ? sanitize_text_field( (string) $post['tone'] ) : '';
+		$language = isset( $post['language'] ) ? sanitize_text_field( (string) $post['language'] ) : '';
+
+		$allowed_lengths_ajax = array( 'short', 'medium', 'large', 'big' );
+		$allowed_tones_ajax   = array( 'informative', 'casual', 'friendly', 'professional', 'inspirational' );
 
 		if ( '' === $prompt ) {
 			wp_send_json_error(
@@ -2081,6 +2279,29 @@ class Responsive_Block_Editor_Addons {
 		$settings = $this->rbea_get_ai_suite_settings();
 		$api_key  = trim( (string) $settings['api_key'] );
 		$model    = (string) $settings['model'];
+
+		if ( ! in_array( $length, $allowed_lengths_ajax, true ) ) {
+			$length = (string) $settings['default_length'];
+		}
+		if ( ! in_array( $length, $allowed_lengths_ajax, true ) ) {
+			$length = 'large';
+		}
+
+		if ( ! in_array( $tone, $allowed_tones_ajax, true ) ) {
+			$tone = (string) $settings['default_tone'];
+		}
+		if ( ! in_array( $tone, $allowed_tones_ajax, true ) ) {
+			$tone = 'professional';
+		}
+
+		$lang_labels = $this->rbea_get_ai_suite_language_labels();
+		if ( '' === $language ) {
+			$language = (string) $settings['default_language'];
+		}
+		if ( ! isset( $lang_labels[ $language ] ) ) {
+			$language = 'english';
+		}
+		$language_name = (string) $lang_labels[ $language ];
 
 		if ( '' === $api_key ) {
 			wp_send_json_error(
@@ -2095,22 +2316,40 @@ class Responsive_Block_Editor_Addons {
 			return;
 		}
 
-		// Length → approximate word target. Keep it block-scale, not page-scale.
+		$max_output_tokens = absint( $settings['max_tokens'] );
+		if ( $max_output_tokens < 100 ) {
+			$max_output_tokens = 1500;
+		}
+		if ( $max_output_tokens > 10000 ) {
+			$max_output_tokens = 10000;
+		}
+
+		// Length → approximate word target (aligned with Ai Suite / AI Write UI).
 		$length_map  = array(
-			'short'  => __( 'Keep it short — roughly 15 to 40 words.', 'responsive-block-editor-addons' ),
-			'medium' => __( 'Aim for around 60 to 120 words.', 'responsive-block-editor-addons' ),
-			'long'   => __( 'Aim for around 200 to 350 words.', 'responsive-block-editor-addons' ),
+			'short'  => __( 'Keep it very brief — about 5 to 15 words.', 'responsive-block-editor-addons' ),
+			'medium' => __( 'Aim for about 20 to 30 words.', 'responsive-block-editor-addons' ),
+			'large'  => __( 'Aim for about 40 to 60 words.', 'responsive-block-editor-addons' ),
+			'big'    => __( 'Aim for at least 80 words.', 'responsive-block-editor-addons' ),
 		);
 		$length_hint = isset( $length_map[ $length ] ) ? $length_map[ $length ] : '';
 
 		$tone_map  = array(
-			'casual'       => __( 'Use a casual, conversational tone.', 'responsive-block-editor-addons' ),
-			'professional' => __( 'Use a professional, business-appropriate tone.', 'responsive-block-editor-addons' ),
-			'friendly'     => __( 'Use a warm, friendly tone.', 'responsive-block-editor-addons' ),
+			'informative'   => __( 'Use a clear, informative tone.', 'responsive-block-editor-addons' ),
+			'casual'        => __( 'Use a casual, conversational tone.', 'responsive-block-editor-addons' ),
+			'friendly'      => __( 'Use a warm, friendly tone.', 'responsive-block-editor-addons' ),
+			'professional'  => __( 'Use a professional, business-appropriate tone.', 'responsive-block-editor-addons' ),
+			'inspirational' => __( 'Use an inspirational, motivating tone.', 'responsive-block-editor-addons' ),
 		);
 		$tone_hint = isset( $tone_map[ $tone ] ) ? $tone_map[ $tone ] : '';
 
+		$language_hint = sprintf(
+			/* translators: %s: language name, e.g. "Spanish". */
+			__( 'Write entirely in %s.', 'responsive-block-editor-addons' ),
+			$language_name
+		);
+
 		$instructions  = "Write content for the topic below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.";
+		$instructions .= "\n" . $language_hint;
 		$instructions .= $tone_hint ? "\n" . $tone_hint : '';
 		$instructions .= $length_hint ? "\n" . $length_hint : '';
 		$final_prompt  = $instructions . "\n\nTopic: " . $prompt;
@@ -2127,7 +2366,7 @@ class Responsive_Block_Editor_Addons {
 					array( 'parts' => array( array( 'text' => $final_prompt ) ) ),
 				),
 				'generationConfig' => array(
-					'maxOutputTokens' => 1024,
+					'maxOutputTokens' => $max_output_tokens,
 					'temperature'     => 0.7,
 				),
 			)
