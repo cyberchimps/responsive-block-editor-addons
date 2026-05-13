@@ -1,0 +1,240 @@
+/* AI Write — gradient pill button inside the block contextual toolbar. */
+
+/* Wrapper span only exists so the Popover has a stable DOM anchor. */
+.rbea-ai-write-toolbar-button-anchor {
+	display: inline-flex;
+}
+
+.rbea-ai-write-toolbar-button.components-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: auto;
+	min-height: 28px;
+	padding: 4px 10px;
+	margin: 4px 8px;
+	border: 0;
+	border-radius: 4px;
+	background: linear-gradient(90deg, #9810fa 0%, #155dfc 100%);
+	color: #ffffff;
+	font-family: Inter, sans-serif;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	box-shadow: none;
+	cursor: pointer;
+
+	&:hover:not(:disabled) {
+		filter: brightness(1.06);
+	}
+
+	&:focus:not(:disabled) {
+		box-shadow: inset 0 0 0 1px #ffffff,
+			0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color, #3858e9);
+	}
+
+	.rbea-ai-write-toolbar-button__icon {
+		display: inline-flex;
+		flex-shrink: 0;
+	}
+}
+
+/* AI Write popover */
+.rbea-ai-write-popover {
+	.rbea-ai-write-popover__container {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		width: 358px;
+		padding: 16px;
+	}
+
+	.rbea-ai-write-popover__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.rbea-ai-write-popover__title {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+
+		span {
+			font-family: Inter, sans-serif;
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 28px;
+			color: #101828;
+		}
+	}
+
+	.rbea-ai-write-popover__title-icon {
+		display: inline-flex;
+	}
+
+	.rbea-ai-write-popover__close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: 0;
+		padding: 4px;
+		cursor: pointer;
+	}
+
+	.rbea-ai-write-popover__subtitle {
+		margin: 0;
+		font-family: Inter, sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 16px;
+		color: #64748b;
+	}
+
+	.rbea-ai-write-popover__api-key-warning {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		padding: 8px 10px;
+		background: #fef3c7;
+		border: 1px solid #92400e;
+		color: #92400e;
+		font-family: Inter, sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 16px;
+
+		a {
+			color: #92400e;
+			font-family: Inter, sans-serif;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 16px;
+			text-decoration: underline;
+		}
+	}
+
+	.rbea-ai-write-popover__prompt textarea.components-textarea-control__input {
+		height: 78px;
+		padding: 8px 12px;
+		border: 1px solid #cbd5e1;
+		border-radius: 4px;
+	}
+
+	.rbea-ai-write-popover__field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.rbea-ai-write-popover__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.rbea-ai-write-popover__chip {
+		background: #f1f5f9;
+		border: 0;
+		border-radius: 999px;
+		padding: 4px 11px;
+		cursor: pointer;
+	}
+
+	.rbea-ai-write-popover__row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+
+	.rbea-ai-write-popover__generate.components-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		width: 100%;
+		height: 40px;
+		background: linear-gradient(90deg, #9810fa 0%, #155dfc 100%);
+		color: #ffffff;
+		border: 0;
+
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
+			color: #ffffff;
+		}
+	}
+
+	.rbea-ai-write-popover__preview {
+		height: 71.5px;
+		padding: 13px 13px 1px 13px;
+		background: #f1f5f9;
+		border: 1px solid #cbd5e1;
+		border-radius: 4px;
+	}
+
+	.rbea-ai-write-popover__actions {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.rbea-ai-write-popover__action.components-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		height: 40px;
+		padding: 10px 14px;
+		border-radius: 6px;
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #ffffff;
+
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
+			color: #ffffff;
+		}
+	}
+
+	.rbea-ai-write-popover__action--replace.components-button {
+		flex: 1 1 auto;
+		background: #c026d3;
+		border: 1px solid #c026d3;
+	}
+
+	.rbea-ai-write-popover__action--insert.components-button {
+		width: 137px;
+		background: #2563eb;
+		border: 1px solid #2563eb;
+	}
+
+	.rbea-ai-write-popover__copy {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: 0;
+		padding: 11px 8px;
+		cursor: pointer;
+	}
+
+	.rbea-ai-write-popover__regenerate {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		background: transparent;
+		border: 0;
+		padding: 4px;
+		cursor: pointer;
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 16px;
+		text-align: center;
+		color: #9810fa;
+	}
+}
