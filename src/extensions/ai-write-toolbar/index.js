@@ -135,15 +135,6 @@ function CloseIcon() {
 	);
 }
 
-function WarningIcon() {
-	return (
-		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
-			<circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2" />
-			<path d="M7 4v3.5M7 9.5v.01" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-		</svg>
-	);
-}
-
 function CopyIcon() {
 	return (
 		<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -177,17 +168,89 @@ function RegenerateIcon() {
 }
 
 function AiWritePopoverContent( { onClose } ) {
-	const [ prompt, setPrompt ] = useState( '' );
-	const [ length, setLength ] = useState( '' );
-	const [ tone, setTone ] = useState( '' );
+	const aiSuite =
+		( typeof window !== 'undefined' &&
+			window.responsive_globals &&
+			window.responsive_globals.ai_suite ) ||
+		{};
+	const ajaxUrl =
+		( typeof window !== 'undefined' &&
+			window.responsive_globals &&
+			window.responsive_globals.ajax_url ) ||
+		'';
+	const ajaxNonce =
+		( typeof window !== 'undefined' &&
+			window.responsive_globals &&
+			window.responsive_globals.responsive_block_editor_ajax_nonce ) ||
+		'';
 
-	// Placeholder until the popup is wired to the Ai Suite settings & AI provider.
-	const hasApiKey = false;
-	const settingsUrl = '#';
-	const generatedContent = __(
-		'Welcome to our agency where ideas become growth-driven digital experiences.',
-		'responsive-block-editor-addons'
-	);
+	const hasApiKey = !! aiSuite.has_api_key;
+	const settingsUrl = aiSuite.settings_url || '#';
+
+	const [ prompt, setPrompt ] = useState( '' );
+	const [ length, setLength ] = useState( aiSuite.default_length || '' );
+	const [ tone, setTone ] = useState( aiSuite.default_tone || '' );
+	const [ isGenerating, setIsGenerating ] = useState( false );
+	const [ generatedContent, setGeneratedContent ] = useState( '' );
+	const [ generationError, setGenerationError ] = useState( '' );
+
+	const handleGenerate = async () => {
+		if ( isGenerating ) return;
+		if ( ! prompt.trim() ) {
+			setGenerationError(
+				__(
+					'Enter a prompt describing what you want to write.',
+					'responsive-block-editor-addons'
+				)
+			);
+			return;
+		}
+		if ( ! hasApiKey ) {
+			setGenerationError(
+				__(
+					'No API key configured. Add one in Ai Suite.',
+					'responsive-block-editor-addons'
+				)
+			);
+			return;
+		}
+
+		setIsGenerating( true );
+		setGenerationError( '' );
+
+		const formData = new FormData();
+		formData.append( 'action', 'rbea_ai_generate' );
+		formData.append( 'nonce', ajaxNonce );
+		formData.append( 'prompt', prompt );
+		formData.append( 'length', length );
+		formData.append( 'tone', tone );
+
+		try {
+			const res = await fetch( ajaxUrl, { method: 'POST', body: formData } );
+			const body = await res.json().catch( () => ( {} ) );
+			if ( ! res.ok || ! body || body.success !== true ) {
+				const message =
+					( body && body.data && body.data.message ) ||
+					__(
+						'Could not generate content. Please try again.',
+						'responsive-block-editor-addons'
+					);
+				throw new Error( message );
+			}
+			setGeneratedContent( ( body.data && body.data.text ) || '' );
+		} catch ( err ) {
+			setGenerationError(
+				err && err.message
+					? err.message
+					: __(
+							'Could not generate content. Please try again.',
+							'responsive-block-editor-addons'
+					  )
+			);
+		} finally {
+			setIsGenerating( false );
+		}
+	};
 
 	return (
 		<div className="rbea-ai-write-popover__container">
@@ -212,7 +275,6 @@ function AiWritePopoverContent( { onClose } ) {
 
 			{ ! hasApiKey && (
 				<div className="rbea-ai-write-popover__api-key-warning">
-					<WarningIcon />
 					<span>
 						{ __( 'Connect your API key in settings.', 'responsive-block-editor-addons' ) }{ ' ' }
 						<a href={ settingsUrl }>
@@ -269,33 +331,58 @@ function AiWritePopoverContent( { onClose } ) {
 				/>
 			</div>
 
-			<Button className="rbea-ai-write-popover__generate">
+			<Button
+				className="rbea-ai-write-popover__generate"
+				onClick={ handleGenerate }
+				disabled={ isGenerating || ! prompt.trim() || ! hasApiKey }
+			>
 				<AiWriteIcon />
-				<span>{ __( 'Generate Now', 'responsive-block-editor-addons' ) }</span>
+				<span>
+					{ isGenerating
+						? __( 'Generating…', 'responsive-block-editor-addons' )
+						: __( 'Generate Now', 'responsive-block-editor-addons' ) }
+				</span>
 			</Button>
 
-			<div className="rbea-ai-write-popover__preview">{ generatedContent }</div>
+			{ generationError && (
+				<p className="rbea-ai-write-popover__error" role="alert">
+					{ generationError }
+				</p>
+			) }
 
-			<div className="rbea-ai-write-popover__actions">
-				<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace">
-					{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
-				</Button>
-				<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert">
-					{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
-				</Button>
-				<button
-					type="button"
-					className="rbea-ai-write-popover__copy"
-					aria-label={ __( 'Copy', 'responsive-block-editor-addons' ) }
-				>
-					<CopyIcon />
-				</button>
-			</div>
+			{ generatedContent && (
+				<Fragment>
+					<div className="rbea-ai-write-popover__preview">
+						{ generatedContent }
+					</div>
 
-			<button type="button" className="rbea-ai-write-popover__regenerate">
-				<RegenerateIcon />
-				<span>{ __( 'Regenerate', 'responsive-block-editor-addons' ) }</span>
-			</button>
+					<div className="rbea-ai-write-popover__actions">
+						<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace">
+							{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
+						</Button>
+						<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert">
+							{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
+						</Button>
+						<button
+							type="button"
+							className="rbea-ai-write-popover__copy"
+							aria-label={ __( 'Copy', 'responsive-block-editor-addons' ) }
+						>
+							<CopyIcon />
+						</button>
+					</div>
+
+					<button
+						type="button"
+						className="rbea-ai-write-popover__regenerate"
+						onClick={ handleGenerate }
+						disabled={ isGenerating }
+					>
+						<RegenerateIcon />
+						<span>{ __( 'Regenerate', 'responsive-block-editor-addons' ) }</span>
+					</button>
+				</Fragment>
+			) }
 		</div>
 	);
 }

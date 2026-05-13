@@ -207,6 +207,9 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Ai Suite — save all dashboard settings in one payload.
 		add_action( 'wp_ajax_rbea_save_ai_suite_settings', array( $this, 'rbea_save_ai_suite_settings' ) );
 
+		// RBEA Ai Suite — proxy generation request to the configured AI provider.
+		add_action( 'wp_ajax_rbea_ai_generate', array( $this, 'rbea_ai_generate' ) );
+
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -757,6 +760,7 @@ class Responsive_Block_Editor_Addons {
 				'is_display_conditions_on'           => $is_display_conditions_on,
 				'is_responsive_conditions_on'           => $is_responsive_conditions_on,
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
+				'ai_suite'                           => $this->rbea_get_ai_suite_indicators(),
 			)
 		);
 
@@ -2022,6 +2026,234 @@ class Responsive_Block_Editor_Addons {
 		update_option( 'rbea_ai_suite_settings', $clean );
 
 		wp_send_json_success( $clean );
+	}
+
+	/**
+	 * Editor-safe Ai Suite indicators for `responsive_globals`.
+	 *
+	 * Mirrors the dashboard `ai_suite` shape but never sends the raw API key
+	 * to the editor — only `has_api_key` so the UI can show / hide the
+	 * "Connect your API key" notice.
+	 *
+	 * @return array
+	 */
+	public function rbea_get_ai_suite_indicators() {
+		$settings = $this->rbea_get_ai_suite_settings();
+		return array(
+			'enable_ai_writer' => (bool) $settings['enable_ai_writer'],
+			'has_api_key'      => '' !== trim( (string) $settings['api_key'] ),
+			'provider'         => $settings['provider'],
+			'model'            => $settings['model'],
+			'default_tone'     => $settings['default_tone'],
+			'default_length'   => $settings['default_length'],
+			'settings_url'     => admin_url( 'admin.php?page=responsive_block_editor_addons#/ai-suite' ),
+		);
+	}
+
+	/**
+	 * AJAX handler — proxy a generation request to the configured AI provider.
+	 *
+	 * Accepts `prompt`, `length`, `tone` from $_POST. Reads the saved API key,
+	 * provider, and model from `rbea_ai_suite_settings` (so the secret never
+	 * leaves PHP). Returns the generated text or a humanized error.
+	 */
+	public function rbea_ai_generate() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Forbidden', 'responsive-block-editor-addons' ) ), 403 );
+			return;
+		}
+
+		$post   = wp_unslash( $_POST );
+		$prompt = isset( $post['prompt'] ) ? sanitize_textarea_field( (string) $post['prompt'] ) : '';
+		$length = isset( $post['length'] ) ? sanitize_text_field( (string) $post['length'] ) : '';
+		$tone   = isset( $post['tone'] ) ? sanitize_text_field( (string) $post['tone'] ) : '';
+
+		if ( '' === $prompt ) {
+			wp_send_json_error(
+				array( 'message' => __( 'Please enter a prompt before generating.', 'responsive-block-editor-addons' ) ),
+				400
+			);
+			return;
+		}
+
+		$settings = $this->rbea_get_ai_suite_settings();
+		$api_key  = trim( (string) $settings['api_key'] );
+		$model    = (string) $settings['model'];
+
+		if ( '' === $api_key ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'No API key configured. Add one in Responsive Blocks → Ai Suite.',
+						'responsive-block-editor-addons'
+					),
+				),
+				400
+			);
+			return;
+		}
+
+		// Length → approximate word target. Keep it block-scale, not page-scale.
+		$length_map  = array(
+			'short'  => __( 'Keep it short — roughly 15 to 40 words.', 'responsive-block-editor-addons' ),
+			'medium' => __( 'Aim for around 60 to 120 words.', 'responsive-block-editor-addons' ),
+			'long'   => __( 'Aim for around 200 to 350 words.', 'responsive-block-editor-addons' ),
+		);
+		$length_hint = isset( $length_map[ $length ] ) ? $length_map[ $length ] : '';
+
+		$tone_map  = array(
+			'casual'       => __( 'Use a casual, conversational tone.', 'responsive-block-editor-addons' ),
+			'professional' => __( 'Use a professional, business-appropriate tone.', 'responsive-block-editor-addons' ),
+			'friendly'     => __( 'Use a warm, friendly tone.', 'responsive-block-editor-addons' ),
+		);
+		$tone_hint = isset( $tone_map[ $tone ] ) ? $tone_map[ $tone ] : '';
+
+		$instructions  = "Write content for the topic below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.";
+		$instructions .= $tone_hint ? "\n" . $tone_hint : '';
+		$instructions .= $length_hint ? "\n" . $length_hint : '';
+		$final_prompt  = $instructions . "\n\nTopic: " . $prompt;
+
+		$endpoint = sprintf(
+			'https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s',
+			rawurlencode( $model ),
+			rawurlencode( $api_key )
+		);
+
+		$body = wp_json_encode(
+			array(
+				'contents'         => array(
+					array( 'parts' => array( array( 'text' => $final_prompt ) ) ),
+				),
+				'generationConfig' => array(
+					'maxOutputTokens' => 1024,
+					'temperature'     => 0.7,
+				),
+			)
+		);
+
+		$response = wp_remote_post(
+			$endpoint,
+			array(
+				'timeout' => 30,
+				'headers' => array( 'Content-Type' => 'application/json' ),
+				'body'    => $body,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'Could not reach the AI provider. Please try again.',
+						'responsive-block-editor-addons'
+					),
+				),
+				502
+			);
+			return;
+		}
+
+		$status = (int) wp_remote_retrieve_response_code( $response );
+		$json   = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( $status < 200 || $status >= 300 ) {
+			$api_message = isset( $json['error']['message'] ) ? (string) $json['error']['message'] : '';
+			$api_status  = isset( $json['error']['status'] ) ? (string) $json['error']['status'] : '';
+			wp_send_json_error(
+				array(
+					'message' => $this->rbea_humanize_gemini_error( $status, $api_status, $api_message ),
+				),
+				$status
+			);
+			return;
+		}
+
+		// Pull text out of the first candidate's parts.
+		$text = '';
+		if ( isset( $json['candidates'][0]['content']['parts'] ) && is_array( $json['candidates'][0]['content']['parts'] ) ) {
+			foreach ( $json['candidates'][0]['content']['parts'] as $part ) {
+				if ( isset( $part['text'] ) ) {
+					$text .= (string) $part['text'];
+				}
+			}
+		}
+
+		$text = trim( $text );
+
+		if ( '' === $text ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'The model returned an empty response. Try rephrasing the prompt or picking a different model.',
+						'responsive-block-editor-addons'
+					),
+				),
+				502
+			);
+			return;
+		}
+
+		wp_send_json_success( array( 'text' => $text ) );
+	}
+
+	/**
+	 * Translate Gemini's HTTP status + API status into a user-facing message.
+	 *
+	 * @param int    $status      HTTP status code.
+	 * @param string $api_status  Google API status string (e.g. RESOURCE_EXHAUSTED).
+	 * @param string $api_message Raw API error message.
+	 * @return string
+	 */
+	protected function rbea_humanize_gemini_error( $status, $api_status, $api_message ) {
+		if (
+			'UNAUTHENTICATED' === $api_status ||
+			( 'INVALID_ARGUMENT' === $api_status && preg_match( '/api key/i', $api_message ) )
+		) {
+			return __(
+				'The API key was rejected. Update it in Responsive Blocks → Ai Suite.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 403 === $status || 'PERMISSION_DENIED' === $api_status ) {
+			return __(
+				'This API key does not have permission to use the selected model.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 404 === $status || 'NOT_FOUND' === $api_status ) {
+			return __(
+				'The selected model is not available for this API key.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 429 === $status || 'RESOURCE_EXHAUSTED' === $api_status ) {
+			if ( preg_match( '/quota|billing|plan|tier/i', $api_message ) ) {
+				return __(
+					'This model is not available on your current Gemini plan. Enable billing in Google AI Studio, or pick 2.5 Flash / Flash Lite.',
+					'responsive-block-editor-addons'
+				);
+			}
+			return __(
+				'Too many requests right now. Wait a moment and try again.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( $status >= 500 ) {
+			return __(
+				'The AI provider returned an error. Please try again in a moment.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		return '' !== $api_message
+			? $api_message
+			: __( 'Something went wrong while generating. Please try again.', 'responsive-block-editor-addons' );
 	}
 
 	/**
