@@ -204,6 +204,9 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Container Gap Setting.
 		add_action( 'wp_ajax_rbea_save_container_gap', array( $this, 'rbea_save_container_gap' ) );
 
+		// RBEA Ai Suite — save all dashboard settings in one payload.
+		add_action( 'wp_ajax_rbea_save_ai_suite_settings', array( $this, 'rbea_save_ai_suite_settings' ) );
+
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -1384,6 +1387,7 @@ class Responsive_Block_Editor_Addons {
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
 					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
+					'ai_suite'              => $this->rbea_get_ai_suite_settings(),
 				)
 			);
 
@@ -1943,6 +1947,81 @@ class Responsive_Block_Editor_Addons {
 		update_option( 'rbea_default_container_gap', $value );
 
 		wp_send_json_success();
+	}
+
+	/**
+	 * Read the saved Ai Suite settings merged onto defaults.
+	 *
+	 * Used by the getting-started localize step (to hydrate the dashboard) and
+	 * by the AJAX save handler (to compute the "current" baseline before merge).
+	 *
+	 * @return array
+	 */
+	public function rbea_get_ai_suite_settings() {
+		$defaults = array(
+			'enable_ai_writer' => false,
+			'post_types'       => '',
+			'user_role_access' => '',
+			'provider'         => 'google-gemini',
+			'model'            => 'gemini-2.5-flash-lite',
+			'api_key'          => '',
+			'default_tone'     => '',
+			'default_length'   => '',
+			'default_language' => '',
+			'max_tokens'       => '',
+		);
+		$saved = get_option( 'rbea_ai_suite_settings', array() );
+		if ( ! is_array( $saved ) ) {
+			$saved = array();
+		}
+		return array_merge( $defaults, $saved );
+	}
+
+	/**
+	 * Handles AJAX request to save the Ai Suite dashboard settings.
+	 *
+	 * Accepts each field as an individual `$_POST` key, sanitizes, merges with
+	 * the existing values, and persists into the `rbea_ai_suite_settings` option.
+	 */
+	public function rbea_save_ai_suite_settings() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
+		$current = $this->rbea_get_ai_suite_settings();
+		$post    = wp_unslash( $_POST );
+
+		$text_fields = array(
+			'post_types',
+			'user_role_access',
+			'provider',
+			'model',
+			'api_key',
+			'default_tone',
+			'default_length',
+			'default_language',
+			'max_tokens',
+		);
+
+		$clean = $current;
+
+		if ( array_key_exists( 'enable_ai_writer', $post ) ) {
+			$value                     = (string) $post['enable_ai_writer'];
+			$clean['enable_ai_writer'] = ( '1' === $value || 'true' === $value );
+		}
+
+		foreach ( $text_fields as $field ) {
+			if ( array_key_exists( $field, $post ) ) {
+				$clean[ $field ] = sanitize_text_field( (string) $post[ $field ] );
+			}
+		}
+
+		update_option( 'rbea_ai_suite_settings', $clean );
+
+		wp_send_json_success( $clean );
 	}
 
 	/**

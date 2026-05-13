@@ -133,6 +133,15 @@ body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
     box-shadow: none;
 }
 
+/* Mask the API key visually without using type="password" — keeps Chrome's
+   credential save prompt out of the way. `-webkit-text-security` covers
+   Chromium / Safari / Edge / Brave. Firefox has no equivalent and will show
+   the value in plaintext when "Show" is off (acceptable trade-off). */
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key.is-masked input.components-text-control__input {
+    -webkit-text-security: disc;
+    letter-spacing: 0.1em;
+}
+
 @layer base {
 
     input[type="number"]::-webkit-outer-spin-button,

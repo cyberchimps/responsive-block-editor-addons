@@ -696,6 +696,10 @@ img {
   top: 1rem;
 }
 
+.m-0{
+  margin: 0px;
+}
+
 .m-10{
   margin: 2.5rem;
 }
@@ -784,6 +788,10 @@ img {
 
 .grid{
   display: grid;
+}
+
+.contents{
+  display: contents;
 }
 
 .h-\[50px\]{
@@ -1380,6 +1388,11 @@ img {
   letter-spacing: 0em;
 }
 
+.text-\[\#16A34A\]{
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#1E293B\]{
   --tw-text-opacity: 1;
   color: rgb(30 41 59 / var(--tw-text-opacity, 1));
@@ -1398,6 +1411,11 @@ img {
 .text-\[\#64748B\]{
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#DC2626\]{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 
 .text-blue-500{
@@ -1637,6 +1655,16 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
 body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
   border: none;
   box-shadow: none;
+}
+
+/* Mask the API key visually without using type="password" — keeps Chrome's
+   credential save prompt out of the way. `-webkit-text-security` covers
+   Chromium / Safari / Edge / Brave. Firefox has no equivalent and will show
+   the value in plaintext when "Show" is off (acceptable trade-off). */
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key.is-masked input.components-text-control__input {
+  -webkit-text-security: disc;
+  letter-spacing: 0.1em;
 }
 
 .hover\:bg-blue-100:hover{
