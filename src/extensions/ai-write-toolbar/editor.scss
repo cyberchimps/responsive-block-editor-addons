@@ -159,6 +159,11 @@
 		&:focus:not(:disabled) {
 			color: #ffffff;
 		}
+
+		&.rbea-ai-write-popover__generate--locked {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
 	}
 
 	.rbea-ai-write-popover__preview {

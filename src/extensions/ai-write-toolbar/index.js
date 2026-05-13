@@ -13,7 +13,7 @@
 import { Fragment, useState, useRef } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { BlockControls } from '@wordpress/block-editor';
-import { registerFormatType } from '@wordpress/rich-text';
+import { create, insert, registerFormatType } from '@wordpress/rich-text';
 import {
 	Button,
 	Popover,
@@ -22,6 +22,7 @@ import {
 	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
+import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 const SUGGESTED_PROMPTS = [
@@ -171,7 +172,15 @@ function RegenerateIcon() {
 	);
 }
 
-function AiWritePopoverContent( { onClose } ) {
+function AiWritePopoverContent( {
+	onClose,
+	richTextValue,
+	richTextOnChange,
+} ) {
+	const { createSuccessNotice, createErrorNotice } = useDispatch(
+		'core/notices'
+	);
+
 	const aiSuite =
 		( typeof window !== 'undefined' &&
 			window.responsive_globals &&
@@ -197,6 +206,7 @@ function AiWritePopoverContent( { onClose } ) {
 	const [ isGenerating, setIsGenerating ] = useState( false );
 	const [ generatedContent, setGeneratedContent ] = useState( '' );
 	const [ generationError, setGenerationError ] = useState( '' );
+	const [ hasUsedGenerateNow, setHasUsedGenerateNow ] = useState( false );
 
 	const handleGenerate = async () => {
 		if ( isGenerating ) return;
@@ -242,6 +252,7 @@ function AiWritePopoverContent( { onClose } ) {
 				throw new Error( message );
 			}
 			setGeneratedContent( ( body.data && body.data.text ) || '' );
+			setHasUsedGenerateNow( true );
 		} catch ( err ) {
 			setGenerationError(
 				err && err.message
@@ -255,6 +266,50 @@ function AiWritePopoverContent( { onClose } ) {
 			setIsGenerating( false );
 		}
 	};
+
+	const handleReplaceText = () => {
+		const text = ( generatedContent || '' ).trim();
+		if ( ! text || typeof richTextOnChange !== 'function' ) {
+			return;
+		}
+		const next = create( { text } );
+		next.start = text.length;
+		next.end = text.length;
+		richTextOnChange( next );
+	};
+
+	const handleInsertBelow = () => {
+		const text = ( generatedContent || '' ).trim();
+		if ( ! text || typeof richTextOnChange !== 'function' || ! richTextValue ) {
+			return;
+		}
+		const len = richTextValue.text.length;
+		const prefix = len > 0 ? '\n\n' : '';
+		const addition = create( { text: prefix + text } );
+		const next = insert( richTextValue, addition, len, len );
+		richTextOnChange( next );
+	};
+
+	const handleCopy = async () => {
+		const text = generatedContent || '';
+		if ( ! text.trim() ) {
+			return;
+		}
+		try {
+			await navigator.clipboard.writeText( text );
+			createSuccessNotice(
+				__( 'Copied to clipboard.', 'responsive-block-editor-addons' ),
+				{ type: 'snackbar', isDismissible: true }
+			);
+		} catch ( err ) {
+			createErrorNotice(
+				__( 'Could not copy to clipboard.', 'responsive-block-editor-addons' ),
+				{ type: 'snackbar' }
+			);
+		}
+	};
+
+	const canApplyGenerated = !! ( generatedContent && generatedContent.trim() );
 
 	return (
 		<div className="rbea-ai-write-popover__container">
@@ -336,9 +391,19 @@ function AiWritePopoverContent( { onClose } ) {
 			</div>
 
 			<Button
-				className="rbea-ai-write-popover__generate"
+				className={
+					'rbea-ai-write-popover__generate' +
+					( hasUsedGenerateNow
+						? ' rbea-ai-write-popover__generate--locked'
+						: '' )
+				}
 				onClick={ handleGenerate }
-				disabled={ isGenerating || ! prompt.trim() || ! hasApiKey }
+				disabled={
+					isGenerating ||
+					! prompt.trim() ||
+					! hasApiKey ||
+					hasUsedGenerateNow
+				}
 			>
 				<AiWriteIcon />
 				<span>
@@ -361,16 +426,26 @@ function AiWritePopoverContent( { onClose } ) {
 					</div>
 
 					<div className="rbea-ai-write-popover__actions">
-						<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace">
+						<Button
+							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace"
+							onClick={ handleReplaceText }
+							disabled={ ! canApplyGenerated }
+						>
 							{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
 						</Button>
-						<Button className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert">
+						<Button
+							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert"
+							onClick={ handleInsertBelow }
+							disabled={ ! canApplyGenerated }
+						>
 							{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
 						</Button>
 						<button
 							type="button"
 							className="rbea-ai-write-popover__copy"
 							aria-label={ __( 'Copy', 'responsive-block-editor-addons' ) }
+							onClick={ handleCopy }
+							disabled={ ! canApplyGenerated }
 						>
 							<CopyIcon />
 						</button>
@@ -391,7 +466,7 @@ function AiWritePopoverContent( { onClose } ) {
 	);
 }
 
-function AiWriteToolbarButton() {
+function AiWriteToolbarButton( { richTextValue, richTextOnChange } ) {
 	const [ isOpen, setIsOpen ] = useState( false );
 	const anchorRef = useRef( null );
 
@@ -420,7 +495,11 @@ function AiWriteToolbarButton() {
 					onClose={ () => setIsOpen( false ) }
 					onFocusOutside={ () => setIsOpen( false ) }
 				>
-					<AiWritePopoverContent onClose={ () => setIsOpen( false ) } />
+					<AiWritePopoverContent
+						onClose={ () => setIsOpen( false ) }
+						richTextValue={ richTextValue }
+						richTextOnChange={ richTextOnChange }
+					/>
 				</Popover>
 			) }
 		</Fragment>
@@ -433,14 +512,17 @@ const RBEA_AI_WRITE_FORMAT = 'responsive-block-editor-addons/ai-write';
  * RichText format `edit` — Nexter-style: BlockControls from inside the format
  * so the slot fills the block toolbar only for the active RichText instance.
  */
-function AiWriteFormatEdit() {
+function AiWriteFormatEdit( { value, onChange } ) {
 	if ( ! isAiWriteToolbarGloballyEnabled() ) {
 		return null;
 	}
 
 	return (
 		<BlockControls group="other">
-			<AiWriteToolbarButton />
+			<AiWriteToolbarButton
+				richTextValue={ value }
+				richTextOnChange={ onChange }
+			/>
 		</BlockControls>
 	);
 }
