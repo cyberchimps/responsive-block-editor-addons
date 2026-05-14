@@ -21,7 +21,6 @@ import {
 	SelectControl,
 	TextareaControl,
 	ToolbarButton,
-	ToolbarGroup,
 } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -404,6 +403,7 @@ function AiWritePopoverContent( {
 
 			<div className="rbea-ai-write-popover__row">
 				<SelectControl
+					__nextHasNoMarginBottom
 					label={ __( 'Length', 'responsive-block-editor-addons' ) }
 					value={ length }
 					options={ lengthOptions }
@@ -411,6 +411,7 @@ function AiWritePopoverContent( {
 					className="rbea-ai-write-popover__length"
 				/>
 				<SelectControl
+					__nextHasNoMarginBottom
 					label={ __( 'Tone', 'responsive-block-editor-addons' ) }
 					value={ tone }
 					options={ toneOptions }
@@ -435,7 +436,7 @@ function AiWritePopoverContent( {
 				}
 			>
 				<AiWriteIcon />
-				<span>
+				<span className="rbea-ai-write-popover__generate-label">
 					{ isGenerating
 						? __( 'Generating…', 'responsive-block-editor-addons' )
 						: __( 'Generate Now', 'responsive-block-editor-addons' ) }
@@ -476,7 +477,9 @@ function AiWritePopoverContent( {
 							onClick={ handleCopy }
 							disabled={ ! canApplyGenerated }
 						>
-							<CopyIcon />
+							<span className="rbea-ai-write-popover__copy-inner">
+								<CopyIcon />
+							</span>
 						</button>
 					</div>
 
@@ -501,19 +504,17 @@ function AiWriteToolbarButton( { richTextValue, richTextOnChange } ) {
 
 	return (
 		<Fragment>
-			<ToolbarGroup>
-				<ToolbarButton
-					ref={ anchorRef }
-					className="rbea-ai-write-toolbar-button"
-					title={ __( 'AI Write', 'responsive-block-editor-addons' ) }
-					onClick={ () => setIsOpen( ( open ) => ! open ) }
-				>
-					<AiWriteIcon />
-					<span className="rbea-ai-write-toolbar-button__label">
-						{ __( 'AI Write', 'responsive-block-editor-addons' ) }
-					</span>
-				</ToolbarButton>
-			</ToolbarGroup>
+			<ToolbarButton
+				ref={ anchorRef }
+				className="rbea-ai-write-toolbar-button"
+				title={ __( 'AI Write', 'responsive-block-editor-addons' ) }
+				onClick={ () => setIsOpen( ( open ) => ! open ) }
+			>
+				<AiWriteIcon />
+				<span className="rbea-ai-write-toolbar-button__label">
+					{ __( 'AI Write', 'responsive-block-editor-addons' ) }
+				</span>
+			</ToolbarButton>
 			{ isOpen && (
 				<Popover
 					className="rbea-ai-write-popover"

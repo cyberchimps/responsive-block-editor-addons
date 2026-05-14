@@ -9,6 +9,56 @@ import {
   getAiSuiteLanguageOptions,
 } from "../../../../src/utils/ai-suite-choices.js";
 
+/** Eye open — key visible (click to hide). */
+function ApiKeyVisibilityOnIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M1.7181 10.2898C1.64865 10.1027 1.64865 9.89691 1.7181 9.70981C2.39452 8.06969 3.5427 6.66735 5.01708 5.68056C6.49146 4.69378 8.22564 4.16699 9.99977 4.16699C11.7739 4.16699 13.5081 4.69378 14.9825 5.68056C16.4568 6.66735 17.605 8.06969 18.2814 9.70981C18.3509 9.89691 18.3509 10.1027 18.2814 10.2898C17.605 11.9299 16.4568 13.3323 14.9825 14.3191C13.5081 15.3058 11.7739 15.8326 9.99977 15.8326C8.22564 15.8326 6.49146 15.3058 5.01708 14.3191C3.5427 13.3323 2.39452 11.9299 1.7181 10.2898Z"
+        stroke="#64748B"
+        strokeWidth="0.952381"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z"
+        stroke="#64748B"
+        strokeWidth="0.952381"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/** Eye obscured — key masked (click to show). Same stroke weight as open state. */
+function ApiKeyVisibilityOffIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M1.7181 10.2898C1.64865 10.1027 1.64865 9.89691 1.7181 9.70981C2.39452 8.06969 3.5427 6.66735 5.01708 5.68056C6.49146 4.69378 8.22564 4.16699 9.99977 4.16699C11.7739 4.16699 13.5081 4.69378 14.9825 5.68056C16.4568 6.66735 17.605 8.06969 18.2814 9.70981C18.3509 9.89691 18.3509 10.1027 18.2814 10.2898C17.605 11.9299 16.4568 13.3323 14.9825 14.3191C13.5081 15.3058 11.7739 15.8326 9.99977 15.8326C8.22564 15.8326 6.49146 15.3058 5.01708 14.3191C3.5427 13.3323 2.39452 11.9299 1.7181 10.2898Z"
+        stroke="#64748B"
+        strokeWidth="0.952381"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z"
+        stroke="#64748B"
+        strokeWidth="0.952381"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.2 15.8L15.8 4.2"
+        stroke="#64748B"
+        strokeWidth="0.952381"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 const DEFAULT_SETTINGS = {
   enable_ai_writer: true,
   post_types: 'all',
@@ -55,7 +105,7 @@ const aiSuiteCardClass =
   'bg-white rounded-2xl border border-[#CBD5E1] [box-shadow:0px_1px_2px_-1px_rgba(0,0,0,0.1),0px_1px_3px_0px_rgba(0,0,0,0.1)] pb-[40px] pl-[1px] pr-[1px]';
 
 const fieldLabelClass =
-  'font-sans font-medium text-[16px] leading-[24px] tracking-normal text-[#1E293B]';
+  'font-sans font-medium text-base leading-6 tracking-normal text-[#1E293B]';
 
 /**
  * Hits Gemini's `generateContent` endpoint with a 1-token prompt to validate
@@ -307,7 +357,7 @@ const AiSuite = () => {
 
   return (
     <div className="rbea-ai-suite-page flex xl:mx-7.5 md:mx-3.75 mt-10 mb-10">
-      <div className="w-full bg-slate-100 p-[40px]">
+      <div className="w-full bg-slate-100 p-[40px] rounded-t-3xl">
         <div className="flex flex-col gap-6">
 
           <div className="rounded-[10px]">
@@ -330,10 +380,10 @@ const AiSuite = () => {
             <div className="flex flex-col gap-4 px-6 pt-4">
               <div className="flex justify-between items-start gap-4">
                 <div className="flex flex-col gap-1 w-3/4">
-                  <p className="font-sans font-medium text-[18px] leading-[28px] tracking-normal text-[#1E293B]">
+                  <p className="font-sans font-medium text-base leading-6 tracking-normal text-[#1E293B]">
                     {__( 'Enable AI Writer', 'responsive-block-editor-addons' )}
                   </p>
-                  <p className="font-sans font-normal text-[14px] leading-[20px] tracking-normal text-[#64748B]">
+                  <p className="font-sans font-normal text-sm leading-5 tracking-normal text-[#64748B]">
                     {__( 'Turn on AI content generation inside Gutenberg editor', 'responsive-block-editor-addons' )}
                   </p>
                 </div>
@@ -409,9 +459,20 @@ const AiSuite = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <p className={fieldLabelClass} id="rbea-ai-suite-api-key-label">{__( 'API Key', 'responsive-block-editor-addons' )}</p>
-                <div className="flex gap-2 items-center">
-                  <div className={ `flex-1 rbea-ai-suite-api-key${ apiKeyVisible ? '' : ' is-masked' }` }>
+                <div className="flex flex-row flex-wrap items-center gap-2 min-w-0">
+                  <p className={ fieldLabelClass } id="rbea-ai-suite-api-key-label">{ __( 'API Key', 'responsive-block-editor-addons' ) }</p>
+                  <a
+                    className="text-[12px] font-medium leading-5 text-[#64748B] underline hover:underline"
+                    href="https://cyberchimps.com/docs/responsive-blocks/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    { __( 'Get API Key', 'responsive-block-editor-addons' ) }
+                    <span className="sr-only">{ __( '(opens in a new tab)', 'responsive-block-editor-addons' ) }</span>
+                  </a>
+                </div>
+                <div className="relative min-w-0 w-full rbea-ai-suite-api-key-field">
+                  <div className={ `min-w-0 w-full rbea-ai-suite-api-key${ apiKeyVisible ? '' : ' is-masked' }` }>
                     <TextControl
                       __nextHasNoMarginBottom
                       id="rbea-ai-suite-api-key"
@@ -426,38 +487,66 @@ const AiSuite = () => {
                       onChange={handleApiKeyChange}
                     />
                   </div>
-                  <Button
+                  <button
                     type="button"
-                    isSecondary
-                    onClick={() => setApiKeyVisible( ! apiKeyVisible )}
-                    aria-label={apiKeyVisible ? __( 'Hide API key', 'responsive-block-editor-addons' ) : __( 'Show API key', 'responsive-block-editor-addons' )}
+                    className="rbea-ai-suite-api-key-toggle"
+                    onClick={ () => setApiKeyVisible( ! apiKeyVisible ) }
+                    aria-label={ apiKeyVisible ? __( 'Hide API key', 'responsive-block-editor-addons' ) : __( 'Show API key', 'responsive-block-editor-addons' ) }
+                    aria-pressed={ apiKeyVisible }
                   >
-                    <span className={ `dashicons ${ apiKeyVisible ? 'dashicons-hidden' : 'dashicons-visibility' }` } aria-hidden />
-                  </Button>
+                    { apiKeyVisible ? <ApiKeyVisibilityOnIcon /> : <ApiKeyVisibilityOffIcon /> }
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <div className="flex gap-3 items-center">
-                  {connectionStatus !== 'connected' && (
+                <div className="flex gap-2 items-center">
+                  <div
+                    className={
+                      connectionStatus === 'connecting'
+                        ? 'relative inline-flex rounded-md rbea-ai-suite-test-connection-wrap rbea-ai-suite-test-connection-wrap--connecting'
+                        : 'inline-flex rounded-md rbea-ai-suite-test-connection-wrap'
+                    }
+                  >
                     <Button
                       isSecondary
                       type="button"
                       onClick={handleTestConnection}
                       disabled={connectionStatus === 'connecting' || !apiKey}
+                      aria-busy={connectionStatus === 'connecting'}
+                      className="min-w-[138px] min-h-[40px] py-[10px] px-[14px] !bg-[#2563EB] !border !border-solid !shadow-none !border-[#2563EB] rounded-md font-medium text-[14px] leading-5 text-center !text-white"
                     >
                       {__( 'Test Connection', 'responsive-block-editor-addons' )}
                     </Button>
-                  )}
-                  {connectionStatus === 'connecting' && (
-                    <div className="flex items-center gap-1 text-[#475569]">
-                      <Spinner />
-                      <span className="font-sans text-[14px] leading-[20px]">
-                        {__( 'Connecting…', 'responsive-block-editor-addons' )}
+                    {connectionStatus === 'connecting' && (
+                      <span
+                        className="rbea-ai-suite-test-connection-hover-spinner"
+                        aria-hidden="true"
+                      >
+                        <Spinner />
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                   {connectionStatus === 'connected' && (
-                    <Button isSecondary type="button" disabled>
+                    <Button
+                      isSecondary
+                      type="button"
+                      disabled
+                      className="min-w-[114px] min-h-[40px] py-[10px] px-[12px] !inline-flex !items-center !justify-center gap-2 !bg-[#ECFDF5] !border-none !shadow-none rounded-md font-medium text-[14px] leading-5 text-center !text-[#15803D]"
+                    >
+                      <svg
+                        width="8"
+                        height="8"
+                        viewBox="0 0 8 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M0 4C0 1.79086 1.79086 0 4 0C6.20914 0 8 1.79086 8 4C8 6.20914 6.20914 8 4 8C1.79086 8 0 6.20914 0 4Z"
+                          fill="#15803D"
+                        />
+                      </svg>
                       {__( 'Connected', 'responsive-block-editor-addons' )}
                     </Button>
                   )}
@@ -536,7 +625,7 @@ const AiSuite = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-[10px] p-6">
+          {/* <div className="bg-white rounded-[10px] p-6"> */}
             <div className="flex justify-end items-center gap-3">
               {saveStatus === 'saving' && (
                 <div className="flex items-center gap-1 text-[#475569]">
@@ -564,6 +653,7 @@ const AiSuite = () => {
                 type="button"
                 onClick={handleCancel}
                 disabled={saveStatus === 'saving'}
+                className="w-[95px] h-[40px] py-[6px] px-6 !bg-white !border !border-solid !shadow-none !border-[#CBD5E1] rounded-md font-medium text-[14px] leading-5 text-center !text-[#475569]"
               >
                 {__( 'Cancel', 'responsive-block-editor-addons' )}
               </Button>
@@ -572,11 +662,12 @@ const AiSuite = () => {
                 type="button"
                 onClick={handleSave}
                 disabled={saveStatus === 'saving'}
+                className="h-[40px] rounded-md !border !border-solid !border-[#2563EB] !bg-[#2563EB] px-[14px] py-[10px] font-medium text-[14px] leading-5 text-white"
               >
                 {__( 'Save Changes', 'responsive-block-editor-addons' )}
               </Button>
             </div>
-          </div>
+          {/* </div> */}
 
         </div>
       </div>

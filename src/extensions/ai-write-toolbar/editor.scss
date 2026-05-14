@@ -1,14 +1,17 @@
 /* AI Write — gradient pill button inside the block contextual toolbar. */
 
-.rbea-ai-write-toolbar-button.components-toolbar-button,
-.rbea-ai-write-toolbar-button.components-button {
+.rbea-ai-write-toolbar-button.components-toolbar__control,
+.rbea-ai-write-toolbar-button.components-icon-button,
+button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
 	height: auto;
 	min-height: 28px;
+	min-width: 85.8px;
 	padding: 4px 10px;
-	margin: 4px 8px;
+	margin: 6px 6px;
+	margin-left: 0px;
 	border: 0;
 	border-radius: 4px;
 	background: linear-gradient(90deg, #9810fa 0%, #155dfc 100%);
@@ -20,18 +23,39 @@
 	box-shadow: none;
 	cursor: pointer;
 
-	&:hover:not(:disabled) {
+	/* WP `.components-icon-button:hover` sets theme `color` — keep label + currentColor SVG white. */
+	&:hover:not(:disabled):not([aria-disabled="true"]),
+	&:active:not(:disabled):not([aria-disabled="true"]) {
 		filter: brightness(1.06);
+		color: #ffffff !important;
 	}
 
-	&:focus:not(:disabled) {
-		box-shadow: inset 0 0 0 1px #ffffff,
-			0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color, #3858e9);
+	&:hover:not(:disabled):not([aria-disabled="true"]) .rbea-ai-write-toolbar-button__label,
+	&:active:not(:disabled):not([aria-disabled="true"]) .rbea-ai-write-toolbar-button__label {
+		color: #ffffff !important;
+	}
+
+	/* ToolbarButton inherits WP focus ring + our old shadow = stacked rings; user wants no focus chrome. */
+	&:focus,
+	&:focus-visible,
+	&:focus:not(:disabled),
+	&:focus-visible:not(:disabled),
+	&:active:focus:not(:disabled) {
+		outline: none;
+		box-shadow: none;
 	}
 
 	.rbea-ai-write-toolbar-button__icon {
 		display: inline-flex;
 		flex-shrink: 0;
+	}
+
+	.rbea-ai-write-toolbar-button__icon svg {
+		min-width: 0px;
+	}
+
+	svg {
+		outline: none;
 	}
 }
 
@@ -100,6 +124,7 @@
 		font-weight: 400;
 		font-size: 12px;
 		line-height: 16px;
+		border-radius: 4px;
 
 		a {
 			color: #92400e;
@@ -111,11 +136,29 @@
 		}
 	}
 
+	.rbea-ai-write-popover__prompt .components-base-control__label {
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #475569;
+		text-transform: capitalize;
+	}
+	.rbea-ai-write-popover__field .rbea-ai-write-popover__field-label {
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #364153;
+		text-transform: capitalize;
+	}
 	.rbea-ai-write-popover__prompt textarea.components-textarea-control__input {
 		height: 78px;
 		padding: 8px 12px;
 		border: 1px solid #cbd5e1;
 		border-radius: 4px;
+		resize: none;
+		overflow-y: auto;
 	}
 
 	.rbea-ai-write-popover__field {
@@ -127,10 +170,17 @@
 	.rbea-ai-write-popover__chips {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: 8px;
 	}
 
 	.rbea-ai-write-popover__chip {
+		font-family: Inter, sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 16px;
+		letter-spacing: 0;
+		text-align: center;
+		color: #334155;
 		background: #f1f5f9;
 		border: 0;
 		border-radius: 999px;
@@ -142,22 +192,66 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 10px;
+		align-items: start;
+	}
+
+	.rbea-ai-write-popover__length,
+	.rbea-ai-write-popover__tone {
+		label.components-input-control__label, select.components-select-control__input {
+			font-family: Inter, sans-serif;
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 16px;
+			letter-spacing: 0;
+			color: #475569;
+			text-transform: capitalize;
+		}
+
+		select.components-select-control__input,
+		.components-select-control__input {
+			box-sizing: border-box;
+			width: 157px;
+			max-width: 100%;
+			height: 32.5px;
+			min-height: 32.5px;
+			border-radius: 4px;
+			border: 1px solid #cbd5e1;
+			opacity: 1;
+		}
+
+		div.components-input-control__backdrop {
+			border: none;
+		}
 	}
 
 	.rbea-ai-write-popover__generate.components-button {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 6px;
+		gap: 8px;
 		width: 100%;
 		height: 40px;
 		background: linear-gradient(90deg, #9810fa 0%, #155dfc 100%);
 		color: #ffffff;
 		border: 0;
 
+		.rbea-ai-write-popover__generate-label {
+			font-family: Inter, sans-serif;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 20px;
+			letter-spacing: 0;
+			text-align: center;
+			color: #ffffff;
+		}
+
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
 			color: #ffffff;
+
+			.rbea-ai-write-popover__generate-label {
+				color: #ffffff;
+			}
 		}
 
 		&.rbea-ai-write-popover__generate--locked {
@@ -170,14 +264,16 @@
 		min-height: 71.5px;
 		max-height: 220px;
 		overflow-y: auto;
-		padding: 13px 13px 1px 13px;
+		padding: 13px 13px 13px 13px;
 		background: #f1f5f9;
 		border: 1px solid #cbd5e1;
 		border-radius: 4px;
 		font-family: Inter, sans-serif;
-		font-size: 12px;
-		line-height: 18px;
-		color: #1e293b;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		letter-spacing: 0;
+		color: #1E2939;
 		white-space: pre-wrap;
 		word-break: break-word;
 	}
@@ -233,10 +329,26 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		padding: 0;
+		margin: 0;
 		background: transparent;
 		border: 0;
-		padding: 11px 8px;
 		cursor: pointer;
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+	}
+
+	.rbea-ai-write-popover__copy-inner {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		padding: 11px 8px;
+		border-radius: 4px;
+		border: 1px solid #cbd5e1;
 	}
 
 	.rbea-ai-write-popover__regenerate {

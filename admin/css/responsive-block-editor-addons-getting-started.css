@@ -672,6 +672,22 @@ img {
   }
 }
 
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.visible{
+  visibility: visible;
+}
+
 .absolute{
   position: absolute;
 }
@@ -782,6 +798,10 @@ img {
   display: flex;
 }
 
+.\!inline-flex{
+  display: inline-flex !important;
+}
+
 .inline-flex{
   display: inline-flex;
 }
@@ -794,8 +814,16 @@ img {
   display: contents;
 }
 
+.h-\[40px\]{
+  height: 40px;
+}
+
 .h-\[50px\]{
   height: 50px;
+}
+
+.min-h-\[40px\]{
+  min-height: 40px;
 }
 
 .w-1\/4{
@@ -838,6 +866,10 @@ img {
   width: 50px;
 }
 
+.w-\[95px\]{
+  width: 95px;
+}
+
 .w-full{
   width: 100%;
 }
@@ -846,12 +878,20 @@ img {
   min-width: 0px;
 }
 
+.min-w-\[114px\]{
+  min-width: 114px;
+}
+
+.min-w-\[138px\]{
+  min-width: 138px;
+}
+
 .max-w-\[700px\]{
   max-width: 700px;
 }
 
-.flex-1{
-  flex: 1 1 0%;
+.shrink-0{
+  flex-shrink: 0;
 }
 
 .cursor-pointer{
@@ -860,6 +900,10 @@ img {
 
 .grid-cols-2{
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
@@ -874,12 +918,20 @@ img {
   align-items: flex-start;
 }
 
+.\!items-center{
+  align-items: center !important;
+}
+
 .items-center{
   align-items: center;
 }
 
 .justify-end{
   justify-content: flex-end;
+}
+
+.\!justify-center{
+  justify-content: center !important;
 }
 
 .justify-center{
@@ -954,6 +1006,11 @@ img {
   border-radius: 0.375rem;
 }
 
+.rounded-t-3xl{
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
 .rounded-tl-3xl{
   border-top-left-radius: 1.5rem;
 }
@@ -976,6 +1033,24 @@ img {
 
 .border-b{
   border-bottom-width: 1px;
+}
+
+.\!border-solid{
+  border-style: solid !important;
+}
+
+.\!border-none{
+  border-style: none !important;
+}
+
+.\!border-\[\#2563EB\]{
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1)) !important;
+}
+
+.\!border-\[\#CBD5E1\]{
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1)) !important;
 }
 
 .\!border-gray-300{
@@ -1051,6 +1126,21 @@ img {
 .border-b-slate-300{
   --tw-border-opacity: 1;
   border-bottom-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+}
+
+.\!bg-\[\#2563EB\]{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.\!bg-\[\#ECFDF5\]{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(236 253 245 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.\!bg-white{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .bg-blue-100{
@@ -1174,6 +1264,11 @@ img {
   padding-right: 10px;
 }
 
+.px-\[12px\]{
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .px-\[14px\]{
   padding-left: 14px;
   padding-right: 14px;
@@ -1219,6 +1314,11 @@ img {
   padding-bottom: 1.5rem;
 }
 
+.py-\[10px\]{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .py-\[18px\]{
   padding-top: 18px;
   padding-bottom: 18px;
@@ -1232,6 +1332,11 @@ img {
 .py-\[60px\]{
   padding-top: 60px;
   padding-bottom: 60px;
+}
+
+.py-\[6px\]{
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .pb-4{
@@ -1282,6 +1387,10 @@ img {
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-\[12px\]{
+  font-size: 12px;
 }
 
 .text-\[14px\]{
@@ -1388,6 +1497,21 @@ img {
   letter-spacing: 0em;
 }
 
+.\!text-\[\#15803D\]{
+  --tw-text-opacity: 1 !important;
+  color: rgb(21 128 61 / var(--tw-text-opacity, 1)) !important;
+}
+
+.\!text-\[\#475569\]{
+  --tw-text-opacity: 1 !important;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1)) !important;
+}
+
+.\!text-white{
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
 .text-\[\#16A34A\]{
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity, 1));
@@ -1481,6 +1605,17 @@ img {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.\!shadow-none{
+  --tw-shadow: 0 0 #0000 !important;
+  --tw-shadow-colored: 0 0 #0000 !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
 .shadow-2xl{
@@ -1581,17 +1716,24 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
   box-sizing: border-box;
   min-height: 56px;
   height: 56px;
-  padding: 16px;
+  padding: 16px 48px 16px 16px;
   margin: 0;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
-  background: #ffffff;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.64645 4.64645C1.84171 4.45118 2.15829 4.45118 2.35355 4.64645L8 10.2929L13.6464 4.64645C13.8417 4.45118 14.1583 4.45118 14.3536 4.64645C14.5488 4.84171 14.5488 5.15829 14.3536 5.35355L8.35355 11.3536C8.15829 11.5488 7.84171 11.5488 7.64645 11.3536L1.64645 5.35355C1.45118 5.15829 1.45118 4.84171 1.64645 4.64645Z' fill='%231E293B'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
   font-family: Inter, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0;
-  color: #1e293b;
+  color: #64748B;
   width: 100%;
 }
 
@@ -1601,6 +1743,25 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
     height: 56px;
     line-height: 24px;
   }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input::-ms-expand {
+  display: none;
+}
+
+/* wp-components may render a decorative chevron next to <select>; hide it (arrow is background-image on the select). */
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ svg,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ * svg {
+  display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field:has(> select.components-select-control__input) > svg {
+  display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control:has(select.components-select-control__input) .components-input-control__suffix {
+  display: none;
 }
 
 body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input,
@@ -1617,7 +1778,7 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0;
-  color: #1e293b;
+  color: #64748B;
   width: 100%;
 }
 
@@ -1657,6 +1818,86 @@ body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
   box-shadow: none;
 }
 
+/* Test Connection: while API is in flight, button stays visible/disabled; hover shows spinner overlay */
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.92);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--connecting:hover .rbea-ai-suite-test-connection-hover-spinner {
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner .components-spinner {
+  float: none;
+  margin: 0;
+  opacity: 1;
+}
+
+/* API key: visibility control inside the field, right-aligned */
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field {
+  position: relative;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control {
+  margin-bottom: 0;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-input-control__input {
+  padding-right: 52px;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:hover {
+  background: rgba(100, 116, 139, 0.08);
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus {
+  outline: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
 /* Mask the API key visually without using type="password" — keeps Chrome's
    credential save prompt out of the way. `-webkit-text-security` covers
    Chromium / Safari / Edge / Brave. Firefox has no equivalent and will show
@@ -1690,6 +1931,11 @@ body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key.is-masked input.compone
 .hover\:bg-slate-300:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:underline:hover{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .hover\:\[box-shadow\:0px_10px_10px_-5px_rgba\(0\2c 0\2c 0\2c 0\.04\)\]:hover{

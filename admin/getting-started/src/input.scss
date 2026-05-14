@@ -77,17 +77,24 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
     box-sizing: border-box;
     min-height: 56px;
     height: 56px;
-    padding: 16px;
+    padding: 16px 48px 16px 16px;
     margin: 0;
     border-radius: 6px;
     border: 1px solid #cbd5e1;
-    background: #ffffff;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.64645 4.64645C1.84171 4.45118 2.15829 4.45118 2.35355 4.64645L8 10.2929L13.6464 4.64645C13.8417 4.45118 14.1583 4.45118 14.3536 4.64645C14.5488 4.84171 14.5488 5.15829 14.3536 5.35355L8.35355 11.3536C8.15829 11.5488 7.84171 11.5488 7.64645 11.3536L1.64645 5.35355C1.45118 5.15829 1.45118 4.84171 1.64645 4.64645Z' fill='%231E293B'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px 16px;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
     font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0;
-    color: #1e293b;
+    color: #64748B;
     width: 100%;
 }
 
@@ -97,6 +104,24 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
         height: 56px;
         line-height: 24px;
     }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input::-ms-expand {
+    display: none;
+}
+
+/* wp-components may render a decorative chevron next to <select>; hide it (arrow is background-image on the select). */
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ svg,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ * svg {
+    display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field:has(> select.components-select-control__input) > svg {
+    display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control:has(select.components-select-control__input) .components-input-control__suffix {
+    display: none;
 }
 
 body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input,
@@ -113,7 +138,7 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0;
-    color: #1e293b;
+    color: #64748B;
     width: 100%;
 }
 
@@ -131,6 +156,84 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
 body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
     border: none;
     box-shadow: none;
+}
+
+/* Test Connection: while API is in flight, button stays visible/disabled; hover shows spinner overlay */
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(37, 99, 235, 0.92);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--connecting:hover .rbea-ai-suite-test-connection-hover-spinner {
+    opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner .components-spinner {
+    float: none;
+    margin: 0;
+    opacity: 1;
+}
+
+/* API key: visibility control inside the field, right-aligned */
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field {
+    position: relative;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control {
+    margin-bottom: 0;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-input-control__input {
+    padding-right: 52px;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:hover {
+    background: rgba(100, 116, 139, 0.08);
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus {
+    outline: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
 }
 
 /* Mask the API key visually without using type="password" — keeps Chrome's
