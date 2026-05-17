@@ -139,6 +139,7 @@ export default class Edit extends Component {
                 "core/italic",
                 "core/strikethrough",
                 "core/link",
+                "responsive-block-editor-addons/ai-write",
               ]}
             />
           )}
@@ -156,6 +157,7 @@ export default class Edit extends Component {
                 "core/italic",
                 "core/strikethrough",
                 "core/link",
+                "responsive-block-editor-addons/ai-write",
               ]}
             />
           )}

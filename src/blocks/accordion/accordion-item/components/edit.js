@@ -307,6 +307,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                   "core/bold",
                   "core/italic",
                   "core/strikethrough",
+                  "responsive-block-editor-addons/ai-write",
                 ]}
               />
             </div>
@@ -323,6 +324,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                     "core/italic",
                     "core/strikethrough",
                     "core/link",
+                    "responsive-block-editor-addons/ai-write",
                   ]}
                 />
               </span>

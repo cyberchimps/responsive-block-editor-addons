@@ -122,7 +122,13 @@ export default class Edit extends Component {
               )}
               
               value={testimonialBlock[index]["testimonialContent"]}
-              allowedFormats={["core/bold", "core/italic", "core/strikethrough", "core/link"]}
+              allowedFormats={[
+                "core/bold",
+                "core/italic",
+                "core/strikethrough",
+                "core/link",
+                "responsive-block-editor-addons/ai-write",
+              ]}
               className={classnames(
                 "responsive-block-editor-addons-testimonial-text"
               )}
@@ -231,6 +237,13 @@ export default class Edit extends Component {
                     
                     value={testimonialBlock[index]["testimonialName"]}
                     className="responsive-block-editor-addons-testimonial-name"
+                    allowedFormats={[
+                      "core/bold",
+                      "core/italic",
+                      "core/strikethrough",
+                      "core/link",
+                      "responsive-block-editor-addons/ai-write",
+                    ]}
                     onChange={(value) => {
                       var new_content = {
                         testimonialContent:
@@ -256,6 +269,13 @@ export default class Edit extends Component {
                     
                     value={testimonialBlock[index]["testimonialTitle"]}
                     className="responsive-block-editor-addons-testimonial-title"
+                    allowedFormats={[
+                      "core/bold",
+                      "core/italic",
+                      "core/strikethrough",
+                      "core/link",
+                      "responsive-block-editor-addons/ai-write",
+                    ]}
                     onChange={(value) => {
                       var new_content = {
                         testimonialContent:

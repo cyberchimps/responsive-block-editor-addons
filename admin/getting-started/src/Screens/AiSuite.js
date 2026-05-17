@@ -8,6 +8,7 @@ import {
   getAiSuiteLengthOptions,
   getAiSuiteLanguageOptions,
 } from "../../../../src/utils/ai-suite-choices.js";
+import { displayToast } from "../DisplayToast";
 
 /** Eye open — key visible (click to hide). */
 function ApiKeyVisibilityOnIcon() {
@@ -344,13 +345,15 @@ const AiSuite = () => {
       );
       setSavedSettings( merged );
       applySettings( merged );
-      setSaveStatus( 'saved' );
+      displayToast( 'Settings Saved', 'success' );
+      setSaveStatus( 'idle' );
     } catch ( err ) {
       setSaveError(
         err && err.message
           ? err.message
           : __( 'Could not save settings. Please try again.', 'responsive-block-editor-addons' )
       );
+      displayToast( 'Error', 'error' );
       setSaveStatus( 'error' );
     }
   };
@@ -634,11 +637,6 @@ const AiSuite = () => {
                     {__( 'Saving…', 'responsive-block-editor-addons' )}
                   </span>
                 </div>
-              )}
-              {saveStatus === 'saved' && (
-                <span className="font-sans text-[14px] leading-[20px] text-[#16A34A]">
-                  {__( 'Changes saved.', 'responsive-block-editor-addons' )}
-                </span>
               )}
               {saveStatus === 'error' && saveError && (
                 <span

@@ -211,6 +211,13 @@ export default class Edit extends Component {
                   
                   value={teamBlock[index]["teamName"]}
                   className="responsive-block-editor-addons-team-name"
+                  allowedFormats={[
+                    "core/bold",
+                    "core/italic",
+                    "core/strikethrough",
+                    "core/link",
+                    "responsive-block-editor-addons/ai-write",
+                  ]}
                   onChange={(value) => {
                     var new_content = {
                       teamName: value,
@@ -246,6 +253,7 @@ export default class Edit extends Component {
                     "core/italic",
                     "core/strikethrough",
                     "core/link",
+                    "responsive-block-editor-addons/ai-write",
                   ]}
                   className={classnames(
                     "responsive-block-editor-addons-team-designation"
@@ -285,6 +293,7 @@ export default class Edit extends Component {
                     "core/italic",
                     "core/strikethrough",
                     "core/link",
+                    "responsive-block-editor-addons/ai-write",
                   ]}
                   className={classnames(
                     "responsive-block-editor-addons-team-description"

@@ -113,7 +113,12 @@ class Edit extends Component {
       boxShadowPositionCSS = "";
     }
 
-    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
+    const formattingControls = [
+      "core/bold",
+      "core/italic",
+      "core/strikethrough",
+      "responsive-block-editor-addons/ai-write",
+    ];
 
     const dimRatioToClass = (ratio) => {
       return 0 === ratio || 50 === ratio
