@@ -159,33 +159,6 @@ function deriveConnectionStatus( settings ) {
   return settings && settings.connection_verified ? 'connected' : 'idle';
 }
 
-/**
- * Persist successful Test Connection (provider + model + API key snapshot).
- *
- * @param {string} provider
- * @param {string} model
- * @param {string} apiKey
- * @return {Promise<Record<string, unknown>>}
- */
-async function markAiSuiteConnectionVerified( provider, model, apiKey ) {
-  const formData = new FormData();
-  formData.append( 'action', 'rbea_mark_ai_suite_connection_verified' );
-  formData.append( 'nonce', rbealocalize.nonce );
-  formData.append( 'provider', provider );
-  formData.append( 'model', model );
-  formData.append( 'api_key', apiKey );
-
-  const res = await fetch( rbealocalize.ajaxurl, { method: 'POST', body: formData } );
-  const body = await res.json().catch( () => ( {} ) );
-  if ( ! res.ok || ! body || body.success !== true ) {
-    const message =
-      ( body && body.data && body.data.message ) ||
-      __( 'Could not save connection status. Please try again.', 'responsive-block-editor-addons' );
-    throw new Error( message );
-  }
-  return body.data || {};
-}
-
 function humanizeConnectionError( err ) {
   if ( err.message === 'NETWORK' ) {
     return __(
@@ -333,17 +306,7 @@ const AiSuite = () => {
     setConnectionError( '' );
     try {
       await testGeminiConnection( model, apiKey );
-      const persisted = await markAiSuiteConnectionVerified( provider, model, apiKey );
-      const merged = {
-        ...DEFAULT_SETTINGS,
-        ...persisted,
-        max_tokens: normalizeMaxTokens(
-          persisted.max_tokens,
-          DEFAULT_SETTINGS.max_tokens
-        ),
-      };
-      setSavedSettings( merged );
-      applySettings( merged );
+      // Session-only: persist key + Connected on Save, not on Test.
       setConnectionStatus( 'connected' );
     } catch ( err ) {
       setConnectionError(
@@ -384,6 +347,9 @@ const AiSuite = () => {
     formData.append( 'action', 'rbea_save_ai_suite_settings' );
     formData.append( 'nonce', rbealocalize.nonce );
     formData.append( 'enable_ai_writer', enableAiWriter ? '1' : '0' );
+    if ( connectionStatus === 'connected' ) {
+      formData.append( 'connection_verified', '1' );
+    }
     Object.entries( payload ).forEach( ( [ key, value ] ) => {
       if ( key === 'enable_ai_writer' ) return;
       formData.append( key, value == null ? '' : String( value ) );

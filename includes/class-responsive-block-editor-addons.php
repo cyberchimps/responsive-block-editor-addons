@@ -207,9 +207,6 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Ai Suite — save all dashboard settings in one payload.
 		add_action( 'wp_ajax_rbea_save_ai_suite_settings', array( $this, 'rbea_save_ai_suite_settings' ) );
 
-		// RBEA Ai Suite — persist successful Test Connection for provider + model + API key.
-		add_action( 'wp_ajax_rbea_mark_ai_suite_connection_verified', array( $this, 'rbea_mark_ai_suite_connection_verified' ) );
-
 		// RBEA Ai Suite — proxy generation request to the configured AI provider.
 		add_action( 'wp_ajax_rbea_ai_generate', array( $this, 'rbea_ai_generate' ) );
 
@@ -2279,60 +2276,24 @@ class Responsive_Block_Editor_Addons {
 			$this->rbea_ai_suite_clear_connection_verification( $clean );
 		}
 
+		$mark_connection_verified = false;
+		if ( array_key_exists( 'connection_verified', $post ) ) {
+			$verified_flag            = (string) $post['connection_verified'];
+			$mark_connection_verified = ( '1' === $verified_flag || 'true' === $verified_flag );
+		}
+
+		if ( $mark_connection_verified && '' !== trim( (string) $clean['api_key'] ) ) {
+			$this->rbea_ai_suite_apply_connection_verified(
+				$clean,
+				$clean['provider'],
+				$clean['model'],
+				$clean['api_key']
+			);
+		}
+
 		update_option( 'rbea_ai_suite_settings', $this->rbea_ai_suite_settings_for_storage( $clean ) );
 
 		$clean['connection_verified'] = $this->rbea_ai_suite_connection_is_verified( $clean );
-
-		wp_send_json_success( $clean );
-	}
-
-	/**
-	 * AJAX: mark provider + model + API key as successfully tested (persists snapshot).
-	 */
-	public function rbea_mark_ai_suite_connection_verified() {
-		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
-			return;
-		}
-
-		$post    = wp_unslash( $_POST );
-		$api_key = isset( $post['api_key'] ) ? sanitize_text_field( (string) $post['api_key'] ) : '';
-
-		if ( '' === trim( $api_key ) ) {
-			wp_send_json_error(
-				array(
-					'message' => __(
-						'Add an API key before testing the connection.',
-						'responsive-block-editor-addons'
-					),
-				),
-				400
-			);
-			return;
-		}
-
-		$clean = $this->rbea_get_ai_suite_settings();
-
-		if ( isset( $post['provider'] ) ) {
-			$clean['provider'] = sanitize_text_field( (string) $post['provider'] );
-		}
-		if ( isset( $post['model'] ) ) {
-			$clean['model'] = sanitize_text_field( (string) $post['model'] );
-		}
-		$clean['api_key'] = $api_key;
-
-		$this->rbea_ai_suite_apply_connection_verified(
-			$clean,
-			$clean['provider'],
-			$clean['model'],
-			$clean['api_key']
-		);
-
-		update_option( 'rbea_ai_suite_settings', $this->rbea_ai_suite_settings_for_storage( $clean ) );
-
-		$clean['connection_verified'] = true;
 
 		wp_send_json_success( $clean );
 	}
