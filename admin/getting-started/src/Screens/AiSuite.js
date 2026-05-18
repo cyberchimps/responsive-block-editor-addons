@@ -151,6 +151,41 @@ async function testGeminiConnection( model, apiKey ) {
   }
 }
 
+/**
+ * @param {{ connection_verified?: boolean }} settings
+ * @return {'connected' | 'idle'}
+ */
+function deriveConnectionStatus( settings ) {
+  return settings && settings.connection_verified ? 'connected' : 'idle';
+}
+
+/**
+ * Persist successful Test Connection (provider + model + API key snapshot).
+ *
+ * @param {string} provider
+ * @param {string} model
+ * @param {string} apiKey
+ * @return {Promise<Record<string, unknown>>}
+ */
+async function markAiSuiteConnectionVerified( provider, model, apiKey ) {
+  const formData = new FormData();
+  formData.append( 'action', 'rbea_mark_ai_suite_connection_verified' );
+  formData.append( 'nonce', rbealocalize.nonce );
+  formData.append( 'provider', provider );
+  formData.append( 'model', model );
+  formData.append( 'api_key', apiKey );
+
+  const res = await fetch( rbealocalize.ajaxurl, { method: 'POST', body: formData } );
+  const body = await res.json().catch( () => ( {} ) );
+  if ( ! res.ok || ! body || body.success !== true ) {
+    const message =
+      ( body && body.data && body.data.message ) ||
+      __( 'Could not save connection status. Please try again.', 'responsive-block-editor-addons' );
+    throw new Error( message );
+  }
+  return body.data || {};
+}
+
 function humanizeConnectionError( err ) {
   if ( err.message === 'NETWORK' ) {
     return __(
@@ -236,7 +271,9 @@ const AiSuite = () => {
   const [model, setModel] = useState( initialSettings.model );
   const [apiKey, setApiKey] = useState( initialSettings.api_key );
   const [apiKeyVisible, setApiKeyVisible] = useState( false );
-  const [connectionStatus, setConnectionStatus] = useState( 'idle' );
+  const [connectionStatus, setConnectionStatus] = useState( () =>
+    deriveConnectionStatus( initialSettings )
+  );
   const [connectionError, setConnectionError] = useState( '' );
   const [defaultTone, setDefaultTone] = useState( initialSettings.default_tone );
   const [defaultLength, setDefaultLength] = useState( initialSettings.default_length );
@@ -264,14 +301,22 @@ const AiSuite = () => {
   };
 
   const resetConnectionStatus = () => {
-    if ( connectionStatus !== 'idle' ) {
-      setConnectionStatus( 'idle' );
-      setConnectionError( '' );
-    }
+    setConnectionStatus( 'idle' );
+    setConnectionError( '' );
+  };
+
+  const syncConnectionFromSettings = ( settings ) => {
+    setConnectionStatus( deriveConnectionStatus( settings ) );
+    setConnectionError( '' );
   };
 
   const handleApiKeyChange = ( value ) => {
     setApiKey( value );
+    resetConnectionStatus();
+  };
+
+  const handleProviderChange = ( value ) => {
+    setProvider( value );
     resetConnectionStatus();
   };
 
@@ -288,16 +333,31 @@ const AiSuite = () => {
     setConnectionError( '' );
     try {
       await testGeminiConnection( model, apiKey );
+      const persisted = await markAiSuiteConnectionVerified( provider, model, apiKey );
+      const merged = {
+        ...DEFAULT_SETTINGS,
+        ...persisted,
+        max_tokens: normalizeMaxTokens(
+          persisted.max_tokens,
+          DEFAULT_SETTINGS.max_tokens
+        ),
+      };
+      setSavedSettings( merged );
+      applySettings( merged );
       setConnectionStatus( 'connected' );
     } catch ( err ) {
-      setConnectionError( humanizeConnectionError( err ) );
+      setConnectionError(
+        err && err.message
+          ? err.message
+          : humanizeConnectionError( err )
+      );
       setConnectionStatus( 'error' );
     }
   };
 
   const handleCancel = () => {
     applySettings( savedSettings );
-    resetConnectionStatus();
+    syncConnectionFromSettings( savedSettings );
     setSaveStatus( 'idle' );
     setSaveError( '' );
   };
@@ -345,6 +405,7 @@ const AiSuite = () => {
       );
       setSavedSettings( merged );
       applySettings( merged );
+      syncConnectionFromSettings( merged );
       displayToast( 'Settings Saved', 'success' );
       setSaveStatus( 'idle' );
     } catch ( err ) {
@@ -446,7 +507,7 @@ const AiSuite = () => {
                     label={__( 'Provider', 'responsive-block-editor-addons' )}
                     value={provider}
                     options={PROVIDER_OPTIONS}
-                    onChange={setProvider}
+                    onChange={handleProviderChange}
                   />
                 </div>
                 <div className="flex flex-col gap-2 min-w-0">
