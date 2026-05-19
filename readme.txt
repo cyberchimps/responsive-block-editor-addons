@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,53 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.2.4 - 19th May 2026 =
+* Fix - Table of Contents block: The collapsible arrow not working in editor.
+* Fix - Table of Contents block: Image sizes setting is not working.
+* Fix - Table of Contents block: A grey background color appears on the frontend during the initial drag-and-drop, but it is not visible in the editor.
+* Fix - Table of Contents block: On initial dragdrop, if icon is added it touches the border and there is no space between box border and icon.
+* Fix - Table of Contents block: Select Icon is not working properly.
+* Fix - Table of Contents block: The "outline width" setting is showing up for Shaped option as well in CountUp box.
+* Fix - Icons List block: The Icon setting should not be displayed if Image is selected instead of icon.
+* Fix - Post Carousel: The height of the post blocks is still uneven in editor when the Equal Height setting is enabled.
+* Fix - Post Carousel: If an image is used as the background, and a post's featured image is taller but narrower, the overlay effect appears misaligned.
+* Fix - Image Boxes: Title color and description color not changing in editor when color is selected.
+* Fix - Image Slider: The first image disappears or flickers when any toggle setting is clicked in editor.
+* Fix - Image Slider: The thumbnails do not appear when Thumbnail option is enabled in editor.
+* Fix - Image Slider: The Autoplay setting is not working in editor.
+* Fix - Image Slider: The arrows still show up even when they are disabled in editor.
+* Fix - Image Slider: When "Dot navigation" setting is enabled the dot navigation appears twice in editor.
+* Fix - Image Slider: When we try to change the Color and Background color of arrows, there is a flicker in the image slider in editor.
+* Fix - Team: Image sizes setting is not working.
+* Fix - Card: Image sizes options not working.
+* Fix - Card: Hide the button settings when Inherit from theme option is enabled.
+* Fix - Card: The border style setting is getting applied after some space and not on actual button border.
+* Fix - Card: Border radius setting not working for button.
+* Fix - Pricing Table: The table alignment gets distorted in editor only when 2 or more column layout are selected - When 'Inherit from theme' option is enabled.
+* Fix - Pricing Table: "Undefined" text shows up for subtext and Price suf* fix value for the pricing.
+* Fix - Pricing Table: Check and remove redundant button related settings in General and Style sections if "Inherit from theme" option is enabled to avoid confusion.
+* Fix - Pricing List: The Title, Content and Price color are not getting reflected in editor only whereas on frontend it works.
+* Fix - Testimonial Slider: The text color is not getting updated in Testimonial typography, Name and Company typography sections.
+* Fix - Testimonial Slider: Updating the testimonial background color does not reflect any change.
+* Fix - Testimonial Slider: This warning is getting printed on frontend when Image background is added with image opacity changes to the testimonial.
+* Fix - Testimonial Slider: If "None" option is selected in Show Arrows & Dots then option "Arrow & Dots Color" setting should be hidden or disabled.
+* Fix - Feature Grid: When two column is chosen in the General -> Layout setting the alignment of columns is distorted.
+* Fix - Feature Grid: When Basic is chosen then the button disappears from the preview in the editor.
+* Fix - Feature Grid: When Ghost mode is selected, the padding differs between the frontend and the editor.
+* Fix - Social Icon: Select the block and save the page. View the frontend, icons are different in editor and frontend.
+* Fix - Social Icon: The background color applied is different in editor and frontend.
+* Fix - Tabs: The border color set to Tabs is appearing differently in the preview and frontend.
+* Fix - Tabs: In tablet devices, even though the Tabs position is set to horizontal , it appears vertical in both preview and frontend.
+* Fix - Portfolio: The portfolio content keeps on loading infinitely in editor.
+* Fix - Popup: Button Presets are not working properly.
+* Fix - Contact Form 7: Although "Show Placeholder" is toggled on, still the placeholders dont appear.
+* Fix - Contact Form 7: The padding inside the submit button changes when the border size is changed.
+* Fix - Contact Form 7: The label color of the contact form is not changing on changing the label color control.
+* Fix - Contact Form 7: Submit Button alignment is not working as expected.
+* Fix - Contact Form 7: Text Decoration control is not working in Submit Button Typography options.
+* Fix - Table of Contents block: The popup still shows the old Rplus logo.
+* Fix - Table of Contents block: After clicking on sync, the templates in the list disappears.
 
 = 2.2.3 - 12th March 2026 =
 * Fix - Minor bugs.
