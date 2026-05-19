@@ -217,13 +217,13 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 == Changelog ==
 
 = 2.2.4 - 19th May 2026 =
-* Fix - Table of Contents block: The collapsible arrow not working in editor.
-* Fix - Table of Contents block: Image sizes setting is not working.
-* Fix - Table of Contents block: A grey background color appears on the frontend during the initial drag-and-drop, but it is not visible in the editor.
-* Fix - Table of Contents block: On initial dragdrop, if icon is added it touches the border and there is no space between box border and icon.
-* Fix - Table of Contents block: Select Icon is not working properly.
-* Fix - Table of Contents block: The "outline width" setting is showing up for Shaped option as well in CountUp box.
-* Fix - Icons List block: The Icon setting should not be displayed if Image is selected instead of icon.
+* Fix - Table of Contents: The collapsible arrow not working in editor.
+* Fix - Table of Contents: Image sizes setting is not working.
+* Fix - Table of Contents: A grey background color appears on the frontend during the initial drag-and-drop, but it is not visible in the editor.
+* Fix - Table of Contents: On initial dragdrop, if icon is added it touches the border and there is no space between box border and icon.
+* Fix - Table of Contents: Select Icon is not working properly.
+* Fix - Table of Contents: The "outline width" setting is showing up for Shaped option as well in CountUp box.
+* Fix - Icons List: The Icon setting should not be displayed if Image is selected instead of icon.
 * Fix - Post Carousel: The height of the post blocks is still uneven in editor when the Equal Height setting is enabled.
 * Fix - Post Carousel: If an image is used as the background, and a post's featured image is taller but narrower, the overlay effect appears misaligned.
 * Fix - Image Boxes: Title color and description color not changing in editor when color is selected.
@@ -260,8 +260,8 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 * Fix - Contact Form 7: The label color of the contact form is not changing on changing the label color control.
 * Fix - Contact Form 7: Submit Button alignment is not working as expected.
 * Fix - Contact Form 7: Text Decoration control is not working in Submit Button Typography options.
-* Fix - Table of Contents block: The popup still shows the old Rplus logo.
-* Fix - Table of Contents block: After clicking on sync, the templates in the list disappears.
+* Fix - Template Library: The popup still shows the old Rplus logo.
+* Fix - Template Library: After clicking on sync, the templates in the list disappears.
 
 = 2.2.3 - 12th March 2026 =
 * Fix - Minor bugs.
