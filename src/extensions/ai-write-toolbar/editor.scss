@@ -1,5 +1,3 @@
-/* AI Write — gradient pill button inside the block contextual toolbar. */
-
 .rbea-ai-write-toolbar-button.components-toolbar__control,
 .rbea-ai-write-toolbar-button.components-icon-button,
 button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button {
@@ -23,7 +21,6 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	box-shadow: none;
 	cursor: pointer;
 
-	/* WP `.components-icon-button:hover` sets theme `color` — keep label + currentColor SVG white. */
 	&:hover:not(:disabled):not([aria-disabled="true"]),
 	&:active:not(:disabled):not([aria-disabled="true"]) {
 		filter: brightness(1.06);
@@ -35,7 +32,6 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		color: #ffffff !important;
 	}
 
-	/* ToolbarButton inherits WP focus ring + our old shadow = stacked rings; user wants no focus chrome. */
 	&:focus,
 	&:focus-visible,
 	&:focus:not(:disabled),

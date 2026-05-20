@@ -246,10 +246,6 @@ body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus-visible {
     outline-offset: 2px;
 }
 
-/* Mask the API key visually without using type="password" — keeps Chrome's
-   credential save prompt out of the way. `-webkit-text-security` covers
-   Chromium / Safari / Edge / Brave. Firefox has no equivalent and will show
-   the value in plaintext when "Show" is off (acceptable trade-off). */
 body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key.is-masked input.components-text-control__input {
     -webkit-text-security: disc;
     letter-spacing: 0.1em;
