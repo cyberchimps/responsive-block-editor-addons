@@ -17,6 +17,11 @@ jQuery(function ($) {
   $(".responsive-block-editor-addons-toc__wrap").each(function () {
     var $wrap = $(this);
 
+    function isHeadingVisible(headingEl) {
+      if (!headingEl) return false;
+      return headingEl.getClientRects && headingEl.getClientRects().length > 0;
+    }
+
     // Ensure list-wrap exists
     var $listWrap = $wrap.find(".responsive-block-editor-addons-toc__list-wrap");
     if (!$listWrap.length) {
@@ -24,13 +29,6 @@ jQuery(function ($) {
       var $titleWrap = $wrap.find(".responsive-block-editor-addons-toc__title-wrap");
       if ($titleWrap.length) $listWrap.insertAfter($titleWrap);
       else $wrap.append($listWrap);
-    }
-
-    // Clear existing list if present
-    var hasLinks = $listWrap.find("a[href^='#']").length > 0;
-    if (hasLinks) {
-      $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
-      $listWrap.empty();
     }
 
     // Get headings data from PHP (extracted from post content)
@@ -49,6 +47,13 @@ jQuery(function ($) {
     // If no PHP data, fallback to DOM extraction (backward compatibility)
     if (!headingsData || !Array.isArray(headingsData) || headingsData.length === 0) {
       return; // Let save.js rendered list stay, or return early
+    }
+
+    // Clear existing list only when we have valid PHP headings data to rebuild it.
+    var hasLinks = $listWrap.find("a[href^='#']").length > 0;
+    if (hasLinks) {
+      $listWrap.find(".responsive-block-editor-addons-toc__list, .child-list").remove();
+      $listWrap.empty();
     }
 
     // Read settings from data attributes
@@ -76,7 +81,7 @@ jQuery(function ($) {
 
       if (currentLevel === 0) currentLevel = level;
 
-      // Deeper → open nested list
+      
       while (level > currentLevel) {
         var $newList = $('<' + ListTagName + ' class="child-list' + listTypeClass + '"></' + ListTagName + '>');
         var $lastLi = listStack[listStack.length - 1].children("li").last();
@@ -84,10 +89,14 @@ jQuery(function ($) {
         listStack.push($newList);
         currentLevel++;
       }
-      // Shallower → pop back up
+      
       while (level < currentLevel && listStack.length > 1) {
         listStack.pop();
         currentLevel--;
+      }
+      
+      if (level < currentLevel) {
+        currentLevel = level;
       }
 
       // Create list item
@@ -122,6 +131,10 @@ jQuery(function ($) {
       // Check if heading with this ID already exists
       var $existingHeading = $("#" + anchorId);
       if ($existingHeading.length && $existingHeading.is("h1, h2, h3, h4, h5, h6")) {
+        // If the mapped heading exists but is hidden on this device/viewport, remove TOC item.
+        if (!isHeadingVisible($existingHeading.get(0))) {
+          $link.closest("li").remove();
+        }
         return; // ID already exists
       }
 
@@ -138,6 +151,13 @@ jQuery(function ($) {
       }
 
       if ($heading.length) {
+        // If the matched heading is hidden due to responsive conditions (display:none),
+        // remove the TOC item for this device/viewport.
+        if (!isHeadingVisible($heading.get(0))) {
+          $link.closest("li").remove();
+          return;
+        }
+
         // Check if this is an advanced heading block
         var $advancedHeadingBlock = $heading.closest('.wp-block-responsive-block-editor-addons-advanced-heading');
         

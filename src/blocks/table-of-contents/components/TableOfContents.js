@@ -18,6 +18,60 @@ class TableOfContents extends React.Component {
 
 	componentDidMount() {
 
+        // ---------- Responsive conditions (editor preview) ----------
+        // In editor, blocks hidden via responsive conditions are shown with low opacity.
+        // For TOC, we exclude such headings for the current preview device (Desktop/Tablet/Mobile),
+        // and also respect hidden parents (e.g. core/heading inside a container hidden on mobile).
+        const normalizeDeviceType = (deviceType) => {
+            const device = String(deviceType || '').toLowerCase();
+            if (device === 'tablet') return 'tablet';
+            if (device === 'mobile') return 'mobile';
+            return 'desktop';
+        };
+
+        const getPreviewDeviceType = () => {
+            try {
+                const editorStore = select('core/editor');
+                const deviceType = editorStore?.getDeviceType?.();
+                if (deviceType) return normalizeDeviceType(deviceType);
+            } catch (e) {}
+
+            try {
+                const editPostStore = select('core/edit-post');
+                const deviceType = editPostStore?.__experimentalGetPreviewDeviceType?.();
+                if (deviceType) return normalizeDeviceType(deviceType);
+            } catch (e) {}
+
+            return 'desktop';
+        };
+
+        const isHiddenByResponsiveConditions = (attributes, deviceType) => {
+            const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
+            if (!isOn || !attributes) return false;
+            if (deviceType === 'mobile') return !!attributes.hideWidgetMobile;
+            if (deviceType === 'tablet') return !!attributes.hideWidgetTablet;
+            return !!attributes.hideWidget;
+        };
+
+        const isBlockHiddenOnDevice = (block, deviceType) => {
+            if (!block) return false;
+
+            if (isHiddenByResponsiveConditions(block.attributes, deviceType)) return true;
+
+            try {
+                const blockEditorStore = select('core/block-editor');
+                const parentClientIds = blockEditorStore.getBlockParents?.(block.clientId) || [];
+                for (const parentClientId of parentClientIds) {
+                    const parentBlock = blockEditorStore.getBlock?.(parentClientId);
+                    if (parentBlock && isHiddenByResponsiveConditions(parentBlock.attributes, deviceType)) {
+                        return true;
+                    }
+                }
+            } catch (e) {}
+
+            return false;
+        };
+
         const getAllChildHeadingBlocks = parentBlock => {
             let childs = [];
             parentBlock.innerBlocks.forEach(childBlock => {
@@ -32,10 +86,14 @@ class TableOfContents extends React.Component {
         };
         const getsHeadingBlocks = () => {
     let targetBlocks = [];
+    const deviceType = getPreviewDeviceType();
     const allBlocks = select('core/block-editor').getBlocks();
 
     // helper: push this block if it's a heading; otherwise pull any descendants via your existing recursion
     const pushIfHeadingOrDesc = (blk) => {
+        if (isBlockHiddenOnDevice(blk, deviceType)) {
+            return false;
+        }
         if (
             blk.name === 'responsive-block-editor-addons/advanced-heading' ||
             blk.name === 'core/heading'
@@ -46,7 +104,7 @@ class TableOfContents extends React.Component {
         if (blk.innerBlocks && blk.innerBlocks.length > 0) {
             const childHeadingBlocks = getAllChildHeadingBlocks(blk);
             if (childHeadingBlocks.length > 0) {
-                targetBlocks.push(...childHeadingBlocks);
+                targetBlocks.push(...childHeadingBlocks.filter((child) => !isBlockHiddenOnDevice(child, deviceType)));
                 return true;
             }
         }
@@ -131,21 +189,43 @@ class TableOfContents extends React.Component {
             );
         }
 
-        const createHierarchy = (formattedHeaders, currentHeader) => {
-            let lastIndex = formattedHeaders.length - 1;
-            if (formattedHeaders.length === 0 || formattedHeaders[0].level === currentHeader.level) {
-                formattedHeaders.push(Object.assign({}, currentHeader));
-            } else if (formattedHeaders[lastIndex].level < currentHeader.level) {
-                if (!formattedHeaders[lastIndex].children) {
-                    formattedHeaders[lastIndex].children = [Object.assign({}, currentHeader)];
-                } else createHierarchy(formattedHeaders[lastIndex].children, currentHeader);
-            }
-        };
+        // Build hierarchy using a stack (same idea as frontend.js).
+        // This correctly handles headings that go "back up" in level
+        const formatHeaders = (allHeaders) => {
+            const root = [];
+            const stack = [{ level: 0, list: root }];
 
-        const formatHeaders = allHeaders => {
-            let formattedHeaders2 = [];
-            allHeaders.filter(header => mappingHeaders[`h${header.level}`]).forEach(header => createHierarchy(formattedHeaders2, header));
-            return formattedHeaders2;
+            allHeaders
+                .filter((header) => mappingHeaders[`h${header.level}`])
+                .forEach((header) => {
+                    const level = Number(header.level) || 2;
+
+                    // Pop until parent level < current level
+                    while (stack.length > 1 && level <= stack[stack.length - 1].level) {
+                        stack.pop();
+                    }
+
+                    const parentList = stack[stack.length - 1].list;
+                    const node = Object.assign({}, header);
+                    parentList.push(node);
+
+                    node.children = [];
+                    stack.push({ level, list: node.children });
+                });
+
+            // Remove empty children arrays so render logic stays unchanged.
+            const prune = (items) =>
+                items.map((it) => {
+                    const children = it.children;
+                    if (children && children.length) {
+                        return Object.assign({}, it, { children: prune(children) });
+                    }
+                    const copy = Object.assign({}, it);
+                    delete copy.children;
+                    return copy;
+                });
+
+            return prune(root);
         };
 
         const parseList = list =>
