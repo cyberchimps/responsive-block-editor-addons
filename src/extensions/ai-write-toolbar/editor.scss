@@ -258,6 +258,17 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 			opacity: 0.5;
 			cursor: not-allowed;
 		}
+
+		&:disabled,
+		&[aria-disabled="true"] {
+			cursor: not-allowed;
+		}
+
+		&:disabled:hover,
+		&:focus:disabled,
+		&[aria-disabled="true"]:hover {
+			cursor: not-allowed;
+		}
 	}
 
 	.rbea-ai-write-popover__preview {

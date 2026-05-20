@@ -1512,11 +1512,6 @@ img {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 
-.text-\[\#16A34A\]{
-  --tw-text-opacity: 1;
-  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
-}
-
 .text-\[\#1E293B\]{
   --tw-text-opacity: 1;
   color: rgb(30 41 59 / var(--tw-text-opacity, 1));
@@ -1818,7 +1813,7 @@ body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
   box-shadow: none;
 }
 
-/* Test Connection: while API is in flight, button stays visible/disabled; hover shows spinner overlay */
+/* Test Connection: spinner overlay while API is in flight (always visible, not hover-only) */
 
 body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap {
   position: relative;
@@ -1826,7 +1821,18 @@ body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap {
   vertical-align: middle;
 }
 
-body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner {
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled {
+  cursor: not-allowed;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button:disabled,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button[aria-disabled="true"],
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button:disabled:hover,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button[aria-disabled="true"]:hover {
+  cursor: not-allowed;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-spinner {
   pointer-events: none;
   position: absolute;
   inset: 0;
@@ -1835,15 +1841,14 @@ body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner {
   justify-content: center;
   border-radius: 6px;
   background: rgba(37, 99, 235, 0.92);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--connecting:hover .rbea-ai-suite-test-connection-hover-spinner {
   opacity: 1;
 }
 
-body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-hover-spinner .components-spinner {
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--connecting .rbea-ai-suite-test-connection-spinner {
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-spinner .components-spinner {
   float: none;
   margin: 0;
   opacity: 1;

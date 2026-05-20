@@ -532,9 +532,11 @@ const AiSuite = () => {
                 <div className="flex gap-2 items-center">
                   <div
                     className={
-                      connectionStatus === 'connecting'
-                        ? 'relative inline-flex rounded-md rbea-ai-suite-test-connection-wrap rbea-ai-suite-test-connection-wrap--connecting'
-                        : 'inline-flex rounded-md rbea-ai-suite-test-connection-wrap'
+                      'inline-flex rounded-md rbea-ai-suite-test-connection-wrap' +
+                      ( connectionStatus === 'connecting'
+                        ? ' rbea-ai-suite-test-connection-wrap--connecting relative'
+                        : '' ) +
+                      ( ! apiKey ? ' rbea-ai-suite-test-connection-wrap--disabled' : '' )
                     }
                   >
                     <Button
@@ -549,7 +551,7 @@ const AiSuite = () => {
                     </Button>
                     {connectionStatus === 'connecting' && (
                       <span
-                        className="rbea-ai-suite-test-connection-hover-spinner"
+                        className="rbea-ai-suite-test-connection-spinner"
                         aria-hidden="true"
                       >
                         <Spinner />
