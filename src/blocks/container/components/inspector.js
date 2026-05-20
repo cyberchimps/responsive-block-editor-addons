@@ -106,7 +106,11 @@ export default function Inspector(props) {
     alignContentTablet,
     alignContentMobile,
     backgroundType,
+    backgroundHoverType,
+    backgroundColor,
+    backgroundHoverColor,
     gradient,
+    gradientHover,
     backgroundVideo,
     textColor,
     linkColor,
@@ -396,6 +400,11 @@ export default function Inspector(props) {
     },
     { value: "image", label: __("Image", "responsive-block-editor-addons") },
     { value: "video", label: __("Video", "responsive-block-editor-addons") },
+  ];
+
+  const backgroundHoverTypeOptions = [
+    { value: "color", label: __("Color", "responsive-block-editor-addons") },
+    { value: "gradient", label: __("Gradient", "responsive-block-editor-addons")},
   ];
 
   const getChildWidthOptions = (flexDirection) => {
@@ -1485,59 +1494,135 @@ export default function Inspector(props) {
             initialOpen={false}
             className="responsive_block_editor_addons__url-panel-body"
           >
-            <RbeaBackgroundTypeControl
-              label={__("Type", "responsive-block-editor-addons")}
-              selectedValue={backgroundType}
-              onChange={(value) => setAttributes({ backgroundType: value })}
-              options={backgroundTypeOptions}
-            />
-            {"color" == backgroundType && (
-              <>
-                <ColorBackgroundControl {...props} />
-              </>
-            )}
-            {"gradient" == backgroundType && (
-              <GradientPicker
-                value={gradient}
-                onChange={(value) => { setAttributes({ gradient: value }) }}
-                gradients={gradientOptions}
-              />
-            )}
-            {"image" == backgroundType && (
-              <>
-                <BackgroundImageControls
-                  attributes={attributes}
-                  setAttributes={setAttributes}
-                  attachmentOptions={attachmentOptions}
-                  blendModeOptions={blendModeOptions}
-                  repeatOptions={repeatOptions}
-                  backgroundSizeOptions={backgroundSizeOptions}
-                />
-              </>
-            )}
-            {"video" == backgroundType && (
-              <RbeaMediaUploadControl
-                label={__("Video", "responsive-block-editor-addons")}
-                value={{
-                  url: backgroundVideo ? backgroundVideo.url : "",
-                }}
-                onChange={(newValue) => {
-                  setAttributes({
-                    backgroundVideo: newValue,
-                  });
-                }}
-                mediaType={"video"}
-              />
-            )}
 
-            <OverlaySettings 
-              {...props}
-              attachmentOptions={attachmentOptions}
-              blendModeOptions={blendModeOptions}
-              repeatOptions={repeatOptions}
-              backgroundSizeOptions={backgroundSizeOptions}
-              gradientOptions={gradientOptions}
-            />
+            <TabPanel
+              className="responsive-block-editor-addons-inspect-tabs 
+                  responsive-block-editor-addons-inspect-tabs-col-2  
+                  responsive-block-editor-addons-color-inspect-tabs"
+              activeClass="active-tab"
+              initialTabName="normal" // Set the default active tab here
+              tabs={[
+                {
+                  name: "empty-1",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+                {
+                  name: "normal",
+                  title: __("Normal", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-normal-tab",
+                },
+                {
+                  name: "empty-2",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab-middle",
+                },
+                {
+                  name: "hover",
+                  title: __("Hover", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-hover-tab",
+                },
+                {
+                  name: "empty-3",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+              ]}
+            >
+              {(tabName) => {
+                let color_tab;
+                if ("normal" === tabName.name) {
+                  color_tab = (
+                    <div className="rbea-container-background-controls">
+                      <RbeaBackgroundTypeControl
+                        label={__("Type", "responsive-block-editor-addons")}
+                        selectedValue={backgroundType}
+                        onChange={(value) => setAttributes({ backgroundType: value })}
+                        options={backgroundTypeOptions}
+                      />
+                      {"color" === backgroundType && (
+                        <>
+                          <ColorBackgroundControl {...props} />
+                        </>
+                      )}
+                      {"gradient" === backgroundType && (
+                        <GradientPicker
+                          value={gradient}
+                          onChange={(value) => { setAttributes({ gradient: value }) }}
+                          gradients={gradientOptions}
+                        />
+                      )}
+                      {"image" === backgroundType && (
+                        <>
+                          <BackgroundImageControls
+                            attributes={attributes}
+                            setAttributes={setAttributes}
+                            attachmentOptions={attachmentOptions}
+                            blendModeOptions={blendModeOptions}
+                            repeatOptions={repeatOptions}
+                            backgroundSizeOptions={backgroundSizeOptions}
+                          />
+                        </>
+                      )}
+                      {"video" === backgroundType && (
+                        <RbeaMediaUploadControl
+                          label={__("Video", "responsive-block-editor-addons")}
+                          value={{
+                            url: backgroundVideo ? backgroundVideo.url : "",
+                          }}
+                          onChange={(newValue) => {
+                            setAttributes({
+                              backgroundVideo: newValue,
+                            });
+                          }}
+                          mediaType={"video"}
+                        />
+                      )}
+
+                      <OverlaySettings 
+                        {...props}
+                        attachmentOptions={attachmentOptions}
+                        blendModeOptions={blendModeOptions}
+                        repeatOptions={repeatOptions}
+                        backgroundSizeOptions={backgroundSizeOptions}
+                        gradientOptions={gradientOptions}
+                      />
+                    </div>
+                  );
+                } else if ("hover" === tabName.name) {
+                  color_tab = (
+                    <>
+                      <RbeaBackgroundTypeControl
+                        label={__("Type", "responsive-block-editor-addons")}
+                        selectedValue={backgroundHoverType}
+                        onChange={(value) => setAttributes({ backgroundHoverType: value })}
+                        options={backgroundHoverTypeOptions}
+                      />
+                      {"color" === backgroundHoverType && (
+                        <RbeaColorControl
+                          label={__("Color", "responsive-block-editor-addons")}
+                          colorValue={backgroundHoverColor}
+                          onChange={(colorValue) =>
+                            setAttributes({ backgroundHoverColor: colorValue })
+                          }
+                          resetColor={() => setAttributes({ backgroundHoverColor: "" })}
+                        />
+                      )}
+                      {"gradient" === backgroundHoverType && (
+                        <GradientPicker
+                          value={gradientHover}
+                          onChange={(value) => { setAttributes({ gradientHover: value }) }}
+                          gradients={gradientOptions}
+                        />
+                      )}
+                    </>
+                  );
+                } else {
+                  color_tab = emptyColorControl;
+                }
+                return <div>{color_tab}</div>;
+              }}
+            </TabPanel>
 
           </PanelBody>
 
