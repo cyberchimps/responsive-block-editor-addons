@@ -165,7 +165,7 @@
 }
 
 /*
-! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -672,6 +672,22 @@ img {
   }
 }
 
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.visible{
+  visibility: visible;
+}
+
 .absolute{
   position: absolute;
 }
@@ -694,6 +710,10 @@ img {
 
 .top-4{
   top: 1rem;
+}
+
+.m-0{
+  margin: 0px;
 }
 
 .m-10{
@@ -778,12 +798,32 @@ img {
   display: flex;
 }
 
+.\!inline-flex{
+  display: inline-flex !important;
+}
+
 .inline-flex{
   display: inline-flex;
 }
 
 .grid{
   display: grid;
+}
+
+.contents{
+  display: contents;
+}
+
+.h-\[40px\]{
+  height: 40px;
+}
+
+.h-\[50px\]{
+  height: 50px;
+}
+
+.min-h-\[40px\]{
+  min-height: 40px;
 }
 
 .w-1\/4{
@@ -826,20 +866,44 @@ img {
   width: 50px;
 }
 
-.h-\[50px\]{
-  height: 50px;
+.w-\[95px\]{
+  width: 95px;
 }
 
 .w-full{
   width: 100%;
 }
 
+.min-w-0{
+  min-width: 0px;
+}
+
+.min-w-\[114px\]{
+  min-width: 114px;
+}
+
+.min-w-\[138px\]{
+  min-width: 138px;
+}
+
 .max-w-\[700px\]{
   max-width: 700px;
 }
 
+.shrink-0{
+  flex-shrink: 0;
+}
+
 .cursor-pointer{
   cursor: pointer;
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
@@ -854,12 +918,20 @@ img {
   align-items: flex-start;
 }
 
+.\!items-center{
+  align-items: center !important;
+}
+
 .items-center{
   align-items: center;
 }
 
 .justify-end{
   justify-content: flex-end;
+}
+
+.\!justify-center{
+  justify-content: center !important;
 }
 
 .justify-center{
@@ -910,6 +982,10 @@ img {
   border-radius: 0.25rem;
 }
 
+.rounded-2xl{
+  border-radius: 1rem;
+}
+
 .rounded-3xl{
   border-radius: 1.5rem;
 }
@@ -928,6 +1004,11 @@ img {
 
 .rounded-md{
   border-radius: 0.375rem;
+}
+
+.rounded-t-3xl{
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
 .rounded-tl-3xl{
@@ -954,9 +1035,32 @@ img {
   border-bottom-width: 1px;
 }
 
+.\!border-solid{
+  border-style: solid !important;
+}
+
+.\!border-none{
+  border-style: none !important;
+}
+
+.\!border-\[\#2563EB\]{
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1)) !important;
+}
+
+.\!border-\[\#CBD5E1\]{
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1)) !important;
+}
+
 .\!border-gray-300{
   --tw-border-opacity: 1 !important;
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1)) !important;
+}
+
+.border-\[\#CBD5E1\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
 }
 
 .border-blue-200{
@@ -1022,6 +1126,21 @@ img {
 .border-b-slate-300{
   --tw-border-opacity: 1;
   border-bottom-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+}
+
+.\!bg-\[\#2563EB\]{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.\!bg-\[\#ECFDF5\]{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(236 253 245 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.\!bg-white{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .bg-blue-100{
@@ -1106,6 +1225,10 @@ img {
   padding: 1.5rem;
 }
 
+.p-\[40px\]{
+  padding: 40px;
+}
+
 .px-0\.625{
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -1139,6 +1262,11 @@ img {
 .px-\[10px\]{
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.px-\[12px\]{
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .px-\[14px\]{
@@ -1186,6 +1314,11 @@ img {
   padding-bottom: 1.5rem;
 }
 
+.py-\[10px\]{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .py-\[18px\]{
   padding-top: 18px;
   padding-bottom: 18px;
@@ -1201,6 +1334,19 @@ img {
   padding-bottom: 60px;
 }
 
+.py-\[6px\]{
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
+}
+
+.pb-\[40px\]{
+  padding-bottom: 40px;
+}
+
 .pl-3\.7{
   padding-left: 3.7rem;
 }
@@ -1209,8 +1355,28 @@ img {
   padding-left: 1.5rem;
 }
 
+.pl-\[1px\]{
+  padding-left: 1px;
+}
+
+.pr-\[1px\]{
+  padding-right: 1px;
+}
+
+.pt-4{
+  padding-top: 1rem;
+}
+
+.pt-6{
+  padding-top: 1.5rem;
+}
+
 .text-center{
   text-align: center;
+}
+
+.font-sans{
+  font-family: Inter, sans-serif;
 }
 
 .text-2xl{
@@ -1221,6 +1387,26 @@ img {
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-\[12px\]{
+  font-size: 12px;
+}
+
+.text-\[14px\]{
+  font-size: 14px;
+}
+
+.text-\[16px\]{
+  font-size: 16px;
+}
+
+.text-\[18px\]{
+  font-size: 18px;
+}
+
+.text-\[30px\]{
+  font-size: 30px;
 }
 
 .text-base{
@@ -1283,6 +1469,22 @@ img {
   line-height: 2rem;
 }
 
+.leading-\[20px\]{
+  line-height: 20px;
+}
+
+.leading-\[24px\]{
+  line-height: 24px;
+}
+
+.leading-\[28px\]{
+  line-height: 28px;
+}
+
+.leading-\[36px\]{
+  line-height: 36px;
+}
+
 .leading-relaxed{
   line-height: 1.625;
 }
@@ -1291,14 +1493,48 @@ img {
   line-height: 1.25;
 }
 
+.tracking-normal{
+  letter-spacing: 0em;
+}
+
+.\!text-\[\#15803D\]{
+  --tw-text-opacity: 1 !important;
+  color: rgb(21 128 61 / var(--tw-text-opacity, 1)) !important;
+}
+
+.\!text-\[\#475569\]{
+  --tw-text-opacity: 1 !important;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1)) !important;
+}
+
+.\!text-white{
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
+.text-\[\#1E293B\]{
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#2563EB\]{
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#475569\]{
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#64748B\]{
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#DC2626\]{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 
 .text-blue-500{
@@ -1366,6 +1602,17 @@ img {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.\!shadow-none{
+  --tw-shadow: 0 0 #0000 !important;
+  --tw-shadow-colored: 0 0 #0000 !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
 .shadow-2xl{
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -1380,6 +1627,10 @@ img {
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.\[box-shadow\:0px_1px_2px_-1px_rgba\(0\2c 0\2c 0\2c 0\.1\)\2c 0px_1px_3px_0px_rgba\(0\2c 0\2c 0\2c 0\.1\)\]{
+  box-shadow: 0px 1px 2px -1px rgba(0,0,0,0.1),0px 1px 3px 0px rgba(0,0,0,0.1);
 }
 
 #wpbody-content{
@@ -1456,6 +1707,207 @@ img {
   }
 }
 
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: 56px;
+  padding: 16px 48px 16px 16px;
+  margin: 0;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.64645 4.64645C1.84171 4.45118 2.15829 4.45118 2.35355 4.64645L8 10.2929L13.6464 4.64645C13.8417 4.45118 14.1583 4.45118 14.3536 4.64645C14.5488 4.84171 14.5488 5.15829 14.3536 5.35355L8.35355 11.3536C8.15829 11.5488 7.84171 11.5488 7.64645 11.3536L1.64645 5.35355C1.45118 5.15829 1.45118 4.84171 1.64645 4.64645Z' fill='%231E293B'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748B;
+  width: 100%;
+}
+
+@media (min-width: 782px) {
+  body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input {
+    min-height: 56px;
+    height: 56px;
+    line-height: 24px;
+  }
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input::-ms-expand {
+  display: none;
+}
+
+/* wp-components may render a decorative chevron next to <select>; hide it (arrow is background-image on the select). */
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ svg,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field select.components-select-control__input ~ * svg {
+  display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field:has(> select.components-select-control__input) > svg {
+  display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control:has(select.components-select-control__input) .components-input-control__suffix {
+  display: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: 56px;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748B;
+  width: 100%;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::-moz-placeholder, body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::-moz-placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input:-ms-input-placeholder, body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input:-ms-input-placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::placeholder,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::placeholder {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #64748b;
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {
+  border: none;
+  box-shadow: none;
+}
+
+/* Test Connection: spinner overlay while API is in flight (always visible, not hover-only) */
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled {
+  cursor: not-allowed;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button:disabled,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button[aria-disabled="true"],
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button:disabled:hover,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--disabled .components-button[aria-disabled="true"]:hover {
+  cursor: not-allowed;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-spinner {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.92);
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-wrap--connecting .rbea-ai-suite-test-connection-spinner {
+  opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-test-connection-spinner .components-spinner {
+  float: none;
+  margin: 0;
+  opacity: 1;
+}
+
+/* API key: visibility control inside the field, right-aligned */
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field {
+  position: relative;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control {
+  margin-bottom: 0;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-text-control__input,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-field .components-base-control__field input.components-input-control__input {
+  padding-right: 52px;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:hover {
+  background: rgba(100, 116, 139, 0.08);
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus {
+  outline: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key-toggle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-api-key.is-masked input.components-text-control__input {
+  -webkit-text-security: disc;
+  letter-spacing: 0.1em;
+}
+
 .hover\:bg-blue-100:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
@@ -1479,6 +1931,11 @@ img {
 .hover\:bg-slate-300:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:underline:hover{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .hover\:\[box-shadow\:0px_10px_10px_-5px_rgba\(0\2c 0\2c 0\2c 0\.04\)\]:hover{

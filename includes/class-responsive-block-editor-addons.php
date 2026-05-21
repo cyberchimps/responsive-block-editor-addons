@@ -204,6 +204,12 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Container Gap Setting.
 		add_action( 'wp_ajax_rbea_save_container_gap', array( $this, 'rbea_save_container_gap' ) );
 
+		// RBEA Ai Suite — save all dashboard settings in one payload.
+		add_action( 'wp_ajax_rbea_save_ai_suite_settings', array( $this, 'rbea_save_ai_suite_settings' ) );
+
+		// RBEA Ai Suite — proxy generation request to the configured AI provider.
+		add_action( 'wp_ajax_rbea_ai_generate', array( $this, 'rbea_ai_generate' ) );
+
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -762,6 +768,7 @@ class Responsive_Block_Editor_Addons {
 				'is_display_conditions_on'           => $is_display_conditions_on,
 				'is_responsive_conditions_on'           => $is_responsive_conditions_on,
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
+				'ai_suite'                           => $this->rbea_get_ai_suite_indicators(),
 			)
 		);
 
@@ -1392,6 +1399,7 @@ class Responsive_Block_Editor_Addons {
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
 					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
+					'ai_suite'              => $this->rbea_get_ai_suite_settings(),
 				)
 			);
 
@@ -1951,6 +1959,654 @@ class Responsive_Block_Editor_Addons {
 		update_option( 'rbea_default_container_gap', $value );
 
 		wp_send_json_success();
+	}
+
+	/**
+	 * Read the saved Ai Suite settings merged onto defaults.
+	 *
+	 * Used by the getting-started localize step (to hydrate the dashboard) and
+	 * by the AJAX save handler (to compute the "current" baseline before merge).
+	 *
+	 * @return array
+	 */
+	public function rbea_get_ai_suite_settings() {
+		$defaults = array(
+			'enable_ai_writer' => true,
+			'post_types'       => 'all',
+			'user_role_access' => 'editor',
+			'provider'         => 'google-gemini',
+			'model'            => 'gemini-2.5-flash-lite',
+			'api_key'          => '',
+			'default_tone'     => 'professional',
+			'default_length'   => 'large',
+			'default_language' => 'english',
+			'max_tokens'       => 1500,
+		);
+		$saved = get_option( 'rbea_ai_suite_settings', array() );
+		if ( ! is_array( $saved ) ) {
+			$saved = array();
+		}
+		$merged = array_merge( $defaults, $saved );
+
+		// Treat stored empty strings as "unset" so defaults apply after first install / partial saves.
+		$fill_if_empty = array(
+			'post_types',
+			'user_role_access',
+			'provider',
+			'model',
+			'default_tone',
+			'default_length',
+			'default_language',
+		);
+		foreach ( $fill_if_empty as $key ) {
+			if ( ! isset( $merged[ $key ] ) || '' === trim( (string) $merged[ $key ] ) ) {
+				$merged[ $key ] = $defaults[ $key ];
+			}
+		}
+
+		$mt = isset( $merged['max_tokens'] ) ? absint( $merged['max_tokens'] ) : 0;
+		if ( $mt < 100 ) {
+			$mt = 1500;
+		}
+		if ( $mt > 10000 ) {
+			$mt = 10000;
+		}
+		$merged['max_tokens'] = $mt;
+
+		$merged['connection_verified'] = $this->rbea_ai_suite_connection_is_verified( $merged );
+
+		return $merged;
+	}
+
+	/**
+	 * Fingerprint for an API key (never expose the raw key in verification metadata).
+	 *
+	 * @param string $api_key API key.
+	 * @return string Empty when key is empty; otherwise HMAC-SHA256 hex.
+	 */
+	protected function rbea_ai_suite_api_key_fingerprint( $api_key ) {
+		$api_key = trim( (string) $api_key );
+		if ( '' === $api_key ) {
+			return '';
+		}
+		return hash_hmac( 'sha256', $api_key, wp_salt( 'rbea_ai_suite_connection' ) );
+	}
+
+	/**
+	 * Whether saved settings still match the last successful Test Connection snapshot.
+	 *
+	 * @param array $settings Merged Ai Suite settings.
+	 * @return bool
+	 */
+	protected function rbea_ai_suite_connection_is_verified( array $settings ) {
+		$stored_fp = (string) ( $settings['connection_verified_key_fingerprint'] ?? '' );
+		if ( '' === $stored_fp ) {
+			return false;
+		}
+
+		$current_fp = $this->rbea_ai_suite_api_key_fingerprint( $settings['api_key'] ?? '' );
+		if ( '' === $current_fp || ! hash_equals( $stored_fp, $current_fp ) ) {
+			return false;
+		}
+
+		if ( (string) ( $settings['connection_verified_provider'] ?? '' ) !== (string) ( $settings['provider'] ?? '' ) ) {
+			return false;
+		}
+
+		if ( (string) ( $settings['connection_verified_model'] ?? '' ) !== (string) ( $settings['model'] ?? '' ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Clear persisted Test Connection snapshot.
+	 *
+	 * @param array $settings Settings array (by reference).
+	 */
+	protected function rbea_ai_suite_clear_connection_verification( array &$settings ) {
+		$settings['connection_verified_provider']         = '';
+		$settings['connection_verified_model']            = '';
+		$settings['connection_verified_key_fingerprint'] = '';
+	}
+
+	/**
+	 * Store Test Connection snapshot for provider + model + API key.
+	 *
+	 * @param array  $settings Settings array (by reference).
+	 * @param string $provider Provider slug.
+	 * @param string $model    Model id.
+	 * @param string $api_key  API key that was tested.
+	 */
+	protected function rbea_ai_suite_apply_connection_verified( array &$settings, $provider, $model, $api_key ) {
+		$settings['connection_verified_provider']         = (string) $provider;
+		$settings['connection_verified_model']            = (string) $model;
+		$settings['connection_verified_key_fingerprint'] = $this->rbea_ai_suite_api_key_fingerprint( $api_key );
+	}
+
+	/**
+	 * Settings array for `update_option` (drops computed keys).
+	 *
+	 * @param array $settings Merged settings.
+	 * @return array
+	 */
+	protected function rbea_ai_suite_settings_for_storage( array $settings ) {
+		unset( $settings['connection_verified'] );
+		return $settings;
+	}
+
+	/**
+	 * Language slug => English name for AI prompts (must match JS `src/utils/ai-suite-choices.js`).
+	 *
+	 * @return array<string, string>
+	 */
+	public function rbea_get_ai_suite_language_labels() {
+		static $labels = null;
+		if ( null !== $labels ) {
+			return $labels;
+		}
+
+		$labels = array(
+			'afrikaans'         => 'Afrikaans',
+			'amharic'           => 'Amharic',
+			'arabic'            => 'Arabic',
+			'azerbaijani'       => 'Azerbaijani',
+			'belarusian'        => 'Belarusian',
+			'bulgarian'         => 'Bulgarian',
+			'bengali'           => 'Bengali',
+			'bosnian'           => 'Bosnian',
+			'catalan'           => 'Catalan',
+			'cebuano'           => 'Cebuano',
+			'czech'             => 'Czech',
+			'welsh'             => 'Welsh',
+			'danish'            => 'Danish',
+			'german'            => 'German',
+			'greek'             => 'Greek',
+			'english'           => 'English',
+			'esperanto'        => 'Esperanto',
+			'spanish'           => 'Spanish',
+			'estonian'          => 'Estonian',
+			'basque'            => 'Basque',
+			'persian'           => 'Persian',
+			'finnish'           => 'Finnish',
+			'french'            => 'French',
+			'galician'          => 'Galician',
+			'gujarati'          => 'Gujarati',
+			'hebrew'            => 'Hebrew',
+			'hindi'             => 'Hindi',
+			'croatian'          => 'Croatian',
+			'hungarian'         => 'Hungarian',
+			'armenian'          => 'Armenian',
+			'indonesian'        => 'Indonesian',
+			'icelandic'         => 'Icelandic',
+			'italian'           => 'Italian',
+			'japanese'          => 'Japanese',
+			'javanese'          => 'Javanese',
+			'georgian'          => 'Georgian',
+			'kazakh'            => 'Kazakh',
+			'khmer'             => 'Khmer',
+			'kannada'           => 'Kannada',
+			'korean'            => 'Korean',
+			'kurdish'           => 'Kurdish',
+			'kyrgyz'            => 'Kyrgyz',
+			'lao'               => 'Lao',
+			'lithuanian'        => 'Lithuanian',
+			'latvian'           => 'Latvian',
+			'macedonian'        => 'Macedonian',
+			'malayalam'         => 'Malayalam',
+			'mongolian'         => 'Mongolian',
+			'marathi'           => 'Marathi',
+			'malay'             => 'Malay',
+			'burmese'           => 'Burmese',
+			'norwegian_bokmal'  => 'Norwegian Bokmål',
+			'nepali'            => 'Nepali',
+			'dutch'             => 'Dutch',
+			'norwegian_nynorsk' => 'Norwegian Nynorsk',
+			'occitan'           => 'Occitan',
+			'punjabi'           => 'Punjabi',
+			'polish'            => 'Polish',
+			'portuguese'        => 'Portuguese',
+			'romanian'          => 'Romanian',
+			'russian'           => 'Russian',
+			'sakha_yakut'       => 'Sakha (Yakut)',
+			'sindhi'            => 'Sindhi',
+			'sinhala'           => 'Sinhala',
+			'slovak'            => 'Slovak',
+			'slovenian'         => 'Slovenian',
+			'albanian'          => 'Albanian',
+			'serbian'           => 'Serbian',
+			'swedish'           => 'Swedish',
+			'swahili'           => 'Swahili',
+			'tamil'             => 'Tamil',
+			'telugu'            => 'Telugu',
+			'thai'              => 'Thai',
+			'tagalog'           => 'Tagalog',
+			'turkish'           => 'Turkish',
+			'tatar'             => 'Tatar',
+			'uyghur'            => 'Uyghur',
+			'ukrainian'         => 'Ukrainian',
+			'urdu'              => 'Urdu',
+			'uzbek'             => 'Uzbek',
+			'vietnamese'        => 'Vietnamese',
+			'yoruba'            => 'Yoruba',
+			'chinese'           => 'Chinese',
+		);
+
+		return $labels;
+	}
+
+	/**
+	 * Handles AJAX request to save the Ai Suite dashboard settings.
+	 *
+	 * Accepts each field as an individual `$_POST` key, sanitizes, merges with
+	 * the existing values, and persists into the `rbea_ai_suite_settings` option.
+	 */
+	public function rbea_save_ai_suite_settings() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Forbidden' ), 403 );
+			return;
+		}
+
+		$current = $this->rbea_get_ai_suite_settings();
+		$post    = wp_unslash( $_POST );
+
+		$text_fields = array(
+			'post_types',
+			'user_role_access',
+			'provider',
+			'model',
+			'api_key',
+			'default_tone',
+			'default_length',
+			'default_language',
+		);
+
+		$clean = $current;
+
+		if ( array_key_exists( 'enable_ai_writer', $post ) ) {
+			$value                     = (string) $post['enable_ai_writer'];
+			$clean['enable_ai_writer'] = ( '1' === $value || 'true' === $value );
+		}
+
+		foreach ( $text_fields as $field ) {
+			if ( array_key_exists( $field, $post ) ) {
+				$clean[ $field ] = sanitize_text_field( (string) $post[ $field ] );
+			}
+		}
+
+		if ( array_key_exists( 'max_tokens', $post ) ) {
+			$clean['max_tokens'] = absint( $post['max_tokens'] );
+		}
+
+		$allowed_post_types = array( 'all', 'post', 'page' );
+		if ( ! in_array( (string) $clean['post_types'], $allowed_post_types, true ) ) {
+			$clean['post_types'] = 'all';
+		}
+
+		$allowed_roles = array( 'administrator', 'editor' );
+		if ( ! in_array( (string) $clean['user_role_access'], $allowed_roles, true ) ) {
+			$clean['user_role_access'] = 'editor';
+		}
+
+		$allowed_tones = array( 'informative', 'casual', 'friendly', 'professional', 'inspirational' );
+		if ( ! in_array( (string) $clean['default_tone'], $allowed_tones, true ) ) {
+			$clean['default_tone'] = 'professional';
+		}
+
+		$allowed_lengths = array( 'short', 'medium', 'large', 'big' );
+		if ( ! in_array( (string) $clean['default_length'], $allowed_lengths, true ) ) {
+			$clean['default_length'] = 'large';
+		}
+
+		$lang_labels = $this->rbea_get_ai_suite_language_labels();
+		if ( ! isset( $lang_labels[ (string) $clean['default_language'] ] ) ) {
+			$clean['default_language'] = 'english';
+		}
+
+		$max_tokens = absint( $clean['max_tokens'] );
+		if ( $max_tokens < 100 ) {
+			$max_tokens = 1500;
+		}
+		if ( $max_tokens > 10000 ) {
+			$max_tokens = 10000;
+		}
+		$clean['max_tokens'] = $max_tokens;
+
+		$credentials_changed =
+			(string) $clean['api_key'] !== (string) $current['api_key']
+			|| (string) $clean['model'] !== (string) $current['model']
+			|| (string) $clean['provider'] !== (string) $current['provider'];
+
+		if ( $credentials_changed ) {
+			$this->rbea_ai_suite_clear_connection_verification( $clean );
+		}
+
+		$mark_connection_verified = false;
+		if ( array_key_exists( 'connection_verified', $post ) ) {
+			$verified_flag            = (string) $post['connection_verified'];
+			$mark_connection_verified = ( '1' === $verified_flag || 'true' === $verified_flag );
+		}
+
+		if ( $mark_connection_verified && '' !== trim( (string) $clean['api_key'] ) ) {
+			$this->rbea_ai_suite_apply_connection_verified(
+				$clean,
+				$clean['provider'],
+				$clean['model'],
+				$clean['api_key']
+			);
+		}
+
+		update_option( 'rbea_ai_suite_settings', $this->rbea_ai_suite_settings_for_storage( $clean ) );
+
+		$clean['connection_verified'] = $this->rbea_ai_suite_connection_is_verified( $clean );
+
+		wp_send_json_success( $clean );
+	}
+
+	/**
+	 * Whether the logged-in user satisfies Ai Suite "User Role Access" for the AI Write toolbar.
+	 *
+	 * @param string $user_role_access Saved setting: `administrator` or `editor`.
+	 * @return bool
+	 */
+	protected function rbea_ai_write_current_user_passes_role_gate( $user_role_access ) {
+		$user = wp_get_current_user();
+		if ( ! $user || ! $user->ID ) {
+			return false;
+		}
+		$uid = (int) $user->ID;
+		if ( function_exists( 'is_multisite' ) && is_multisite() && function_exists( 'is_super_admin' ) && is_super_admin( $uid ) ) {
+			return true;
+		}
+		$access = (string) $user_role_access;
+		if ( 'administrator' === $access ) {
+			return user_can( $user, 'manage_options' );
+		}
+		if ( 'editor' === $access ) {
+			return user_can( $user, 'edit_others_posts' ) || user_can( $user, 'manage_options' );
+		}
+		return false;
+	}
+
+	/**
+	 * Editor-safe Ai Suite indicators for `responsive_globals`.
+	 *
+	 * Mirrors the dashboard `ai_suite` shape but never sends the raw API key
+	 * to the editor — only `has_api_key` so the UI can show / hide the
+	 * "Connect your API key" notice. Includes `post_types` and `ai_write_role_allowed`
+	 * for AI Write toolbar gating (no API key).
+	 *
+	 * @return array
+	 */
+	public function rbea_get_ai_suite_indicators() {
+		$settings = $this->rbea_get_ai_suite_settings();
+		return array(
+			'enable_ai_writer'        => (bool) $settings['enable_ai_writer'],
+			'has_api_key'             => '' !== trim( (string) $settings['api_key'] ),
+			'provider'                => $settings['provider'],
+			'model'                   => $settings['model'],
+			'default_tone'            => $settings['default_tone'],
+			'default_length'          => $settings['default_length'],
+			'default_language'        => $settings['default_language'],
+			'post_types'              => $settings['post_types'],
+			'ai_write_role_allowed'   => $this->rbea_ai_write_current_user_passes_role_gate( $settings['user_role_access'] ),
+			'settings_url'            => admin_url( 'admin.php?page=responsive_block_editor_addons#/ai-suite' ),
+		);
+	}
+
+	/**
+	 * AJAX handler — proxy a generation request to the configured AI provider.
+	 *
+	 * Accepts `prompt`, `length`, `tone`, and optional `language` from $_POST
+	 * (language falls back to saved Ai Suite default when omitted). Reads API
+	 * key, provider, model, and `max_tokens` from `rbea_ai_suite_settings`.
+	 * `maxOutputTokens` uses saved `max_tokens` (default 1500, clamped 100–10000).
+	 */
+	public function rbea_ai_generate() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Forbidden', 'responsive-block-editor-addons' ) ), 403 );
+			return;
+		}
+
+		$post   = wp_unslash( $_POST );
+		$prompt = isset( $post['prompt'] ) ? sanitize_textarea_field( (string) $post['prompt'] ) : '';
+		$length   = isset( $post['length'] ) ? sanitize_text_field( (string) $post['length'] ) : '';
+		$tone     = isset( $post['tone'] ) ? sanitize_text_field( (string) $post['tone'] ) : '';
+		$language = isset( $post['language'] ) ? sanitize_text_field( (string) $post['language'] ) : '';
+
+		$allowed_lengths_ajax = array( 'short', 'medium', 'large', 'big' );
+		$allowed_tones_ajax   = array( 'informative', 'casual', 'friendly', 'professional', 'inspirational' );
+
+		if ( '' === $prompt ) {
+			wp_send_json_error(
+				array( 'message' => __( 'Please enter a prompt before generating.', 'responsive-block-editor-addons' ) ),
+				400
+			);
+			return;
+		}
+
+		$settings = $this->rbea_get_ai_suite_settings();
+		$api_key  = trim( (string) $settings['api_key'] );
+		$model    = (string) $settings['model'];
+
+		if ( ! in_array( $length, $allowed_lengths_ajax, true ) ) {
+			$length = (string) $settings['default_length'];
+		}
+		if ( ! in_array( $length, $allowed_lengths_ajax, true ) ) {
+			$length = 'large';
+		}
+
+		if ( ! in_array( $tone, $allowed_tones_ajax, true ) ) {
+			$tone = (string) $settings['default_tone'];
+		}
+		if ( ! in_array( $tone, $allowed_tones_ajax, true ) ) {
+			$tone = 'professional';
+		}
+
+		$lang_labels = $this->rbea_get_ai_suite_language_labels();
+		if ( '' === $language ) {
+			$language = (string) $settings['default_language'];
+		}
+		if ( ! isset( $lang_labels[ $language ] ) ) {
+			$language = 'english';
+		}
+		$language_name = (string) $lang_labels[ $language ];
+
+		if ( '' === $api_key ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'No API key configured. Add one in Responsive Blocks → Ai Suite.',
+						'responsive-block-editor-addons'
+					),
+				),
+				400
+			);
+			return;
+		}
+
+		$max_output_tokens = absint( $settings['max_tokens'] );
+		if ( $max_output_tokens < 100 ) {
+			$max_output_tokens = 1500;
+		}
+		if ( $max_output_tokens > 10000 ) {
+			$max_output_tokens = 10000;
+		}
+
+		// Length → approximate word target (aligned with Ai Suite / AI Write UI).
+		$length_map  = array(
+			'short'  => __( 'Keep it very brief — about 5 to 15 words.', 'responsive-block-editor-addons' ),
+			'medium' => __( 'Aim for about 20 to 30 words.', 'responsive-block-editor-addons' ),
+			'large'  => __( 'Aim for about 40 to 60 words.', 'responsive-block-editor-addons' ),
+			'big'    => __( 'Aim for at least 80 words.', 'responsive-block-editor-addons' ),
+		);
+		$length_hint = isset( $length_map[ $length ] ) ? $length_map[ $length ] : '';
+
+		$tone_map  = array(
+			'informative'   => __( 'Use a clear, informative tone.', 'responsive-block-editor-addons' ),
+			'casual'        => __( 'Use a casual, conversational tone.', 'responsive-block-editor-addons' ),
+			'friendly'      => __( 'Use a warm, friendly tone.', 'responsive-block-editor-addons' ),
+			'professional'  => __( 'Use a professional, business-appropriate tone.', 'responsive-block-editor-addons' ),
+			'inspirational' => __( 'Use an inspirational, motivating tone.', 'responsive-block-editor-addons' ),
+		);
+		$tone_hint = isset( $tone_map[ $tone ] ) ? $tone_map[ $tone ] : '';
+
+		$language_hint = sprintf(
+			/* translators: %s: language name, e.g. "Spanish". */
+			__( 'Write entirely in %s.', 'responsive-block-editor-addons' ),
+			$language_name
+		);
+
+		$instructions  = "Write content for the topic below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.";
+		$instructions .= "\n" . $language_hint;
+		$instructions .= $tone_hint ? "\n" . $tone_hint : '';
+		$instructions .= $length_hint ? "\n" . $length_hint : '';
+		$final_prompt  = $instructions . "\n\nTopic: " . $prompt;
+
+		$endpoint = sprintf(
+			'https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s',
+			rawurlencode( $model ),
+			rawurlencode( $api_key )
+		);
+
+		$body = wp_json_encode(
+			array(
+				'contents'         => array(
+					array( 'parts' => array( array( 'text' => $final_prompt ) ) ),
+				),
+				'generationConfig' => array(
+					'maxOutputTokens' => $max_output_tokens,
+					'temperature'     => 0.7,
+				),
+			)
+		);
+
+		$response = wp_remote_post(
+			$endpoint,
+			array(
+				'timeout' => 30,
+				'headers' => array( 'Content-Type' => 'application/json' ),
+				'body'    => $body,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'Could not reach the AI provider. Please try again.',
+						'responsive-block-editor-addons'
+					),
+				),
+				502
+			);
+			return;
+		}
+
+		$status = (int) wp_remote_retrieve_response_code( $response );
+		$json   = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( $status < 200 || $status >= 300 ) {
+			$api_message = isset( $json['error']['message'] ) ? (string) $json['error']['message'] : '';
+			$api_status  = isset( $json['error']['status'] ) ? (string) $json['error']['status'] : '';
+			wp_send_json_error(
+				array(
+					'message' => $this->rbea_humanize_gemini_error( $status, $api_status, $api_message ),
+				),
+				$status
+			);
+			return;
+		}
+
+		// Pull text out of the first candidate's parts.
+		$text = '';
+		if ( isset( $json['candidates'][0]['content']['parts'] ) && is_array( $json['candidates'][0]['content']['parts'] ) ) {
+			foreach ( $json['candidates'][0]['content']['parts'] as $part ) {
+				if ( isset( $part['text'] ) ) {
+					$text .= (string) $part['text'];
+				}
+			}
+		}
+
+		$text = trim( $text );
+
+		if ( '' === $text ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'The model returned an empty response. Try rephrasing the prompt or picking a different model.',
+						'responsive-block-editor-addons'
+					),
+				),
+				502
+			);
+			return;
+		}
+
+		wp_send_json_success( array( 'text' => $text ) );
+	}
+
+	/**
+	 * Translate Gemini's HTTP status + API status into a user-facing message.
+	 *
+	 * @param int    $status      HTTP status code.
+	 * @param string $api_status  Google API status string (e.g. RESOURCE_EXHAUSTED).
+	 * @param string $api_message Raw API error message.
+	 * @return string
+	 */
+	protected function rbea_humanize_gemini_error( $status, $api_status, $api_message ) {
+		if (
+			'UNAUTHENTICATED' === $api_status ||
+			( 'INVALID_ARGUMENT' === $api_status && preg_match( '/api key/i', $api_message ) )
+		) {
+			return __(
+				'The API key was rejected. Update it in Responsive Blocks → Ai Suite.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 403 === $status || 'PERMISSION_DENIED' === $api_status ) {
+			return __(
+				'This API key does not have permission to use the selected model.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 404 === $status || 'NOT_FOUND' === $api_status ) {
+			return __(
+				'The selected model is not available for this API key.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( 429 === $status || 'RESOURCE_EXHAUSTED' === $api_status ) {
+			if ( preg_match( '/quota|billing|plan|tier/i', $api_message ) ) {
+				return __(
+					'This model is not available on your current Gemini plan. Enable billing in Google AI Studio, or pick 2.5 Flash / Flash Lite.',
+					'responsive-block-editor-addons'
+				);
+			}
+			return __(
+				'Too many requests right now. Wait a moment and try again.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		if ( $status >= 500 ) {
+			return __(
+				'The AI provider returned an error. Please try again in a moment.',
+				'responsive-block-editor-addons'
+			);
+		}
+
+		return '' !== $api_message
+			? $api_message
+			: __( 'Something went wrong while generating. Please try again.', 'responsive-block-editor-addons' );
 	}
 
 	/**

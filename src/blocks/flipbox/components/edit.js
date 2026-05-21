@@ -185,7 +185,12 @@ export default class Edit extends Component {
       }
     }
 
-    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
+    const formattingControls = [
+      "core/bold",
+      "core/italic",
+      "core/strikethrough",
+      "responsive-block-editor-addons/ai-write",
+    ];
     const transitionSpeedSec = transitionSpeed / 10;
 
     const flipboxTransition =

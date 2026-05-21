@@ -156,7 +156,12 @@ export default class Edit extends Component {
       }
     );
 
-    const formattingcontrols = ["core/bold", "core/italic", "core/strikethrough"];
+    const formattingcontrols = [
+      "core/bold",
+      "core/italic",
+      "core/strikethrough",
+      "responsive-block-editor-addons/ai-write",
+    ];
 
     let alignStyle = "center";
     if ("left" == blockAlign) {
@@ -450,7 +455,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ pricingTable: data_copy });
                     }}
-                    
+                    allowedFormats={formattingcontrols}
                   />
                 )}
                 {showButton && (

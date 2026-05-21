@@ -162,7 +162,12 @@ export default class Edit extends Component {
                 onChange={(value) => {
                   setAttributes({ label: value });
                 }}
-                allowedFormats={["bold", "italic", "strikethrough"]}
+                allowedFormats={[
+                  "bold",
+                  "italic",
+                  "strikethrough",
+                  "responsive-block-editor-addons/ai-write",
+                ]}
                 className={updatedButtonTextClass}
                 
               />
