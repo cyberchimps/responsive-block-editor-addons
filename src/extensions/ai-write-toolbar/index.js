@@ -30,12 +30,11 @@ import {
 } from '../../utils/ai-suite-choices.js';
 
 const SUGGESTED_PROMPTS = [
-	'Hero headline',
-	'Product description',
-	'CTA text',
-	'About us copy',
-	'Features summary',
-	'FAQ answer',
+	'Write a product description for...',
+	'Create a blog post for...',
+	'Craft an about us section for...',
+	'Offer a few sentences to invite visitors to...',
+	'Write microcopy for a submission form that includes...',
 ];
 
 /**
@@ -356,10 +355,6 @@ function AiWritePopoverContent( {
 				</button>
 			</div>
 
-			<p className="rbea-ai-write-popover__subtitle">
-				{ __( 'Generate content instantly inside your block', 'responsive-block-editor-addons' ) }
-			</p>
-
 			{ ! hasApiKey && (
 				<div className="rbea-ai-write-popover__api-key-warning">
 					<span>
@@ -373,6 +368,7 @@ function AiWritePopoverContent( {
 
 			<TextareaControl
 				label={ __( 'Prompt', 'responsive-block-editor-addons' ) }
+				hideLabelFromVision
 				value={ prompt }
 				onChange={ setPrompt }
 				placeholder={ __(
@@ -383,23 +379,25 @@ function AiWritePopoverContent( {
 				rows={ 3 }
 			/>
 
-			<div className="rbea-ai-write-popover__field">
-				<span className="rbea-ai-write-popover__field-label">
-					{ __( 'Suggested Prompts', 'responsive-block-editor-addons' ) }
-				</span>
-				<div className="rbea-ai-write-popover__chips">
-					{ SUGGESTED_PROMPTS.map( ( label ) => (
-						<button
-							key={ label }
-							type="button"
-							className="rbea-ai-write-popover__chip"
-							onClick={ () => setPrompt( label ) }
-						>
-							{ label }
-						</button>
-					) ) }
+			{ prompt.length === 0 && (
+				<div className="rbea-ai-write-popover__field">
+					<span className="rbea-ai-write-popover__field-label">
+						{ __( 'Suggested Prompts', 'responsive-block-editor-addons' ) }
+					</span>
+					<div className="rbea-ai-write-popover__chips">
+						{ SUGGESTED_PROMPTS.map( ( label ) => (
+							<button
+								key={ label }
+								type="button"
+								className="rbea-ai-write-popover__chip"
+								onClick={ () => setPrompt( label ) }
+							>
+								{ label }
+							</button>
+						) ) }
+					</div>
 				</div>
-			</div>
+			) }
 
 			<div className="rbea-ai-write-popover__row">
 				<SelectControl
