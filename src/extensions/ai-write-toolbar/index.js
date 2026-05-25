@@ -1,14 +1,6 @@
 /**
  * AI Write — gradient pill in the block contextual toolbar.
  *
- * Implemented like Nexter Blocks (The Plus Addons): `registerFormatType` ties
- * this UI to RichText. The format's `edit` callback runs in the RichText
- * context for each text field, so the control appears only while that field is
- * active — not for the whole block when another area is focused. The button is
- * rendered via `BlockControls` (same slot as the floating block toolbar).
- *
- * Global on/off via the `rbea_ai_write_toolbar_enabled` filter (receives the
- * computed boolean and current `postType` as the second argument).
  */
 import { Fragment, useState, useRef } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
@@ -25,6 +17,7 @@ import {
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import {
+	getAiSuiteLanguageOptions,
 	getAiSuiteLengthOptions,
 	getAiSuiteToneOptions,
 } from '../../utils/ai-suite-choices.js';
@@ -35,6 +28,25 @@ const SUGGESTED_PROMPTS = [
 	'Craft an about us section for...',
 	'Offer a few sentences to invite visitors to...',
 	'Write microcopy for a submission form that includes...',
+];
+
+const REWRITE_OPTIONS = [
+	{
+		label: 'Simplify language',
+		Icon: SimplifyLanguageIcon,
+	},
+	{
+		label: 'Make it longer',
+		Icon: MakeItLongerIcon,
+	},
+	{
+		label: 'Make it shorter',
+		Icon: MakeItShorterIcon,
+	},
+	{
+		label: 'Fix spelling & grammar',
+		Icon: FixSpellingGrammarIcon,
+	},
 ];
 
 /**
@@ -194,6 +206,102 @@ function RegenerateIcon() {
 	);
 }
 
+function SimplifyLanguageIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+			<path
+				d="M4 10.5L2 12V3.75C2 3.41848 2.1317 3.10054 2.36612 2.86612C2.60054 2.6317 2.91848 2.5 3.25 2.5H10.75C11.0815 2.5 11.3995 2.6317 11.6339 2.86612C11.8683 3.10054 12 3.41848 12 3.75V9.25C12 9.58152 11.8683 9.89946 11.6339 10.1339C11.3995 10.3683 11.0815 10.5 10.75 10.5H4Z"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}
+
+function MakeItLongerIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+			<path
+				d="M5 7H9"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+			/>
+			<path
+				d="M3.5 5.5L2 7L3.5 8.5"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M10.5 5.5L12 7L10.5 8.5"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}
+
+function MakeItShorterIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+			<path
+				d="M5 7H9"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+			/>
+			<path
+				d="M4.5 5.5L6 7L4.5 8.5"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M9.5 5.5L8 7L9.5 8.5"
+				stroke="currentColor"
+				strokeWidth="1.2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}
+
+function FixSpellingGrammarIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+			<path
+				d="M7 2.2L7.6 4.1L9.5 4.7L7.6 5.3L7 7.2L6.4 5.3L4.5 4.7L6.4 4.1L7 2.2Z"
+				stroke="currentColor"
+				strokeWidth="1.1"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M3 8.5L3.35 9.65L4.5 10L3.35 10.35L3 11.5L2.65 10.35L1.5 10L2.65 9.65L3 8.5Z"
+				stroke="currentColor"
+				strokeWidth="1.1"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M10.5 8.1L10.85 9.25L12 9.6L10.85 9.95L10.5 11.1L10.15 9.95L9 9.6L10.15 9.25L10.5 8.1Z"
+				stroke="currentColor"
+				strokeWidth="1.1"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}
+
 function AiWritePopoverContent( {
 	onClose,
 	richTextValue,
@@ -222,8 +330,31 @@ function AiWritePopoverContent( {
 	const hasApiKey = !! aiSuite.has_api_key;
 	const settingsUrl = aiSuite.settings_url || '#';
 
+	const [ popupMode, setPopupMode ] = useState( 'rewrite' );
+	const [ rewriteText, setRewriteText ] = useState(
+		( richTextValue && richTextValue.text ) || ''
+	);
+	const [ changeTone, setChangeTone ] = useState( '' );
+	const [ translateTo, setTranslateTo ] = useState( '' );
 	const lengthOptions = getAiSuiteLengthOptions( __ );
 	const toneOptions = getAiSuiteToneOptions( __ );
+	const languageOptions = getAiSuiteLanguageOptions( __ );
+	const changeToneOptions = [
+		{
+			label: __( 'Change Tone', 'responsive-block-editor-addons' ),
+			value: '',
+			disabled: true,
+		},
+		...toneOptions,
+	];
+	const translateToOptions = [
+		{
+			label: __( 'Translate to', 'responsive-block-editor-addons' ),
+			value: '',
+			disabled: true,
+		},
+		...languageOptions,
+	];
 
 	const [ prompt, setPrompt ] = useState( '' );
 	const [ length, setLength ] = useState(
@@ -366,130 +497,198 @@ function AiWritePopoverContent( {
 				</div>
 			) }
 
-			<TextareaControl
-				label={ __( 'Prompt', 'responsive-block-editor-addons' ) }
-				hideLabelFromVision
-				value={ prompt }
-				onChange={ setPrompt }
-				placeholder={ __(
-					'Describe what you want to write…',
-					'responsive-block-editor-addons'
-				) }
-				className="rbea-ai-write-popover__prompt"
-				rows={ 3 }
-			/>
-
-			{ prompt.length === 0 && (
-				<div className="rbea-ai-write-popover__field">
-					<span className="rbea-ai-write-popover__field-label">
-						{ __( 'Suggested Prompts', 'responsive-block-editor-addons' ) }
-					</span>
-					<div className="rbea-ai-write-popover__chips">
-						{ SUGGESTED_PROMPTS.map( ( label ) => (
-							<button
-								key={ label }
-								type="button"
-								className="rbea-ai-write-popover__chip"
-								onClick={ () => setPrompt( label ) }
-							>
-								{ label }
-							</button>
-						) ) }
-					</div>
-				</div>
-			) }
-
-			<div className="rbea-ai-write-popover__row">
-				<SelectControl
-					__nextHasNoMarginBottom
-					label={ __( 'Length', 'responsive-block-editor-addons' ) }
-					value={ length }
-					options={ lengthOptions }
-					onChange={ setLength }
-					className="rbea-ai-write-popover__length"
-				/>
-				<SelectControl
-					__nextHasNoMarginBottom
-					label={ __( 'Tone', 'responsive-block-editor-addons' ) }
-					value={ tone }
-					options={ toneOptions }
-					onChange={ setTone }
-					className="rbea-ai-write-popover__tone"
-				/>
-			</div>
-
-			<Button
-				className={
-					'rbea-ai-write-popover__generate' +
-					( hasUsedGenerateNow
-						? ' rbea-ai-write-popover__generate--locked'
-						: '' )
-				}
-				onClick={ handleGenerate }
-				disabled={
-					isGenerating ||
-					! prompt.trim() ||
-					! hasApiKey ||
-					hasUsedGenerateNow
-				}
-			>
-				<AiWriteIcon />
-				<span className="rbea-ai-write-popover__generate-label">
-					{ isGenerating
-						? __( 'Generating…', 'responsive-block-editor-addons' )
-						: __( 'Generate Now', 'responsive-block-editor-addons' ) }
-				</span>
-			</Button>
-
-			{ generationError && (
-				<p className="rbea-ai-write-popover__error" role="alert">
-					{ generationError }
-				</p>
-			) }
-
-			{ generatedContent && (
+			{ popupMode === 'rewrite' ? (
 				<Fragment>
-					<div className="rbea-ai-write-popover__preview">
-						{ generatedContent }
+					<TextareaControl
+						label={ __( 'Rewrite text', 'responsive-block-editor-addons' ) }
+						hideLabelFromVision
+						value={ rewriteText }
+						onChange={ setRewriteText }
+						className="rbea-ai-write-popover__prompt"
+						rows={ 3 }
+					/>
+
+					<div className="rbea-ai-write-popover__field">
+						<div className="rbea-ai-write-popover__chips">
+							{ REWRITE_OPTIONS.map( ( { label, Icon } ) => (
+								<button
+									key={ label }
+									type="button"
+									className="rbea-ai-write-popover__chip"
+								>
+									<span className="rbea-ai-write-popover__chip-icon">
+										<Icon />
+									</span>
+									{ label }
+								</button>
+							) ) }
+						</div>
+					</div>
+
+					<div className="rbea-ai-write-popover__row">
+						<SelectControl
+							__nextHasNoMarginBottom
+							label={ __( 'Change Tone', 'responsive-block-editor-addons' ) }
+							hideLabelFromVision
+							value={ changeTone }
+							options={ changeToneOptions }
+							onChange={ setChangeTone }
+							className="rbea-ai-write-popover__select"
+						/>
+						<SelectControl
+							__nextHasNoMarginBottom
+							label={ __( 'Translate to', 'responsive-block-editor-addons' ) }
+							hideLabelFromVision
+							value={ translateTo }
+							options={ translateToOptions }
+							onChange={ setTranslateTo }
+							className="rbea-ai-write-popover__select"
+						/>
 					</div>
 
 					<div className="rbea-ai-write-popover__actions">
 						<Button
-							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace"
-							onClick={ handleReplaceText }
-							disabled={ ! canApplyGenerated }
+							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-prompt"
+							onClick={ () => setPopupMode( 'prompt' ) }
 						>
-							{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
+							{ __( 'New Prompt', 'responsive-block-editor-addons' ) }
 						</Button>
 						<Button
-							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert"
-							onClick={ handleInsertBelow }
-							disabled={ ! canApplyGenerated }
+							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-use"
+							disabled
 						>
-							{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
+							{ __( 'Use text', 'responsive-block-editor-addons' ) }
 						</Button>
-						<button
-							type="button"
-							className="rbea-ai-write-popover__copy"
-							aria-label={ __( 'Copy', 'responsive-block-editor-addons' ) }
-							onClick={ handleCopy }
-							disabled={ ! canApplyGenerated }
-						>
-							<span className="rbea-ai-write-popover__copy-inner">
-								<CopyIcon />
+					</div>
+				</Fragment>
+			) : (
+				<Fragment>
+					<TextareaControl
+						label={ __( 'Prompt', 'responsive-block-editor-addons' ) }
+						hideLabelFromVision
+						value={ prompt }
+						onChange={ setPrompt }
+						placeholder={ __(
+							'Describe what you want to write…',
+							'responsive-block-editor-addons'
+						) }
+						className="rbea-ai-write-popover__prompt"
+						rows={ 3 }
+					/>
+
+					{ prompt.length === 0 && (
+						<div className="rbea-ai-write-popover__field">
+							<span className="rbea-ai-write-popover__field-label">
+								{ __( 'Suggested Prompts', 'responsive-block-editor-addons' ) }
 							</span>
-						</button>
+							<div className="rbea-ai-write-popover__chips">
+								{ SUGGESTED_PROMPTS.map( ( label ) => (
+									<button
+										key={ label }
+										type="button"
+										className="rbea-ai-write-popover__chip"
+										onClick={ () => setPrompt( label ) }
+									>
+										{ label }
+									</button>
+								) ) }
+							</div>
+						</div>
+					) }
+
+					<div className="rbea-ai-write-popover__row">
+						<SelectControl
+							__nextHasNoMarginBottom
+							label={ __( 'Length', 'responsive-block-editor-addons' ) }
+							value={ length }
+							options={ lengthOptions }
+							onChange={ setLength }
+							className="rbea-ai-write-popover__length"
+						/>
+						<SelectControl
+							__nextHasNoMarginBottom
+							label={ __( 'Tone', 'responsive-block-editor-addons' ) }
+							value={ tone }
+							options={ toneOptions }
+							onChange={ setTone }
+							className="rbea-ai-write-popover__tone"
+						/>
 					</div>
 
-					<button
-						type="button"
-						className="rbea-ai-write-popover__regenerate"
+					<Button
+						className={
+							'rbea-ai-write-popover__generate' +
+							( hasUsedGenerateNow
+								? ' rbea-ai-write-popover__generate--locked'
+								: '' )
+						}
 						onClick={ handleGenerate }
-						disabled={ isGenerating }
+						disabled={
+							isGenerating ||
+							! prompt.trim() ||
+							! hasApiKey ||
+							hasUsedGenerateNow
+						}
 					>
-						<RegenerateIcon />
-						<span>{ __( 'Regenerate', 'responsive-block-editor-addons' ) }</span>
-					</button>
+						<AiWriteIcon />
+						<span className="rbea-ai-write-popover__generate-label">
+							{ isGenerating
+								? __( 'Generating…', 'responsive-block-editor-addons' )
+								: __( 'Generate Now', 'responsive-block-editor-addons' ) }
+						</span>
+					</Button>
+
+					{ generationError && (
+						<p className="rbea-ai-write-popover__error" role="alert">
+							{ generationError }
+						</p>
+					) }
+
+					{ generatedContent && (
+						<Fragment>
+							<div className="rbea-ai-write-popover__preview">
+								{ generatedContent }
+							</div>
+
+							<div className="rbea-ai-write-popover__actions">
+								<Button
+									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--replace"
+									onClick={ handleReplaceText }
+									disabled={ ! canApplyGenerated }
+								>
+									{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
+								</Button>
+								<Button
+									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert"
+									onClick={ handleInsertBelow }
+									disabled={ ! canApplyGenerated }
+								>
+									{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
+								</Button>
+								<button
+									type="button"
+									className="rbea-ai-write-popover__copy"
+									aria-label={ __( 'Copy', 'responsive-block-editor-addons' ) }
+									onClick={ handleCopy }
+									disabled={ ! canApplyGenerated }
+								>
+									<span className="rbea-ai-write-popover__copy-inner">
+										<CopyIcon />
+									</span>
+								</button>
+							</div>
+
+							<button
+								type="button"
+								className="rbea-ai-write-popover__regenerate"
+								onClick={ handleGenerate }
+								disabled={ isGenerating }
+							>
+								<RegenerateIcon />
+								<span>{ __( 'Regenerate', 'responsive-block-editor-addons' ) }</span>
+							</button>
+						</Fragment>
+					) }
 				</Fragment>
 			) }
 		</div>
