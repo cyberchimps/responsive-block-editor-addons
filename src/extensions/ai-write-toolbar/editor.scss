@@ -89,6 +89,11 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		display: inline-flex;
 	}
 
+	.rbea-ai-write-popover__title-icon svg {
+		width: 18px;
+		height: 18px;
+	}
+
 	.rbea-ai-write-popover__close {
 		display: inline-flex;
 		align-items: center;
