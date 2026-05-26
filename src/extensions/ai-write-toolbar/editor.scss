@@ -305,6 +305,28 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		color: #dc2626;
 	}
 
+	.rbea-ai-write-popover__loading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		min-height: 190px;
+		padding: 24px 16px;
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		background: #f8fafc;
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #334155;
+
+		.components-spinner {
+			margin: 0;
+		}
+	}
+
 	.rbea-ai-write-popover__actions {
 		display: flex;
 		align-items: center;
@@ -328,6 +350,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
 			color: #ffffff;
+			box-shadow: none;
 		}
 	}
 

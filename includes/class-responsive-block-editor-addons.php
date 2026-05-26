@@ -209,6 +209,7 @@ class Responsive_Block_Editor_Addons {
 
 		// RBEA Ai Suite — proxy generation request to the configured AI provider.
 		add_action( 'wp_ajax_rbea_ai_generate', array( $this, 'rbea_ai_generate' ) );
+		add_action( 'wp_ajax_rbea_ai_rewrite', array( $this, 'rbea_ai_rewrite' ) );
 
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
@@ -2460,12 +2461,6 @@ class Responsive_Block_Editor_Addons {
 		$instructions .= $length_hint ? "\n" . $length_hint : '';
 		$final_prompt  = $instructions . "\n\nTopic: " . $prompt;
 
-		$endpoint = sprintf(
-			'https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s',
-			rawurlencode( $model ),
-			rawurlencode( $api_key )
-		);
-
 		$body = wp_json_encode(
 			array(
 				'contents'         => array(
@@ -2478,6 +2473,196 @@ class Responsive_Block_Editor_Addons {
 			)
 		);
 
+		$text = $this->rbea_ai_request_gemini_text( $api_key, $model, $body );
+		if ( is_wp_error( $text ) ) {
+			$error_data = $text->get_error_data();
+			$status     = is_array( $error_data ) && isset( $error_data['status'] ) ? (int) $error_data['status'] : 500;
+			wp_send_json_error(
+				array(
+					'message' => $text->get_error_message(),
+				),
+				$status
+			);
+			return;
+		}
+
+		wp_send_json_success( array( 'text' => $text ) );
+	}
+
+	/**
+	 * AJAX handler — rewrite existing text directly from the rewrite-mode popup.
+	 *
+	 * Accepts `text`, a `rewrite_action`, and optional `tone` / `language`.
+	 * Uses the saved Ai Suite provider/model/API key and returns rewritten plain text.
+	 */
+	public function rbea_ai_rewrite() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Forbidden', 'responsive-block-editor-addons' ) ), 403 );
+			return;
+		}
+
+		$post           = wp_unslash( $_POST );
+		$text           = isset( $post['text'] ) ? sanitize_textarea_field( (string) $post['text'] ) : '';
+		$rewrite_action = isset( $post['rewrite_action'] ) ? sanitize_text_field( (string) $post['rewrite_action'] ) : '';
+		$tone           = isset( $post['tone'] ) ? sanitize_text_field( (string) $post['tone'] ) : '';
+		$language       = isset( $post['language'] ) ? sanitize_text_field( (string) $post['language'] ) : '';
+
+		if ( '' === $text ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Enter or keep some text in the textarea before rewriting.', 'responsive-block-editor-addons' ),
+				),
+				400
+			);
+			return;
+		}
+
+		$allowed_rewrite_actions = array(
+			'simplify_language',
+			'make_longer',
+			'make_shorter',
+			'fix_spelling_grammar',
+			'change_tone',
+			'translate_to',
+		);
+		if ( ! in_array( $rewrite_action, $allowed_rewrite_actions, true ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Choose a valid rewrite action.', 'responsive-block-editor-addons' ),
+				),
+				400
+			);
+			return;
+		}
+
+		$settings = $this->rbea_get_ai_suite_settings();
+		$api_key  = trim( (string) $settings['api_key'] );
+		$model    = (string) $settings['model'];
+
+		if ( '' === $api_key ) {
+			wp_send_json_error(
+				array(
+					'message' => __(
+						'No API key configured. Add one in Responsive Blocks → Ai Suite.',
+						'responsive-block-editor-addons'
+					),
+				),
+				400
+			);
+			return;
+		}
+
+		$allowed_tones_ajax = array( 'informative', 'casual', 'friendly', 'professional', 'inspirational' );
+		$tone_map  = array(
+			'informative'   => __( 'Use a clear, informative tone.', 'responsive-block-editor-addons' ),
+			'casual'        => __( 'Use a casual, conversational tone.', 'responsive-block-editor-addons' ),
+			'friendly'      => __( 'Use a warm, friendly tone.', 'responsive-block-editor-addons' ),
+			'professional'  => __( 'Use a professional, business-appropriate tone.', 'responsive-block-editor-addons' ),
+			'inspirational' => __( 'Use an inspirational, motivating tone.', 'responsive-block-editor-addons' ),
+		);
+		$lang_labels = $this->rbea_get_ai_suite_language_labels();
+
+		$action_instruction = '';
+		switch ( $rewrite_action ) {
+			case 'simplify_language':
+				$action_instruction = __( 'Simplify the following text without changing its language. Preserve the original meaning and tone while making it easier to read and understand.', 'responsive-block-editor-addons' );
+				break;
+			case 'make_longer':
+				$action_instruction = __( 'Expand the text with a bit more detail while preserving the original meaning.', 'responsive-block-editor-addons' );
+				break;
+			case 'make_shorter':
+				$action_instruction = __( 'Shorten the text while preserving the key meaning and clarity.', 'responsive-block-editor-addons' );
+				break;
+			case 'fix_spelling_grammar':
+				$action_instruction = __( 'Fix spelling, grammar, punctuation, and awkward phrasing while preserving the meaning.', 'responsive-block-editor-addons' );
+				break;
+			case 'change_tone':
+				if ( ! in_array( $tone, $allowed_tones_ajax, true ) ) {
+					wp_send_json_error(
+						array(
+							'message' => __( 'Choose a tone before rewriting.', 'responsive-block-editor-addons' ),
+						),
+						400
+					);
+					return;
+				}
+				$action_instruction = isset( $tone_map[ $tone ] ) ? $tone_map[ $tone ] : '';
+				break;
+			case 'translate_to':
+				if ( ! isset( $lang_labels[ $language ] ) ) {
+					wp_send_json_error(
+						array(
+							'message' => __( 'Choose a language before rewriting.', 'responsive-block-editor-addons' ),
+						),
+						400
+					);
+					return;
+				}
+				$action_instruction = sprintf(
+					/* translators: %s: language name, e.g. "Spanish". */
+					__( 'Translate the text entirely into %s while preserving the meaning.', 'responsive-block-editor-addons' ),
+					(string) $lang_labels[ $language ]
+				);
+				break;
+		}
+
+		$max_output_tokens = absint( $settings['max_tokens'] );
+		if ( $max_output_tokens < 100 ) {
+			$max_output_tokens = 1500;
+		}
+		if ( $max_output_tokens > 10000 ) {
+			$max_output_tokens = 10000;
+		}
+
+		$instructions  = 'Rewrite the text below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.';
+		$instructions .= "\n" . $action_instruction;
+		$final_prompt  = $instructions . "\n\nText:\n" . $text;
+
+		$body = wp_json_encode(
+			array(
+				'contents'         => array(
+					array( 'parts' => array( array( 'text' => $final_prompt ) ) ),
+				),
+				'generationConfig' => array(
+					'maxOutputTokens' => $max_output_tokens,
+					'temperature'     => 0.5,
+				),
+			)
+		);
+
+		$rewritten_text = $this->rbea_ai_request_gemini_text( $api_key, $model, $body );
+		if ( is_wp_error( $rewritten_text ) ) {
+			$error_data = $rewritten_text->get_error_data();
+			$status     = is_array( $error_data ) && isset( $error_data['status'] ) ? (int) $error_data['status'] : 500;
+			wp_send_json_error(
+				array(
+					'message' => $rewritten_text->get_error_message(),
+				),
+				$status
+			);
+			return;
+		}
+
+		wp_send_json_success( array( 'text' => $rewritten_text ) );
+	}
+
+	/**
+	 * Send a text-only Gemini request and return either rewritten/generated text or WP_Error.
+	 *
+	 * @param string $api_key API key.
+	 * @param string $model   Model id.
+	 * @param string $body    JSON request body.
+	 * @return string|WP_Error
+	 */
+	protected function rbea_ai_request_gemini_text( $api_key, $model, $body ) {
+		$endpoint = sprintf(
+			'https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s',
+			rawurlencode( $model ),
+			rawurlencode( $api_key )
+		);
+
 		$response = wp_remote_post(
 			$endpoint,
 			array(
@@ -2488,16 +2673,11 @@ class Responsive_Block_Editor_Addons {
 		);
 
 		if ( is_wp_error( $response ) ) {
-			wp_send_json_error(
-				array(
-					'message' => __(
-						'Could not reach the AI provider. Please try again.',
-						'responsive-block-editor-addons'
-					),
-				),
-				502
+			return new WP_Error(
+				'rbea_ai_provider_network_error',
+				__( 'Could not reach the AI provider. Please try again.', 'responsive-block-editor-addons' ),
+				array( 'status' => 502 )
 			);
-			return;
 		}
 
 		$status = (int) wp_remote_retrieve_response_code( $response );
@@ -2506,16 +2686,13 @@ class Responsive_Block_Editor_Addons {
 		if ( $status < 200 || $status >= 300 ) {
 			$api_message = isset( $json['error']['message'] ) ? (string) $json['error']['message'] : '';
 			$api_status  = isset( $json['error']['status'] ) ? (string) $json['error']['status'] : '';
-			wp_send_json_error(
-				array(
-					'message' => $this->rbea_humanize_gemini_error( $status, $api_status, $api_message ),
-				),
-				$status
+			return new WP_Error(
+				'rbea_ai_provider_error',
+				$this->rbea_humanize_gemini_error( $status, $api_status, $api_message ),
+				array( 'status' => $status )
 			);
-			return;
 		}
 
-		// Pull text out of the first candidate's parts.
 		$text = '';
 		if ( isset( $json['candidates'][0]['content']['parts'] ) && is_array( $json['candidates'][0]['content']['parts'] ) ) {
 			foreach ( $json['candidates'][0]['content']['parts'] as $part ) {
@@ -2526,21 +2703,15 @@ class Responsive_Block_Editor_Addons {
 		}
 
 		$text = trim( $text );
-
 		if ( '' === $text ) {
-			wp_send_json_error(
-				array(
-					'message' => __(
-						'The model returned an empty response. Try rephrasing the prompt or picking a different model.',
-						'responsive-block-editor-addons'
-					),
-				),
-				502
+			return new WP_Error(
+				'rbea_ai_provider_empty_response',
+				__( 'The model returned an empty response. Try rephrasing the prompt or picking a different model.', 'responsive-block-editor-addons' ),
+				array( 'status' => 502 )
 			);
-			return;
 		}
 
-		wp_send_json_success( array( 'text' => $text ) );
+		return $text;
 	}
 
 	/**

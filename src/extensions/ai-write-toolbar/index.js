@@ -11,6 +11,7 @@ import {
 	Button,
 	Popover,
 	SelectControl,
+	Spinner,
 	TextareaControl,
 	ToolbarButton,
 } from '@wordpress/components';
@@ -34,18 +35,22 @@ const REWRITE_OPTIONS = [
 	{
 		label: 'Simplify language',
 		Icon: SimplifyLanguageIcon,
+		action: 'simplify_language',
 	},
 	{
 		label: 'Make it longer',
 		Icon: MakeItLongerIcon,
+		action: 'make_longer',
 	},
 	{
 		label: 'Make it shorter',
 		Icon: MakeItShorterIcon,
+		action: 'make_shorter',
 	},
 	{
 		label: 'Fix spelling & grammar',
 		Icon: FixSpellingGrammarIcon,
+		action: 'fix_spelling_grammar',
 	},
 ];
 
@@ -361,10 +366,102 @@ function AiWritePopoverContent( {
 		aiSuite.default_length || 'large'
 	);
 	const [ tone, setTone ] = useState( aiSuite.default_tone || 'professional' );
+	const [ isRewriting, setIsRewriting ] = useState( false );
+	const [ rewriteError, setRewriteError ] = useState( '' );
 	const [ isGenerating, setIsGenerating ] = useState( false );
 	const [ generatedContent, setGeneratedContent ] = useState( '' );
 	const [ generationError, setGenerationError ] = useState( '' );
 	const [ hasUsedGenerateNow, setHasUsedGenerateNow ] = useState( false );
+
+	const handleRewriteTextChange = ( value ) => {
+		setRewriteText( value );
+		if ( rewriteError ) {
+			setRewriteError( '' );
+		}
+	};
+
+	const runRewriteRequest = async ( payload ) => {
+		if ( isRewriting ) return;
+		if ( ! rewriteText.trim() ) {
+			setRewriteError(
+				__(
+					'Enter or keep some text in the textarea before rewriting.',
+					'responsive-block-editor-addons'
+				)
+			);
+			return;
+		}
+		if ( ! hasApiKey ) {
+			setRewriteError(
+				__(
+					'No API key configured. Add one in Ai Suite.',
+					'responsive-block-editor-addons'
+				)
+			);
+			return;
+		}
+
+		setIsRewriting( true );
+		setRewriteError( '' );
+
+		const formData = new FormData();
+		formData.append( 'action', 'rbea_ai_rewrite' );
+		formData.append( 'nonce', ajaxNonce );
+		formData.append( 'text', rewriteText );
+		Object.entries( payload ).forEach( ( [ key, value ] ) => {
+			if ( value !== undefined && value !== null ) {
+				formData.append( key, value );
+			}
+		} );
+
+		try {
+			const res = await fetch( ajaxUrl, { method: 'POST', body: formData } );
+			const body = await res.json().catch( () => ( {} ) );
+			if ( ! res.ok || ! body || body.success !== true ) {
+				const message =
+					( body && body.data && body.data.message ) ||
+					__(
+						'Could not rewrite text. Please try again.',
+						'responsive-block-editor-addons'
+					);
+				throw new Error( message );
+			}
+			setRewriteText( ( body.data && body.data.text ) || '' );
+		} catch ( err ) {
+			setRewriteError(
+				err && err.message
+					? err.message
+					: __(
+							'Could not rewrite text. Please try again.',
+							'responsive-block-editor-addons'
+					  )
+			);
+		} finally {
+			setIsRewriting( false );
+		}
+	};
+
+	const handleRewriteChipClick = ( action ) => {
+		runRewriteRequest( { rewrite_action: action } );
+	};
+
+	const handleChangeToneSelection = ( value ) => {
+		setChangeTone( value );
+		if ( ! value ) {
+			return;
+		}
+		runRewriteRequest( { rewrite_action: 'change_tone', tone: value } );
+		setChangeTone( '' );
+	};
+
+	const handleTranslateToSelection = ( value ) => {
+		setTranslateTo( value );
+		if ( ! value ) {
+			return;
+		}
+		runRewriteRequest( { rewrite_action: 'translate_to', language: value } );
+		setTranslateTo( '' );
+	};
 
 	const handleGenerate = async () => {
 		if ( isGenerating ) return;
@@ -436,6 +533,17 @@ function AiWritePopoverContent( {
 		richTextOnChange( next );
 	};
 
+	const handleUseRewriteText = () => {
+		const text = ( rewriteText || '' ).trim();
+		if ( ! text || typeof richTextOnChange !== 'function' ) {
+			return;
+		}
+		const next = create( { text } );
+		next.start = text.length;
+		next.end = text.length;
+		richTextOnChange( next );
+	};
+
 	const handleInsertBelow = () => {
 		const text = ( generatedContent || '' ).trim();
 		if ( ! text || typeof richTextOnChange !== 'function' || ! richTextValue ) {
@@ -468,13 +576,18 @@ function AiWritePopoverContent( {
 	};
 
 	const canApplyGenerated = !! ( generatedContent && generatedContent.trim() );
+	const canUseRewriteText = !! (
+		rewriteText &&
+		rewriteText.trim() &&
+		typeof richTextOnChange === 'function'
+	);
 
 	return (
 		<div className="rbea-ai-write-popover__container">
 			<div className="rbea-ai-write-popover__header">
 				<div className="rbea-ai-write-popover__title">
 					<AiWriteHeaderIcon />
-					<span>{ __( 'Responsive AI Writer', 'responsive-block-editor-addons' ) }</span>
+					<span>{ __( 'AI Writer', 'responsive-block-editor-addons' ) }</span>
 				</div>
 				<button
 					type="button"
@@ -499,67 +612,84 @@ function AiWritePopoverContent( {
 
 			{ popupMode === 'rewrite' ? (
 				<Fragment>
-					<TextareaControl
-						label={ __( 'Rewrite text', 'responsive-block-editor-addons' ) }
-						hideLabelFromVision
-						value={ rewriteText }
-						onChange={ setRewriteText }
-						className="rbea-ai-write-popover__prompt"
-						rows={ 3 }
-					/>
-
-					<div className="rbea-ai-write-popover__field">
-						<div className="rbea-ai-write-popover__chips">
-							{ REWRITE_OPTIONS.map( ( { label, Icon } ) => (
-								<button
-									key={ label }
-									type="button"
-									className="rbea-ai-write-popover__chip"
-								>
-									<span className="rbea-ai-write-popover__chip-icon">
-										<Icon />
-									</span>
-									{ label }
-								</button>
-							) ) }
+					{ isRewriting ? (
+						<div className="rbea-ai-write-popover__loading" aria-live="polite">
+							<Spinner />
+							<span>{ __( 'Updating text…', 'responsive-block-editor-addons' ) }</span>
 						</div>
-					</div>
+					) : (
+						<Fragment>
+							<TextareaControl
+								label={ __( 'Rewrite text', 'responsive-block-editor-addons' ) }
+								hideLabelFromVision
+								value={ rewriteText }
+								onChange={ handleRewriteTextChange }
+								className="rbea-ai-write-popover__prompt"
+								rows={ 3 }
+							/>
 
-					<div className="rbea-ai-write-popover__row">
-						<SelectControl
-							__nextHasNoMarginBottom
-							label={ __( 'Change Tone', 'responsive-block-editor-addons' ) }
-							hideLabelFromVision
-							value={ changeTone }
-							options={ changeToneOptions }
-							onChange={ setChangeTone }
-							className="rbea-ai-write-popover__select"
-						/>
-						<SelectControl
-							__nextHasNoMarginBottom
-							label={ __( 'Translate to', 'responsive-block-editor-addons' ) }
-							hideLabelFromVision
-							value={ translateTo }
-							options={ translateToOptions }
-							onChange={ setTranslateTo }
-							className="rbea-ai-write-popover__select"
-						/>
-					</div>
+							<div className="rbea-ai-write-popover__field">
+								<div className="rbea-ai-write-popover__chips">
+									{ REWRITE_OPTIONS.map( ( { label, Icon, action } ) => (
+										<button
+											key={ label }
+											type="button"
+											className="rbea-ai-write-popover__chip"
+											onClick={ () => handleRewriteChipClick( action ) }
+										>
+											<span className="rbea-ai-write-popover__chip-icon">
+												<Icon />
+											</span>
+											{ label }
+										</button>
+									) ) }
+								</div>
+							</div>
 
-					<div className="rbea-ai-write-popover__actions">
-						<Button
-							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-prompt"
-							onClick={ () => setPopupMode( 'prompt' ) }
-						>
-							{ __( 'New Prompt', 'responsive-block-editor-addons' ) }
-						</Button>
-						<Button
-							className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-use"
-							disabled
-						>
-							{ __( 'Use text', 'responsive-block-editor-addons' ) }
-						</Button>
-					</div>
+							<div className="rbea-ai-write-popover__row">
+								<SelectControl
+									__nextHasNoMarginBottom
+									label={ __( 'Change Tone', 'responsive-block-editor-addons' ) }
+									hideLabelFromVision
+									value={ changeTone }
+									options={ changeToneOptions }
+									onChange={ handleChangeToneSelection }
+									className="rbea-ai-write-popover__select"
+								/>
+								<SelectControl
+									__nextHasNoMarginBottom
+									label={ __( 'Translate to', 'responsive-block-editor-addons' ) }
+									hideLabelFromVision
+									value={ translateTo }
+									options={ translateToOptions }
+									onChange={ handleTranslateToSelection }
+									className="rbea-ai-write-popover__select"
+								/>
+							</div>
+
+							{ rewriteError && (
+								<p className="rbea-ai-write-popover__error" role="alert">
+									{ rewriteError }
+								</p>
+							) }
+
+							<div className="rbea-ai-write-popover__actions">
+								<Button
+									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-prompt"
+									onClick={ () => setPopupMode( 'prompt' ) }
+								>
+									{ __( 'New Prompt', 'responsive-block-editor-addons' ) }
+								</Button>
+								<Button
+									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-use"
+									onClick={ handleUseRewriteText }
+									disabled={ ! canUseRewriteText }
+								>
+									{ __( 'Use text', 'responsive-block-editor-addons' ) }
+								</Button>
+							</div>
+						</Fragment>
+					) }
 				</Fragment>
 			) : (
 				<Fragment>
