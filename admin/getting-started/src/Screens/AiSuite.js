@@ -9,6 +9,7 @@ import {
   getAiSuiteLanguageOptions,
 } from "../../../../src/utils/ai-suite-choices.js";
 import { displayToast } from "../DisplayToast";
+import Icons from "../icons";
 
 /** Eye open — key visible (click to hide). */
 function ApiKeyVisibilityOnIcon() {
@@ -67,6 +68,7 @@ const DEFAULT_SETTINGS = {
   provider: 'google-gemini',
   model: 'gemini-2.5-flash-lite',
   api_key: '',
+  context: '',
   default_tone: 'professional',
   default_length: 'large',
   default_language: 'english',
@@ -248,6 +250,7 @@ const AiSuite = () => {
     deriveConnectionStatus( initialSettings )
   );
   const [connectionError, setConnectionError] = useState( '' );
+  const [context, setContext] = useState( initialSettings.context || '' );
   const [defaultTone, setDefaultTone] = useState( initialSettings.default_tone );
   const [defaultLength, setDefaultLength] = useState( initialSettings.default_length );
   const [defaultLanguage, setDefaultLanguage] = useState( initialSettings.default_language );
@@ -265,6 +268,7 @@ const AiSuite = () => {
     setProvider( settings.provider || DEFAULT_SETTINGS.provider );
     setModel( settings.model || DEFAULT_SETTINGS.model );
     setApiKey( settings.api_key || '' );
+    setContext( settings.context || '' );
     setDefaultTone( settings.default_tone || DEFAULT_SETTINGS.default_tone );
     setDefaultLength( settings.default_length || DEFAULT_SETTINGS.default_length );
     setDefaultLanguage( settings.default_language || DEFAULT_SETTINGS.default_language );
@@ -337,6 +341,7 @@ const AiSuite = () => {
       provider,
       model,
       api_key: apiKey,
+      context,
       default_tone: defaultTone,
       default_length: defaultLength,
       default_language: defaultLanguage,
@@ -602,6 +607,44 @@ const AiSuite = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 px-6 pt-4">
+              <div className="col-span-2 flex flex-col gap-2 min-w-0">
+                <div className="flex items-center gap-2 min-w-0">
+                  <p className={fieldLabelClass} id="rbea-ai-suite-context-label">
+                    {__( 'Context', 'responsive-block-editor-addons' )}
+                  </p>
+                  <span className="rbea-ai-suite-context-tooltip">
+                    <button
+                      type="button"
+                      className="rbea-ai-suite-context-tooltip__trigger"
+                      aria-label={ __( 'What is Context?', 'responsive-block-editor-addons' ) }
+                    >
+                      { Icons.help }
+                    </button>
+                    <span
+                      className="rbea-ai-suite-context-tooltip__content"
+                      role="tooltip"
+                    >
+                      {__(
+                        'Add background about your site, target audience, and brand guidelines so AI responses stay aligned with your brand voice and content goals.',
+                        'responsive-block-editor-addons'
+                      )}
+                    </span>
+                  </span>
+                </div>
+                <TextControl
+                  __nextHasNoMarginBottom
+                  hideLabelFromVision
+                  aria-labelledby="rbea-ai-suite-context-label"
+                  label={__( 'Context', 'responsive-block-editor-addons' )}
+                  value={context}
+                  onChange={setContext}
+                  className="rbea-ai-suite-context-field"
+                  placeholder={__(
+                    'Describe your site, audience, and brand guidelines…',
+                    'responsive-block-editor-addons'
+                  )}
+                />
+              </div>
               <div className="flex flex-col gap-2 min-w-0">
                 <p className={fieldLabelClass}>{__( 'Default Tone', 'responsive-block-editor-addons' )}</p>
                 <SelectControl

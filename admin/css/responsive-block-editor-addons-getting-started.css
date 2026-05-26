@@ -626,6 +626,8 @@ input[type="number"]::-webkit-outer-spin-button,
 }
 
 input[type="number"] {
+  -webkit-appearance: textfield;
+          appearance: textfield;
   -moz-appearance: textfield;
   outline: none;
 }
@@ -710,6 +712,10 @@ img {
 
 .top-4{
   top: 1rem;
+}
+
+.col-span-2{
+  grid-column: span 2 / span 2;
 }
 
 .m-0{
@@ -1806,6 +1812,72 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
   letter-spacing: 0;
   color: #64748b;
   opacity: 1;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__trigger svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__trigger svg path {
+  fill: rgb(100 116 139);
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__trigger:focus {
+  outline: none;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__trigger:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip__content {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  width: 280px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.16s ease, visibility 0.16s ease;
+  z-index: 10;
+}
+
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip:hover .rbea-ai-suite-context-tooltip__content,
+body.wp-admin .rbea-ai-suite-page .rbea-ai-suite-context-tooltip:focus-within .rbea-ai-suite-context-tooltip__content {
+  opacity: 1;
+  visibility: visible;
 }
 
 body.wp-admin .rbea-ai-suite-page .components-input-control__backdrop {

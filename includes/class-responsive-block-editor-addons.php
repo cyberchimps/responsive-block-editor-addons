@@ -1970,6 +1970,7 @@ class Responsive_Block_Editor_Addons {
 			'provider'         => 'google-gemini',
 			'model'            => 'gemini-2.5-flash-lite',
 			'api_key'          => '',
+			'context'          => '',
 			'default_tone'     => 'professional',
 			'default_length'   => 'large',
 			'default_language' => 'english',
@@ -2230,6 +2231,10 @@ class Responsive_Block_Editor_Addons {
 			}
 		}
 
+		if ( array_key_exists( 'context', $post ) ) {
+			$clean['context'] = sanitize_textarea_field( (string) $post['context'] );
+		}
+
 		if ( array_key_exists( 'max_tokens', $post ) ) {
 			$clean['max_tokens'] = absint( $post['max_tokens'] );
 		}
@@ -2454,11 +2459,19 @@ class Responsive_Block_Editor_Addons {
 			__( 'Write entirely in %s.', 'responsive-block-editor-addons' ),
 			$language_name
 		);
+		$context = trim( (string) ( $settings['context'] ?? '' ) );
 
 		$instructions  = "Write content for the topic below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.";
 		$instructions .= "\n" . $language_hint;
 		$instructions .= $tone_hint ? "\n" . $tone_hint : '';
 		$instructions .= $length_hint ? "\n" . $length_hint : '';
+		if ( '' !== $context ) {
+			$instructions .= "\n\n" . __(
+				'Use the site context below to align the response with the website purpose, target audience, and brand guidelines when relevant.',
+				'responsive-block-editor-addons'
+			);
+			$instructions .= "\n" . __( 'Site context:', 'responsive-block-editor-addons' ) . "\n" . $context;
+		}
 		$final_prompt  = $instructions . "\n\nTopic: " . $prompt;
 
 		$body = wp_json_encode(
@@ -2540,6 +2553,7 @@ class Responsive_Block_Editor_Addons {
 		$settings = $this->rbea_get_ai_suite_settings();
 		$api_key  = trim( (string) $settings['api_key'] );
 		$model    = (string) $settings['model'];
+		$context  = trim( (string) ( $settings['context'] ?? '' ) );
 
 		if ( '' === $api_key ) {
 			wp_send_json_error(
@@ -2617,6 +2631,13 @@ class Responsive_Block_Editor_Addons {
 		}
 
 		$instructions  = 'Rewrite the text below. Return plain text only — no HTML, no Markdown, no surrounding quotes, no commentary.';
+		if ( '' !== $context ) {
+			$instructions .= "\n\n" . __(
+				'Use the site context below to align the response with the website purpose, target audience, and brand guidelines when relevant.',
+				'responsive-block-editor-addons'
+			);
+			$instructions .= "\n" . __( 'Site context:', 'responsive-block-editor-addons' ) . "\n" . $context;
+		}
 		$instructions .= "\n" . $action_instruction;
 		$final_prompt  = $instructions . "\n\nText:\n" . $text;
 

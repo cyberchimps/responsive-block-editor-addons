@@ -61,7 +61,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
-		width: 358px;
+		width: 360px;
 		padding: 15px;
 	}
 
@@ -90,8 +90,8 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	}
 
 	.rbea-ai-write-popover__title-icon svg {
-		width: 18px;
-		height: 18px;
+		width: 26px;
+		height: 26px;
 	}
 
 	.rbea-ai-write-popover__close {
@@ -186,7 +186,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		text-align: left;
 		color: #334155;
 		background: #f1f5f9;
-		border: 0;
+		border: 0.5px solid #334155;
 		border-radius: 999px;
 		padding: 4px 11px;
 		cursor: pointer;
@@ -354,15 +354,15 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
-			color: #ffffff;
 			box-shadow: none;
 		}
 	}
 
 	.rbea-ai-write-popover__action--replace.components-button {
 		flex: 1 1 auto;
-		background: #c026d3;
-		border: 1px solid #c026d3;
+		background: white;
+		border: 1px solid #2563EB;
+		color: #2563EB;
 	}
 
 	.rbea-ai-write-popover__action--insert.components-button {
@@ -377,8 +377,9 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	}
 
 	.rbea-ai-write-popover__action--rewrite-prompt.components-button {
-		background: #c026d3;
-		border: 1px solid #c026d3;
+		background: white;
+		border: 1px solid #2563EB;
+		color: #2563EB;
 	}
 
 	.rbea-ai-write-popover__action--rewrite-use.components-button {
