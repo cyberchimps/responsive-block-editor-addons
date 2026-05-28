@@ -31,6 +31,13 @@ const SUGGESTED_PROMPTS = [
 	'Write microcopy for a submission form that includes...',
 ];
 
+function toPromptDraftFromSuggested( label ) {
+	const base = String( label || '' )
+		.replace( /\.{3}\s*$/, '' ) // trailing "..."
+		.trimEnd();
+	return base ? `${ base } ` : '';
+}
+
 const REWRITE_OPTIONS = [
 	{
 		label: 'Simplify language',
@@ -827,7 +834,9 @@ function AiWritePopoverContent( {
 										key={ label }
 										type="button"
 										className="rbea-ai-write-popover__chip"
-										onClick={ () => setPrompt( label ) }
+										onClick={ () =>
+											setPrompt( toPromptDraftFromSuggested( label ) )
+										}
 									>
 										{ label }
 									</button>
