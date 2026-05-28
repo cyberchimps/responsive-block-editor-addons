@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import { useState } from "react";
-import { Button, FormToggle, SelectControl, Spinner, TextControl } from "@wordpress/components";
+import { Button, FormToggle, SelectControl, Spinner, TextControl, TextareaControl } from "@wordpress/components";
 import {
   getAiSuitePostTypeOptions,
   getAiSuiteUserRoleOptions,
@@ -631,7 +631,7 @@ const AiSuite = () => {
                     </span>
                   </span>
                 </div>
-                <TextControl
+                <TextareaControl
                   __nextHasNoMarginBottom
                   hideLabelFromVision
                   aria-labelledby="rbea-ai-suite-context-label"

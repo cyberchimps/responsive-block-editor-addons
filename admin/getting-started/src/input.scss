@@ -142,7 +142,26 @@ body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-cont
     width: 100%;
 }
 
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field textarea.components-textarea-control__input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100px;
+    height: 100px;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #64748B;
+    resize: vertical;
+}
+
 body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-text-control__input::placeholder,
+body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field textarea.components-textarea-control__input::placeholder,
 body.wp-admin .rbea-ai-suite-page .components-base-control .components-base-control__field input.components-input-control__input::placeholder {
     font-family: Inter, sans-serif;
     font-weight: 400;

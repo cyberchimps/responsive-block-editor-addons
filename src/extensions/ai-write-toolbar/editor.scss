@@ -6,7 +6,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	gap: 6px;
 	height: auto;
 	min-height: 28px;
-	min-width: 85.8px;
+	min-width: 29px;
 	padding: 4px 10px;
 	margin: 6px 6px;
 	margin-left: 0px;
@@ -47,7 +47,8 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	}
 
 	.rbea-ai-write-toolbar-button__icon svg {
-		min-width: 0px;
+		height: 24px;
+		width: 24px;
 	}
 
 	svg {
@@ -154,12 +155,18 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		text-transform: capitalize;
 	}
 	.rbea-ai-write-popover__prompt textarea.components-textarea-control__input {
-		height: 78px;
+		min-height: 120px;
 		padding: 8px 12px;
 		border: 1px solid #cbd5e1;
 		border-radius: 4px;
-		resize: none;
+		resize: vertical;
 		overflow-y: auto;
+	}
+
+	.rbea-ai-write-popover__prompt input.components-text-control__input {
+		padding: 8px 12px;
+		border: 1px solid #cbd5e1;
+		border-radius: 4px;
 	}
 
 	.rbea-ai-write-popover__field {
@@ -172,9 +179,11 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
+		flex-direction: column;
 	}
 
 	.rbea-ai-write-popover__chip {
+		width: fit-content;
 		display: inline-flex;
 		align-items: center;
 		gap: 6px;
@@ -326,9 +335,43 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		font-size: 14px;
 		line-height: 20px;
 		color: #334155;
+	}
 
-		.components-spinner {
-			margin: 0;
+	.rbea-ai-write-popover__loading-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		animation: rbea-ai-write-loader-orbit 1.35s linear infinite;
+
+		svg {
+			display: block;
+			width: 26px;
+			height: 26px;
+			animation: rbea-ai-write-loader-pulse 1.35s ease-in-out infinite;
+			transform-origin: center;
+		}
+	}
+
+	@keyframes rbea-ai-write-loader-orbit {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes rbea-ai-write-loader-pulse {
+		0%,
+		100% {
+			transform: scale(0.88);
+			opacity: 0.75;
+		}
+		50% {
+			transform: scale(1);
+			opacity: 1;
 		}
 	}
 
@@ -370,7 +413,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		background: #2563eb;
 		border: 1px solid #2563eb;
 	}
-
+	
 	.rbea-ai-write-popover__action--rewrite-prompt.components-button,
 	.rbea-ai-write-popover__action--rewrite-use.components-button {
 		flex: 1 1 0;
