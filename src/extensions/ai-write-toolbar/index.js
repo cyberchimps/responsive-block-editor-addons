@@ -450,7 +450,9 @@ function AiWritePopoverContent( {
 			window.responsive_globals.responsive_block_editor_ajax_nonce ) ||
 		'';
 
+	// Back-compat naming from PHP: `has_api_key` now means "AI is available via WP Connectors".
 	const hasApiKey = !! aiSuite.has_api_key;
+	const wpAiSupported = !! aiSuite.wp_ai_supported;
 	const settingsUrl = aiSuite.settings_url || '#';
 
 	const [ popupMode, setPopupMode ] = useState( 'rewrite' );
@@ -512,7 +514,9 @@ function AiWritePopoverContent( {
 		if ( ! hasApiKey ) {
 			setRewriteError(
 				__(
-					'No API key configured. Add one in Ai Suite.',
+					wpAiSupported
+						? 'AI is not configured. Install an AI provider plugin and add a key under Settings → Connectors.'
+						: 'Requires WordPress 7.0+ to use AI Writer.',
 					'responsive-block-editor-addons'
 				)
 			);
@@ -595,7 +599,9 @@ function AiWritePopoverContent( {
 		if ( ! hasApiKey ) {
 			setGenerationError(
 				__(
-					'No API key configured. Add one in Ai Suite.',
+					wpAiSupported
+						? 'AI is not configured. Install an AI provider plugin and add a key under Settings → Connectors.'
+						: 'Requires WordPress 7.0+ to use AI Writer.',
 					'responsive-block-editor-addons'
 				)
 			);
@@ -720,10 +726,16 @@ function AiWritePopoverContent( {
 			{ ! hasApiKey && (
 				<div className="rbea-ai-write-popover__api-key-warning">
 					<span>
-						{ __( 'Connect your API key in settings.', 'responsive-block-editor-addons' ) }{ ' ' }
-						<a href={ settingsUrl }>
-							{ __( 'Go to Settings', 'responsive-block-editor-addons' ) }
-						</a>
+						{ wpAiSupported ? (
+							<>
+								{ __( 'Connect your API key in settings.', 'responsive-block-editor-addons' ) }{ ' ' }
+								<a href={ settingsUrl } target="_blank" rel="noopener noreferrer">
+									{ __( 'Go to Settings', 'responsive-block-editor-addons' ) }
+								</a>
+							</>
+						) : (
+							<>{ __( 'Requires WordPress 7.0+ to use AI Writer.', 'responsive-block-editor-addons' ) }</>
+						) }
 					</span>
 				</div>
 			) }
