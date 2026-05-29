@@ -97,6 +97,7 @@ function EditorStyles(props, deviceType) {
 		hoverboxShadowSpread,
 		hoverboxShadowPosition,
 		backgroundType,
+		backgroundHoverType,
 		containerBorderStyle,
 		containerBorderWidth,
 		containerBorderTopWidth,
@@ -125,11 +126,13 @@ function EditorStyles(props, deviceType) {
 		containerBottomRadiusMobile,
 		containerLeftRadiusMobile,
 		gradient,
+		gradientHover,
 		textColor,
 		linkColor,
 		linkColorHover,
 		opacity,
 		backgroundColor,
+		backgroundHoverColor,
 		backgroundRepeat,
 		backgroundRepeatTablet,
 		backgroundRepeatMobile,
@@ -338,6 +341,7 @@ function EditorStyles(props, deviceType) {
   	let containerBackgroundCSSMobile = {};
 	let containerBackgroundCSSTablet = {};
 	let containerBackgroundCSSDesktop = {};
+	let containerHoverBackgroundCSSDesktop = {};
 
 	if ( backgroundType === 'color' ) {
 		containerBackgroundCSSDesktop = {
@@ -375,6 +379,18 @@ function EditorStyles(props, deviceType) {
 			'background-position': containerBackgroundMobile,
 			'background-attachment': backgroundAttachmentMobile|| backgroundAttachmentTablet || backgroundAttachment,
 			'background-size': backgroundSizeMobile,
+		}
+	}
+
+	if ( backgroundHoverType === 'color' ) {
+		containerHoverBackgroundCSSDesktop = {
+			'background-color': backgroundHoverColor,
+		}
+	}
+
+	if ( backgroundHoverType === 'gradient' ) {
+		containerHoverBackgroundCSSDesktop = {
+			'background-image': gradientHover,
 		}
 	}
 
@@ -694,6 +710,7 @@ function EditorStyles(props, deviceType) {
 					hoverboxShadowColor +
 					' ' +
 					boxShadowPositionCSSHover,
+				...containerHoverBackgroundCSSDesktop,
 			}
 		}
 	}

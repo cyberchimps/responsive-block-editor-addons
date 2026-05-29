@@ -219,6 +219,10 @@ const attributes = {
     type: "string",
     default: "none",
   },
+  backgroundHoverType: {
+    type: "string",
+    default: "none",
+  },
   opacity: {
     type: "number",
     default: 100,
@@ -226,7 +230,13 @@ const attributes = {
   backgroundColor: {
     type: "string",
   },
+  backgroundHoverColor: {
+    type: "string",
+  },
   gradient: {
+    type: "string",
+  },
+  gradientHover: {
     type: "string",
   },
   backgroundImage: {

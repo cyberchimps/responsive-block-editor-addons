@@ -24818,6 +24818,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$selectors[ $base_selector ]   = $container_css;
 				$tablet_selectors[ $base_selector ] = $container_tablet_css;
 				$mobile_selectors[ $base_selector ] = $container_mobile_css;
+				$selectors[ $base_selector . ':hover' ]['background-color'] = ( 'color' === $attr['backgroundHoverType'] ) ? $attr['backgroundHoverColor'] : '';
+				$selectors[ $base_selector . ':hover' ]['background-image'] = ( 'gradient' === $attr['backgroundHoverType'] ) ? $attr['gradientHover'] : '';
 				// If hover blur or hover color are set, show the hover shadow.
 				if ( ( ( '' !== $attr['hoverboxShadowBlur'] ) && ( null !== $attr['hoverboxShadowBlur'] ) ) || '' !== $attr['hoverboxShadowColor'] ) {
 
@@ -24832,7 +24834,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 																			$attr['hoverboxShadowColor'] .
 																			' ' .
 																			$box_shadow_position_css_hover;
-
 				}
 			}
 
@@ -25140,9 +25141,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'alignContentTablet'              => '',
 				'alignContentMobile'              => '',
 				'backgroundType'                  => 'none',
+				'backgroundHoverType'             => 'none',
 				'opacity'                         => 100,
 				'backgroundColor'                 => '',
+				'backgroundHoverColor'            => '',
 				'gradient'                        => 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+				'gradientHover'                   => '',
 				'backgroundImage'                 => '',
 				'backgroundPosition'              => '50% 50%',
 				'backgroundPositionMobile'        => '',

@@ -254,4 +254,18 @@
 			}
 		}
 	}
+	.rbea-container-background-controls {
+		.responsive-size-type-field-tabs {
+			.components-tab-panel__tabs {
+				display: block;
+				width: auto;
+				height: auto;
+				max-width: none;
+				max-height: none;
+				margin-left: 0;
+				margin-bottom: -20px;
+			}
+		}
+	}
 }
+
