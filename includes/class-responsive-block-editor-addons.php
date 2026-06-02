@@ -2375,7 +2375,8 @@ class Responsive_Block_Editor_Addons {
 		$builder = wp_ai_client_prompt( 'Topic: ' . $prompt )
 			->using_system_instruction( $instructions )
 			->using_max_tokens( $max_output_tokens )
-			->using_temperature( 0.7 );
+			->using_temperature( 0.7 )
+			->using_model_preference( 'gemini-2.5-flash-lite' );
 
 		if ( ! $builder->is_supported_for_text_generation() ) {
 			wp_send_json_error(
@@ -2539,7 +2540,8 @@ class Responsive_Block_Editor_Addons {
 		$builder = wp_ai_client_prompt( "Text:\n" . $text )
 			->using_system_instruction( $instructions )
 			->using_max_tokens( $max_output_tokens )
-			->using_temperature( 0.5 );
+			->using_temperature( 0.5 )
+			->using_model_preference ( 'gemini-2.5-flash-lite' );
 
 		if ( ! $builder->is_supported_for_text_generation() ) {
 			wp_send_json_error(
