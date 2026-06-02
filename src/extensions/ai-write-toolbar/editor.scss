@@ -6,7 +6,7 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	gap: 6px;
 	height: auto;
 	min-height: 28px;
-	min-width: 85.8px;
+	min-width: 29px;
 	padding: 4px 10px;
 	margin: 6px 6px;
 	margin-left: 0px;
@@ -47,7 +47,8 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	}
 
 	.rbea-ai-write-toolbar-button__icon svg {
-		min-width: 0px;
+		height: 24px;
+		width: 24px;
 	}
 
 	svg {
@@ -61,8 +62,8 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
-		width: 358px;
-		padding: 16px;
+		width: 360px;
+		padding: 15px;
 	}
 
 	.rbea-ai-write-popover__header {
@@ -87,6 +88,11 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 
 	.rbea-ai-write-popover__title-icon {
 		display: inline-flex;
+	}
+
+	.rbea-ai-write-popover__title-icon svg {
+		width: 26px;
+		height: 26px;
 	}
 
 	.rbea-ai-write-popover__close {
@@ -149,12 +155,18 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		text-transform: capitalize;
 	}
 	.rbea-ai-write-popover__prompt textarea.components-textarea-control__input {
-		height: 78px;
+		min-height: 120px;
 		padding: 8px 12px;
 		border: 1px solid #cbd5e1;
 		border-radius: 4px;
-		resize: none;
+		resize: vertical;
 		overflow-y: auto;
+	}
+
+	.rbea-ai-write-popover__prompt input.components-text-control__input {
+		padding: 8px 12px;
+		border: 1px solid #cbd5e1;
+		border-radius: 4px;
 	}
 
 	.rbea-ai-write-popover__field {
@@ -167,21 +179,33 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
+		flex-direction: column;
 	}
 
 	.rbea-ai-write-popover__chip {
+		width: fit-content;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
 		font-family: Inter, sans-serif;
 		font-weight: 400;
 		font-size: 12px;
 		line-height: 16px;
 		letter-spacing: 0;
-		text-align: center;
+		text-align: left;
 		color: #334155;
 		background: #f1f5f9;
-		border: 0;
+		border: 0.5px solid #334155;
 		border-radius: 999px;
 		padding: 4px 11px;
 		cursor: pointer;
+	}
+
+	.rbea-ai-write-popover__chip-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
 	}
 
 	.rbea-ai-write-popover__row {
@@ -192,7 +216,8 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 	}
 
 	.rbea-ai-write-popover__length,
-	.rbea-ai-write-popover__tone {
+	.rbea-ai-write-popover__tone,
+	.rbea-ai-write-popover__select {
 		label.components-input-control__label, select.components-select-control__input {
 			font-family: Inter, sans-serif;
 			font-weight: 400;
@@ -294,6 +319,62 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 		color: #dc2626;
 	}
 
+	.rbea-ai-write-popover__loading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		min-height: 190px;
+		padding: 24px 16px;
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		background: #f8fafc;
+		font-family: Inter, sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #334155;
+	}
+
+	.rbea-ai-write-popover__loading-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		animation: rbea-ai-write-loader-orbit 1.35s linear infinite;
+
+		svg {
+			display: block;
+			width: 26px;
+			height: 26px;
+			animation: rbea-ai-write-loader-pulse 1.35s ease-in-out infinite;
+			transform-origin: center;
+		}
+	}
+
+	@keyframes rbea-ai-write-loader-orbit {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes rbea-ai-write-loader-pulse {
+		0%,
+		100% {
+			transform: scale(0.88);
+			opacity: 0.75;
+		}
+		50% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
 	.rbea-ai-write-popover__actions {
 		display: flex;
 		align-items: center;
@@ -316,18 +397,35 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
-			color: #ffffff;
+			box-shadow: none;
 		}
 	}
 
 	.rbea-ai-write-popover__action--replace.components-button {
 		flex: 1 1 auto;
-		background: #c026d3;
-		border: 1px solid #c026d3;
+		background: white;
+		border: 1px solid #2563EB;
+		color: #2563EB;
 	}
 
 	.rbea-ai-write-popover__action--insert.components-button {
 		width: 137px;
+		background: #2563eb;
+		border: 1px solid #2563eb;
+	}
+	
+	.rbea-ai-write-popover__action--rewrite-prompt.components-button,
+	.rbea-ai-write-popover__action--rewrite-use.components-button {
+		flex: 1 1 0;
+	}
+
+	.rbea-ai-write-popover__action--rewrite-prompt.components-button {
+		background: white;
+		border: 1px solid #2563EB;
+		color: #2563EB;
+	}
+
+	.rbea-ai-write-popover__action--rewrite-use.components-button {
 		background: #2563eb;
 		border: 1px solid #2563eb;
 	}
