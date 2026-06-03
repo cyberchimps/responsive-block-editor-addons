@@ -47,6 +47,29 @@ const aiSuiteCardClass =
 const fieldLabelClass =
   'font-sans font-medium text-base leading-6 tracking-normal text-[#1E293B]';
 
+/**
+ * @param {{ ariaLabel: string, children: import('react').ReactNode }} props
+ */
+function AiSuiteHelpTooltip( { ariaLabel, children } ) {
+  return (
+    <span className="rbea-ai-suite-context-tooltip">
+      <button
+        type="button"
+        className="rbea-ai-suite-context-tooltip__trigger"
+        aria-label={ ariaLabel }
+      >
+        { Icons.help }
+      </button>
+      <span
+        className="rbea-ai-suite-context-tooltip__content"
+        role="tooltip"
+      >
+        { children }
+      </span>
+    </span>
+  );
+}
+
 // AI providers and API keys are configured via WordPress (Settings → Connectors),
 // so the getting-started screen no longer manages provider/model/key state.
 
@@ -190,9 +213,22 @@ const AiSuite = () => {
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 items-center">
-                <p className={ `${ fieldLabelClass } min-w-0` }>
-                  {__( 'Select Post Types', 'responsive-block-editor-addons' )}
-                </p>
+                <div className="flex items-center gap-2 min-w-0">
+                  <p className={ `${ fieldLabelClass } min-w-0` }>
+                    {__( 'Select Post Types', 'responsive-block-editor-addons' )}
+                  </p>
+                  <AiSuiteHelpTooltip
+                    ariaLabel={ __(
+                      'What does Select Post Types control?',
+                      'responsive-block-editor-addons'
+                    ) }
+                  >
+                    {__(
+                      'Choose which post types show the RBA AI Writer toolbar in the block editor.',
+                      'responsive-block-editor-addons'
+                    )}
+                  </AiSuiteHelpTooltip>
+                </div>
                 <div className="min-w-0 w-full">
                   <SelectControl
                     __nextHasNoMarginBottom
@@ -205,9 +241,22 @@ const AiSuite = () => {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 items-center">
-                <p className={ `${ fieldLabelClass } min-w-0` }>
-                  {__( 'User Role Access', 'responsive-block-editor-addons' )}
-                </p>
+                <div className="flex items-center gap-2 min-w-0">
+                  <p className={ `${ fieldLabelClass } min-w-0` }>
+                    {__( 'User Role Access', 'responsive-block-editor-addons' )}
+                  </p>
+                  <AiSuiteHelpTooltip
+                    ariaLabel={ __(
+                      'What does User Role Access control?',
+                      'responsive-block-editor-addons'
+                    ) }
+                  >
+                    {__(
+                      'Only users with the selected role or a higher role can use AI Writer.',
+                      'responsive-block-editor-addons'
+                    )}
+                  </AiSuiteHelpTooltip>
+                </div>
                 <div className="min-w-0 w-full">
                   <SelectControl
                     __nextHasNoMarginBottom
@@ -234,24 +283,14 @@ const AiSuite = () => {
                   <p className={fieldLabelClass} id="rbea-ai-suite-context-label">
                     {__( 'Context', 'responsive-block-editor-addons' )}
                   </p>
-                  <span className="rbea-ai-suite-context-tooltip">
-                    <button
-                      type="button"
-                      className="rbea-ai-suite-context-tooltip__trigger"
-                      aria-label={ __( 'What is Context?', 'responsive-block-editor-addons' ) }
-                    >
-                      { Icons.help }
-                    </button>
-                    <span
-                      className="rbea-ai-suite-context-tooltip__content"
-                      role="tooltip"
-                    >
-                      {__(
-                        'Add background about your site, target audience, and brand guidelines so AI responses stay aligned with your brand voice and content goals.',
-                        'responsive-block-editor-addons'
-                      )}
-                    </span>
-                  </span>
+                  <AiSuiteHelpTooltip
+                    ariaLabel={ __( 'What is Context?', 'responsive-block-editor-addons' ) }
+                  >
+                    {__(
+                      'Add background information about your site, target audience, and brand guidelines so AI responses stay aligned with your brand voice and content goals.',
+                      'responsive-block-editor-addons'
+                    )}
+                  </AiSuiteHelpTooltip>
                 </div>
                 <TextareaControl
                   __nextHasNoMarginBottom
