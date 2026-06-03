@@ -136,6 +136,21 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 			line-height: 16px;
 			text-decoration: underline;
 		}
+
+		.rbea-ai-write-popover__api-key-warning-link {
+			display: inline;
+			white-space: nowrap;
+			text-decoration: underline;
+			text-underline-offset: 2px;
+
+			svg {
+				display: inline-block;
+				vertical-align: text-bottom;
+				width: 1em;
+				height: 1em;
+				margin-left: 0.15em;
+			}
+		}
 	}
 
 	.rbea-ai-write-popover__prompt .components-base-control__label {
@@ -225,7 +240,6 @@ button.rbea-ai-write-toolbar-button.components-button.components-toolbar-button 
 			line-height: 16px;
 			letter-spacing: 0;
 			color: #475569;
-			text-transform: capitalize;
 		}
 
 		select.components-select-control__input,

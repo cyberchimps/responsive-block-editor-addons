@@ -253,6 +253,27 @@ function CloseIcon() {
 	);
 }
 
+/** Same diagonal arrow as Blocks dashboard (`Icons.arrowDiagonal`). */
+function ArrowDiagonalIcon() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			strokeWidth={ 1.5 }
+			stroke="currentColor"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<path
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+			/>
+		</svg>
+	);
+}
+
 function CopyIcon() {
 	return (
 		<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -466,7 +487,7 @@ function AiWritePopoverContent( {
 	const languageOptions = getAiSuiteLanguageOptions( __ );
 	const changeToneOptions = [
 		{
-			label: __( 'Change Tone', 'responsive-block-editor-addons' ),
+			label: __( 'Change tone', 'responsive-block-editor-addons' ),
 			value: '',
 			disabled: true,
 		},
@@ -723,14 +744,20 @@ function AiWritePopoverContent( {
 				</button>
 			</div>
 
-			{ ! hasApiKey && (
+			{ ! hasApiKey ? (
 				<div className="rbea-ai-write-popover__api-key-warning">
 					<span>
 						{ wpAiSupported ? (
 							<>
-								{ __( 'Connect your API key in settings.', 'responsive-block-editor-addons' ) }{ ' ' }
-								<a href={ settingsUrl } target="_blank" rel="noopener noreferrer">
-									{ __( 'Go to Settings', 'responsive-block-editor-addons' ) }
+								{ __( 'To edit text with AI, connect an AI Provider in the WordPress settings.', 'responsive-block-editor-addons' ) }{ ' ' }
+								<a
+									href={ settingsUrl }
+									target="_blank"
+									rel="noopener noreferrer"
+									className="rbea-ai-write-popover__api-key-warning-link"
+								>
+									{ __( 'Connect now', 'responsive-block-editor-addons' ) }
+									<ArrowDiagonalIcon />
 								</a>
 							</>
 						) : (
@@ -738,9 +765,7 @@ function AiWritePopoverContent( {
 						) }
 					</span>
 				</div>
-			) }
-
-			{ popupMode === 'rewrite' ? (
+			) : popupMode === 'rewrite' ? (
 				<Fragment>
 					{ isRewriting ? (
 						<div className="rbea-ai-write-popover__loading" aria-live="polite">
@@ -779,7 +804,7 @@ function AiWritePopoverContent( {
 							<div className="rbea-ai-write-popover__row">
 								<SelectControl
 									__nextHasNoMarginBottom
-									label={ __( 'Change Tone', 'responsive-block-editor-addons' ) }
+									label={ __( 'Change tone', 'responsive-block-editor-addons' ) }
 									hideLabelFromVision
 									value={ changeTone }
 									options={ changeToneOptions }
@@ -808,7 +833,7 @@ function AiWritePopoverContent( {
 									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-prompt"
 									onClick={ () => setPopupMode( 'prompt' ) }
 								>
-									{ __( 'New Prompt', 'responsive-block-editor-addons' ) }
+									{ __( 'New prompt', 'responsive-block-editor-addons' ) }
 								</Button>
 								<Button
 									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--rewrite-use"
@@ -887,7 +912,6 @@ function AiWritePopoverContent( {
 						disabled={
 							isGenerating ||
 							! prompt.trim() ||
-							! hasApiKey ||
 							hasUsedGenerateNow
 						}
 					>
@@ -895,7 +919,7 @@ function AiWritePopoverContent( {
 						<span className="rbea-ai-write-popover__generate-label">
 							{ isGenerating
 								? __( 'Generating…', 'responsive-block-editor-addons' )
-								: __( 'Generate Now', 'responsive-block-editor-addons' ) }
+								: __( 'Generate now', 'responsive-block-editor-addons' ) }
 						</span>
 					</Button>
 
