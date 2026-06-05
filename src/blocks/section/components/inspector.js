@@ -27,6 +27,10 @@ import { convertPositionToFocalPoint } from '../../../getImagePosition';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { ColorPalette, MediaUpload, InspectorControls } = wp.blockEditor;
+import { createBlock } from '@wordpress/blocks';
+import { dispatch, select } from '@wordpress/data';
+import { hexToRgba } from "../../../utils";
+import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
 
 // Import Inspector components
 const {
@@ -106,6 +110,177 @@ export default class Inspector extends Component {
     }
     setAttributes({ backgroundVideo: media });
   }
+
+  addOpacityToHex(hex = '#FFFFFF', opacity = '') {
+    if ( opacity === '' || typeof opacity === 'undefined' ) return hex;
+
+    // Remove '#' if present.
+    hex = hex.replace('#', '');
+    
+    // Convert short hex (#FFF) to long hex (#FFFFFF).
+    if (hex.length === 3) {
+      hex = hex.split('').map(c => c + c).join('');
+    }
+    
+    // Convert opacity to hex.
+    const alphaHex = Math.round(opacity * 255).toString(16).padStart(2, '0');
+    
+    // 8-digit hex.
+    const hex8 = `#${hex}${alphaHex.toUpperCase()}`;
+    
+    return hex8;
+  }
+
+  convertToContainer = () => {
+    const { clientId } = this.props;
+    const { getBlock } = select( 'core/block-editor' );
+    const { replaceBlock } = dispatch( 'core/block-editor' );
+    const { createNotice } = dispatch( 'core/notices' );
+
+    const currentBlock = getBlock( clientId );
+    if ( ! currentBlock ) return;
+
+    const { attributes, innerBlocks } = currentBlock;
+
+    let width = attributes.width;
+
+    let containerAlign = {
+      contentWidth: 'default',
+      customWidthDesktop: width,
+      customWidthTablet: width,
+      customWidthMobile: width,
+      customWidthTypeDesktop: 'px',
+      customWidthTypeTablet: 'px',
+      customWidthTypeMobile: 'px',
+    };
+
+    if ( attributes.align === 'full' ) {
+      let width       = attributes.innerWidth;
+      let widthTablet = attributes.innerWidthTablet === undefined ? width : attributes.innerWidthTablet;
+      let widthMobile = attributes.innerWidthMobile === undefined ? widthTablet : attributes.innerWidthMobile;
+
+      containerAlign = {
+        innerContentCustomWidthDesktop: width,
+        innerContentCustomWidthTablet: widthTablet,
+        innerContentCustomWidthMobile: widthMobile,
+      };
+    }
+
+    let sectionGradient = generateBackgroundImageEffect( `${hexToRgba(attributes.backgroundColor1 || '#fff', (attributes.opacity/100) || 0 )}`, `${hexToRgba(attributes.backgroundColor2 || '#fff', (attributes.opacity/100) || 0 )}`, attributes.gradientDirection, attributes.colorLocation1, attributes.colorLocation2 );
+
+    let imageOverlay = `linear-gradient(${attributes.gradientOverlayAngle}deg, ${hexToRgba( attributes.gradientOverlayColor1 || '#fff', (attributes.opacity/100) || 0 )} ${attributes.gradientOverlayLocation1}%, ${hexToRgba( attributes.gradientOverlayColor2 || '#fff', (attributes.opacity/100) || 0 )} ${attributes.gradientOverlayLocation2}%)`
+
+    if ( attributes.gradientOverlayType === 'radial' ) {
+      imageOverlay = `radial-gradient(${hexToRgba( attributes.gradientOverlayColor1 || '#fff', (attributes.opacity/100) || 0 )} ${attributes.gradientOverlayLocation1}%, ${hexToRgba( attributes.gradientOverlayColor2 || '#fff', (attributes.opacity/100) || 0 )} ${attributes.gradientOverlayLocation2}%)`
+    }
+
+    const newBlock = createBlock(
+      'responsive-block-editor-addons/container',
+      {
+        variationSelected: true,
+        htmlTag: 'section',
+        ...containerAlign,
+        backgroundType: attributes.backgroundType,
+        backgroundColor: attributes.hasOwnProperty('backgroundColor') ? this.addOpacityToHex(attributes.backgroundColor, (attributes.opacity/100)) : '',
+        gradient: sectionGradient,
+        backgroundImage: attributes.hasOwnProperty('backgroundImage') ? attributes.backgroundImage : '',
+        backgroundPosition: attributes.backgroundPositionFocal,
+        backgroundPositionMobile: attributes.backgroundPositionFocalMobile,
+        backgroundPositionTablet: attributes.backgroundPositionFocalTablet,
+        backgroundAttachment: attributes.backgroundAttachment,
+        backgroundSize: attributes.backgroundSize,
+        backgroundSizeTablet: attributes.backgroundSizeTablet,
+        backgroundSizeMobile: attributes.backgroundSizeMobile,
+        backgroundRepeat: attributes.backgroundRepeat,
+        overlayType: attributes.overlayType,
+        overlayColor: attributes.hasOwnProperty('backgroundImageColor') ? attributes.backgroundImageColor : '',
+        overlayGradient: imageOverlay,
+        opacity: attributes.opacity,
+        backgroundVideo: attributes.hasOwnProperty('backgroundVideo') ? attributes.backgroundVideo : '',
+        containerBorderStyle: attributes.blockBorderStyle,
+        containerBorderColor: attributes.blockBorderColor,
+        containerBorderWidth: attributes.blockBorderWidth,
+        containerTopRadius: attributes.blockTopRadius,
+        containerRightRadius: attributes.blockRightRadius,
+        containerBottomRadius: attributes.blockBottomRadius,
+        containerLeftRadius: attributes.blockLeftRadius,
+        containerTopRadiusTablet: attributes.blockTopRadiusTablet,
+        containerRightRadiusTablet: attributes.blockRightRadiusTablet,
+        containerBottomRadiusTablet: attributes.blockBottomRadiusTablet,
+        containerLeftRadiusTablet: attributes.blockLeftRadiusTablet,
+        containerTopRadiusMobile: attributes.blockTopRadiusMobile,
+        containerRightRadiusMobile: attributes.blockRightRadiusMobile,
+        containerBottomRadiusMobile: attributes.blockBottomRadiusMobile,
+        containerLeftRadiusMobile: attributes.blockLeftRadiusMobile,
+        boxShadowColor: attributes.hasOwnProperty('boxShadowColor') ? attributes.boxShadowColor : '',
+        boxShadowHOffset: attributes.boxShadowHOffset,
+        boxShadowVOffset: attributes.boxShadowVOffset,
+        boxShadowBlur: attributes.boxShadowBlur,
+        boxShadowSpread: attributes.boxShadowSpread,
+        boxShadowPosition: attributes.boxShadowPosition,
+        hoverboxShadowColor: attributes.hasOwnProperty('hoverboxShadowColor') ? attributes.hoverboxShadowColor : '',
+        hoverboxShadowHOffset: attributes.hoverboxShadowHOffset,
+        hoverboxShadowVOffset: attributes.hoverboxShadowVOffset,
+        hoverboxShadowBlur: attributes.hoverboxShadowBlur,
+        hoverboxShadowSpread: attributes.hoverboxShadowSpread,
+        hoverboxShadowPosition: attributes.hoverboxShadowPosition,
+        containerTopMargin: attributes.blockTopMargin,
+        containerBottomMargin: attributes.blockBottomMargin,
+        containerLeftMargin: attributes.blockLeftMargin,
+        containerRightMargin: attributes.blockRightMargin,
+        containerTopMarginMobile: attributes.blockTopMarginMobile,
+        containerBottomMarginMobile: attributes.blockBottomMarginMobile,
+        containerLeftMarginMobile: attributes.blockLeftMarginMobile,
+        containerRightMarginMobile: attributes.blockRightMarginMobile,
+        containerTopMarginTablet: attributes.blockTopMarginTablet,
+        containerBottomMarginTablet: attributes.blockBottomMarginTablet,
+        containerLeftMarginTablet: attributes.blockLeftMarginTablet,
+        containerRightMarginTablet: attributes.blockRightMarginTablet,
+        containerTopPadding: attributes.blockTopPadding,
+        containerBottomPadding: attributes.blockBottomPadding,
+        containerLeftPadding: attributes.blockLeftPadding,
+        containerRightPadding: attributes.blockRightPadding,
+        containerTopPaddingMobile: attributes.blockTopPaddingMobile,
+        containerBottomPaddingMobile: attributes.blockBottomPaddingMobile,
+        containerLeftPaddingMobile: attributes.blockLeftPaddingMobile,
+        containerRightPaddingMobile: attributes.blockRightPaddingMobile,
+        containerTopPaddingTablet: attributes.blockTopPaddingTablet,
+        containerBottomPaddingTablet: attributes.blockBottomPaddingTablet,
+        containerLeftPaddingTablet: attributes.blockLeftPaddingTablet,
+        containerRightPaddingTablet: attributes.blockRightPaddingTablet,
+        RBEAAnimationType: attributes.RBEAAnimationType,
+        RBEAAnimationTime: attributes.RBEAAnimationTime,
+        RBEAAnimationRepeat: attributes.RBEAAnimationRepeat,
+        RBEAAnimationEasing: attributes.RBEAAnimationEasing,
+        RBEAAnimationDelay: attributes.RBEAAnimationDelay,
+        RBEADisplayConditions: attributes.hasOwnProperty('RBEADisplayConditions') ? attributes.RBEADisplayConditions : '',
+        RBEALoggedOut: attributes.RBEALoggedOut,
+        RBEALoggedIn: attributes.RBEALoggedIn,
+        RBEADay: attributes.RBEADay,
+        RBEARole: attributes.hasOwnProperty('RBEARole') ? attributes.RBEARole : '',
+        RBEABrowser: attributes.hasOwnProperty('RBEABrowser') ? attributes.RBEABrowser : '',
+        RBEASystem: attributes.hasOwnProperty('RBEASystem') ? attributes.RBEASystem : '',
+        hideWidget: attributes.hideWidget,
+        hideWidgetTablet: attributes.hideWidgetTablet,
+        hideWidgetMobile: attributes.hideWidgetMobile,
+        z_index: attributes.z_index,
+        z_indexTablet: attributes.z_indexTablet,
+        z_indexMobile: attributes.z_indexMobile,
+      },
+      innerBlocks
+    );
+
+    replaceBlock( clientId, newBlock );
+
+    createNotice(
+			'success',
+			__( 'Converted from Section to Container.', 'responsive-block-editor-addons' ),
+			{
+				type: 'snackbar',
+				isDismissible: true,
+			}
+		);
+  };
 
   render() {
     // Setup the attributes
@@ -352,7 +527,16 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-              <Notice isDismissible={false} status="warning"><p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead.', 'responsive-block-editor-addons' )}</p></Notice>
+            <Notice isDismissible={false} status="warning">
+              <p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead.', 'responsive-block-editor-addons' )}</p>
+              <Button
+                isPrimary
+                onClick={ this.convertToContainer }
+              >
+                {__( 'Convert to Container', 'responsive-block-editor-addons' )}
+              </Button>
+            </Notice>
+          
               {align != "full" && (
                 <RbeaRangeControl
                   label={__("Width", "responsive-block-editor-addons")}
