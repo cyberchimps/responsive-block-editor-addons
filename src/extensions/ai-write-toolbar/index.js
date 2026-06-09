@@ -941,14 +941,14 @@ function AiWritePopoverContent( {
 									onClick={ handleReplaceText }
 									disabled={ ! canApplyGenerated }
 								>
-									{ __( 'Replace Text', 'responsive-block-editor-addons' ) }
+									{ __( 'Replace text', 'responsive-block-editor-addons' ) }
 								</Button>
 								<Button
 									className="rbea-ai-write-popover__action rbea-ai-write-popover__action--insert"
 									onClick={ handleInsertBelow }
 									disabled={ ! canApplyGenerated }
 								>
-									{ __( 'Insert Below', 'responsive-block-editor-addons' ) }
+									{ __( 'Insert below', 'responsive-block-editor-addons' ) }
 								</Button>
 								<button
 									type="button"
