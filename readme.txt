@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,11 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.2.5 - 9th June 2026 =
+* New - AI Content Writer: Introduced AI-powered content generation directly within the block editor to help create and refine content more efficiently.
+* Improvement - Container Block: Introduced Hover Background Color option.
+* Fix - Table of Contents Block: Bug fixes.
 
 = 2.2.4 - 19th May 2026 =
 * Fix - Table of Contents: The collapsible arrow not working in editor, image sizes setting not working, grey background color appearing on frontend during initial drag-and-drop but not in editor, icon touching the border on initial drag-and-drop, and Select Icon not working properly.
