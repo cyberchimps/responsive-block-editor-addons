@@ -416,6 +416,7 @@ function EditorStyles(props) {
       "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-style": 'solid',
       "border-color": borderColor,
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),

@@ -12357,6 +12357,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-position'        => $background_position_focal,
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'border-width'               => self::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-style'				 => 'solid',
 					'border-color'               => $attr['borderColor'],
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadius'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadius'], 'px' ),
