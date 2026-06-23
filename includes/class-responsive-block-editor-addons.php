@@ -1362,7 +1362,6 @@ class Responsive_Block_Editor_Addons {
 				),
 				admin_url( 'themes.php' )
 			);
-error_log('responsivex_license_is_active---=='.$this->responsivex_license_plan());
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
