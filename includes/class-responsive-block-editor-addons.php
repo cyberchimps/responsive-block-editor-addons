@@ -770,6 +770,7 @@ class Responsive_Block_Editor_Addons {
 				'is_responsive_conditions_on'           => $is_responsive_conditions_on,
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
 				'ai_suite'                           => $this->rbea_get_ai_suite_indicators(),
+				'plan_details'						 => $this->responsivex_license_plan(),
 			)
 		);
 
@@ -1361,7 +1362,7 @@ class Responsive_Block_Editor_Addons {
 				),
 				admin_url( 'themes.php' )
 			);
-
+error_log('responsivex_license_is_active---=='.$this->responsivex_license_plan());
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
@@ -1401,6 +1402,7 @@ class Responsive_Block_Editor_Addons {
 					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
 					'ai_suite'              => $this->rbea_get_ai_suite_settings(),
+					'plan_details'			=> $this->responsivex_license_plan(),
 				)
 			);
 
@@ -3610,4 +3612,29 @@ class Responsive_Block_Editor_Addons {
 		return $content;
 
 	}
+	
+	/**
+	 * Check if Responsive Addons Pro License is Active.
+	 */
+	public function responsivex_license_plan() {
+    // 1. Check modern Cyberchimps App Auth connection (SaaS).
+    if ( class_exists( 'Responsive_Add_Ons_Settings' ) ) {
+        $app_settings = Responsive_Add_Ons_Settings::get_instance();
+        $plan = $app_settings->get_plan();
+        if ( ! empty( $plan ) ) {
+            return strtolower( $plan );  // Return 'free', 'pro', 'team', etc.
+        }
+    }
+
+    // 2. Fallback to legacy WooCommerce API Manager check.
+    global $wcam_lib_responsive_pro;
+    if ( ! is_null( $wcam_lib_responsive_pro ) ) {
+        $license_status = $wcam_lib_responsive_pro->license_key_status();
+        if ( ! empty( $license_status['data']['activated'] ) && $license_status['data']['activated'] ) {
+            return 'pro';  // Legacy is pro if activated
+        }
+    }
+
+    return 'free';  // Default to free
+}
 }
