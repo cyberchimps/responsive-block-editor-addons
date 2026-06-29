@@ -13668,6 +13668,48 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-decoration' => $attr['companyTextDecoration'],
 					'font-style' => $attr['companyFontStyle'],
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'display'         => 'flex',
+					'align-items'     => 'center',
+					'flex-wrap'		  => 'wrap',
+					'justify-content' => ( 'center' === $attr['starAlignment'] ) ? 'center' : ( ( 'right' === $attr['starAlignment'] ) ? 'flex-end' : 'flex-start' ),
+					'padding-top'     => self::get_css_value( $attr['starTopPadding'], 'px' ),
+					'padding-right'   => self::get_css_value( $attr['starRightPadding'], 'px' ),
+					'padding-bottom'  => self::get_css_value( $attr['starBottomPadding'], 'px' ),
+					'padding-left'    => self::get_css_value( $attr['starLeftPadding'], 'px' ),
+					'margin-top'      => self::get_css_value( $attr['starTopMargin'], 'px' ),
+					'margin-right'    => self::get_css_value( $attr['starRightMargin'], 'px' ),
+					'margin-bottom'   => self::get_css_value( $attr['starBottomMargin'], 'px' ),
+					'margin-left'     => self::get_css_value( $attr['starLeftMargin'], 'px' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'color'        => $attr['starUnmarkedColor'] ? $attr['starUnmarkedColor'] : '#ccd6df',
+					'font-size'    => self::get_css_value( $attr['starSize'] ? $attr['starSize'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGap'] ? $attr['starGap'] : 2, 'px' ),
+					'display'      => 'inline-flex',
+					'align-items'  => 'center',
+					'line-height'  => '1',
+				),
+				' .responsive-block-editor-addons-star-rating-star svg' => array(
+					'width'  => '1em',
+					'height' => '1em',
+				),
+				' .responsive-block-editor-addons-star-rating-star:last-child' => array(
+					'margin-right' => '0',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-filled' => array(
+					'color' => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-partial' => array(
+					'position' => 'relative',
+				),
+				' .responsive-block-editor-addons-star-partial-fill' => array(
+					'position' => 'absolute',
+					'left'     => '0',
+					'top'      => '0',
+					'overflow' => 'hidden',
+					'color'    => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+				),
 			);
 
 			$mobile_selectors = array(
@@ -13737,6 +13779,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-size'       => $attr['backgroundSizeMobile'],
 					'background-position'   => $background_position_focal_mobile,
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'padding-top'    => self::get_css_value( $attr['starTopPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['starRightPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['starBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['starLeftPaddingMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['starTopMarginMobile'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['starRightMarginMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['starBottomMarginMobile'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['starLeftMarginMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -13805,6 +13857,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
 					'background-size'       => $attr['backgroundSizeTablet'],
 					'background-position'   => $background_position_focal_tablet,
+				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'padding-top'    => self::get_css_value( $attr['starTopPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['starRightPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['starBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['starLeftPaddingTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['starTopMarginTablet'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['starRightMarginTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['starBottomMarginTablet'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['starLeftMarginTablet'], 'px' ),
 				),
 			);
 
@@ -14363,6 +14425,42 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'descTextDecoration'	   => '',
 				'nameTextDecoration'	   => '',
 				'companyTextDecoration'	   => '',
+				'starRating'               => 5,
+				'starRange'                => 5,
+				'starAlignment'            => 'left',
+				'starAlignmentTablet'      => 'left',
+				'starAlignmentMobile'      => 'left',
+				'starColor'                => '#f0ad4e',
+				'starUnmarkedColor'        => '#ccd6df',
+				'starSize'                 => 18,
+				'starSizeTablet'           => 18,
+				'starSizeMobile'           => 18,
+				'starGap'                  => 2,
+				'starTopMargin'            => '',
+				'starBottomMargin'         => '',
+				'starLeftMargin'           => '',
+				'starRightMargin'          => '',
+				'starTopMarginTablet'      => '',
+				'starBottomMarginTablet'   => '',
+				'starLeftMarginTablet'     => '',
+				'starRightMarginTablet'    => '',
+				'starTopMarginMobile'      => '',
+				'starBottomMarginMobile'   => '',
+				'starLeftMarginMobile'     => '',
+				'starRightMarginMobile'    => '',
+				'starTopPadding'           => '',
+				'starTopPaddingMobile'     => '',
+				'starTopPaddingTablet'     => '',
+				'starBottomPadding'        => '',
+				'starBottomPaddingMobile'  => '',
+				'starBottomPaddingTablet'  => '',
+				'starLeftPadding'          => '',
+				'starLeftPaddingMobile'    => '',
+				'starLeftPaddingTablet'    => '',
+				'starRightPadding'         => '',
+				'starRightPaddingMobile'   => '',
+				'starRightPaddingTablet'   => '',
+				'starRatingToggle'         => false,
 			);
 		}
 

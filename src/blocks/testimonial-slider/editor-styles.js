@@ -121,6 +121,30 @@ function EditorStyles(props) {
   hideWidget,
   hideWidgetTablet,
   hideWidgetMobile,
+  starTopMargin,
+  starBottomMargin,
+  starLeftMargin,
+  starRightMargin,
+  starTopMarginTablet,
+  starBottomMarginTablet,
+  starLeftMarginTablet,
+  starRightMarginTablet,
+  starTopMarginMobile,
+  starBottomMarginMobile,
+  starLeftMarginMobile,
+  starRightMarginMobile,
+  starTopPadding,
+  starTopPaddingMobile,
+  starTopPaddingTablet,
+  starBottomPadding,
+  starBottomPaddingMobile,
+  starBottomPaddingTablet,
+  starLeftPadding,
+  starLeftPaddingMobile,
+  starLeftPaddingTablet,
+  starRightPadding,
+  starRightPaddingMobile,
+  starRightPaddingTablet,
   blockTopMargin,
   blockBottomMargin,
   blockLeftMargin,
@@ -181,6 +205,13 @@ function EditorStyles(props) {
   descTextDecoration,
   nameTextDecoration,
   companyTextDecoration,
+  starRating,
+  starRange,
+  starAlignment,
+  starColor,
+  starUnmarkedColor,
+  starSize,
+  starGap,
   } = props.attributes;
 
   var img_align = "center";
@@ -311,6 +342,48 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__content": {
       "text-align": headingAlign,
       padding: generateCSSUnit(contentPadding, "px"),
+    },
+    " .responsive-block-editor-addons-star-rating": {
+      "display": "flex",
+      "align-items": "center",
+      "flex-wrap": "wrap",
+      "justify-content": starAlignment === "center" ? "center" : starAlignment === "right" ? "flex-end" : "flex-start",
+      'padding-top': generateCSSUnit(starTopPadding, "px"),
+			'padding-right': generateCSSUnit(starRightPadding, "px"),
+			'padding-bottom': generateCSSUnit(starBottomPadding, "px"),
+			'padding-left': generateCSSUnit(starLeftPadding, "px"),
+			'margin-top': generateCSSUnit(starTopMargin, "px"),
+			'margin-right': generateCSSUnit(starRightMargin, "px"),
+			'margin-bottom': generateCSSUnit(starBottomMargin, "px"),
+			'margin-left': generateCSSUnit(starLeftMargin, "px"),
+    },
+    " .responsive-block-editor-addons-star-rating-star": {
+      "color": starUnmarkedColor || "#ccd6df",
+      "font-size": generateCSSUnit(starSize || 18, "px"),
+      "margin-right": generateCSSUnit(starGap || 2, "px"),
+      "display": "inline-flex",
+      "align-items": "center",
+      "line-height": "1",
+    },
+    " .responsive-block-editor-addons-star-rating-star svg": {
+      "width": "1em",
+      "height": "1em",
+    },
+    " .responsive-block-editor-addons-star-rating-star:last-child": {
+      "margin-right": "0",
+    },
+    " .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-filled": {
+      "color": starColor || "#f0ad4e",
+    },
+    " .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-partial": {
+      "position": "relative",
+    },
+    " .responsive-block-editor-addons-star-partial-fill": {
+      "position": "absolute",
+      "left": "0",
+      "top": "0",
+      "overflow": "hidden",
+      "color": starColor || "#f0ad4e",
     },
     // Prefix Style
     " .responsive-block-editor-addons-tm__author-name": {
@@ -486,7 +559,17 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
-    }
+    },
+    " .responsive-block-editor-addons-star-rating": {
+      'padding-top': generateCSSUnit(starTopPaddingMobile, "px"),
+			'padding-right': generateCSSUnit(starRightPaddingMobile, "px"),
+			'padding-bottom': generateCSSUnit(starBottomPaddingMobile, "px"),
+			'padding-left': generateCSSUnit(starLeftPaddingMobile, "px"),
+			'margin-top': generateCSSUnit(starTopMarginMobile, "px"),
+			'margin-right': generateCSSUnit(starRightMarginMobile, "px"),
+			'margin-bottom': generateCSSUnit(starBottomMarginMobile, "px"),
+			'margin-left': generateCSSUnit(starLeftMarginMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -544,7 +627,17 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
       "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
-    }
+    },
+    " .responsive-block-editor-addons-star-rating": {
+      'padding-top': generateCSSUnit(starTopPaddingTablet, "px"),
+			'padding-right': generateCSSUnit(starRightPaddingTablet, "px"),
+			'padding-bottom': generateCSSUnit(starBottomPaddingTablet, "px"),
+			'padding-left': generateCSSUnit(starLeftPaddingTablet, "px"),
+			'margin-top': generateCSSUnit(starTopMarginTablet, "px"),
+			'margin-right': generateCSSUnit(starRightMarginTablet, "px"),
+			'margin-bottom': generateCSSUnit(starBottomMarginTablet, "px"),
+			'margin-left': generateCSSUnit(starLeftMarginTablet, "px"),
+    },
   };
 
   var styling_css = "";
