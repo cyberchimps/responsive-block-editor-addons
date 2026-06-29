@@ -13,6 +13,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     company: company_text,
     image: "",
     imageUrl: "",
+    rating: 5,
   });
 }
 
@@ -697,6 +698,58 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  starTopMargin: {
+		type: "number",
+		default: '',
+	},
+	starBottomMargin: {
+		type: "number",
+		default: '',
+	},
+	starLeftMargin: {
+		type: "number",
+		default: '',
+	},
+	starRightMargin: {
+		type: "number",
+		default: '',
+	},
+	starTopMarginTablet: {
+		type: "number",
+		default: '',
+	},
+	starBottomMarginTablet: {
+		type: "number",
+		default: '',
+	},
+	starLeftMarginTablet: {
+		type: "number",
+		default: '',
+	},
+	starRightMarginTablet: {
+		type: "number",
+		default: '',
+	},
+	starTopMarginMobile: {
+		type: "number",
+		default: '',
+	},
+	starBottomMarginMobile: {
+		type: "number",
+		default: '',
+	},
+	starLeftMarginMobile: {
+		type: "number",
+		default: '',
+	},
+	starRightMarginMobile: {
+		type: "number",
+		default: '',
+	},
+  starTopMargin: {
+		type: "number",
+		default: '',
+	},
   blockTopMargin: {
 		type: "number",
 		default: '',
@@ -753,7 +806,55 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
-	blockTopPadding: {
+	starTopPadding: {
+		type: "number",
+		default: '',
+	},
+	starTopPaddingMobile: {
+		type: "number",
+		default: '',
+	},
+	starTopPaddingTablet: {
+		type: "number",
+		default: '',
+	},
+	starBottomPadding: {
+		type: "number",
+		default: '',
+	},
+	starBottomPaddingMobile: {
+		type: "number",
+		default: '',
+	},
+	starBottomPaddingTablet: {
+		type: "number",
+		default: '',
+	},
+	starLeftPadding: {
+		type: "number",
+		default: '',
+	},
+	starLeftPaddingMobile: {
+		type: "number",
+		default: '',
+	},
+	starLeftPaddingTablet: {
+		type: "number",
+		default: '',
+	},
+	starRightPadding: {
+		type: "number",
+		default: '',
+	},
+	starRightPaddingMobile: {
+		type: "number",
+		default: '',
+	},
+	starRightPaddingTablet: {
+		type: "number",
+		default: '',
+	},
+  blockTopPadding: {
 		type: "number",
 		default: 45,
 	},
@@ -966,6 +1067,38 @@ const attributes = {
   companyTextDecoration: {
     type: "string",
     default: "",
+  },
+  starRatingToggle: {
+    type: "boolean",
+    default: false,
+  },
+  starRating: {
+    type: "number",
+    default: 5,
+  },
+  starRange: {
+    type: "number",
+    default: 5,
+  },
+  starAlignment: {
+    type: "string",
+    default: "left",
+  },
+  starColor: {
+    type: "string",
+    default: "#f0ad4e",
+  },
+  starUnmarkedColor: {
+    type: "string",
+    default: "#ccd6df",
+  },
+  starSize: {
+    type: "number",
+    default: 18,
+  },
+  starGap: {
+    type: "number",
+    default: 2,
   },
 };
 
