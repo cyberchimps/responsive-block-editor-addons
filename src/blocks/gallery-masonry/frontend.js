@@ -115,5 +115,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Re-run masonry layout on window resize
     window.addEventListener("resize", applyMasonry);
+
+    // Re-run masonry when the gallery container changes width (e.g., when a hidden parent tab becomes visible)
+    if (typeof ResizeObserver !== 'undefined') {
+      let lastWidth = gallery.clientWidth;
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          if (entry.contentRect.width !== lastWidth) {
+            lastWidth = entry.contentRect.width;
+            if (lastWidth > 0) {
+              applyMasonry();
+            }
+          }
+        }
+      });
+      // Observe the itemsWrapper instead, as its width change is what affects column layouts
+      if (itemsWrapper) {
+        resizeObserver.observe(itemsWrapper);
+      } else {
+        resizeObserver.observe(gallery);
+      }
+    }
   });
 });
