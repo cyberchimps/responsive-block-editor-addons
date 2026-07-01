@@ -65,6 +65,7 @@ const {
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
+const { withSelect } = wp.data;
 
 class edit extends Component {
   constructor() {
@@ -1549,8 +1550,17 @@ class edit extends Component {
     let arrows =
       ( ("arrows" == arrowDots || "arrows_dots" == arrowDots) && ( "none" !== arrowDots ) ) ? true : false;
 
+    const { deviceType } = this.props;
+    let slidesToShowEditor = columns;
+    const currentDevice = deviceType ? deviceType.toLowerCase() : "desktop";
+    if (currentDevice === "tablet") {
+      slidesToShowEditor = tcolumns || columns;
+    } else if (currentDevice === "mobile") {
+      slidesToShowEditor = mcolumns || columns;
+    }
+
     const settings = {
-      slidesToShow: columns,
+      slidesToShow: slidesToShowEditor,
       slidesToScroll: 1,
       autoplaySpeed: autoplaySpeed,
       autoplay: autoplay,
@@ -2368,7 +2378,7 @@ class edit extends Component {
           <Slider
             className={classnames(
               "is-carousel",
-              `responsive-block-editor-addons-tm__columns-${columns}`,
+              `responsive-block-editor-addons-tm__columns-${slidesToShowEditor}`,
               "responsive-block-editor-addons-tm__items"
             )}
             {...settings}
@@ -2486,4 +2496,8 @@ class edit extends Component {
   
 }
 
-export default edit;
+export default withSelect((select) => {
+  return {
+    deviceType: select("core/editor")?.getDeviceType?.() || "Desktop",
+  };
+})(edit);
