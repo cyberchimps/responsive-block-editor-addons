@@ -986,6 +986,7 @@ function AiWriteToolbarButton( { richTextValue, richTextOnChange } ) {
 
 	return (
 		<Fragment>
+					
 			<ToolbarButton
 				ref={ anchorRef }
 				className="rbea-ai-write-toolbar-button"
@@ -993,7 +994,9 @@ function AiWriteToolbarButton( { richTextValue, richTextOnChange } ) {
 				onClick={ () => setIsOpen( ( open ) => ! open ) }
 			>
 				<AiWriteIcon />
+					
 			</ToolbarButton>
+			
 			{ isOpen && (
 				<Popover
 					className="rbea-ai-write-popover"
@@ -1033,13 +1036,24 @@ function AiWriteFormatEdit( { value, onChange } ) {
 	if ( ! isAiWriteToolbarAllowedForPostType( postType ) ) {
 		return null;
 	}
-
+	// Check plan
+	const planDetails =
+		( typeof window !== 'undefined' &&
+			window.responsive_globals &&
+			window.responsive_globals.plan_details ) ||
+		'free';
+	
+	if ( planDetails === 'free' ) {
+		return null;  
+	}
 	return (
 		<BlockControls group="other">
+
 			<AiWriteToolbarButton
 				richTextValue={ value }
 				richTextOnChange={ onChange }
 			/>
+
 		</BlockControls>
 	);
 }
