@@ -216,7 +216,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.2.6 - 6th July 2026 =
+= 2.2.6 - 7th July 2026 =
 * New - Testimonial Slider Block: Added Star Rating option for testimonials.
 * Fix - Image Gallery Block: Fixed gallery overlapping with adjacent sections.
 * Fix - Buttons Block: Fixed alignment not working correctly on mobile devices.
