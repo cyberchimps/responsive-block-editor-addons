@@ -13704,11 +13704,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'position' => 'relative',
 				),
 				' .responsive-block-editor-addons-star-partial-fill' => array(
-					'position' => 'absolute',
-					'left'     => '0',
-					'top'      => '0',
-					'overflow' => 'hidden',
-					'color'    => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+					'position'    => 'absolute',
+					'left'        => '0',
+					'top'         => '0',
+					'height'      => '100%',
+					'display'     => 'inline-flex',
+					'align-items' => 'center',
+					'overflow'    => 'hidden',
+					'color'       => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
 				),
 			);
 
