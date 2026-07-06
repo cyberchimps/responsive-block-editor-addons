@@ -154,21 +154,21 @@ export default function save(props) {
                   {
                     // Get description.
                     <Fragment>
-                      {
-                        starRatingToggle && (
-                          <StarRating
-                            rating={typeof test.rating !== "undefined" ? test.rating : 5}
-                            range={starRange}
-                            alignment={starAlignment}
-                            starColor={starColor}
-                            starUnmarkedColor={starUnmarkedColor}
-                          />
-                        )
-                      }
                       <div
                         className="responsive-block-editor-addons-testinomial-text-wrap"
                         key={"text-wrap-" + index}
                       >
+                        {
+                          starRatingToggle && (
+                            <StarRating
+                              rating={typeof test.rating !== "undefined" ? test.rating : 5}
+                              range={starRange}
+                              alignment={starAlignment}
+                              starColor={starColor}
+                              starUnmarkedColor={starUnmarkedColor}
+                            />
+                          )
+                        }
                         <Description
                           attributes={props.attributes}
                           setAttributes="not_set"

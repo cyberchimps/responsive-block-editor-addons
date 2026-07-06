@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,14 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 3. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.2.6 - 6th July 2026 =
+* New - Testimonial Slider Block: Added Star Rating option for testimonials.
+* Fix - Image Gallery Block: Fixed gallery overlapping with adjacent sections.
+* Fix - Buttons Block: Fixed alignment not working correctly on mobile devices.
+* Fix - Team Block: Fixed border being applied by default even when unset from settings.
+* Fix - Team Block: Fixed images disappearing in the editor when switching to Tablet or Mobile preview.
+* Fix - Testimonial Block: Fixed Columns control preview not updating correctly in Tablet and Mobile views within the editor.
 
 = 2.2.5 - 9th June 2026 =
 * New - AI Content Writer: Introduced AI-powered content generation directly within the block editor to help create and refine content more efficiently.
