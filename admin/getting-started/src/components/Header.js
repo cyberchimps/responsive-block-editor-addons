@@ -2,7 +2,6 @@ import { __ } from "@wordpress/i18n";
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Header = () => {
-console.log('responsivex===='+rbealocalize.responsivex_status);
     const history = useHistory();
     const location = useLocation();
     return (
