@@ -200,20 +200,21 @@ const WebsiteConnectedCard = () => {
         </div>
     )
 };
+
 const ConnectionIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="9" stroke="#4F46E5" strokeWidth="1.5" />
-        <path d="M12 3C14.5 5.5 15.75 8.5 15.75 12C15.75 15.5 14.5 18.5 12 21C9.5 18.5 8.25 15.5 8.25 12C8.25 8.5 9.5 5.5 12 3Z" stroke="#4F46E5" strokeWidth="1.5" />
-        <path d="M3.5 9H20.5" stroke="#4F46E5" strokeWidth="1.5" />
-        <path d="M3.5 15H20.5" stroke="#4F46E5" strokeWidth="1.5" />
+        <circle cx="12" cy="12" r="9" stroke="#4338CA" strokeWidth="1.5" />
+        <path d="M12 3C14.5 5.5 15.75 8.5 15.75 12C15.75 15.5 14.5 18.5 12 21C9.5 18.5 8.25 15.5 8.25 12C8.25 8.5 9.5 5.5 12 3Z" stroke="#4338CA" strokeWidth="1.5" />
+        <path d="M3.5 9H20.5" stroke="#4338CA" strokeWidth="1.5" />
+        <path d="M3.5 15H20.5" stroke="#4338CA" strokeWidth="1.5" />
     </svg>
 );
 
 const ConnectWebsiteCard = () => {
     return (
-        <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
-            <div className="flex flex-col gap-4 p-5 bg-white rounded-md">
-                <div className="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-lg">
+        <div className="p-6 bg-white rounded-md">
+            <div className="flex flex-col gap-4">
+                <div className="w-11 h-11 flex items-center justify-center bg-blue-100 rounded-lg connect-wrap">
                     <ConnectionIcon />
                 </div>
 
@@ -221,20 +222,16 @@ const ConnectWebsiteCard = () => {
                     <span className="text-[#1F2937] font-semibold text-lg leading-7">
                         {__('Connect Your Website', 'responsive-block-editor-addons')}
                     </span>
-                    <p className="text-desc text-sm leading-5 m-0">
+                    <p className="text-desc text-sm leading-6 m-0">
                         {__('Connect your website to the Responsive Pro plugin to unlock access and seamlessly import premium templates directly to your site.', 'responsive-block-editor-addons')}
                     </p>
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <button
-                        className="rst-start-auth rst-start-auth-new w-full flex items-center justify-center py-2.5 px-4 text-white leading-5 cursor-pointer connect-button rounded-md font-medium border-0"
-                    >
+                    <button className="rst-start-auth rst-start-auth-new py-0.625 px-5 text-white leading-5 cursor-pointer connect-button rounded-md font-medium border-0">
                         {__('Create a new account', 'responsive-block-editor-addons')}
                     </button>
-                    <button
-                        className="rst-start-auth rst-start-auth-exist w-full flex items-center justify-center py-2.5 px-4 text-[#1D4ED8] leading-5 cursor-pointer bg-white rounded-md font-medium border connection-border"
-                    >
+                    <button className="rst-start-auth rst-start-auth-exist py-0.625 px-5 text-[#1D4ED8] leading-5 cursor-pointer bg-white rounded-md font-medium border connect-exist connection-border">
                         {__('Connect with existing account', 'responsive-block-editor-addons')}
                     </button>
                 </div>
@@ -255,6 +252,8 @@ const ExtendAndQuickAccess = () => {
 
   console.log('planDetails=='+planDetails);
   console.log('isConnectedPlan=='+isConnectedPlan);
+  console.log('RESX=='+rbealocalize.isResponsiveXActivated);
+
   return (
     <div className="xl:flex lg:block justify-between xl:mx-7.5 md:mx-3.75 mt-8 mb-16 gap-12">
       <div className="xl:w-2/3 lg:w-full">
@@ -305,7 +304,7 @@ const ExtendAndQuickAccess = () => {
 
       {/* Right column: Upgrade To Pro card sits ABOVE Quick Access, both stacked here */}
       {/* <div className="xl:w-1/3 lg-w-full max-xl:mt-8 flex flex-col gap-6"> */}
-       <div className="flex flex-col gap-6 xl:w-96 xl:flex-none lg:w-full max-xl:mt-8">
+       <div className="xl:w-1/3 lg-w-full max-xl:mt-8 flex flex-col gap-6">
         {(() => {
           if (isConnectedPlan) {
             return <WebsiteConnectedCard />;

@@ -701,7 +701,7 @@ class Responsive_Block_Editor_Addons {
 		$is_animation_toggled_on     = 1;
 		$is_display_conditions_on    = 1;
 		$is_responsive_conditions_on    = 1;
-		$is_responsivex_active = is_plugin_active( 'responsivex/responsivex.php' );
+		
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -776,7 +776,7 @@ class Responsive_Block_Editor_Addons {
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
 				//'ai_suite'                           => $ai_suite,
 				'plan_details'						 => $this->responsivex_license_plan(),
-				'isResponsiveXActivated'			 => $is_responsivex_active,
+				
 			)
 		);
 
@@ -1335,6 +1335,9 @@ class Responsive_Block_Editor_Addons {
 			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
 			$responsivex_path = 'responsivex/responsivex.php';
 
+			$is_responsivex_active = is_plugin_active( $responsivex_path );
+			error_log('is_responsivex_active====>'.$is_responsivex_active);
+
 			$rst_nonce = add_query_arg(
 				array(
 					'action'        => 'activate',
@@ -1410,6 +1413,7 @@ class Responsive_Block_Editor_Addons {
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
 					//'ai_suite'              => $this->rbea_get_ai_suite_settings(),
 					'plan_details'			=> $this->responsivex_license_plan(),
+					'isResponsiveXActivated'			 => $is_responsivex_active,
 				)
 			);
 

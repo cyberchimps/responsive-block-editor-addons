@@ -244,3 +244,20 @@
   opacity: 1;
   visibility: visible;
 }
+.connect-button {
+  background-color: #1D4ED8;
+  width: 50%;
+}
+
+.text-\[\#1D4ED8\] {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+}
+.connect-exist{
+    width: 70%;
+}
+
+.connect-wrap{
+    width: 10%;
+    padding: 9px;
+}
