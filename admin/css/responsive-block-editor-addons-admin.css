@@ -193,3 +193,77 @@
 .rbea-notice-image img {
     max-width: 90px;
 }
+
+.upgrade-button-bg{
+    background-color: #1D4ED8;
+}
+.rbea-info-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.rbea-tooltip-content {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: #262626;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  z-index: 20;
+}
+
+.rbea-tooltip-content::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 6px solid #262626;
+}
+
+.rbea-info-tooltip:hover .rbea-tooltip-content,
+.rbea-info-tooltip:focus-within .rbea-tooltip-content {
+  opacity: 1;
+  visibility: visible;
+}
+.connect-button {
+  background-color: #1D4ED8;
+  width: 50%;
+}
+
+.text-\[\#1D4ED8\] {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+}
+.connect-exist{
+    width: 70%;
+}
+
+.connect-wrap{
+    width: 10%;
+    padding: 9px;
+}
+.connected-span{
+    width: 30%;
+}
+.align-baseline{
+    align-items: baseline;
+}
