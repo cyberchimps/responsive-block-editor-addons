@@ -744,6 +744,7 @@ class Responsive_Block_Editor_Addons {
 			is_plugin_active( 'responsivex/responsivex.php' ) ) {
 			do_action( 'rbea_enqueue_ai_assets' );
 		}
+		
 		// Pass in REST URL.
 		wp_localize_script(
 			'responsive_block_editor_addons-block-js',
@@ -1336,7 +1337,6 @@ class Responsive_Block_Editor_Addons {
 			$responsivex_path = 'responsivex/responsivex.php';
 
 			$is_responsivex_active = is_plugin_active( $responsivex_path );
-			error_log('is_responsivex_active====>'.$is_responsivex_active);
 
 			$rst_nonce = add_query_arg(
 				array(
@@ -1361,7 +1361,20 @@ class Responsive_Block_Editor_Addons {
 				),
 				network_admin_url( 'plugins.php' )
 			);
+			$is_connected = 'no';
+			$email        = '';
+			$plan         = '';
 
+			if ( is_plugin_active( 'responsive-add-ons/responsive-add-ons.php' ) && class_exists( 'Responsive_Add_Ons_App_Auth' ) ) {
+				require_once RESPONSIVE_ADDONS_DIR . 'includes/class-responsive-add-ons-app-auth.php';
+				$cc_app_auth = new Responsive_Add_Ons_App_Auth();
+				$is_connected = $cc_app_auth->has_auth();
+				if ( $is_connected && class_exists( 'Responsive_Add_Ons_Settings' ) ) {
+					$user  = Responsive_Add_Ons_Settings::get_instance();
+					$email = esc_html( $user->get_email() );
+					$plan  = esc_html( ucwords( $user->get_plan() ) );
+				}
+			}
 			$theme_slug = 'responsive';
 
 			$responsive_nonce = add_query_arg(
@@ -1411,9 +1424,9 @@ class Responsive_Block_Editor_Addons {
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
 					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
-					//'ai_suite'              => $this->rbea_get_ai_suite_settings(),
 					'plan_details'			=> $this->responsivex_license_plan(),
 					'isResponsiveXActivated'			 => $is_responsivex_active,
+					'userEmail'							=> $email,
 				)
 			);
 

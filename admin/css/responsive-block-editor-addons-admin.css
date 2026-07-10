@@ -261,3 +261,9 @@
     width: 10%;
     padding: 9px;
 }
+.connected-span{
+    width: 30%;
+}
+.align-baseline{
+    align-items: baseline;
+}

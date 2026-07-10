@@ -120,9 +120,7 @@ const GlobeIcon = () => (
 );
 
 const ConnectedCheckIcon = () => (
-    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 4L3.5 6.5L9 1" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_985_4313)"><path fillRule="evenodd" clipRule="evenodd" d="M0 7.5C0 5.51088 0.790176 3.60322 2.1967 2.1967C3.60322 0.790176 5.51088 0 7.5 0C9.48912 0 11.3968 0.790176 12.8033 2.1967C14.2098 3.60322 15 5.51088 15 7.5C15 9.48912 14.2098 11.3968 12.8033 12.8033C11.3968 14.2098 9.48912 15 7.5 15C5.51088 15 3.60322 14.2098 2.1967 12.8033C0.790176 11.3968 0 9.48912 0 7.5ZM7.072 10.71L11.39 5.312L10.61 4.688L6.928 9.289L4.32 7.116L3.68 7.884L7.072 10.71Z" fill="#15803D"></path></g><defs><clipPath id="clip0_985_4313"><rect width="15" height="15" fill="white"></rect></clipPath></defs></svg>
 );
 const UpgradeToProCard = () => {
 
@@ -165,9 +163,9 @@ const UpgradeToProCard = () => {
 };
 const WebsiteConnectedCard = () => {
     return (
-        <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
-            <div className="flex flex-col gap-4 p-6 bg-white rounded-md">
-                <span className="w-fit flex items-center gap-2 py-1 px-3 bg-green-50 border border-green-200 rounded-3xl">
+        // <div className="p-3 bg-slate-100 rounded-lg border border-slate-200 ">
+            <div className="p-3 bg-white rounded-md flex flex-col gap-4 p-6 bg-white rounded-md align-baseline">
+                <span className="w-fit flex items-center gap-2 py-1 px-3 bg-green-50 border border-green-200 rounded-3xl connected-span">
                     <span className="flex items-center justify-center w-4 h-4 bg-green-600 rounded-3xl">
                         <ConnectedCheckIcon />
                     </span>
@@ -182,7 +180,7 @@ const WebsiteConnectedCard = () => {
                     </span>
                     <p className="text-desc text-sm leading-5 m-0">
                         {__('You are using', 'responsive-block-editor-addons')}{' '}
-                        <span className="font-semibold text-[#374151]">{__('Responsive theme + Responsive Pro plugin.', 'responsive-block-editor-addons')}</span>
+                        <span className="font-semibold text-[#374151]">{__('Responsive Blocks + Responsive Pro plugin.', 'responsive-block-editor-addons')}</span>
                     </p>
                 </div>
 
@@ -197,7 +195,6 @@ const WebsiteConnectedCard = () => {
                     {__('Disconnect', 'responsive-block-editor-addons')}
                 </button>
             </div>
-        </div>
     )
 };
 
