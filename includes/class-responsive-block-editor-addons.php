@@ -741,7 +741,7 @@ class Responsive_Block_Editor_Addons {
 		}
 		// If pro plugin is active, let it register AI assets
 		if ( function_exists( 'is_plugin_active' ) && 
-			is_plugin_active( 'responsivex/responsivex.php' ) ) {
+			is_plugin_active( 'responsivepro/responsivepro.php' ) ) {
 			do_action( 'rbea_enqueue_ai_assets' );
 		}
 		
@@ -1334,9 +1334,9 @@ class Responsive_Block_Editor_Addons {
 			}
 
 			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
-			$responsivex_path = 'responsivex/responsivex.php';
+			$responsivepro_path = 'responsivepro/responsivepro.php';
 
-			$is_responsivex_active = is_plugin_active( $responsivex_path );
+			$is_responsivex_active = is_plugin_active( $responsivepro_path );
 
 			$rst_nonce = add_query_arg(
 				array(
@@ -1365,7 +1365,15 @@ class Responsive_Block_Editor_Addons {
 			$email        = '';
 			$plan         = '';
 
-			if ( is_plugin_active( 'responsive-add-ons/responsive-add-ons.php' ) && class_exists( 'Responsive_Add_Ons_App_Auth' ) ) {
+			if ( $is_responsivex_active && class_exists( 'ResponsivePRO_App_Auth' ) ) {
+				$cc_app_auth = new ResponsivePRO_App_Auth();
+				$is_connected = $cc_app_auth->has_auth();
+				if ( $is_connected && class_exists( 'ResponsivePRO_Settings' ) ) {
+					$user  = ResponsivePRO_Settings::get_instance();
+					$email = esc_html( $user->get_email() );
+					$plan  = esc_html( ucwords( $user->get_plan() ) );
+				}
+			} elseif ( is_plugin_active( 'responsive-add-ons/responsive-add-ons.php' ) && class_exists( 'Responsive_Add_Ons_App_Auth' ) ) {
 				require_once RESPONSIVE_ADDONS_DIR . 'includes/class-responsive-add-ons-app-auth.php';
 				$cc_app_auth = new Responsive_Add_Ons_App_Auth();
 				$is_connected = $cc_app_auth->has_auth();
@@ -1415,7 +1423,7 @@ class Responsive_Block_Editor_Addons {
 					'default_container_gap'  => get_option( 'rbea_default_container_gap', 20 ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 					'rst_status'            => $this->rbea_plugin_status( $rst_path ),
-					'responsivex_status'	=> $this->rbea_plugin_status( $responsivex_path ),
+					'responsivex_status'	=> $this->rbea_plugin_status( $responsivepro_path ),
 					'rae_status'            => $this->rbea_plugin_status( 'responsive-addons-for-elementor/responsive-addons-for-elementor.php' ),
 					'responsive_status'     => $this->get_responsive_theme_status(),
 					'rst_nonce'             => $rst_nonce,
@@ -3590,6 +3598,21 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsivex_license_plan() {
 		// 1. Check modern Cyberchimps App Auth (SaaS) — but only if actually connected/authenticated
+		if ( class_exists( 'ResponsivePRO_App_Auth' ) && class_exists( 'ResponsivePRO_Settings' ) ) {
+			try {
+				$app_auth = new ResponsivePRO_App_Auth();
+				if ( $app_auth->has_auth() ) {
+					$app_settings = ResponsivePRO_Settings::get_instance();
+					$plan = $app_settings->get_plan();
+					if ( ! empty( $plan ) ) {
+						return strtolower( $plan ); // 'free', 'pro', 'team', etc.
+					}
+				}
+			} catch ( Exception $e ) {
+				// Fall through
+			}
+		}
+
 		if ( class_exists( 'Responsive_Add_Ons_App_Auth' ) && class_exists( 'Responsive_Add_Ons_Settings' ) ) {
 			try {
 				$app_auth = new Responsive_Add_Ons_App_Auth();
