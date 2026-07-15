@@ -55,7 +55,7 @@ https://www.youtube.com/watch?v=Gs-h74Qnrlw
 
 Import professionally designed websites with Responsive Blocks plugin in minutes. With no compromises on performance and zero limits on what you can design, you can cut down your website design time by a whopping 90%.
 
-Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordpress.org/plugins/responsive-add-ons/">Responsive Plus - Starter templates</a> plugin to offer you a library of fully functional, professionally built websites that you can import and launch your website with just a few clicks!
+Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordpress.org/plugins/responsive-add-ons/">Responsive Starter templates</a> plugin to offer you a library of fully functional, professionally built websites that you can import and launch your website with just a few clicks!
 
 [Check Ready Websites and Starter Templates](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg)
 
@@ -144,7 +144,7 @@ If you like Responsive Blocks, consider checking out our other WordPress Plugins
 
 1. **[Responsive Theme](https://wordpress.org/themes/responsive/)**: Responsive Theme is a free WordPress theme built by Cyberchimps that is fast, lightweight, and fully customizable. It loads completely under 100 KB. With a blazing GTMetrix performance score of 100%, it helps your website load super fast, ensuring customers get a better user experience. The theme powers more than 30,000 websites and more than 500+ 5-star ratings on WordPress.
 
-1. **[Responsive Plus - Starter Templates](https://wordpress.org/plugins/responsive-add-ons/)**: A free plugin that offers a library of premium Elementor and block templates to launch your website quickly. Just select your favorite website template, click import, and launch your website.
+1. **[Responsive Starter Templates](https://wordpress.org/plugins/responsive-add-ons/)**: A free plugin that offers a library of premium Elementor and block templates to launch your website quickly. Just select your favorite website template, click import, and launch your website.
 
 1. **[Responsive Addons For Elementor](https://wordpress.org/plugins/responsive-addons-for-elementor/)**: Supercharge your Elementor page-building experience with Responsive Addons for Elementor, the ultimate toolkit for effortlessly creating stunning websites. Elevate your design capabilities and enhance the power of Elementor with our versatile widgets and extensions, giving you the freedom to create exactly what you envision.
 
