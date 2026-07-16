@@ -257,9 +257,6 @@ const ExtendAndQuickAccess = () => {
         <p className="font-medium text-2xl">{__('Extend Your Website', 'responsive-block-editor-addons')}</p>
         <p className="font-normal text-base text-desc mt-2 mb-6">{__("Powerful tools to enhance your site's functionality", 'responsive-block-editor-addons')}</p>
         <div className="grid md:grid-cols-2 gap-6 w-full">
-          <PluginCard title={__('Starter Templates', 'responsive-block-editor-addons')} description={__('150+ Ready to Import Designer-Made Website Starter Templates.', 'responsive-block-editor-addons')} image="rst_sm_logo">
-            <button onClick={() => history.push('/templates')} className="mt-1.125 py-0.625 px-0.875 bg-blue-600 hover:bg-blue-900 rounded-md text-white text-sm leading-5 font-medium">{__('Explore Templates', 'responsive-block-editor-addons')}</button>
-          </PluginCard>
 
           <PluginCard title={__('Responsive Starter Templates', 'responsive-block-editor-addons')} description={__('Get Advanced modules: Site Builder, Fonts, WooCommerce, and more.', 'responsive-block-editor-addons')} image="rst_sm_logo">
             <InstallButton
