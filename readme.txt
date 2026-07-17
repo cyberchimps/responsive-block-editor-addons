@@ -217,7 +217,8 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 == Changelog ==
 
 = 2.2.7 - 17th July 2026 =
-* Improvement: Added Support for Responsive Pro.
+* Improvement: Moved AI Writer functionality to Responsive Pro.
+* Improvement: Updated dashboard connection and "Upgrade to Pro" section for seamless integration with Responsive Pro.
 
 = 2.2.6 - 7th July 2026 =
 * New - Testimonial Slider Block: Added Star Rating option for testimonials.
