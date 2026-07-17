@@ -701,6 +701,7 @@ class Responsive_Block_Editor_Addons {
 		$is_animation_toggled_on     = 1;
 		$is_display_conditions_on    = 1;
 		$is_responsive_conditions_on    = 1;
+		
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -740,9 +741,10 @@ class Responsive_Block_Editor_Addons {
 		}
 		// If pro plugin is active, let it register AI assets
 		if ( function_exists( 'is_plugin_active' ) && 
-			is_plugin_active( 'responsivex/responsivex.php' ) ) {
+			is_plugin_active( 'responsivepro/responsivepro.php' ) ) {
 			do_action( 'rbea_enqueue_ai_assets' );
 		}
+		
 		// Pass in REST URL.
 		wp_localize_script(
 			'responsive_block_editor_addons-block-js',
@@ -775,6 +777,7 @@ class Responsive_Block_Editor_Addons {
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
 				//'ai_suite'                           => $ai_suite,
 				'plan_details'						 => $this->responsivex_license_plan(),
+				
 			)
 		);
 
@@ -1331,7 +1334,9 @@ class Responsive_Block_Editor_Addons {
 			}
 
 			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
-			$responsivex_path = 'responsivex/responsivex.php';
+			$responsivepro_path = 'responsivepro/responsivepro.php';
+
+			$is_responsivex_active = is_plugin_active( $responsivepro_path );
 
 			$rst_nonce = add_query_arg(
 				array(
@@ -1356,7 +1361,28 @@ class Responsive_Block_Editor_Addons {
 				),
 				network_admin_url( 'plugins.php' )
 			);
+			$is_connected = 'no';
+			$email        = '';
+			$plan         = '';
 
+			if ( $is_responsivex_active && class_exists( 'ResponsivePRO_App_Auth' ) ) {
+				$cc_app_auth = new ResponsivePRO_App_Auth();
+				$is_connected = $cc_app_auth->has_auth();
+				if ( $is_connected && class_exists( 'ResponsivePRO_Settings' ) ) {
+					$user  = ResponsivePRO_Settings::get_instance();
+					$email = esc_html( $user->get_email() );
+					$plan  = esc_html( ucwords( $user->get_plan() ) );
+				}
+			} elseif ( is_plugin_active( 'responsive-add-ons/responsive-add-ons.php' ) && class_exists( 'Responsive_Add_Ons_App_Auth' ) ) {
+				require_once RESPONSIVE_ADDONS_DIR . 'includes/class-responsive-add-ons-app-auth.php';
+				$cc_app_auth = new Responsive_Add_Ons_App_Auth();
+				$is_connected = $cc_app_auth->has_auth();
+				if ( $is_connected && class_exists( 'Responsive_Add_Ons_Settings' ) ) {
+					$user  = Responsive_Add_Ons_Settings::get_instance();
+					$email = esc_html( $user->get_email() );
+					$plan  = esc_html( ucwords( $user->get_plan() ) );
+				}
+			}
 			$theme_slug = 'responsive';
 
 			$responsive_nonce = add_query_arg(
@@ -1397,7 +1423,7 @@ class Responsive_Block_Editor_Addons {
 					'default_container_gap'  => get_option( 'rbea_default_container_gap', 20 ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 					'rst_status'            => $this->rbea_plugin_status( $rst_path ),
-					'responsivex_status'	=> $this->rbea_plugin_status( $responsivex_path ),
+					'responsivex_status'	=> $this->rbea_plugin_status( $responsivepro_path ),
 					'rae_status'            => $this->rbea_plugin_status( 'responsive-addons-for-elementor/responsive-addons-for-elementor.php' ),
 					'responsive_status'     => $this->get_responsive_theme_status(),
 					'rst_nonce'             => $rst_nonce,
@@ -1406,8 +1432,9 @@ class Responsive_Block_Editor_Addons {
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
 					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
 					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
-					//'ai_suite'              => $this->rbea_get_ai_suite_settings(),
 					'plan_details'			=> $this->responsivex_license_plan(),
+					'isResponsiveXActivated'			 => $is_responsivex_active,
+					'userEmail'							=> $email,
 				)
 			);
 
@@ -3570,19 +3597,37 @@ class Responsive_Block_Editor_Addons {
 	 * Check if Responsive Addons Pro License is Active.
 	 */
 	public function responsivex_license_plan() {
-		// 1. Check modern Cyberchimps App Auth (SaaS)
-		if ( class_exists( 'Responsive_Add_Ons_Settings' ) ) {
+		// 1. Check modern Cyberchimps App Auth (SaaS) — but only if actually connected/authenticated
+		if ( class_exists( 'ResponsivePRO_App_Auth' ) && class_exists( 'ResponsivePRO_Settings' ) ) {
 			try {
-				$app_settings = Responsive_Add_Ons_Settings::get_instance();
-				$plan = $app_settings->get_plan();
-				if ( ! empty( $plan ) ) {
-					return strtolower( $plan ); // 'free', 'pro', 'team', etc.
+				$app_auth = new ResponsivePRO_App_Auth();
+				if ( $app_auth->has_auth() ) {
+					$app_settings = ResponsivePRO_Settings::get_instance();
+					$plan = $app_settings->get_plan();
+					if ( ! empty( $plan ) ) {
+						return strtolower( $plan ); // 'free', 'pro', 'team', etc.
+					}
+				}
+			} catch ( Exception $e ) {
+				// Fall through
+			}
+		}
+
+		if ( class_exists( 'Responsive_Add_Ons_App_Auth' ) && class_exists( 'Responsive_Add_Ons_Settings' ) ) {
+			try {
+				$app_auth = new Responsive_Add_Ons_App_Auth();
+				if ( $app_auth->has_auth() ) {
+					$app_settings = Responsive_Add_Ons_Settings::get_instance();
+					$plan = $app_settings->get_plan();
+					if ( ! empty( $plan ) ) {
+						return strtolower( $plan ); // 'free', 'pro', 'team', etc.
+					}
 				}
 			} catch ( Exception $e ) {
 				// Fall through to legacy check
 			}
 		}
-		
+
 		// 2. Legacy WooCommerce API Manager fallback
 		if ( function_exists( 'wc_get_products' ) ) { // WC is active
 			global $wcam_lib_responsive_pro;
@@ -3593,12 +3638,8 @@ class Responsive_Block_Editor_Addons {
 				}
 			}
 		}
-		
-		// 3. Check if ResponsiveX (pro plugin) is active
-		if ( function_exists( 'is_plugin_active' ) && is_plugin_active( 'responsive-addons-pro/responsive-addons-pro.php' ) ) {
-			return 'pro'; // Pro plugin is installed, so user has pro features
-		}
-		
-		return 'free'; // Default
+
+		return null;
+			
 	}
 }
