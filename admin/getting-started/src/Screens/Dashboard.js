@@ -225,10 +225,7 @@ const ConnectWebsiteCard = () => {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <button className="rst-start-auth rst-start-auth-new py-0.625 px-5 text-white leading-5 cursor-pointer connect-button rounded-md font-medium border-0">
-                        {__('Create a new account', 'responsive-block-editor-addons')}
-                    </button>
-                    <button className="rst-start-auth rst-start-auth-exist py-0.625 px-5 text-[#1D4ED8] leading-5 cursor-pointer bg-white rounded-md font-medium border connect-exist connection-border">
+                    <button className="rst-start-auth rst-start-auth-exist py-0.625 px-5 text-white leading-5 cursor-pointer connect-button rounded-md font-medium border-0 connect-exist connection-border">
                         {__('Connect with existing account', 'responsive-block-editor-addons')}
                     </button>
                 </div>
