@@ -11,6 +11,7 @@ import renderSVG from "../../../../renderIcon";
 import { loadGoogleFont } from "../../../../utils/font";
 import EditorStyles from "./editor-styles";
 import AutoRegisterCSSBlock from "../../../../extensions/custom-css/AutoRegisterCSSBlock";
+import { initializeBlockVersion } from "../../../../utils/blockVersionManager";
 
 /**
  * WordPress dependencies
@@ -59,6 +60,12 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
+    // Initialize block version
+    const versionUpdates = initializeBlockVersion('buttons-child', this.props.attributes, this.props.clientId);
+    if (Object.keys(versionUpdates).length > 0) {
+      this.props.setAttributes(versionUpdates);
+    }
+
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
@@ -90,7 +97,6 @@ export default class Edit extends Component {
         hoverEffect,
         inheritFromTheme,
         buttonPreset,
-        borderRadius,
         borderStyle,
         borderWidth,
         borderColor,

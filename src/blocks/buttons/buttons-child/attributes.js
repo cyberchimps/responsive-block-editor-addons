@@ -84,7 +84,6 @@ const attributes = {
   },
   borderRadius: {
     type: "number",
-    default: 0,
   },
   borderStyle: {
     type: "string",
@@ -420,6 +419,10 @@ const attributes = {
 	blockLeftRadiusTablet: {
     type: "number",
     default: 2,
+  },
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
   },
   typographyOpacity: {
     type: "number",

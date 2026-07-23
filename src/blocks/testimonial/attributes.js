@@ -11,6 +11,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
     testimonialImgURL: "",
     testimonialImgID: "",
+    rating: 5,
   });
 }
 
@@ -805,6 +806,37 @@ const attributes = {
   titleTextDecoration: {
     type: "string",
     default: "",
+  },
+  starRating: {
+    type: "number",
+    default: 5,
+  },
+  starRange: {
+    type: "number",
+    default: 5,
+  },
+  starAlignment: {
+    type: "string",
+    default: "left",
+  },
+  starColor: {
+    type: "string",
+    default: "#f0ad4e",
+  },
+  starUnmarkedColor: {
+    type: "string",
+    default: "#ccd6df",
+  },
+  starSize: {
+    type: "number",
+    default: 18,
+  },
+  starGap: {
+    type: "number",
+    default: 2,
+  },
+  blockVer: {
+    type: "string",
   },
 };
 

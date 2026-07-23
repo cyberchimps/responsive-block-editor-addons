@@ -139,6 +139,42 @@ function EditorStyles(props) {
     twFontStyle,
     gradient,
     quoteTextDecoration,
+    // Author Name Typography
+    authorNameFontFamily,
+    authorNameFontSize,
+    authorNameFontSizeTablet,
+    authorNameFontSizeMobile,
+    authorNameFontWeight,
+    authorNameLineHeight,
+    authorNameTextTransform,
+    authorNameFontStyle,
+    authorNameTextDecoration,
+    authorNameTypographyColor,
+    authorNameBottomSpacing,
+    authorNameBottomSpacingTablet,
+    authorNameBottomSpacingMobile,
+    // Author Title Typography
+    authorTitleFontFamily,
+    authorTitleFontSize,
+    authorTitleFontSizeTablet,
+    authorTitleFontSizeMobile,
+    authorTitleFontWeight,
+    authorTitleLineHeight,
+    authorTitleTextTransform,
+    authorTitleFontStyle,
+    authorTitleTextDecoration,
+    authorTitleTypographyColor,
+    authorTitleBottomSpacing,
+    authorTitleBottomSpacingTablet,
+    authorTitleBottomSpacingMobile,
+    showAuthorSeparator,
+    blockVer,
+    quoteHpositionpercentage,
+    quoteVpositionpercentage,
+    quoteHpositionpercentageTablet,
+    quoteVpositionpercentageTablet,
+    quoteHpositionpercentageMobile,
+    quoteVpositionpercentageMobile
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -153,6 +189,7 @@ function EditorStyles(props) {
     hoverboxShadowPositionCSS = "";
   }
   const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
+  const is_new_version = blockVer && parseFloat(blockVer) >= 2.0;
 
   var selectors = {
     "": {
@@ -234,8 +271,14 @@ function EditorStyles(props) {
       height: generateCSSUnit(quoteSize, "px"),
       width: generateCSSUnit(quoteSize, "px"),
       fill: quoteColor,
-      left: generateCSSUnit(quoteHposition, "px"),
-      top: generateCSSUnit(quoteVposition, "px"),
+      // left: generateCSSUnit(quoteHposition, "px"),
+      left: quoteHpositionpercentage != null 
+            ? generateCSSUnit(quoteHpositionpercentage, "%") 
+            : generateCSSUnit(quoteHposition, "px"),
+      // top: generateCSSUnit(quoteVposition, "px"),
+      top: quoteVpositionpercentage != null 
+            ? generateCSSUnit(quoteVpositionpercentage, "%") 
+            : generateCSSUnit(quoteVposition, "px"),
       opacity: quoteopacity,
     },
     " .responsive-block-editor-addons-block-blockquote-text": {
@@ -254,11 +297,18 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textTopPadding, "px"),
       "padding-bottom": generateCSSUnit(textBottomPadding, "px"),
     },
-    // ==== Twitter Button Container ====
+    " .rbea-bq__footer-wrap": {
+      "margin-top": is_new_version ? "24px" : "0px"
+    },
     " .rbea-bq__tweet-wrap": {
       display: "flex",
       "justify-content": "flex-end",
       "margin-top": "12px",
+    },
+    // When inside footer-wrap, remove margin-top (handled by footer-wrap)
+    " .rbea-bq__footer-wrap .rbea-bq__tweet-wrap": {
+      "margin-top": "0",
+      "flex-shrink": "0",
     },
 
     // ==== Twitter Button (Base, attributes-driven) ====
@@ -324,6 +374,30 @@ function EditorStyles(props) {
       position: "relative",
       top: "1px",
     },
+    // ==== Author Name Typography ====
+    " .rbea-bq__author-name": {
+      "font-family": authorNameFontFamily,
+      "font-size": generateCSSUnit(authorNameFontSize, "px"),
+      "font-weight": authorNameFontWeight,
+      "line-height": authorNameLineHeight,
+      "text-transform": authorNameTextTransform,
+      "text-decoration": authorNameTextDecoration,
+      "font-style": authorNameFontStyle,
+      color: authorNameTypographyColor,
+      "border-right": showAuthorSeparator ? '1px solid #e5e7eb' : "none",
+    },
+    // ==== Author Title Typography ====
+    " .rbea-bq__author-title": {
+      "font-family": authorTitleFontFamily,
+      "font-size": generateCSSUnit(authorTitleFontSize, "px"),
+      "font-weight": authorTitleFontWeight,
+      "line-height": authorTitleLineHeight,
+      "text-transform": authorTitleTextTransform,
+      "text-decoration": authorTitleTextDecoration,
+      "font-style": authorTitleFontStyle,
+      color: authorTitleTypographyColor,
+      "padding-left": showAuthorSeparator ? "12px" : "0px",
+    },
   };
   var mobile_selectors = {
     "": {
@@ -341,6 +415,20 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote": {
+      left:
+        quoteHpositionpercentageMobile != null && quoteHpositionpercentageMobile !== ""
+          ? generateCSSUnit(quoteHpositionpercentageMobile, "%")
+          : quoteHpositionpercentage != null
+            ? generateCSSUnit(quoteHpositionpercentage, "%")
+            : generateCSSUnit(quoteHposition, "px"),
+      top:
+        quoteVpositionpercentageMobile != null && quoteVpositionpercentageMobile !== ""
+          ? generateCSSUnit(quoteVpositionpercentageMobile, "%")
+          : quoteVpositionpercentage != null
+            ? generateCSSUnit(quoteVpositionpercentage, "%")
+            : generateCSSUnit(quoteVposition, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingMobile, "px"),
@@ -368,6 +456,12 @@ function EditorStyles(props) {
       width: generateCSSUnit(twFontSizeMobile, "px"), 
       height: generateCSSUnit(twFontSizeMobile, "px")
     },
+    " .rbea-bq__author-name": {
+      "font-size": generateCSSUnit(authorNameFontSizeMobile, "px"),
+    },
+    " .rbea-bq__author-title": {
+      "font-size": generateCSSUnit(authorTitleFontSizeMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -386,6 +480,20 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote": {
+      left:
+        quoteHpositionpercentageTablet != null && quoteHpositionpercentageTablet !== ""
+          ? generateCSSUnit(quoteHpositionpercentageTablet, "%")
+          : quoteHpositionpercentage != null
+            ? generateCSSUnit(quoteHpositionpercentage, "%")
+            : generateCSSUnit(quoteHposition, "px"),
+      top:
+        quoteVpositionpercentageTablet != null && quoteVpositionpercentageTablet !== ""
+          ? generateCSSUnit(quoteVpositionpercentageTablet, "%")
+          : quoteVpositionpercentage != null
+            ? generateCSSUnit(quoteVpositionpercentage, "%")
+            : generateCSSUnit(quoteVposition, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPaddingTablet, "px"),
@@ -412,6 +520,12 @@ function EditorStyles(props) {
     " .rbea-bq__tweet svg": {
       width: generateCSSUnit(twFontSizeTablet, "px"), 
       height: generateCSSUnit(twFontSizeTablet, "px")
+    },
+    " .rbea-bq__author-name": {
+      "font-size": generateCSSUnit(authorNameFontSizeTablet, "px"),
+    },
+    " .rbea-bq__author-title": {
+      "font-size": generateCSSUnit(authorTitleFontSizeTablet, "px"),
     },
   };
 

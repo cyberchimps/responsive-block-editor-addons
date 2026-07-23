@@ -42,6 +42,13 @@ export default class Save extends Component {
         twTextTransform,
         twTextDecoration,
         twIconTextSpacing,
+        authorImage,
+        authorName,
+        authorTitle,
+        showAuthorImage,
+        showAuthorName,
+        showAuthorSeparator,
+        showAuthorTitle,
       },
       setAttributes,
     } = this.props;
@@ -87,8 +94,43 @@ export default class Save extends Component {
             className="responsive-block-editor-addons-block-blockquote-text"
             value={quoteContent}
           />
-          { twEnabled && (
-            <div className="rbea-bq__tweet-wrap">
+          {((showAuthorImage || showAuthorName || showAuthorTitle) || twEnabled) && (
+            <div className="rbea-bq__footer-wrap">
+              {(showAuthorImage || showAuthorName || showAuthorTitle) && (
+                <div className="rbea-bq__author-wrap">
+                  {showAuthorImage && authorImage && (
+                  <div className="rbea-bq__author-image-wrap">
+                    <img
+                      className="rbea-bq__author-image"
+                      src={
+                        authorImage.sizes?.thumbnail?.url ||
+                        authorImage.url
+                      }
+                      alt={authorImage.alt || ""}
+                    />
+                  </div>
+                )}
+                  {showAuthorName && (
+                    <RichText.Content
+                      tagName="div"
+                      className="rbea-bq__author-name"
+                      value={authorName}
+                    />
+                  )}
+                  {/* {showAuthorSeparator && showAuthorName && showAuthorTitle && (
+                    <span className="rbea-bq__author-separator">|</span>
+                  )} */}
+                  {showAuthorTitle && (
+                    <RichText.Content
+                      tagName="div"
+                      className="rbea-bq__author-title"
+                      value={authorTitle}
+                    />
+                  )}
+                </div>
+              )}
+              { twEnabled && (
+                <div className="rbea-bq__tweet-wrap">
               <a
                 className={classnames(
                   "rbea-bq__tweet",
@@ -114,6 +156,8 @@ export default class Save extends Component {
                   <span className="rbea-bq__label">{ twLabel !== undefined ? twLabel : "Post" }</span>
                 )}
               </a>
+                </div>
+              )}
             </div>
           )}
         </div>

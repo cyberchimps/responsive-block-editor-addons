@@ -205,9 +205,31 @@ const attributes = {
     type: "number",
     default: 30,
   },
+  quoteHpositionpercentage: {
+    type: "number",
+  },
+  quoteHpositionpercentageTablet: {
+    type: "number",
+  },
+  quoteHpositionpercentageMobile: {
+    type: "number",
+  },
   quoteVposition: {
     type: "number",
     default: 20,
+  },
+  quoteVpositionpercentage: {
+    type: "number",
+  },
+  quoteVpositionpercentageTablet: {
+    type: "number",
+  },
+  quoteVpositionpercentageMobile: {
+    type: "number",
+  },
+  isQuotePositionResponsiveUpdated: {
+    type: "boolean",
+    default: false,
   },
   quoteAlign: {
     type: "string",
@@ -623,6 +645,136 @@ const attributes = {
     type: "string",
     default: "",
   },
+  // Author attributes
+  authorImage: {
+    type: "object",
+    default: {
+      url: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
+      sizes: {
+        full: {
+          url: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+        },
+        thumbnail: {
+          url: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+        },
+        medium: {
+          url: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+        }
+      }
+    },
+  },
+  authorImgId: {
+    type: "string",
+  },
+  authorName: {
+    type: "string",
+    default: "",
+  },
+  authorTitle: {
+    type: "string",
+    default: "",
+  },
+  showAuthorImage: {
+    type: "boolean",
+    default: false,
+  },
+  showAuthorName: {
+    type: "boolean",
+    default: false,
+  },
+  showAuthorSeparator: {
+    type: "boolean",
+    default: false,
+  },
+  showAuthorTitle: {
+    type: "boolean",
+    default: false,
+  },
+  // Author Name Typography
+  authorNameFontFamily: {
+    type: "string",
+  },
+  authorNameFontSize: {
+    type: "number",
+  },
+  authorNameFontSizeTablet: {
+    type: "number",
+  },
+  authorNameFontSizeMobile: {
+    type: "number",
+  },
+  authorNameFontWeight: {
+    type: "string",
+  },
+  authorNameLineHeight: {
+    type: "number",
+  },
+  authorNameTextTransform: {
+    type: "string",
+    default: "",
+  },
+  authorNameFontStyle: {
+    type: "string",
+  },
+  authorNameTextDecoration: {
+    type: "string",
+  },
+  authorNameTypographyColor: {
+    type: "string",
+  },
+  authorNameBottomSpacing: {
+    type: "number",
+  },
+  authorNameBottomSpacingTablet: {
+    type: "number",
+  },
+  authorNameBottomSpacingMobile: {
+    type: "number",
+  },
+  // Author Title Typography
+  authorTitleFontFamily: {
+    type: "string",
+  },
+  authorTitleFontSize: {
+    type: "number",
+  },
+  authorTitleFontSizeTablet: {
+    type: "number",
+  },
+  authorTitleFontSizeMobile: {
+    type: "number",
+  },
+  authorTitleFontWeight: {
+    type: "string",
+  },
+  authorTitleLineHeight: {
+    type: "number",
+  },
+  authorTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  authorTitleFontStyle: {
+    type: "string",
+  },
+  authorTitleTextDecoration: {
+    type: "string",
+  },
+  authorTitleTypographyColor: {
+    type: "string",
+  },
+  authorTitleBottomSpacing: {
+    type: "number",
+  },
+  authorTitleBottomSpacingTablet: {
+    type: "number",
+  },
+  authorTitleBottomSpacingMobile: {
+    type: "number",
+  },
+  blockVer: {
+    type: "string",
+  }
 };
 
 export default attributes;

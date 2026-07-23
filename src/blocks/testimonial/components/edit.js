@@ -6,10 +6,12 @@ import times from "lodash/times";
 import classnames from "classnames";
 import Inspector from "./inspector";
 import Testimonial from "./testimonial";
+import StarRating from "./StarRating";
 import icons from "./../../../utils/components/icons";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
+import { initializeBlockVersion } from "../../../utils/blockVersionManager";
 
 /**
  * WordPress dependencies
@@ -46,6 +48,12 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
+    // Initialize block version
+    const versionUpdates = initializeBlockVersion('testimonial', this.props.attributes, this.props.clientId);
+    if (Object.keys(versionUpdates).length > 0) {
+      this.props.setAttributes(versionUpdates);
+    }
+
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
@@ -72,6 +80,13 @@ export default class Edit extends Component {
         nameFontFamily,
         contentFontFamily,
         imageSize,
+        starRating,
+        starRange,
+        starAlignment,
+        starColor,
+        starUnmarkedColor,
+        starSize,
+        starGap,
       },
       setAttributes,
     } = this.props;
@@ -113,6 +128,15 @@ export default class Edit extends Component {
             {titleFontFamily && loadGoogleFont(titleFontFamily)}
             {nameFontFamily && loadGoogleFont(nameFontFamily)}
             {contentFontFamily && loadGoogleFont(contentFontFamily)}
+            <StarRating
+              rating={test.rating ?? 5}
+              range={starRange}
+              alignment={starAlignment}
+              starColor={starColor}
+              starUnmarkedColor={starUnmarkedColor}
+              starSize={starSize}
+              starGap={starGap}
+            />
             <RichText
                           key={`testimonial-content-${index}`}
               tagName="div"
@@ -134,11 +158,8 @@ export default class Edit extends Component {
               )}
               onChange={(value) => {
                 var new_content = {
+                  ...data_copy[index],
                   testimonialContent: value,
-                  testimonialTitle: data_copy[index]["testimonialTitle"],
-                  testimonialName: data_copy[index]["testimonialName"],
-                  testimonialImgId: data_copy[index]["testimonialImgId"],
-                  testimonialImgURL: data_copy[index]["testimonialImgURL"],
                 };
                 data_copy[index] = new_content;
                 setAttributes({ testimonialBlock: data_copy });
@@ -156,11 +177,7 @@ export default class Edit extends Component {
                       }}
                       onSelect={(value) => {
                         var new_content = {
-                          testimonialContent:
-                            data_copy[index]["testimonialContent"],
-                          testimonialTitle:
-                            data_copy[index]["testimonialTitle"],
-                          testimonialName: data_copy[index]["testimonialName"],
+                          ...data_copy[index],
                           testimonialImgId: value.id,
                           testimonialImgURL: value,
                         };
@@ -204,12 +221,7 @@ export default class Edit extends Component {
                               className="responsive-block-editor-addons-remove-image"
                               onClick={(value) => {
                                 var new_content = {
-                                  testimonialContent:
-                                    data_copy[index]["testimonialContent"],
-                                  testimonialTitle:
-                                    data_copy[index]["testimonialTitle"],
-                                  testimonialName:
-                                    data_copy[index]["testimonialName"],
+                                  ...data_copy[index],
                                   testimonialImgId: null,
                                   testimonialImgURL: null,
                                 };
@@ -246,13 +258,8 @@ export default class Edit extends Component {
                     ]}
                     onChange={(value) => {
                       var new_content = {
-                        testimonialContent:
-                          data_copy[index]["testimonialContent"],
-                        testimonialTitle: data_copy[index]["testimonialTitle"],
+                        ...data_copy[index],
                         testimonialName: value,
-                        testimonialImgId: data_copy[index]["testimonialImgId"],
-                        testimonialImgURL:
-                          data_copy[index]["testimonialImgURL"],
                       };
                       data_copy[index] = new_content;
                       setAttributes({ testimonialBlock: data_copy });
@@ -278,13 +285,8 @@ export default class Edit extends Component {
                     ]}
                     onChange={(value) => {
                       var new_content = {
-                        testimonialContent:
-                          data_copy[index]["testimonialContent"],
+                        ...data_copy[index],
                         testimonialTitle: value,
-                        testimonialName: data_copy[index]["testimonialName"],
-                        testimonialImgId: data_copy[index]["testimonialImgId"],
-                        testimonialImgURL:
-                          data_copy[index]["testimonialImgURL"],
                       };
                       data_copy[index] = new_content;
                       setAttributes({ testimonialBlock: data_copy });

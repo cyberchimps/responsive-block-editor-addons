@@ -1551,6 +1551,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$hover_box_shadow_position_css = '';
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+			$block_version = isset( $attr['blockVer'] ) ? (float) $attr['blockVer'] : 1.0;
+			$is_new_version = $block_version >= 2.0;
 			$selectors = array(
 				' ' => array(
 					'display'                    => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
@@ -1632,8 +1634,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
 					'height'  => self::get_css_value( $attr['quoteSize'], 'px' ),
 					'width'   => self::get_css_value( $attr['quoteSize'], 'px' ),
-					'left'    => self::get_css_value( $attr['quoteHposition'], 'px' ),
-					'top'     => self::get_css_value( $attr['quoteVposition'], 'px' ),
+					// 'left'    => self::get_css_value( $attr['quoteHposition'], 'px' ),
+					'left' => isset($attr['quoteHpositionpercentage']) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+								? self::get_css_value($attr['quoteHpositionpercentage'], '%')
+								: self::get_css_value($attr['quoteHposition'], 'px'),
+					// 'top'     => self::get_css_value( $attr['quoteVposition'], 'px' ),
+					'top' => isset($attr['quoteVpositionpercentage']) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+								? self::get_css_value($attr['quoteVpositionpercentage'], '%')
+								: self::get_css_value($attr['quoteVposition'], 'px'),
 					'opacity' => $quoteopacity,
 				),
 				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote svg' => array(
@@ -1654,6 +1662,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['textRightPadding'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPadding'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPadding'], 'px' ),
+				),
+				' .rbea-bq__footer-wrap' => array(
+					'margin-top'	 => $is_new_version ? '24px' : '0px', 
+				),
+				' .rbea-bq__tweet-wrap'	 => array(
+					'margin-top'	 => $is_new_version ? '0px'	 : '12px',
 				),
 				' .rbea-bq__tweet' => array(
 					'font-family'    => $attr['twFontFamily'],
@@ -1682,6 +1696,28 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'          => $attr['twHColor'],
 					'background-color' => $attr['twHBg'],
 				),
+				' .rbea-bq__author-name' => array(
+					'font-family'    => $attr['authorNameFontFamily'],
+					'font-size'      => self::get_css_value( $attr['authorNameFontSize'], 'px' ),
+					'font-weight'    => $attr['authorNameFontWeight'],
+					'line-height'    => $attr['authorNameLineHeight'],
+					'text-transform' => $attr['authorNameTextTransform'],
+					'text-decoration' => $attr['authorNameTextDecoration'],
+					'font-style'     => $attr['authorNameFontStyle'],
+					'color'          => $attr['authorNameTypographyColor'],
+					'border-right'   => $attr['showAuthorSeparator'] ? '1px solid #e5e7eb' : 'none', 
+				),
+				' .rbea-bq__author-title' => array(
+					'font-family'    => $attr['authorTitleFontFamily'],
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSize'], 'px' ),
+					'font-weight'    => $attr['authorTitleFontWeight'],
+					'line-height'    => $attr['authorTitleLineHeight'],
+					'text-transform' => $attr['authorTitleTextTransform'],
+					'text-decoration' => $attr['authorTitleTextDecoration'],
+					'font-style'     => $attr['authorTitleFontStyle'],
+					'color'          => $attr['authorTitleTypographyColor'],
+					'padding-left'   => $attr['showAuthorSeparator'] ? '12px' : '0px', 
+				),
 
 			);
 			$mobile_selectors = array(
@@ -1708,6 +1744,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingMobile'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPaddingMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
+					'left' => isset( $attr['quoteHpositionpercentageMobile'] ) && $attr['quoteHpositionpercentageMobile'] !== null && $attr['quoteHpositionpercentageMobile'] !== ''
+						? self::get_css_value( $attr['quoteHpositionpercentageMobile'], '%' )
+						: ( isset( $attr['quoteHpositionpercentage'] ) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteHpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteHposition'], 'px' )
+						),
+					'top' => isset( $attr['quoteVpositionpercentageMobile'] ) && $attr['quoteVpositionpercentageMobile'] !== null && $attr['quoteVpositionpercentageMobile'] !== ''
+						? self::get_css_value( $attr['quoteVpositionpercentageMobile'], '%' )
+						: ( isset( $attr['quoteVpositionpercentage'] ) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteVpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteVposition'], 'px' )
+						),
+				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'font-size' => self::get_css_value( $attr['quoteFontSizeMobile'], 'px' ),
 				),
@@ -1727,6 +1777,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .rbea-bq__tweet svg' => array(
 					'width'          => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
 					'height'         => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
+				),
+				' .rbea-bq__author-name' => array(
+					'font-size'      => self::get_css_value( $attr['authorNameFontSizeMobile'], 'px' ),
+				),
+				' .rbea-bq__author-title' => array(
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSizeMobile'], 'px' ),
 				),
 			);
 
@@ -1754,6 +1810,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingTablet'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPaddingTablet'], 'px' ),
 				),
+				' .responsive-block-editor-addons-block-blockquote-item .responsive-block-editor-addons-block-blockquote-quote' => array(
+					'left' => isset( $attr['quoteHpositionpercentageTablet'] ) && $attr['quoteHpositionpercentageTablet'] !== null && $attr['quoteHpositionpercentageTablet'] !== ''
+						? self::get_css_value( $attr['quoteHpositionpercentageTablet'], '%' )
+						: ( isset( $attr['quoteHpositionpercentage'] ) && $attr['quoteHpositionpercentage'] !== null && $attr['quoteHpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteHpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteHposition'], 'px' )
+						),
+					'top' => isset( $attr['quoteVpositionpercentageTablet'] ) && $attr['quoteVpositionpercentageTablet'] !== null && $attr['quoteVpositionpercentageTablet'] !== ''
+						? self::get_css_value( $attr['quoteVpositionpercentageTablet'], '%' )
+						: ( isset( $attr['quoteVpositionpercentage'] ) && $attr['quoteVpositionpercentage'] !== null && $attr['quoteVpositionpercentage'] !== ''
+							? self::get_css_value( $attr['quoteVpositionpercentage'], '%' )
+							: self::get_css_value( $attr['quoteVposition'], 'px' )
+						),
+				),
 				' .responsive-block-editor-addons-block-blockquote-text' => array(
 					'font-size' => self::get_css_value( $attr['quoteFontSizeTablet'], 'px' ),
 				),
@@ -1773,6 +1843,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .rbea-bq__tweet svg' => array(
 					'width'          => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
 					'height'         => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
+				),
+				' .rbea-bq__author-name' => array(
+					'font-size'      => self::get_css_value( $attr['authorNameFontSizeTablet'], 'px' ),
+				),
+				' .rbea-bq__author-title' => array(
+					'font-size'      => self::get_css_value( $attr['authorTitleFontSizeTablet'], 'px' ),
 				),
 			);
 
@@ -12951,6 +13027,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
+			$block_version = isset( $attr['blockVer'] ) ? (float) $attr['blockVer'] : 1.0;
+			$is_new_version = $block_version >= 2.0;
 
 			$selectors        = array(
 				' ' => array(
@@ -12969,6 +13047,43 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'display'         => 'flex',
+					'align-items'     => 'center',
+					'justify-content' => ( 'center' === $attr['starAlignment'] ) ? 'center' : ( ( 'right' === $attr['starAlignment'] ) ? 'flex-end' : 'flex-start' ),
+					'margin-bottom'   => self::get_css_value( $attr['contentBottomSpacing'], 'px' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'color'       => $attr['starUnmarkedColor'] ? $attr['starUnmarkedColor'] : '#ccd6df',
+					'font-size'   => self::get_css_value( $attr['starSize'] ? $attr['starSize'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGap'] ? $attr['starGap'] : 2, 'px' ),
+					'display'      => 'inline-flex',
+					'align-items'  => 'center',
+					'line-height'  => '1',
+				),
+				' .responsive-block-editor-addons-star-rating-star svg' => array(
+					'width'  => '1em',
+					'height' => '1em',
+				),
+				' .responsive-block-editor-addons-star-rating-star:last-child' => array(
+					'margin-right' => '0',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-filled' => array(
+					'color' => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+				),
+				' .responsive-block-editor-addons-star-rating-star.responsive-block-editor-addons-star-partial' => array(
+					'position' => 'relative',
+				),
+				' .responsive-block-editor-addons-star-partial-fill' => array(
+					'position'    => 'absolute',
+					'left'        => '0',
+					'top'         => '0',
+					'height'      => '100%',
+					'display'     => 'inline-flex',
+					'align-items' => 'center',
+					'overflow'    => 'hidden',
+					'color'       => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
+				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'text-align'     => $attr['testimonialAlignment'],
 					'font-family'    => $attr['contentFontFamily'],
@@ -12986,7 +13101,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['newTestimonialCiteAlign'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacing'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacing'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidth'], 'px' ),
@@ -13105,6 +13220,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'justify-content' => ( 'center' === $attr['starAlignmentMobile'] ) ? 'center' : ( ( 'right' === $attr['starAlignmentMobile'] ) ? 'flex-end' : 'flex-start' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'font-size'     => self::get_css_value( $attr['starSizeMobile'] ? $attr['starSizeMobile'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGapMobile'] ? $attr['starGapMobile'] : 2, 'px' ),
+				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['contentBottomSpacingMobile'], 'px' ),
@@ -13121,7 +13243,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['testimonialCiteAlignMobile'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacingMobile'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
@@ -13163,6 +13285,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => self::get_css_value( 0, 'px' ) . ' !important',
 				),
+				' .responsive-block-editor-addons-star-rating' => array(
+					'justify-content' => ( 'center' === $attr['starAlignmentTablet'] ) ? 'center' : ( ( 'right' === $attr['starAlignmentTablet'] ) ? 'flex-end' : 'flex-start' ),
+				),
+				' .responsive-block-editor-addons-star-rating-star' => array(
+					'font-size'     => self::get_css_value( $attr['starSizeTablet'] ? $attr['starSizeTablet'] : 18, 'px' ),
+					'margin-right' => self::get_css_value( $attr['starGapTablet'] ? $attr['starGapTablet'] : 2, 'px' ),
+				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['contentBottomSpacingTablet'], 'px' ),
@@ -13179,7 +13308,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-align'    => $attr['testimonialCiteAlignTablet'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
-					'padding-right' => self::get_css_value( $attr['imageSpacingTablet'], 'px' ),
+					'padding-right' => $is_new_version ? '1.5rem' : self::get_css_value( $attr['imageSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
 					'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
@@ -13401,6 +13530,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextDecoration'		 => '',
 				'nameTextDecoration'		 => '',
 				'titleTextDecoration'		 => '',
+				'starRating'                  => 5,
+				'starRange'                    => 5,
+				'starAlignment'                => 'left',
+				'starAlignmentTablet'           => 'left',
+				'starAlignmentMobile'          => 'left',
+				'starColor'                    => '#f0ad4e',
+				'starUnmarkedColor'            => '#ccd6df',
+				'starSize'                     => 18,
+				'starSizeTablet'               => 18,
+				'starSizeMobile'               => 18,
+				'starGap'                      => 2,
+				'starGapTablet'                => 2,
+				'starGapMobile'                => 2,
+				'blockVer'				   => '',
 			);
 		}
 
@@ -15178,6 +15321,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'twFontStyle'              => '',
 				'gradient'				   => '',
 				'quoteTextDecoration'	   => '',
+				'blockVer'				   => '',
+				'quoteHpositionpercentage' => '',
+				'quoteHpositionpercentageTablet' => '',
+				'quoteHpositionpercentageMobile' => '',
+				'quoteVpositionpercentage' => '',
+				'quoteVpositionpercentageTablet' => '',
+				'quoteVpositionpercentageMobile' => '',
+				'authorNameTextTransform' => '',
+				'authorNameTextDecoration' => '',
+				'authorTitleLineHeight' => '',
+				'authorTitleTextTransform' => '',
+				'authorTitleTextDecoration' => '',
+				'authorNameLineHeight' => '',
 			);
 		}
 

@@ -24,7 +24,6 @@ export default class Buttons extends Component {
         label,
         link,
         borderWidth,
-        borderRadius,
         borderStyle,
         borderColor,
         borderHColor,

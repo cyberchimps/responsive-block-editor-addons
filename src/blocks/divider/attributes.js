@@ -2,6 +2,9 @@ const attributes = {
   block_id: {
     type: "string",
   },
+  blockVer: {
+    type: "string",
+  },
   spacerHeight: {
     type: "number",
     default: 30,
