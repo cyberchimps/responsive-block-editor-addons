@@ -12972,12 +12972,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'position' => 'relative',
 				),
 				' .responsive-block-editor-addons-star-partial-fill' => array(
-					'position' => 'absolute',
-					'left'     => '0',
-					'top'      => '0',
-					'overflow' => 'hidden',
-					'color'    => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
-					'width'    => ( isset( $attr['starRating'] ) && ( $attr['starRating'] % 1 ) !== 0 ) ? ( ( ( $attr['starRating'] % 1 ) * 100 ) . '%' ) : '0%',
+					'position'    => 'absolute',
+					'left'        => '0',
+					'top'         => '0',
+					'height'      => '100%',
+					'display'     => 'inline-flex',
+					'align-items' => 'center',
+					'overflow'    => 'hidden',
+					'color'       => $attr['starColor'] ? $attr['starColor'] : '#f0ad4e',
 				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'text-align'     => $attr['testimonialAlignment'],
@@ -13040,10 +13042,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['boxShadowColor'] .
 						' ' .
 						$box_shadow_position_css,
-					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPadding'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPadding'], 'px' ),
-					'padding-right'  => $is_new_version ? 'calc(21% + ' . self::get_css_value( $attr['contentRightPadding'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPadding'], 'px' ),
-					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPadding'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPadding'], 'px' ),
-					'padding-left'   => $is_new_version ? 'calc(21% + ' . self::get_css_value( $attr['contentLeftPadding'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPadding'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['contentTopPadding'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['contentRightPadding'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['contentBottomPadding'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial:hover' => array(
 					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
@@ -13107,10 +13109,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
-					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ),
-					'padding-right'  => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ),
-					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ),
-					'padding-left'   => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
@@ -13172,10 +13174,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
-					'padding-top'    => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentTopPaddingTablet'], 'px' ),
-					'padding-right'  => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ) . ')' : self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ),
-					'padding-bottom' => $is_new_version ? 'min(calc(10% + ' . self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ) . '), 128px)' : self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ),
-					'padding-left'   => $is_new_version ? 'calc(10% + ' . self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ) . ')' : self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['contentTopPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => self::get_css_value( 0, 'px' ) . ' !important',
@@ -15111,6 +15113,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'quoteVpositionpercentage' => '',
 				'quoteVpositionpercentageTablet' => '',
 				'quoteVpositionpercentageMobile' => '',
+				'authorNameTextTransform' => '',
+				'authorNameTextDecoration' => '',
+				'authorTitleLineHeight' => '',
+				'authorTitleTextTransform' => '',
+				'authorTitleTextDecoration' => '',
+				'authorNameLineHeight' => '',
 			);
 		}
 

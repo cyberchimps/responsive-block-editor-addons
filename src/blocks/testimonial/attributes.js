@@ -11,6 +11,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
     testimonialImgURL: "",
     testimonialImgID: "",
+    rating: 5,
   });
 }
 

@@ -71,7 +71,7 @@ const BLOCK_VERSION_CONFIGS = {
       contentFontSizeTablet: 24,
       contentFontSizeMobile: 24,
       contentFontFamily: "inter",
-      contentFontWeight: 600,
+      contentFontWeight: "600",
       contentBottomSpacing: 40,
       contentBottomSpacingTablet: 40,
       contentBottomSpacingMobile: 40,

@@ -62,7 +62,7 @@ export default class Save extends Component {
         {testimonialBlock.map((test, index) => (
           <Testimonial key={`testimonial-${index}`} {...this.props}>
             <StarRating
-              rating={starRating}
+              rating={test.rating ?? 5}
               range={starRange}
               alignment={starAlignment}
               starColor={starColor}

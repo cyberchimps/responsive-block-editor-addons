@@ -699,8 +699,12 @@ export default class Inspector extends Component {
                     {
                       times(incAmount, (n) => {
                         cloneTest_block.push({
-                          title: "Team Title " + newCount,
-                          descriptions: "",
+                          testimonialName: __("John Doe", "responsive-block-editor-addons"),
+                          testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+                          testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
+                          testimonialImgURL: "",
+                          testimonialImgID: "",
+                          rating: 5,
                         });
                       });
                     }
@@ -850,10 +854,16 @@ export default class Inspector extends Component {
                 value={starRange === 10 ? 10 : 5}
                 onChange={(value) => {
                   const newRange = parseInt(value);
+                  const newItems = testimonialBlock.map((item) => {
+                    const currentRating = typeof item.rating !== "undefined" ? item.rating : 5;
+                    return {
+                      ...item,
+                      rating: currentRating > newRange ? newRange : currentRating
+                    };
+                  });
                   setAttributes({ 
                     starRange: newRange,
-                    // Adjust rating if it exceeds the new range
-                    starRating: starRating > newRange ? newRange : starRating
+                    testimonialBlock: newItems
                   });
                 }}
                 options={[
@@ -861,14 +871,6 @@ export default class Inspector extends Component {
                   { value: 10, label: __("1-10", "responsive-block-editor-addons") },
                 ]}
                 defaultValue={5}
-              />
-              <RbeaRangeControl
-                label={__("Rating", "responsive-block-editor-addons")}
-                value={starRating}
-                onChange={(value) => setAttributes({ starRating: value })}
-                min={0}
-                max={starRange || 5}
-                step={0.1}
               />
               <BaseControl __nextHasNoMarginBottom>
                 <p>{__("Alignment", "responsive-block-editor-addons")}</p>
@@ -883,6 +885,29 @@ export default class Inspector extends Component {
                   />
                 </div>
               </BaseControl>
+              {times(count, (index) => {
+                const ratingVal = (testimonialBlock[index] && typeof testimonialBlock[index].rating !== "undefined")
+                  ? testimonialBlock[index].rating
+                  : 5;
+                return (
+                  <RbeaRangeControl
+                    key={index}
+                    label={__("Testimonial", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Rating", "responsive-block-editor-addons")}
+                    value={ratingVal}
+                    onChange={(value) => {
+                      const newItems = testimonialBlock.map((item, thisIndex) => 
+                        index === thisIndex 
+                          ? { ...item, rating: value } 
+                          : item
+                      );
+                      setAttributes({ testimonialBlock: newItems });
+                    }}
+                    min={0}
+                    max={starRange || 5}
+                    step={0.1}
+                  />
+                );
+              })}
             </PanelBody>
             <PanelBody
               title={__("Image", "responsive-block-editor-addons")}

@@ -321,9 +321,11 @@ function EditorStyles(props) {
       "position": "absolute",
       "left": "0",
       "top": "0",
+      "height": "100%",
+      "display": "inline-flex",
+      "align-items": "center",
       "overflow": "hidden",
       "color": starColor || "#f0ad4e",
-      "width": starRating && starRating % 1 !== 0 ? `${((starRating % 1) * 100)}%` : "0%",
     },
     " .responsive-block-editor-addons-testimonial-text": {
       "text-align": testimonialAlignment,
@@ -375,10 +377,10 @@ function EditorStyles(props) {
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
-      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPadding, "px")})` : generateCSSUnit(contentTopPadding, "px"),
-      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPadding, "px")})` : generateCSSUnit(contentRightPadding, "px"),
-      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPadding, "px")})` : generateCSSUnit(contentBottomPadding, "px"),
-      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPadding, "px")})` : generateCSSUnit(contentLeftPadding, "px"),
+      "padding-top": generateCSSUnit(contentTopPadding, "px"),
+      "padding-right": generateCSSUnit(contentRightPadding, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomPadding, "px"),
+      "padding-left": generateCSSUnit(contentLeftPadding, "px"),
     },
     " .responsive-block-editor-addons-block-testimonial:hover": {
       "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
@@ -447,10 +449,10 @@ function EditorStyles(props) {
       'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
-      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPaddingMobile, "px")})` : generateCSSUnit(contentTopPaddingMobile, "px"),
-      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPaddingMobile, "px")})` : generateCSSUnit(contentRightPaddingMobile, "px"),
-      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPaddingMobile, "px")})` : generateCSSUnit(contentBottomPaddingMobile, "px"),
-      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPaddingMobile, "px")})` : generateCSSUnit(contentLeftPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(contentTopPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(contentRightPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(contentLeftPaddingMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
@@ -512,10 +514,10 @@ function EditorStyles(props) {
       'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
-      "padding-top": is_new_version ? `calc(20% + ${generateCSSUnit(contentTopPaddingTablet, "px")})` : generateCSSUnit(contentTopPaddingTablet, "px"),
-      "padding-right": is_new_version ? `calc(20% + ${generateCSSUnit(contentRightPaddingTablet, "px")})` : generateCSSUnit(contentRightPaddingTablet, "px"),
-      "padding-bottom": is_new_version ? `calc(20% + ${generateCSSUnit(contentBottomPaddingTablet, "px")})` : generateCSSUnit(contentBottomPaddingTablet, "px"),
-      "padding-left": is_new_version ? `calc(20% + ${generateCSSUnit(contentLeftPaddingTablet, "px")})` : generateCSSUnit(contentLeftPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(contentTopPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(contentRightPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(contentLeftPaddingTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,

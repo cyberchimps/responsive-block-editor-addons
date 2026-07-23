@@ -129,7 +129,7 @@ export default class Edit extends Component {
             {nameFontFamily && loadGoogleFont(nameFontFamily)}
             {contentFontFamily && loadGoogleFont(contentFontFamily)}
             <StarRating
-              rating={starRating}
+              rating={test.rating ?? 5}
               range={starRange}
               alignment={starAlignment}
               starColor={starColor}
@@ -152,11 +152,8 @@ export default class Edit extends Component {
               )}
               onChange={(value) => {
                 var new_content = {
+                  ...data_copy[index],
                   testimonialContent: value,
-                  testimonialTitle: data_copy[index]["testimonialTitle"],
-                  testimonialName: data_copy[index]["testimonialName"],
-                  testimonialImgId: data_copy[index]["testimonialImgId"],
-                  testimonialImgURL: data_copy[index]["testimonialImgURL"],
                 };
                 data_copy[index] = new_content;
                 setAttributes({ testimonialBlock: data_copy });
@@ -174,11 +171,7 @@ export default class Edit extends Component {
                       }}
                       onSelect={(value) => {
                         var new_content = {
-                          testimonialContent:
-                            data_copy[index]["testimonialContent"],
-                          testimonialTitle:
-                            data_copy[index]["testimonialTitle"],
-                          testimonialName: data_copy[index]["testimonialName"],
+                          ...data_copy[index],
                           testimonialImgId: value.id,
                           testimonialImgURL: value,
                         };
@@ -222,12 +215,7 @@ export default class Edit extends Component {
                               className="responsive-block-editor-addons-remove-image"
                               onClick={(value) => {
                                 var new_content = {
-                                  testimonialContent:
-                                    data_copy[index]["testimonialContent"],
-                                  testimonialTitle:
-                                    data_copy[index]["testimonialTitle"],
-                                  testimonialName:
-                                    data_copy[index]["testimonialName"],
+                                  ...data_copy[index],
                                   testimonialImgId: null,
                                   testimonialImgURL: null,
                                 };
@@ -257,13 +245,8 @@ export default class Edit extends Component {
                     className="responsive-block-editor-addons-testimonial-name"
                     onChange={(value) => {
                       var new_content = {
-                        testimonialContent:
-                          data_copy[index]["testimonialContent"],
-                        testimonialTitle: data_copy[index]["testimonialTitle"],
+                        ...data_copy[index],
                         testimonialName: value,
-                        testimonialImgId: data_copy[index]["testimonialImgId"],
-                        testimonialImgURL:
-                          data_copy[index]["testimonialImgURL"],
                       };
                       data_copy[index] = new_content;
                       setAttributes({ testimonialBlock: data_copy });
@@ -282,13 +265,8 @@ export default class Edit extends Component {
                     className="responsive-block-editor-addons-testimonial-title"
                     onChange={(value) => {
                       var new_content = {
-                        testimonialContent:
-                          data_copy[index]["testimonialContent"],
+                        ...data_copy[index],
                         testimonialTitle: value,
-                        testimonialName: data_copy[index]["testimonialName"],
-                        testimonialImgId: data_copy[index]["testimonialImgId"],
-                        testimonialImgURL:
-                          data_copy[index]["testimonialImgURL"],
                       };
                       data_copy[index] = new_content;
                       setAttributes({ testimonialBlock: data_copy });
