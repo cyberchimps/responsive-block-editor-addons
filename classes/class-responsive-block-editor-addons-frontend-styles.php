@@ -15337,6 +15337,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'authorTitleTextTransform' => '',
 				'authorTitleTextDecoration' => '',
 				'authorNameLineHeight' => '',
+				'authorNameFontFamily'     => '',
+				'authorNameFontSize'       => '',
+				'authorNameFontWeight'     => '',
+				'authorNameFontStyle'      => '',
+				'authorNameTypographyColor'=> '',
+				'showAuthorSeparator'      => false,
+				'authorTitleFontFamily'    => '',
+				'authorTitleFontSize'      => '',
+				'authorTitleFontWeight'    => '',
+				'authorTitleFontStyle'     => '',
+				'authorTitleTypographyColor'=> '',
+				'authorNameFontSizeMobile' => '',
+				'authorTitleFontSizeMobile'=> '',
+				'authorNameFontSizeTablet' => '',
+				'authorTitleFontSizeTablet'=> '',
 			);
 		}
 
