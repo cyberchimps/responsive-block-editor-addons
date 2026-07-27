@@ -1658,6 +1658,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
       				"font-style"     => $attr['quoteFontStyle'],
 				),
 				' .responsive-block-editor-addons-block-blockquote-item' => array(
+					'box-sizing'	 => 'border-box',
 					'padding-left'   => self::get_css_value( $attr['textLeftPadding'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['textRightPadding'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPadding'], 'px' ),
@@ -1739,6 +1740,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-blockquote-item' => array(
+					'box-sizing'	 => 'border-box',
 					'padding-left'   => self::get_css_value( $attr['textLeftPaddingMobile'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['textRightPaddingMobile'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingMobile'], 'px' ),
@@ -1805,6 +1807,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-blockquote-item' => array(
+					'box-sizing'	 => 'border-box',
 					'padding-left'   => self::get_css_value( $attr['textLeftPaddingTablet'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['textRightPaddingTablet'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['textTopPaddingTablet'], 'px' ),

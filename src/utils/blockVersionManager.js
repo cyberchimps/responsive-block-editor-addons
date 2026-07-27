@@ -3,6 +3,8 @@
  * Handles block versioning and default attribute initialization
  */
 
+import { __ } from '@wordpress/i18n';
+
 /**
  * Block version configurations
  * Add your block configs here
@@ -37,6 +39,10 @@ const BLOCK_VERSION_CONFIGS = {
       buttonFontSizeTablet: 14,
       buttonFontSizeMobile: 14,
       buttonFontWeight: 600,
+      blockTopMargin: 0,
+      blockBottomMargin: 0,
+      blockLeftMargin: 0,
+      blockRightMargin: 0,
     },
   },
   "testimonial": {
@@ -173,4 +179,44 @@ export function initializeBlockVersion(blockName, attributes, clientId) {
   }
 
   return updates;
+}
+
+/**
+ * Get default testimonial item based on block version
+ * 
+ * @param {string} blockVer - The current block version
+ * @returns {Object} Testimonial item defaults
+ */
+export function getNewTestimonialDefaults(blockVer) {
+  if (blockVer === "2.0") {
+    return {
+      testimonialName: "Judith Black",
+      testimonialTitle: "CEO of Workcation",
+      testimonialContent: "“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”",
+      testimonialImgURL: {
+        sizes: {
+          full: {
+            url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+          },
+          thumbnail: {
+            url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+          },
+          medium: {
+            url: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+          }
+        }
+      },
+      testimonialImgId: "0",
+      rating: 5,
+    };
+  }
+
+  return {
+    testimonialName: __("John Doe", "responsive-block-editor-addons"),
+    testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+    testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
+    testimonialImgURL: "",
+    testimonialImgID: "",
+    rating: 5,
+  };
 }
