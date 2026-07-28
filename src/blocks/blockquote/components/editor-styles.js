@@ -292,6 +292,7 @@ function EditorStyles(props) {
       "font-style": quoteFontStyle,
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
+      "box-sizing": "border-box",
       "padding-left": generateCSSUnit(textLeftPadding, "px"),
       "padding-right": generateCSSUnit(textRightPadding, "px"),
       "padding-top": generateCSSUnit(textTopPadding, "px"),
@@ -431,6 +432,7 @@ function EditorStyles(props) {
             : generateCSSUnit(quoteVposition, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
+      "box-sizing": "border-box",
       "padding-left": generateCSSUnit(textLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(textRightPaddingMobile, "px"),
       "padding-top": generateCSSUnit(textTopPaddingMobile, "px"),
@@ -496,6 +498,7 @@ function EditorStyles(props) {
             : generateCSSUnit(quoteVposition, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
+      "box-sizing": "border-box",
       "padding-left": generateCSSUnit(textLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(textRightPaddingTablet, "px"),
       "padding-top": generateCSSUnit(textTopPaddingTablet, "px"),

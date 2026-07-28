@@ -31,6 +31,7 @@ import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
 import { GradientPicker } from "@wordpress/components";
 import { hexToRgba } from "../../../utils/index.js";
+import { getNewTestimonialDefaults } from "../../../utils/blockVersionManager";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -458,6 +459,7 @@ export default class Inspector extends Component {
         starUnmarkedColor,
         starSize,
         starGap,
+        blockVer,
     },
       setAttributes,
     } = this.props;
@@ -696,18 +698,10 @@ export default class Inspector extends Component {
                       newCount - cloneTest_block.length
                     );
 
-                    {
-                      times(incAmount, (n) => {
-                        cloneTest_block.push({
-                          testimonialName: __("John Doe", "responsive-block-editor-addons"),
-                          testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
-                          testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
-                          testimonialImgURL: "",
-                          testimonialImgID: "",
-                          rating: 5,
-                        });
-                      });
-                    }
+                    const defaultItem = getNewTestimonialDefaults(blockVer);
+                    times(incAmount, (n) => {
+                      cloneTest_block.push({ ...defaultItem });
+                    });
                     setAttributes({ testimonialBlock: cloneTest_block });
                   } else {
                     const incAmount = Math.abs(
