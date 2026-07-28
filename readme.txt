@@ -216,7 +216,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.2.8 - 27th July 2026 =
+= 2.2.8 - 28th July 2026 =
 * Improvement - Buttons, Testimonial, Blockquote, and Divider Blocks: Revamped the default designs with improved styling for a better out-of-the-box experience.
 
 = 2.2.7 - 17th July 2026 =
