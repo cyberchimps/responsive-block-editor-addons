@@ -131,6 +131,10 @@ function appendImportButton() {
     innerToolbar.style.justifyContent = "flex-start";
   }
 
+  const templateButton = document.querySelector("#patternButton");
+  templateButton.style.height = '33px';
+  templateButton.style.margin = '2px';
+
   document
     .getElementById("patternButton")
     .addEventListener("click", rbeaRenderModalBlock);
