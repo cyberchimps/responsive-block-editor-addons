@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-import fonts from "./google-fonts.json";
+import fontFamilies from "./google-fonts.json";
 
-const fontOptions = fonts.map((font) => {
-  return { label: font.family, value: font.family };
+const fontOptions = fontFamilies.map((family) => {
+  return { label: family, value: family };
 });
 export default fontOptions;
