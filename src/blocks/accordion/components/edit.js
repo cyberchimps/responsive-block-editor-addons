@@ -128,7 +128,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     }
 
     // Assigning block_id in the attribute.
-    setAttributes({ block_id: this.props.clientId });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
 
     setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
     // Pushing Style tag for this block css.

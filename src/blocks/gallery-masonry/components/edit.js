@@ -62,7 +62,9 @@ class GalleryMasonryEdit extends Component {
       this.setState({ migrationDone: true });
     }
 
-    setAttributes({ block_id: clientId });
+    if (!attributes.block_id) {
+      setAttributes({ block_id: clientId });
+    }
 
     const $style = document.createElement("style");
     $style.setAttribute(

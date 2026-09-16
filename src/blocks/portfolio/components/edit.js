@@ -50,9 +50,9 @@ class LatestPostsBlock extends Component {
   }
 
   componentDidMount() {
-    this.props.setAttributes({
-      block_id: this.props.clientId.substr(0, 8),
-    });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId.substr(0, 8) });
+    }
 
     // Pushing Style tag for this block css.
     const $style = document.createElement("style");

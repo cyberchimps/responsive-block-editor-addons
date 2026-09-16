@@ -55,8 +55,12 @@ export default class Edit extends Component {
     }
 
     // Assigning block_id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId });
-    this.props.setAttributes({ classMigrate: true });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
+    if (this.props.attributes.classMigrate === false) {
+      this.props.setAttributes({ classMigrate: true });
+    }
 
     // Pushing Style tag for this block css.
     const $style = document.createElement("style");
