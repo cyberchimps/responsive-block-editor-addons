@@ -706,7 +706,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 				),
 				'block_id'                           => array(
 					'type'    => 'string',
-					'default' => 1,
 				),
 
 				'tcolumns'                           => array(

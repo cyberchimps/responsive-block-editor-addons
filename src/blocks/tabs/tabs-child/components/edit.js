@@ -29,8 +29,10 @@
 		const { getBlockRootClientId, getBlockAttributes } = !wp.blockEditor ? select( 'core/editor' ) : select( 'core/block-editor' );
 		const rootBlockId = getBlockRootClientId( clientId );
 		const rootBlockAttrs = getBlockAttributes( rootBlockId );
-		
-		setAttributes( { block_id: this.props.clientId } );
+    
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
 		
 		// Set activeTab from parent immediately
 		if (rootBlockAttrs) {

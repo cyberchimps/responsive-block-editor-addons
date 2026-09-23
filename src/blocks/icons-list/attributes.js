@@ -181,7 +181,6 @@ const attributes = {
   },
   block_id: {
     type: "string",
-    default: 1,
   },
   labelFontLineHeight: {
 	type: "number",

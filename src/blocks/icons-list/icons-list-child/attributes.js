@@ -65,7 +65,6 @@ const attributes = {
   },
   block_id: {
     type: "string",
-    default: 1,
   },
   source_type: {
     type: "string",
