@@ -464,6 +464,9 @@ const attributes = {
   type: "string",
   default: "none",
   },
+  blockVer: {
+    type: "string",
+  },
 };
 
 export default attributes;

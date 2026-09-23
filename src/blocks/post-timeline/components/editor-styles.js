@@ -504,7 +504,7 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-post-timeline.block-${props.clientId}`;
+  var id = `.responsive-block-editor-addons-block-post-timeline.block-${props.attributes.block_id || props.clientId}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");

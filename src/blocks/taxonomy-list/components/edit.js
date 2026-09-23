@@ -58,8 +58,10 @@ class RBEATaxonomyList extends Component {
     }
 
     componentDidMount() {
+        if (!this.props.attributes.block_id) {
+            this.props.setAttributes({ block_id: this.props.clientId });
+        }
         this.props.setAttributes({
-            block_id: this.props.clientId,
             taxonomyAvailable: this.props.categoriesList.length > 0
         });
 

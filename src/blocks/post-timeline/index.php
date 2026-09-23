@@ -1045,7 +1045,6 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'block_id'                           => array(
 					'type'    => 'string',
-					'default' => 'not_set',
 				),
 				'hideWidget'                         => array(
 					'type'    => 'boolean',

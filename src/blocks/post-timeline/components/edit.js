@@ -192,8 +192,12 @@ class LatestPostsBlock extends Component {
 
   componentDidMount() {
     // Assigning block_id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId });
-    this.props.setAttributes({ classMigrate: true });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
+    if (this.props.attributes.classMigrate === false) {
+      this.props.setAttributes({ classMigrate: true });
+    }
 
     window.addEventListener("load", responsivePostTimelineInit);
     window.addEventListener("resize", responsivePostTimelineInit);

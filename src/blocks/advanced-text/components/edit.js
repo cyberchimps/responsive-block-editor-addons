@@ -26,9 +26,12 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-    this.props.setAttributes({ block_id: this.props.clientId });
-
-    this.props.setAttributes({ classMigrate: true });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
+    if (this.props.attributes.classMigrate === false) {
+      this.props.setAttributes({ classMigrate: true });
+    }
 
     const $style = document.createElement("style");
     $style.setAttribute(

@@ -51,8 +51,12 @@ class Edit extends Component {
 
   componentDidMount() {
     // Assigning block_id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId });
-    this.props.setAttributes({ classMigrate: true });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
+    if (this.props.attributes.classMigrate === false) {
+      this.props.setAttributes({ classMigrate: true });
+    }
     this.getBrowserWidth();
     window.addEventListener("resize", this.getBrowserWidth.bind(this));
 

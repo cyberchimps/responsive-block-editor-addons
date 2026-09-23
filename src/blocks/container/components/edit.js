@@ -18,7 +18,7 @@ const { useEffect } = wp.element;
 export default function Edit(props) {
   const {
     attributes,
-    attributes: { block_id, variationSelected },
+    attributes: { block_id, variationSelected, classMigrate },
     setAttributes,
     className,
     clientId,
@@ -55,8 +55,12 @@ export default function Edit(props) {
 
   // Equivalent to componentDidMount
   useEffect(() => {
-    setAttributes({ block_id: clientId });
-    setAttributes({ classMigrate: true });
+    if (!block_id) {
+      setAttributes({ block_id: clientId });
+    }
+    if (classMigrate === false) {
+      setAttributes({ classMigrate: true });
+    }
 
     const styleEl = document.createElement("style");
     styleEl.setAttribute(

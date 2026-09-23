@@ -625,7 +625,7 @@ function EditorStyles(props) {
   }
 
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-accordion__outer-wrap.responsive-block-editor-addons-block-${props.clientId}`;
+  var id = `.responsive-block-editor-addons-accordion__outer-wrap.responsive-block-editor-addons-block-${props.attributes.block_id || props.clientId}`;
 
   styling_css = generateCSS(selectors, id);
 

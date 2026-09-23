@@ -36,7 +36,9 @@ export default class Edit extends Component {
 
   componentDidMount() {
     // Assigning block_id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId });
+    if (!this.props.attributes.block_id) {
+      this.props.setAttributes({ block_id: this.props.clientId });
+    }
 
     // Pushing Style tag for this block css.
     const $style = document.createElement("style");

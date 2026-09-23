@@ -372,8 +372,8 @@ function EditorStyles(props) {
   }
 
   var styling_css = "";
-  var id = ` .responsive-block-editor-addons-block-section-outer-wrap.block-${props.clientId}`;
-  var id_high_specificity = `.editor-styles-wrapper .responsive-block-editor-addons-block-section-outer-wrap.block-${props.clientId}`;
+  var id = ` .responsive-block-editor-addons-block-section-outer-wrap.block-${props.attributes.block_id || props.clientId}`;
+  var id_high_specificity = `.editor-styles-wrapper .responsive-block-editor-addons-block-section-outer-wrap.block-${props.attributes.block_id || props.clientId}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id_high_specificity, true, "tablet");
