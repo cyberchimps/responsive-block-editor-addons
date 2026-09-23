@@ -217,7 +217,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 == Changelog ==
 
 = 2.2.9 - 23rd July 2026 =
-* Ensured persistent block IDs across editor sessions to prevent unnecessary autosaves and maintain stable dynamic CSS selectors.
+* Improvement - Ensured persistent block IDs across editor sessions to prevent unnecessary autosaves and maintain stable dynamic CSS selectors.
 
 = 2.2.8 - 28th July 2026 =
 * Improvement - Buttons, Testimonial, Blockquote, and Divider Blocks: Revamped the default designs with improved styling for a better out-of-the-box experience.
