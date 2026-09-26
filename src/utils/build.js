@@ -10,13 +10,7 @@ const jsonfile = require("jsonfile");
 
 const file = "./google-fonts.json";
 
-const createFontEntry = (fontData) => {
-  return {
-    family: fontData.family,
-    variants: fontData.variants,
-    subsets: fontData.subsets,
-  };
-};
+const createFontEntry = (fontData) => fontData.family;
 
 request(
   "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDS1XfK5O1n2KXV3a1sonEffs966tQt54g",
