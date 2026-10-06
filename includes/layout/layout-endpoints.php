@@ -251,6 +251,7 @@ function register_layout_endpoints() {
 				return new WP_REST_Response( $modified_content );
 			},
 			'permission_callback' => function () {
+				// Attachment creation is gated by upload_files inside the image importer.
 				return current_user_can( 'edit_posts' );
 			},
 		)

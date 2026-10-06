@@ -174,6 +174,10 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_init', array( $this, 'rba_notice_change_timeout' ) );
 		add_action( 'admin_init', array( $this, 'rba_notice_cross_dismiss' ) );
 
+		// Display one-time deprecation notice.
+		add_action( 'admin_notices', array( $this, 'rbea_admin_deprecation_notice' ) );
+		add_action( 'admin_init', array( $this, 'rbea_deprecation_notice_dismiss' ) );
+
 		add_action( 'wp_ajax_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
 
@@ -1618,6 +1622,59 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Display the one-time plugin deprecation notice until it is dismissed.
+	 *
+	 * @return void
+	 */
+	public function rbea_admin_deprecation_notice() {
+		if ( ! current_user_can( 'manage_options' ) || get_option( 'responsive_block_editor_addons_deprecation_notice_dismissed' ) ) {
+			return;
+		}
+
+		$image_url   = plugins_url( 'admin/images/rbea-logo.svg', __DIR__ );
+		$dismiss_url = wp_nonce_url(
+			add_query_arg( 'responsive-block-editor-addons-deprecation-dismiss', 'true' ),
+			'rbea_deprecation_dismiss'
+		);
+		?>
+		<div class="notice notice-info rbea-ask-for-review-notice rbea-deprecation-notice">
+			<div class="rbea-notice-content-wrapper">
+				<div class="rbea-notice-image">
+					<img src="<?php echo esc_url( $image_url ); ?>" class="custom-logo" alt="Responsive Blocks" itemprop="logo">
+				</div>
+				<div class="rbea-notice-content">
+					<div class="rbea-notice-heading">
+						<strong><?php esc_html_e( 'Responsive Block Add-Ons is being deprecated', 'responsive-block-editor-addons' ); ?></strong>
+					</div>
+					<p class="rbea-review-request-text rbea-review-notice-text-container"><?php esc_html_e( 'Many of the blocks and features from this plugin are now available in WordPress core. We’re therefore retiring Responsive Block Add-ons.', 'responsive-block-editor-addons' ); ?></p>
+					<p class="rbea-review-request-text rbea-review-notice-text-container" style="margin-top:8px;"><?php esc_html_e( 'We recommend switching to the native WordPress blocks for future use.', 'responsive-block-editor-addons' ); ?></p>
+				</div>
+			</div>
+			<div>
+				<a href="<?php echo esc_url( $dismiss_url ); ?>"><button type="button" class="rbea-ask-review-notice-dismiss"></button></a>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Permanently dismiss the deprecation notice.
+	 *
+	 * @return void
+	 */
+	public function rbea_deprecation_notice_dismiss() {
+		if ( ! isset( $_GET['responsive-block-editor-addons-deprecation-dismiss'] ) ) {
+			return;
+		}
+		if ( ! current_user_can( 'manage_options' ) || ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'rbea_deprecation_dismiss' ) ) {
+			return;
+		}
+		update_option( 'responsive_block_editor_addons_deprecation_notice_dismissed', true );
+		wp_safe_redirect( remove_query_arg( array( 'responsive-block-editor-addons-deprecation-dismiss', '_wpnonce' ) ) );
+		exit;
+	}
+
+	/**
 	 * Removed Ask For Review Admin Notice when dismissed.
 	 */
 	public function rba_notice_dismissed() {
@@ -2985,11 +3042,13 @@ class Responsive_Block_Editor_Addons {
 	public function rba_form_processing( WP_REST_Request $request ) {
 		$params    = $request->get_params();
 		$form_data = $params['form_data'];
-		$page_url  = $params['page_url'];
 		$block_id  = isset( $params['block_id'] ) ? sanitize_text_field( $params['block_id'] ) : '';
 		$post_id   = isset( $params['post_id'] ) ? absint( $params['post_id'] ) : 0;
-		$site_name = isset( $params['site_name'] ) ? $params['site_name'] : '';
-		$site_url  = isset( $params['site_url'] ) ? $params['site_url'] : '';
+
+		// Build them entirely from server-side sources.
+		$site_name = get_bloginfo( 'name' );
+		$site_url  = home_url();
+		$page_url  = $post_id > 0 ? get_permalink( $post_id ) : home_url();
 
 		// Require block_id and post_id - reject if block_id is missing.
 		if ( empty( $block_id ) ) {
