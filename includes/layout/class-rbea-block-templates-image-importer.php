@@ -156,6 +156,11 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		 */
 		public function import( $attachment ) {
 
+			// Creating attachments requires the same capability as a normal media upload.
+			if ( ! current_user_can( 'upload_files' ) ) {
+				return $attachment;
+			}
+
 			$saved_image = $this->get_saved_image( $attachment );
 
 			if ( $saved_image['status'] ) {
